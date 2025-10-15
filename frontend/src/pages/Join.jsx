@@ -168,7 +168,7 @@ const Join = () => {
                     <span className="text-2xl font-bold text-emerald-700">$99</span>
                   </div>
                 </div>
-                <p className="text-sm text-emerald-700 font-semibold">$79,200 annual take-home—$15,200 more!</p>
+                <p className="text-sm text-emerald-700 font-semibold">$198,000 annual take-home—$38,000 more!</p>
               </CardContent>
             </Card>
           </div>
