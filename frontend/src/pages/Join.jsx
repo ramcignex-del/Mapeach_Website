@@ -18,7 +18,10 @@ const Join = () => {
     expertise: '',
     experience: '',
     portfolio: '',
-    about: ''
+    about: '',
+    hourlyRate: '',
+    negotiable: false,
+    resume: null
   });
 
   const handleSubmit = (e) => {
