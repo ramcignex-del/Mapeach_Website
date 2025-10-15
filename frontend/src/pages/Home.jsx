@@ -155,18 +155,53 @@ const Home = () => {
               Featured Expertise
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Access specialized talent across the most in-demand tech domains
+              Access specialized talent across the most in-demand tech roles
             </p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {techDomains.slice(0, 6).map((domain) => (
-              <Card key={domain.id} className="hover:shadow-lg transition-shadow duration-300 border-slate-200">
-                <CardContent className="p-6">
-                  <h3 className="text-lg font-bold text-slate-900 mb-2">{domain.title}</h3>
-                  <p className="text-slate-600 text-sm">{domain.description}</p>
-                </CardContent>
-              </Card>
-            ))}
+          
+          {/* Technical Roles */}
+          <div className="mb-12">
+            <h3 className="text-2xl font-bold text-slate-900 mb-6">Technical Roles</h3>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+              {techDomains.technical.map((domain) => (
+                <Card key={domain.id} className="hover:shadow-lg transition-shadow duration-300 border-slate-200">
+                  <CardContent className="p-5">
+                    <h4 className="text-base font-bold text-slate-900 mb-2">{domain.title}</h4>
+                    <p className="text-slate-600 text-xs leading-relaxed">{domain.description}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+
+          {/* Management Roles */}
+          <div className="mb-12">
+            <h3 className="text-2xl font-bold text-slate-900 mb-6">Management Roles</h3>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+              {techDomains.management.map((domain) => (
+                <Card key={domain.id} className="hover:shadow-lg transition-shadow duration-300 border-slate-200">
+                  <CardContent className="p-5">
+                    <h4 className="text-base font-bold text-slate-900 mb-2">{domain.title}</h4>
+                    <p className="text-slate-600 text-xs leading-relaxed">{domain.description}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+
+          {/* Leadership Roles */}
+          <div>
+            <h3 className="text-2xl font-bold text-slate-900 mb-6">Leadership Roles</h3>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+              {techDomains.leadership.map((domain) => (
+                <Card key={domain.id} className="hover:shadow-lg transition-shadow duration-300 border-slate-200">
+                  <CardContent className="p-5">
+                    <h4 className="text-base font-bold text-slate-900 mb-2">{domain.title}</h4>
+                    <p className="text-slate-600 text-xs leading-relaxed">{domain.description}</p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
           </div>
         </div>
       </section>
