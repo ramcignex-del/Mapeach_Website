@@ -147,7 +147,7 @@ const Join = () => {
                     <span className="text-2xl font-bold text-red-700">$80</span>
                   </div>
                 </div>
-                <p className="text-sm text-slate-600">$64,000 annual take-home (40hrs/wk)</p>
+                <p className="text-sm text-slate-600">$160,000 annual take-home (40hrs/wk, 50 weeks)</p>
               </CardContent>
             </Card>
 
