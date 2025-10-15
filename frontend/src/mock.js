@@ -55,38 +55,94 @@ export const talentTestimonials = [
   }
 ];
 
-export const techDomains = [
-  {
-    id: 1,
-    title: "Cloud Engineering",
-    description: "AWS, Azure, GCP specialists for scalable infrastructure",
-    icon: "cloud"
-  },
-  {
-    id: 2,
-    title: "AI/ML Engineering",
-    description: "Machine learning experts for intelligent solutions",
-    icon: "brain"
-  },
-  {
-    id: 3,
-    title: "Data Science & Analytics",
-    description: "Data engineers and analysts for insights-driven decisions",
-    icon: "database"
-  },
-  {
-    id: 4,
-    title: "Full-Stack Development",
-    description: "End-to-end developers proficient in modern frameworks",
-    icon: "code"
-  },
-  {
-    id: 5,
-    title: "DevOps & SRE",
-    description: "Infrastructure automation and reliability specialists",
-    icon: "settings"
-  }
-];
+export const techDomains = {
+  technical: [
+    {
+      id: 1,
+      title: "AI/ML Engineers",
+      description: "LLMs, GPT, Deep Learning, Neural Networks, PyTorch, TensorFlow"
+    },
+    {
+      id: 2,
+      title: "Cloud Architects",
+      description: "AWS, Azure, GCP, Kubernetes, Docker, Microservices, Serverless"
+    },
+    {
+      id: 3,
+      title: "Full-Stack Developers",
+      description: "React, Node.js, Python, Next.js, TypeScript, GraphQL"
+    },
+    {
+      id: 4,
+      title: "DevOps/SRE",
+      description: "CI/CD, Terraform, Jenkins, Monitoring, Infrastructure as Code"
+    },
+    {
+      id: 5,
+      title: "Data Engineers",
+      description: "Spark, Hadoop, ETL, Data Pipelines, Snowflake, Databricks"
+    },
+    {
+      id: 6,
+      title: "Cybersecurity Experts",
+      description: "Penetration Testing, SIEM, Zero Trust, Compliance, IAM"
+    },
+    {
+      id: 7,
+      title: "Blockchain Developers",
+      description: "Smart Contracts, Solidity, Web3, DeFi, Ethereum, Polygon"
+    },
+    {
+      id: 8,
+      title: "Mobile Developers",
+      description: "iOS (Swift), Android (Kotlin), React Native, Flutter"
+    }
+  ],
+  management: [
+    {
+      id: 9,
+      title: "Product Managers",
+      description: "Roadmap Planning, Agile, Stakeholder Management, Market Analysis"
+    },
+    {
+      id: 10,
+      title: "Engineering Managers",
+      description: "Team Leadership, Sprint Planning, Performance Management"
+    },
+    {
+      id: 11,
+      title: "Scrum Masters",
+      description: "Agile Coaching, Sprint Facilitation, Team Coordination"
+    },
+    {
+      id: 12,
+      title: "Technical Project Managers",
+      description: "SDLC, Risk Management, Cross-functional Coordination"
+    }
+  ],
+  leadership: [
+    {
+      id: 13,
+      title: "Fractional CTOs",
+      description: "Technical Strategy, Architecture Design, Team Building"
+    },
+    {
+      id: 14,
+      title: "VP of Engineering",
+      description: "Organizational Scaling, Technology Roadmap, Budget Planning"
+    },
+    {
+      id: 15,
+      title: "Head of Product",
+      description: "Product Vision, Go-to-Market Strategy, Innovation Leadership"
+    },
+    {
+      id: 16,
+      title: "Technology Consultants",
+      description: "Digital Transformation, System Integration, Strategic Advisory"
+    }
+  ]
+};
 
 export const problems = [
   {
