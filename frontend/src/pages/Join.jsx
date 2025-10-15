@@ -6,7 +6,7 @@ import { Label } from '../components/ui/label';
 import { Textarea } from '../components/ui/textarea';
 import { 
   DollarSign, Briefcase, Clock, TrendingUp, 
-  CheckCircle, ArrowRight, Star
+  CheckCircle, ArrowRight, Star, Users, Upload
 } from 'lucide-react';
 import { talentProcess, talentTestimonials } from '../mock';
 
