@@ -188,10 +188,10 @@ export const solutions = [
   },
   {
     id: 3,
-    title: "Automated Platform",
-    description: "Seamless compliance, contracts, and invoicing",
+    title: "Quality Vetting",
+    description: "Rigorous technical assessments and background verification",
     icon: "check-circle",
-    benefit: "Zero Manual Work"
+    benefit: "Top 5% Talent"
   },
   {
     id: 4,
