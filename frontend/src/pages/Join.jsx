@@ -57,6 +57,11 @@ const Join = () => {
       icon: CheckCircle,
       title: "Hassle-Free Admin",
       description: "Automated timesheets, contracts, and payments—focus on what you do best."
+    },
+    {
+      icon: Users,
+      title: "Direct Client Relationships",
+      description: "Build lasting connections with companies without agency intermediaries."
     }
   ];
 
