@@ -9,11 +9,12 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="space-y-4">
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-lg">M</span>
-              </div>
-              <span className="text-xl font-bold text-white">Mapeach</span>
+            <div className="flex items-center">
+              <img 
+                src="https://customer-assets.emergentagent.com/job_mapeach-relaunch/artifacts/k6vpvl25_Mapeach%20%28jpeg%29.jpg" 
+                alt="Mapeach Logo" 
+                className="h-10 w-auto brightness-0 invert"
+              />
             </div>
             <p className="text-sm text-slate-400">
               Smarter staffing. Faster talent. Zero agency fees.
