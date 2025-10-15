@@ -321,6 +321,61 @@ const Join = () => {
                   />
                 </div>
 
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div>
+                    <Label htmlFor="hourlyRate">Expected Hourly Rate (USD) *</Label>
+                    <Input
+                      id="hourlyRate"
+                      name="hourlyRate"
+                      type="number"
+                      required
+                      placeholder="e.g., 100"
+                      value={formData.hourlyRate}
+                      onChange={handleChange}
+                      className="mt-2"
+                      min="0"
+                    />
+                  </div>
+                  <div className="flex items-end pb-2">
+                    <label className="flex items-center space-x-2 cursor-pointer">
+                      <input
+                        type="checkbox"
+                        name="negotiable"
+                        checked={formData.negotiable}
+                        onChange={handleChange}
+                        className="w-4 h-4 text-emerald-600 border-gray-300 rounded focus:ring-emerald-500"
+                      />
+                      <span className="text-sm text-slate-700">Rate is negotiable</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div>
+                  <Label htmlFor="resume">Upload Resume (PDF, DOC, DOCX) *</Label>
+                  <div className="mt-2">
+                    <label htmlFor="resume" className="flex items-center justify-center w-full px-4 py-6 border-2 border-dashed border-slate-300 rounded-lg cursor-pointer hover:border-emerald-500 transition-colors duration-200">
+                      <div className="flex flex-col items-center">
+                        <Upload className="text-slate-400 mb-2" size={32} />
+                        <span className="text-sm text-slate-600">
+                          {formData.resume ? formData.resume.name : 'Click to upload or drag and drop'}
+                        </span>
+                        <span className="text-xs text-slate-500 mt-1">
+                          PDF, DOC, DOCX up to 5MB
+                        </span>
+                      </div>
+                      <input
+                        id="resume"
+                        name="resume"
+                        type="file"
+                        accept=".pdf,.doc,.docx"
+                        required
+                        onChange={handleChange}
+                        className="hidden"
+                      />
+                    </label>
+                  </div>
+                </div>
+
                 <Button
                   type="submit"
                   size="lg"
