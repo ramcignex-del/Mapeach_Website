@@ -205,35 +205,6 @@ const Join = () => {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-slate-900 mb-4">
-              What Our Professionals Say
-            </h2>
-          </div>
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {talentTestimonials.map((testimonial) => (
-              <Card key={testimonial.id} className="border-none shadow-md hover:shadow-xl transition-shadow duration-300">
-                <CardContent className="p-6">
-                  <div className="flex gap-1 mb-4">
-                    {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="text-yellow-400 fill-yellow-400" size={16} />
-                    ))}
-                  </div>
-                  <p className="text-slate-700 mb-4 italic">"{testimonial.content}"</p>
-                  <div>
-                    <p className="font-semibold text-slate-900">{testimonial.name}</p>
-                    <p className="text-sm text-slate-600">{testimonial.role}</p>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Application Form */}
       <section id="apply" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-3xl mx-auto">
