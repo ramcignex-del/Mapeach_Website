@@ -17,7 +17,7 @@ const Home = () => {
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-5xl md:text-6xl font-bold text-slate-900 leading-tight mb-6">
               Get 100% Value from Your Talent Spend.
-              <span className="block text-emerald-600 mt-2">Stop paying markups and macimise your budget.</span>
+              <span className="block text-emerald-600 mt-2">Stop paying markups and maximise your budget.</span>
             </h1>
             <p className="text-xl text-slate-600 mb-10 leading-relaxed">
               Mapeach delivers highly vetted IT professionals in <strong>short time</strong>, not weeks—with transparent pricing that saves you up to <strong>20%</strong> compared to traditional Staffing Companies.
