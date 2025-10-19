@@ -16,11 +16,11 @@ const Home = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-5xl md:text-6xl font-bold text-slate-900 leading-tight mb-6">
-              Stop Paying Agency Markups.
+              Stop Paying Staff Augmentation Companies Markups.
               <span className="block text-emerald-600 mt-2">Start Hiring Top Tech Talent Directly.</span>
             </h1>
             <p className="text-xl text-slate-600 mb-10 leading-relaxed">
-              Mapeach delivers highly vetted IT professionals in <strong>72 hours</strong>, not weeks—with transparent pricing that saves you up to <strong>20%</strong> compared to traditional staffing agencies.
+              Mapeach delivers highly vetted IT professionals in <strong>72 hours</strong>, not weeks—with transparent pricing that saves you up to <strong>20%</strong> compared to traditional Staff Augmentation companies.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/hire">
@@ -59,7 +59,7 @@ const Home = () => {
               The Sticking Points of Traditional Staffing
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Traditional agencies and marketplaces are broken. Here's why:
+              Traditional Staff Augmentation Companies and marketplaces are broken. Here's why:
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -137,12 +137,12 @@ const Home = () => {
               <CardContent className="p-8 text-center">
                 <div className="text-5xl font-bold mb-2">$1/hr</div>
                 <div className="text-lg text-emerald-100 mb-4">Recurring, billed bi-weekly</div>
-                <p className="text-sm text-emerald-50">Transparent hourly platform fee</p>
+                <p className="text-sm text-emerald-50">Transparent hourly service fee</p>
               </CardContent>
             </Card>
           </div>
           <p className="mt-8 text-emerald-50">
-            Compare this to 15-25% agency markups or 5-15% marketplace fees.
+            Compare this to 15-25% Staff Augmentation Companies markups or 5-15% marketplace fees.
           </p>
         </div>
       </section>

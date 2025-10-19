@@ -38,10 +38,10 @@ const Contact = () => {
     {
       icon: Mail,
       title: "Email Us",
-      content: "hello@mapeach.com",
-      link: "mailto:hello@mapeach.com"
+      content: "info@mapeach.com",
+      link: "mailto:info@mapeach.com"
     },
-    {
+    /*{
       icon: Phone,
       title: "Call Us",
       content: "+1 (555) 123-4567",
@@ -58,7 +58,7 @@ const Contact = () => {
       title: "Business Hours",
       content: "Mon-Fri: 9AM - 6PM PST",
       link: "#"
-    }
+    }*/
   ];
 
   return (
@@ -72,7 +72,7 @@ const Contact = () => {
               <span className="block text-emerald-600 mt-2">Conversation</span>
             </h1>
             <p className="text-xl text-slate-600 mb-10 leading-relaxed">
-              Have questions about our platform? Ready to schedule a demo? Our team is here to help.
+              Have questions about our services? Ready to schedule a call? Our team is here to help.
             </p>
           </div>
         </div>

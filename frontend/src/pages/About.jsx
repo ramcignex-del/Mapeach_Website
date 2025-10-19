@@ -52,7 +52,7 @@ const About = () => {
         </div>
       </section>
 
-      {/* Stats */}
+      {/* Stats 
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
@@ -65,6 +65,7 @@ const About = () => {
           </div>
         </div>
       </section>
+      */}
 
       {/* Mission Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50">
@@ -80,7 +81,7 @@ const About = () => {
               <strong>We believe there's a better way.</strong>
             </p>
             <p className="text-lg text-slate-700 leading-relaxed mt-4">
-              Mapeach leverages technology and automation to create a direct connection between companies and top IT professionals. Our platform eliminates unnecessary overhead, reduces costs dramatically, and delivers talent at lightning speed—all while ensuring rigorous vetting and quality.
+              Mapeach leverages technology and automation to create a direct connection between companies and top IT professionals. Our services eliminates unnecessary overhead, reduces costs dramatically, and delivers talent at lightning speed—all while ensuring rigorous vetting and quality.
             </p>
           </div>
         </div>
