@@ -16,11 +16,11 @@ const Home = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-5xl md:text-6xl font-bold text-slate-900 leading-tight mb-6">
-              Stop Paying Staff Augmentation Companies Markups.
-              <span className="block text-emerald-600 mt-2">Start Hiring Top Tech Talent Directly.</span>
+              Get 100% Value from Your Talent Spend.
+              <span className="block text-emerald-600 mt-2">Stop paying markups and macimise your budget.</span>
             </h1>
             <p className="text-xl text-slate-600 mb-10 leading-relaxed">
-              Mapeach delivers highly vetted IT professionals in <strong>72 hours</strong>, not weeks—with transparent pricing that saves you up to <strong>20%</strong> compared to traditional Staff Augmentation companies.
+              Mapeach delivers highly vetted IT professionals in <strong>short time</strong>, not weeks—with transparent pricing that saves you up to <strong>20%</strong> compared to traditional Staffing Companies.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/hire">
@@ -59,7 +59,7 @@ const Home = () => {
               The Sticking Points of Traditional Staffing
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Traditional Staff Augmentation Companies and marketplaces are broken. Here's why:
+              Traditional Staffing Companies and marketplaces are broken. Here's why:
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -142,7 +142,7 @@ const Home = () => {
             </Card>
           </div>
           <p className="mt-8 text-emerald-50">
-            Compare this to 15-25% Staff Augmentation Companies markups or 5-15% marketplace fees.
+            Compare this to 15-25% Staffing Companies markups or 5-15% marketplace fees.
           </p>
         </div>
       </section>
