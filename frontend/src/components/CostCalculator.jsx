@@ -5,12 +5,12 @@ import { Label } from './ui/label';
 import { DollarSign, TrendingDown } from 'lucide-react';
 
 export const CostCalculator = () => {
-  const [contractors, setContractors] = useState(5);
-  const [hourlyRate, setHourlyRate] = useState(100);
+  const [contractors, setContractors] = useState(1);
+  const [hourlyRate, setHourlyRate] = useState(60);
   const [hoursPerWeek, setHoursPerWeek] = useState(40);
 
   const weeksPerYear = 50; // accounting for holidays
-  const weeksPerMonth = 4.33; // average weeks per month
+  const weeksPerMonth = 4.33 ;// average weeks per month
   
   // Monthly calculations
   const totalHoursPerMonth = contractors * hoursPerWeek * weeksPerMonth;
@@ -32,8 +32,8 @@ export const CostCalculator = () => {
   const mapeachTotalPerYear = mapeachOnboarding + mapeachHourlyPerYear;
 
   // Consultant gross income
-  const consultantGrossIncomePerMonth = totalCostPerMonth;
-  const consultantGrossIncomePerYear = totalCostPerYear;
+  const consultantGrossIncomePerMonth = totalCostPerMonth - agencyCostPerMonth;
+  const consultantGrossIncomePerYear = totalCostPerYear - agencyCostPerYear;
 
   // Savings
   const savingsPerMonth = agencyCostPerMonth - mapeachTotalPerMonth;
@@ -45,7 +45,9 @@ export const CostCalculator = () => {
       <CardHeader className="bg-gradient-to-r from-emerald-50 to-teal-50">
         <CardTitle className="text-2xl font-bold text-slate-900 flex items-center gap-2">
           <DollarSign className="text-emerald-600" />
-          Cost Savings Calculator
+          Cost Savings Calculator <Label htmlFor="contractors" className="text-slate-700 font-medium">
+                (50 weeks per year, 4.33 average weeks per month, Considered 2 Weeks Holiday)
+              </Label>
         </CardTitle>
       </CardHeader>
       <CardContent className="pt-6">
@@ -104,7 +106,7 @@ export const CostCalculator = () => {
             </div>
 
             <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-              <h4 className="text-sm font-semibold text-red-900 mb-2">Agency Fees/Month</h4>
+              <h4 className="text-sm font-semibold text-red-900 mb-2">Staffing Company Fees/Month</h4>
               <p className="text-2xl font-bold text-red-700">
                 ${agencyCostPerMonth.toLocaleString(undefined, {maximumFractionDigits: 0})}
               </p>
@@ -135,7 +137,7 @@ export const CostCalculator = () => {
             </div>
 
             <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-              <h4 className="text-sm font-semibold text-red-900 mb-2">Agency Fees/Year</h4>
+              <h4 className="text-sm font-semibold text-red-900 mb-2">Staffing Company Fees/Year</h4>
               <p className="text-2xl font-bold text-red-700">
                 ${agencyCostPerYear.toLocaleString(undefined, {maximumFractionDigits: 0})}
               </p>
@@ -180,14 +182,14 @@ export const CostCalculator = () => {
               ${savingsPerYear.toLocaleString(undefined, {maximumFractionDigits: 0})}
             </p>
             <p className="text-sm mt-2 text-emerald-100">
-              Save {savingsPercent}% vs traditional agencies
+              Save {savingsPercent}% vs traditional Staffing Companies
             </p>
           </div>
         </div>
 
         <div className="mt-6 p-4 bg-slate-50 rounded-lg">
           <p className="text-sm text-slate-600">
-            <strong>Note:</strong> Traditional agencies typically charge 15-25% markups. Marketplaces charge 5-15% platform fees. 
+            <strong>Note:</strong> Traditional Staffing Companies typically charge 15-25% markups. Marketplaces charge 5-15% platform fees. 
             Mapeach's transparent pricing: <strong>$10 one-time per contractor + $1/hour recurring</strong>.
           </p>
         </div>

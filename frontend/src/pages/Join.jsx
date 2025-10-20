@@ -86,11 +86,11 @@ const Join = () => {
               <span className="block text-emerald-600 mt-2">Work with the Best.</span>
             </h1>
             <p className="text-xl text-slate-600 mb-10 leading-relaxed">
-              Join Mapeach's elite network of IT professionals and earn <strong>higher rates</strong> while working on <strong>premium projects</strong> with top companies—no middleman taking a massive cut.
+              Join Mapeach's elite team of IT professionals and earn <strong>higher rates</strong> while working on <strong>premium projects</strong> with top companies—no middleman taking a massive cut.
             </p>
             <a href="#apply">
               <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
-                Apply to Network
+                Start Earn More
                 <ArrowRight className="ml-2" size={20} />
               </Button>
             </a>
@@ -142,7 +142,7 @@ const Join = () => {
           <div className="grid md:grid-cols-2 gap-8">
             <Card className="border-2 border-red-200 bg-red-50">
               <CardContent className="p-8">
-                <h3 className="text-xl font-bold text-red-900 mb-4">Traditional Agency</h3>
+                <h3 className="text-xl font-bold text-red-900 mb-4">Traditional Staffing Companies</h3>
                 <div className="space-y-3 mb-6">
                   <div className="flex justify-between">
                     <span className="text-slate-700">Client pays per hour:</span>
@@ -170,12 +170,12 @@ const Join = () => {
                     <span className="font-semibold">$100</span>
                   </div>
                   <div className="flex justify-between text-emerald-600">
-                    <span>Platform fee:</span>
-                    <span className="font-semibold">-$1</span>
+                    <span>Mapeach fee:</span>
+                    <span className="font-semibold">-$0</span>
                   </div>
                   <div className="border-t-2 border-emerald-300 pt-3 flex justify-between">
                     <span className="font-bold text-slate-900">You take home:</span>
-                    <span className="text-2xl font-bold text-emerald-700">$99</span>
+                    <span className="text-2xl font-bold text-emerald-700">$100</span>
                   </div>
                 </div>
                 <p className="text-sm text-emerald-700 font-semibold">$198,000 annual take-home—$38,000 more!</p>
@@ -220,12 +220,22 @@ const Join = () => {
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-slate-900 mb-4">
-              Apply to Join Our Network
+              <a href="mailto:career@mapeach.com">email: career@mapeach.com (or) submit form</a>
             </h2>
             <p className="text-xl text-slate-600">
               We'll review your application and get back to you within 48 hours
             </p>
           </div>
+
+          <iframe src="https://mapeach.zohorecruit.com/forms/107fc4375102dc34784ed2753b3977f45b126c6685fcb0be49aeff4c698156b9"
+title="Application Form"
+width="100%"
+height="3000"
+frameBorder="0"
+allowFullScreen
+className="w-full h-full border-0" 
+></iframe>
+          {/*}
           <Card className="shadow-lg">
             <CardContent className="p-8">
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -386,7 +396,9 @@ const Join = () => {
                 </Button>
               </form>
             </CardContent>
+            
           </Card>
+          */}
         </div>
       </section>
     </div>

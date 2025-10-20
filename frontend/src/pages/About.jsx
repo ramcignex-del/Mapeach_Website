@@ -172,15 +172,15 @@ const About = () => {
             Whether you're a company seeking top talent or a professional looking for better opportunities, Mapeach is here to transform how you work.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/hire">
+            <Link to="/contact">
               <Button size="lg" className="bg-white text-emerald-600 hover:bg-slate-100 px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
-                For Companies
+                Start Hiring Smarter
                 <ArrowRight className="ml-2" size={20} />
               </Button>
             </Link>
             <Link to="/join">
               <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-emerald-600 px-8 py-6 text-lg font-semibold transition-all duration-300">
-                For Talent
+                Start Earning More
               </Button>
             </Link>
           </div>

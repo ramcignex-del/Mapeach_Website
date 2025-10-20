@@ -45,9 +45,9 @@ export const Navbar = () => {
                 {link.label}
               </Link>
             ))}
-            <Button size="sm" className="bg-emerald-600 hover:bg-emerald-700 text-white">
+            {/*<Button size="sm" className="bg-emerald-600 hover:bg-emerald-700 text-white">
               Get Started
-            </Button>
+            </Button>*/}
           </div>
 
           {/* Mobile Menu Button */}

@@ -19,7 +19,7 @@ const Hire = () => {
     {
       icon: DollarSign,
       title: "Massive Cost Savings",
-      description: "Save up to 20% vs traditional agencies. $10 onboarding + $1/hour—no hidden markups."
+      description: "Save up to 20% vs traditional staffing companies. $10 onboarding + $1/hour—no hidden markups."
     },
     {
       icon: ShieldCheck,
@@ -50,16 +50,16 @@ const Hire = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-5xl md:text-6xl font-bold text-slate-900 leading-tight mb-6">
-              End the Vetting Wait.
-              <span className="block text-emerald-600 mt-2">Control Your Budget.</span>
+              Skip the vetting wait and
+              <span className="block text-emerald-600 mt-2">control your staffing spend</span>
             </h1>
             <p className="text-xl text-slate-600 mb-10 leading-relaxed">
-              Stop wasting weeks and overpaying for staffing. Mapeach connects you with pre-vetted, specialized IT talent in <strong>hours</strong>—with transparent pricing that puts you in control.
+              Stop wasting weeks and overpaying for staffing. Mapeach connects you with pre-vetted, specialized IT talent in <strong>short time</strong>—with transparent pricing that puts you in control.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/contact">
                 <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
-                  Schedule a Demo
+                  Start Hiring Smarter
                   <ArrowRight className="ml-2" size={20} />
                 </Button>
               </Link>
@@ -111,7 +111,7 @@ const Hire = () => {
               See Your Potential Savings
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Calculate how much you'll save by switching from traditional agencies to Mapeach
+              Calculate how much you'll save by switching from traditional staffing companies to Mapeach
             </p>
           </div>
           <CostCalculator />
@@ -162,7 +162,7 @@ const Hire = () => {
                 <thead className="bg-slate-100">
                   <tr>
                     <th className="px-6 py-4 text-left text-sm font-semibold text-slate-700">Feature</th>
-                    <th className="px-6 py-4 text-center text-sm font-semibold text-slate-700">Traditional Agencies</th>
+                    <th className="px-6 py-4 text-center text-sm font-semibold text-slate-700">Traditional Staffing Companies</th>
                     <th className="px-6 py-4 text-center text-sm font-semibold text-emerald-700 bg-emerald-50">Mapeach</th>
                   </tr>
                 </thead>
@@ -205,10 +205,10 @@ const Hire = () => {
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-emerald-600 to-teal-600 text-white">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Ready to Cut Hiring Time by 90%?
+            Ready to Cut Staffing Cost?
           </h2>
           <p className="text-xl text-emerald-50 mb-10">
-            Schedule a demo and see how Mapeach can transform your talent acquisition.
+            Let's connect and build the high-performing team that will drive your business forward.
           </p>
           <Link to="/contact">
             <Button size="lg" className="bg-white text-emerald-600 hover:bg-slate-100 px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300">

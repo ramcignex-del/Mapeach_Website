@@ -16,28 +16,28 @@ const Home = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-5xl md:text-6xl font-bold text-slate-900 leading-tight mb-6">
-              Stop Paying Staff Augmentation Companies Markups.
-              <span className="block text-emerald-600 mt-2">Start Hiring Top Tech Talent Directly.</span>
+              Transparent staffing model with zero markups
+              <span className="block text-emerald-600 mt-2">Clients pay less and Contractors earn more — no compromises.</span>
             </h1>
             <p className="text-xl text-slate-600 mb-10 leading-relaxed">
-              Mapeach delivers highly vetted IT professionals in <strong>72 hours</strong>, not weeks—with transparent pricing that saves you up to <strong>20%</strong> compared to traditional Staff Augmentation companies.
+              Mapeach delivers highly vetted professionals in <strong>short time</strong>, not weeks—with transparent pricing that saves you up to <strong>20%</strong> compared to traditional Staffing Companies.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/hire">
                 <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
-                  Hire Talent Now
+                  Start Hiring Smarter
                   <ArrowRight className="ml-2" size={20} />
                 </Button>
               </Link>
               <Link to="/join">
                 <Button size="lg" variant="outline" className="border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-50 px-8 py-6 text-lg font-semibold transition-all duration-300">
-                  Join Our Network
+                  Start Earning More
                 </Button>
               </Link>
             </div>
           </div>
 
-          {/* Stats */}
+          {/* Stats
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
             {companyStats.map((stat, idx) => (
               <Card key={idx} className="border-none shadow-md hover:shadow-lg transition-shadow duration-300">
@@ -47,7 +47,8 @@ const Home = () => {
                 </CardContent>
               </Card>
             ))}
-          </div>
+          </div>market
+           */}
         </div>
       </section>
 
@@ -59,7 +60,7 @@ const Home = () => {
               The Sticking Points of Traditional Staffing
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Traditional Staff Augmentation Companies and marketplaces are broken. Here's why:
+              clients overpay, contractors under-earn, and processes waste time. Here’s why:
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -142,7 +143,7 @@ const Home = () => {
             </Card>
           </div>
           <p className="mt-8 text-emerald-50">
-            Compare this to 15-25% Staff Augmentation Companies markups or 5-15% marketplace fees.
+            Compare this to 15-25% Staffing Companies markups or 5-15% marketplace fees.
           </p>
         </div>
       </section>
@@ -210,21 +211,21 @@ const Home = () => {
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-slate-900 to-slate-800 text-white">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Ready to Transform Your Hiring?
+            Ready to Transform?
           </h2>
           <p className="text-xl text-slate-300 mb-10">
-            Join hundreds of companies saving time and money with Mapeach.
+            Join hundreds of companies and contractors thriving with Mapeach — where clients save more and contractors earns more.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/hire">
+            <Link to="/contact">
               <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
-                Start Hiring Today
+                Start Hiring Smarter
                 <ArrowRight className="ml-2" size={20} />
               </Button>
             </Link>
-            <Link to="/contact">
+            <Link to="/join">
               <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-slate-900 px-8 py-6 text-lg font-semibold transition-all duration-300">
-                Schedule a Demo
+                Start Earning More
               </Button>
             </Link>
           </div>

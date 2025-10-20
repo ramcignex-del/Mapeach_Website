@@ -35,13 +35,14 @@ const Contact = () => {
   };
 
   const contactInfo = [
+    /*
     {
       icon: Mail,
       title: "Email Us",
       content: "info@mapeach.com",
       link: "mailto:info@mapeach.com"
     },
-    /*{
+    {
       icon: Phone,
       title: "Call Us",
       content: "+1 (555) 123-4567",
@@ -74,12 +75,19 @@ const Contact = () => {
             <p className="text-xl text-slate-600 mb-10 leading-relaxed">
               Have questions about our services? Ready to schedule a call? Our team is here to help.
             </p>
+            <h3 className="text-lg font-bold text-slate-900 mb-2">info@mapeach.com</h3>
+                  
+                  <a href="mailto:info@mapeach.com">
+                  <Button variant="outline" className="border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white">
+                    Contact
+                  </Button>
+                  </a>
           </div>
         </div>
       </section>
 
       {/* Contact Info Cards */}
-      <section className="py-12 px-4 sm:px-6 lg:px-8 bg-white">
+     {/*} <section className="py-12 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {contactInfo.map((info, idx) => {
@@ -105,15 +113,16 @@ const Contact = () => {
           </div>
         </div>
       </section>
-
+    
       {/* Contact Form */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Form */}
             <div>
-              <h2 className="text-3xl font-bold text-slate-900 mb-6">Send Us a Message</h2>
-              <Card className="shadow-lg">
+              
+              
+              {/*<Card className="shadow-lg">
                 <CardContent className="p-8">
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid md:grid-cols-2 gap-6">
@@ -176,11 +185,9 @@ const Contact = () => {
                         onChange={handleChange}
                         className="mt-2 w-full rounded-md border border-slate-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500"
                       >
-                        <option value="demo">Schedule a Demo</option>
                         <option value="hiring">Hiring Inquiry</option>
-                        <option value="talent">Join as Talent</option>
+                        <option value="talent">Join as Contractor</option>
                         <option value="partnership">Partnership Opportunity</option>
-                        <option value="support">Technical Support</option>
                         <option value="other">Other</option>
                       </select>
                     </div>
@@ -198,7 +205,7 @@ const Contact = () => {
                         className="mt-2"
                       />
                     </div>
-
+                    
                     <Button
                       type="submit"
                       size="lg"
@@ -206,14 +213,19 @@ const Contact = () => {
                     >
                       Send Message
                     </Button>
+                    
                   </form>
                 </CardContent>
-              </Card>
+              </Card> 
+              */}
             </div>
-
+ 
+              
+            
             {/* FAQ */}
-            <div>
-              <h2 className="text-3xl font-bold text-slate-900 mb-6">Frequently Asked Questions</h2>
+           *<div>
+              
+             {/*} <h2 className="text-3xl font-bold text-slate-900 mb-6">Frequently Asked Questions</h2>
               <Card className="shadow-lg">
                 <CardContent className="p-6">
                   <Accordion type="single" collapsible className="w-full">
@@ -230,19 +242,23 @@ const Contact = () => {
                   </Accordion>
                 </CardContent>
               </Card>
-
-              <Card className="mt-6 bg-gradient-to-br from-emerald-50 to-teal-50 border-emerald-200">
+              */}
+             {/* <Card className="mt-6 bg-gradient-to-br from-emerald-50 to-teal-50 border-emerald-200">
                 <CardContent className="p-6">
                   <h3 className="text-lg font-bold text-slate-900 mb-2">Still have questions?</h3>
                   <p className="text-slate-600 text-sm mb-4">
-                    Can't find the answer you're looking for? Our support team is here to help.
+                    Can't find the answer you're looking for? Our team is here to help.
                   </p>
+                  <a href="mailto:info@mapeach.com">
                   <Button variant="outline" className="border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white">
-                    Contact Support
+                    Contact
                   </Button>
+                  </a>
                 </CardContent>
               </Card>
+              */}
             </div>
+            
           </div>
         </div>
       </section>
