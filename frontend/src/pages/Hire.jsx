@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
@@ -43,8 +43,20 @@ const Hire = () => {
     }
   ];
 
+  const topRef = useRef(null);
+
+  useEffect(() => {
+    // Scroll to top and focus the top container for accessibility on mount
+    if (typeof window !== 'undefined') {
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    }
+    if (topRef.current && topRef.current.focus) {
+      topRef.current.focus();
+    }
+  }, []);
+
   return (
-    <div className="min-h-screen">
+    <div ref={topRef} tabIndex={-1} className="min-h-screen">
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-emerald-50/30 to-teal-50/30">
         <div className="max-w-7xl mx-auto">
