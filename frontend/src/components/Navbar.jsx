@@ -15,6 +15,7 @@ export const Navbar = () => {
     { path: '/join', label: 'For Talents' },
     { path: '/about', label: 'About' },
     { path: '/contact', label: 'Contact' }
+    { path: '/MapeachFAQ', label: 'FAQ' }
   ];
 
   return (
