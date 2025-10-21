@@ -7,6 +7,7 @@ import Hire from "./pages/Hire";
 import Join from "./pages/Join";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import MapeachFAQ from "./pages/MapeachFAQ";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/join" element={<Join />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/MapeachFAQ" element={<MapeachFAQ />} />
         </Routes>
         <Footer />
       </BrowserRouter>
