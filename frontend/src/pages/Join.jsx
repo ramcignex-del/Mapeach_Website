@@ -45,7 +45,7 @@ const Join = () => {
   const benefits = [
     {
       icon: DollarSign,
-      title: "Earn 30% More",
+      title: "Earn 10-15% More",
       description: "Keep more of what you earn. No agency taking 15-25% of your rate."
     },
     {
@@ -82,8 +82,8 @@ const Join = () => {
         <div className="max-w-7xl mx-auto">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-5xl md:text-6xl font-bold text-slate-900 leading-tight mb-6">
-              Keep More of What You Earn.
-              <span className="block text-emerald-600 mt-2">Work with the Best.</span>
+              What the client pays is 
+              <span className="block text-emerald-600 mt-2">exactly what the contractor receives (100%)-Zero Markups.</span>
             </h1>
             <p className="text-xl text-slate-600 mb-10 leading-relaxed">
               Join Mapeach's elite team of IT professionals and earn <strong>higher rates</strong> while working on <strong>premium projects</strong> with top companies—no middleman taking a massive cut.

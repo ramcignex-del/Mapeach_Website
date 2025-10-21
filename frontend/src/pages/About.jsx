@@ -46,7 +46,7 @@ const About = () => {
               <span className="block text-emerald-600 mt-2">Staffing Models</span>
             </h1>
             <p className="text-xl text-slate-600 mb-10 leading-relaxed">
-              We're on a mission to eliminate the inefficiencies, high costs, and lack of transparency that plague traditional IT staffing—connecting companies directly with exceptional talent.
+              eliminating the inefficiencies, high costs, and lack of transparency that plague traditional IT staffing—Our model gives clients total transparency while guaranteeing 100% of the rate goes to the talent.
             </p>
           </div>
         </div>
@@ -75,7 +75,7 @@ const About = () => {
               Our Mission
             </h2>
             <p className="text-lg text-slate-700 leading-relaxed">
-              For too long, traditional staffing agencies have charged exorbitant fees (15-25% markups) while delivering slow results and limited transparency. Meanwhile, talent is underpaid, and companies overpay.
+              Our mission is to provide clients with transparent, lower costs and ensure contractors keep 100% of the rate paid for their work, fostering a truly fair and efficient market for elite IT talent.
             </p>
             <p className="text-lg text-slate-700 leading-relaxed mt-4">
               <strong>We believe there's a better way.</strong>
