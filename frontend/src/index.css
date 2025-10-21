@@ -113,3 +113,6 @@ code {
         border-bottom-color: inherit;
     }
 }
+.h-4 {
+    height: 4rem;
+}
