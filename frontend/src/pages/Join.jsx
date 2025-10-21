@@ -217,24 +217,29 @@ const Join = () => {
 
       {/* Application Form */}
       <section id="apply" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-3xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-slate-900 mb-4">
-              <a href="mailto:career@mapeach.com">email: career@mapeach.com (or) submit form</a>
+        <div className=" ">
+          <div className="mb-12">
+            <h2 className="text-4xl font-bold text-slate-900 mb-4 mx-auto text-center">
+              <a>Register Here</a>
             </h2>
-            <p className="text-xl text-slate-600">
+            <p className="text-xl text-slate-600 mx-auto text-center">
               We'll review your application and get back to you within 48 hours
             </p>
+            <div style={{minHeight:'1900px', width:'100%'}}>
+            
+                <iframe src="https://mapeach.zohorecruit.com/forms/107fc4375102dc34784ed2753b3977f45b126c6685fcb0be49aeff4c698156b9"
+                  title="Application Form"
+                  width="100%"
+                  height="1900px"
+                  allowFullScreen
+                  className="w-full border-0" 
+                >
+
+                </iframe>
+            </div>
           </div>
 
-          <iframe src="https://mapeach.zohorecruit.com/forms/107fc4375102dc34784ed2753b3977f45b126c6685fcb0be49aeff4c698156b9"
-title="Application Form"
-width="100%"
-height="3000"
-frameBorder="0"
-allowFullScreen
-className="w-full h-full border-0" 
-></iframe>
+         
           {/*}
           <Card className="shadow-lg">
             <CardContent className="p-8">
