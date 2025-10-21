@@ -6,6 +6,7 @@ import { ChevronDown, ChevronUp } from "lucide-react";
 import { faqCompanies } from "../data/faqCompanies";
 import { faqContractors } from "../data/faqContractors";
 
+
 export default function MapeachFAQ() {
   const [activeTab, setActiveTab] = useState("companies");
   const [openItem, setOpenItem] = useState(null);
