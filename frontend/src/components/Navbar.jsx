@@ -12,7 +12,7 @@ export const Navbar = () => {
   const navLinks = [
     { path: '/', label: 'Home' },
     { path: '/hire', label: 'For Companies' },
-    { path: '/join', label: 'For Talent' },
+    { path: '/join', label: 'For Talents' },
     { path: '/about', label: 'About' },
     { path: '/contact', label: 'Contact' }
   ];

@@ -14,12 +14,12 @@ const Hire = () => {
     {
       icon: Zap,
       title: "Lightning-Fast Matching",
-      description: "Get qualified candidate profiles within 24-48 hours. Average time-to-hire: 72 hours."
+      description: "Get qualified candidate profiles within a short time. Average time-to-hire: less than a week."
     },
     {
       icon: DollarSign,
       title: "Massive Cost Savings",
-      description: "Save up to 20% vs traditional staffing companies. $10 onboarding + $1/hour—no hidden markups."
+      description: "Save up to 20% vs traditional staffing companies.0 onboarding + $1/hour—no hidden markups."
     },
     {
       icon: ShieldCheck,
@@ -71,7 +71,7 @@ const Hire = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> $1
 
       {/* Benefits Grid */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
@@ -169,19 +169,19 @@ const Hire = () => {
                 <tbody className="divide-y divide-slate-200">
                   <tr>
                     <td className="px-6 py-4 text-sm text-slate-900 font-medium">Time to Hire</td>
-                    <td className="px-6 py-4 text-sm text-center text-red-600">1-4 weeks</td>
-                    <td className="px-6 py-4 text-sm text-center text-emerald-600 bg-emerald-50 font-semibold">72 hours avg.</td>
+                    <td className="px-6 py-4 text-sm text-center text-red-600">4 weeks</td>
+                    <td className="px-6 py-4 text-sm text-center text-emerald-600 bg-emerald-50 font-semibold">less then a week</td>
                   </tr>
                   <tr>
                     <td className="px-6 py-4 text-sm text-slate-900 font-medium">Cost Structure</td>
                     <td className="px-6 py-4 text-sm text-center text-red-600">15-25% markup</td>
-                    <td className="px-6 py-4 text-sm text-center text-emerald-600 bg-emerald-50 font-semibold">$10 + $1/hr</td>
+                    <td className="px-6 py-4 text-sm text-center text-emerald-600 bg-emerald-50 font-semibold"> Onetime $10 + Recurring $1/hr</td>
                   </tr>
-                  <tr>
+                 {/*} <tr>
                     <td className="px-6 py-4 text-sm text-slate-900 font-medium">Compliance & Admin</td>
                     <td className="px-6 py-4 text-sm text-center text-red-600">Manual process</td>
                     <td className="px-6 py-4 text-sm text-center text-emerald-600 bg-emerald-50 font-semibold">Fully automated</td>
-                  </tr>
+                  </tr>*/}
                   <tr>
                     <td className="px-6 py-4 text-sm text-slate-900 font-medium">Control & Visibility</td>
                     <td className="px-6 py-4 text-sm text-center text-red-600">Limited</td>
