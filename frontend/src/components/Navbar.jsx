@@ -14,7 +14,7 @@ export const Navbar = () => {
     { path: '/hire', label: 'For Companies' },
     { path: '/join', label: 'For Talents' },
     { path: '/about', label: 'About' },
-    { path: '/contact', label: 'Contact' }
+    { path: '/contact', label: 'Contact' },
     { path: '/MapeachFAQ', label: 'FAQ' }
   ];
 
@@ -26,8 +26,9 @@ export const Navbar = () => {
           <Link to="/" className="flex items-center">
             <img 
               src="https://customer-assets.emergentagent.com/job_mapeach-relaunch/artifacts/k6vpvl25_Mapeach%20%28jpeg%29.jpg" 
+             // src={logo}
               alt="Mapeach Logo" 
-              className="h-10 w-auto"
+              className="h-4 w-auto"
             />
           </Link>
 
