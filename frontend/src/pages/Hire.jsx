@@ -19,7 +19,7 @@ const Hire = () => {
     {
       icon: DollarSign,
       title: "Massive Cost Savings",
-      description: "Save up to 20% vs traditional staffing companies.0 onboarding + $1/hour—no hidden markups."
+      description: "Save up to 20% vs traditional staffing companies. Onetime $10 + Recurring $1/hour —no hidden markups."
     },
     {
       icon: ShieldCheck,
