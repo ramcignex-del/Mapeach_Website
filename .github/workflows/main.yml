@@ -25,23 +25,21 @@ jobs:
       - name: Build project
         run: |
           npm run build
-          echo "Listing frontend directory contents:"
-          ls -la ../frontend
-          echo "Listing frontend/dist directory contents:"
-          ls -la ../frontend/dist || echo "frontend/dist not found"
+          echo "Listing build output..."
+          ls -la build
         working-directory: frontend
 
-      - name: Check if frontend/dist exists
+      - name: Check if frontend/build exists
         run: |
-          if [ ! -d "frontend/dist" ]; then
-            echo "frontend/dist does not exist. Exiting."
+          if [ ! -d "frontend/build" ]; then
+            echo "frontend/build does not exist. Exiting."
             exit 1
           fi
 
       - name: Upload build artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: frontend/dist
+          path: frontend/build
 
   deploy:
     runs-on: ubuntu-latest
