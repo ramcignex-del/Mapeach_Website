@@ -16,9 +16,10 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install dependencies
-        run: npm install
-        working-directory: frontend
+      - name: Workaround for dependency conflict
+        run: |
+          npm --prefix frontend install react@^18.0.0 react-dom@^18.0.0
+          npm --prefix frontend install --legacy-peer-deps
 
       - name: Build project
         run: npm run build
