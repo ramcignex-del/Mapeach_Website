@@ -89,8 +89,8 @@ export default function MapeachFAQ() {
       <footer className="text-center text-gray-500 mt-16 text-sm">
         <p>
           Need more info? Reach out at{" "}
-          <a href="mailto:support@mapeach.com" className="text-blue-600 hover:underline">
-            support@mapeach.com
+          <a href="mailto:info@mapeach.com" className="text-blue-600 hover:underline">
+            info@mapeach.com
           </a>
         </p>
       </footer>
