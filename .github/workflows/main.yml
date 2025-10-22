@@ -26,11 +26,10 @@ jobs:
         run: |
           npm run build
           echo "Listing frontend directory contents:"
-          ls -la frontend
-          echo "Listing frontend/dist directory contents (if exists):"
-          ls -la frontend/dist || echo "frontend/dist not found"
+          ls -la ../frontend
+          echo "Listing frontend/dist directory contents:"
+          ls -la ../frontend/dist || echo "frontend/dist not found"
         working-directory: frontend
-
 
       - name: Check if frontend/dist exists
         run: |
