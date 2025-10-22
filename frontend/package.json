@@ -60,9 +60,6 @@
     "date-fns": "^3.0.0"
   },
   "scripts": {
-    "build": "react-scripts build"
-  }
-  "scripts": {
     "start": "craco start",
     "build": "craco build",
     "test": "craco test"
@@ -79,7 +76,6 @@
       "last 1 safari version"
     ]
   },
-  
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@craco/craco": "^7.1.0",
