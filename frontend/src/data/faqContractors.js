@@ -2,7 +2,6 @@ export const faqContractors = [
   {
     section: "Getting Started",
     items: [
-      { q: "What is Mapeach?", a: "Mapeach helps professionals work remotely for global clients." },
       { q: "How do I join Mapeach?", a: "Apply through our website or by referral. After approval, we’ll help you onboard." },
       { q: "Can I choose which projects I work on?", a: "Yes, you’ll be matched to opportunities that fit your skills." },
       { q: "Can I work from home?", a: "Yes, 100% remote unless a client requests otherwise." },
@@ -44,4 +43,5 @@ export const faqContractors = [
     ]
   }
 ];
+
 
