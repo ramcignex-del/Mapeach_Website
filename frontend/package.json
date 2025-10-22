@@ -60,6 +60,9 @@
     "date-fns": "^3.0.0"
   },
   "scripts": {
+    "build": "react-scripts build"
+  }
+  "scripts": {
     "start": "craco start",
     "build": "craco build",
     "test": "craco test"
