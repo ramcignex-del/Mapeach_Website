@@ -17,10 +17,8 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Clean install dependencies
-        run: |
-          npm --prefix frontend ci
-        # The 'npm ci' command performs a clean install from package-lock.json
+      - name: Install dependencies
+        run: npm --prefix frontend install
 
       - name: Build project
         run: npm run build
