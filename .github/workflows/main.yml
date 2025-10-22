@@ -19,19 +19,15 @@ jobs:
 
       - name: Install dependencies
         run: npm install
+        working-directory: frontend  # Add this line
 
       - name: Build project
         run: npm run build
-        working-directory: frontend  # Assuming your package.json and build command are in the frontend folder
-
-      - name: Configure Git for deployment
-        run: |
-          git config user.name 'github-actions[bot]'
-          git config user.email 'github-actions[bot]@users.noreply.github.com'
+        working-directory: frontend  # Add this line
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./frontend/dist  # Adjust this if your build output directory is named differently
+          publish_dir: ./frontend/dist  # Your build output directory
           publish_branch: gh-pages
