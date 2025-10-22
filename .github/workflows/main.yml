@@ -20,8 +20,8 @@ jobs:
       - name: Install dependencies
         run: npm --prefix frontend install
 
-      - name: Build project
-        run: npm run build
+      - name: Build project with npx
+        run: npx craco build
         working-directory: frontend
 
       - name: Upload artifact
