@@ -8,6 +8,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -18,16 +19,24 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies
-        run: npm --prefix frontend install
+        run: npm install
+        working-directory: frontend
 
       - name: Build project
         run: npm run build
         working-directory: frontend
 
-      - name: Upload artifact
+      - name: Check if frontend/dist exists
+        run: |
+          if [ ! -d "frontend/dist" ]; then
+            echo "frontend/dist does not exist. Exiting."
+            exit 1
+          fi
+
+      - name: Upload build artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './frontend/dist'
+          path: frontend/dist
 
   deploy:
     runs-on: ubuntu-latest
