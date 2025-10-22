@@ -31,3 +31,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./frontend/dist  # Your build output directory
           publish_branch: gh-pages
+          cname: www.mapeach.com
