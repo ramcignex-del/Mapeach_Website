@@ -2,7 +2,6 @@ export const faqCompanies = [
   {
     section: "Getting Started",
     items: [
-      { q: "What is Mapeach?", a: "Mapeach is your trusted partner for staffing needs, helping global companies to onboard temp professionals." },
       { q: "Can we start small?", a: "Yes! You can begin with one contractor and expand anytime." },
       { q: "How fast is onboarding?", a: "Typically within 5–10 business days once documents are verified." },
       { q: "Can we hire part-time contractors?", a: "Yes, Mapeach supports both part-time and full-time models." },
@@ -58,4 +57,5 @@ export const faqCompanies = [
     ]
   }
 ];
+
 
