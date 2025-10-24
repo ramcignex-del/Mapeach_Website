@@ -9,7 +9,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Jobs from "./pages/Jobs";
 import MapeachFAQ from "./pages/MapeachFAQ";
-
+import PrivacyPolicy from "./pages/PrivacyPolicy";
 
 function App() {
   return (
@@ -24,6 +24,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/jobs" element={<Jobs />} />
           <Route path="/MapeachFAQ" element={<MapeachFAQ />} />
+          <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
         </Routes>
         <Footer />
       </BrowserRouter>
