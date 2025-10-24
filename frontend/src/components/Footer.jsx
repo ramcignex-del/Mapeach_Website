@@ -23,7 +23,9 @@ export const Footer = () => {
           </div>
            */}
           {/* Quick Links */}
-         {/* <div>
+
+          
+         <div>
             <h3 className="text-white font-semibold mb-4">Company</h3>
             <ul className="space-y-2">
               <li>
@@ -42,13 +44,28 @@ export const Footer = () => {
                 </Link>
               </li>
               <li>
+                <Link to="/jobs" className="text-sm hover:text-emerald-400 transition-colors duration-200">
+                  Jobs
+                </Link>
+              </li>
+              <li>
+                <Link to="/MapeachFAQ" className="text-sm hover:text-emerald-400 transition-colors duration-200">
+                  FAQ
+                </Link>
+              </li>
+              <li>
                 <Link to="/contact" className="text-sm hover:text-emerald-400 transition-colors duration-200">
                   Contact
                 </Link>
               </li>
+              <li>
+                <Link to="/privacypolicy" className="text-sm hover:text-emerald-400 transition-colors duration-200">
+                  Privacy Policy
+                </Link>
+              </li>
             </ul>
           </div>
-          */}
+          
 
           {/* Resources */}
           {/*<div>
@@ -108,12 +125,11 @@ export const Footer = () => {
 */}
 
         </div>
-        
-        
+              
 
         <div className="border-t border-slate-800 mt-8 pt-8 text-center">
           <p className="text-sm text-slate-400">
-            © {new Date().getFullYear()} Mapeach. All rights reserved.  | info@mapeach.com
+            © {new Date().getFullYear()} Mapeach. All rights reserved.  | info@mapeach.com  | 
           </p>
         </div>
       </div>
