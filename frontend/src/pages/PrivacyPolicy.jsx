@@ -1,6 +1,6 @@
 // PrivacyPolicy.jsx
 import React from "react";
-import { privacyPolicyData } from "./data/privacyContent.js";
+import { privacyPolicyData } from "../data/privacyContent.js";
 
 export default function PrivacyPolicy() {
   return (
