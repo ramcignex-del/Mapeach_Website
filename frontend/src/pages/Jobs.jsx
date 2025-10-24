@@ -1,15 +1,16 @@
 import React, { useEffect } from 'react';
 
-const Careers = () => {
+const ZohoRecruitCareers = () => {
   useEffect(() => {
-    // --- Load Zoho Recruit CSS ---
+    // --- Load Zoho Recruit CSS (only once) ---
     const cssId = 'zoho-embed-jobs-css';
     if (!document.getElementById(cssId)) {
       const link = document.createElement('link');
       link.id = cssId;
       link.rel = 'stylesheet';
       link.type = 'text/css';
-      link.href = 'https://static.zohocdn.com/recruit/embed_careers_site/css/v1.1/embed_jobs.css';
+      link.href =
+        'https://static.zohocdn.com/recruit/embed_careers_site/css/v1.1/embed_jobs.css';
       document.head.appendChild(link);
     }
 
@@ -21,9 +22,9 @@ const Careers = () => {
       if (window.rec_embed_js) {
         window.rec_embed_js.load({
           widget_id: 'rec_job_listing_div',
-          page_name: 'Jobs',
+          page_name: 'Careers',
           source: 'CareerSite',
-          site: 'https://mapeach.zohorecruit.com', // <-- your Zoho Recruit site
+          site: 'https://mapeach.zohorecruit.com',
           brand_color: '#6875E2',
           empty_job_msg: 'No current Openings',
         });
@@ -33,14 +34,13 @@ const Careers = () => {
     if (!existingScript) {
       const script = document.createElement('script');
       script.id = scriptId;
-      script.src = 'https://static.zohocdn.com/recruit/embed_careers_site/javascript/v1.1/embed_jobs.js';
+      script.src =
+        'https://static.zohocdn.com/recruit/embed_careers_site/javascript/v1.1/embed_jobs.js';
       script.onload = initializeZohoWidget;
       document.body.appendChild(script);
     } else {
       initializeZohoWidget();
     }
-
-    // Cleanup not required (Zoho manages widget globally)
   }, []);
 
   return (
@@ -48,8 +48,8 @@ const Careers = () => {
       className="embed_jobs_head embed_jobs_with_style_3"
       style={{
         width: '100%',
-        height: '100vh',
-        overflow: 'hidden',
+        height: '100vh', // Full screen height
+        overflow: 'hidden', // No scrollbars
         margin: 0,
         padding: 0,
         boxSizing: 'border-box',
@@ -64,4 +64,4 @@ const Careers = () => {
   );
 };
 
-export default Careers;
+export default ZohoRecruitCareers;
