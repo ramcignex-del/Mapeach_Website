@@ -7,6 +7,7 @@ import Hire from "./pages/Hire";
 import Join from "./pages/Join";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import Jobs from "./pages/Jobs";
 import MapeachFAQ from "./pages/MapeachFAQ";
 
 
@@ -21,6 +22,7 @@ function App() {
           <Route path="/join" element={<Join />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/jobs" element={<Jobs />} />
           <Route path="/MapeachFAQ" element={<MapeachFAQ />} />
         </Routes>
         <Footer />
