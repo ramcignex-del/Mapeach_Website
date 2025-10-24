@@ -1,17 +1,23 @@
-export const contactDefaults = {
-  companyName: '[Your Company Name]',
-  websiteUrl: '[Your Website URL]',
-  effectiveDate: 'October 23, 2025',
-  contactEmail: '[your-email@example.com]',
-  contactPhone: '[Your Phone Number]',
-  address: '[Your Company Address]',
-  dpoName: '[Data Protection Officer Name]',
-  registeredCountry: 'India',
+import React from 'react';
+import privacyContent from './privacyContent';
+
+const PrivacyPolicy = () => {
+  return (
+    <div style={{ padding: '2rem', maxWidth: '800px', margin: '0 auto' }}>
+      {privacyContent.map((item, index) => {
+        switch (item.type) {
+          case 'h1':
+            return <h1 key={index}>{item.text}</h1>;
+          case 'h2':
+            return <h2 key={index}>{item.text}</h2>;
+          case 'p':
+            return <p key={index}>{item.text}</p>;
+          default:
+            return null;
+        }
+      })}
+    </div>
+  );
 };
 
-export function policyContent(overrides = {}) {
-  return {
-    ...contactDefaults,
-    ...overrides,
-  };
-}
+export default PrivacyPolicy;
