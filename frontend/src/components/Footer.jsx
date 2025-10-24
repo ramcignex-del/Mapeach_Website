@@ -59,7 +59,7 @@ export const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to="/privacypolicy" className="text-sm hover:text-emerald-400 transition-colors duration-200">
+                <Link to="/PrivacyPolicy" className="text-sm hover:text-emerald-400 transition-colors duration-200">
                   Privacy Policy
                 </Link>
               </li>
