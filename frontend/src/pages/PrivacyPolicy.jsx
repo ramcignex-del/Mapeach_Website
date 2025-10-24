@@ -1,23 +1,25 @@
-import React from 'react';
-import privacyContent from './privacyContent';
+// PrivacyPolicy.jsx
+import React from "react";
+import { privacyPolicyData } from "./privacyContent.js";
 
-const PrivacyPolicy = () => {
+export default function PrivacyPolicy() {
   return (
-    <div style={{ padding: '2rem', maxWidth: '800px', margin: '0 auto' }}>
-      {privacyContent.map((item, index) => {
-        switch (item.type) {
-          case 'h1':
-            return <h1 key={index}>{item.text}</h1>;
-          case 'h2':
-            return <h2 key={index}>{item.text}</h2>;
-          case 'p':
-            return <p key={index}>{item.text}</p>;
-          default:
-            return null;
-        }
-      })}
+    <div style={{ padding: "20px", maxWidth: "800px", margin: "0 auto" }}>
+      {privacyPolicyData.map((section, idx) => (
+        <div key={idx} style={{ marginBottom: "30px" }}>
+          <h2 style={{ borderBottom: "2px solid #ccc", paddingBottom: "5px" }}>
+            {section.section}
+          </h2>
+          <ul style={{ listStyleType: "none", paddingLeft: 0 }}>
+            {section.items.map((item, i) => (
+              <li key={i} style={{ marginBottom: "15px" }}>
+                <strong>{item.q}:</strong>
+                <p style={{ margin: "5px 0" }}>{item.a}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
     </div>
   );
-};
-
-export default PrivacyPolicy;
+}
