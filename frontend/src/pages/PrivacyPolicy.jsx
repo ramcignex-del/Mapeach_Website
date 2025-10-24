@@ -2,6 +2,13 @@
 import React from "react";
 import { privacyPolicyData } from "../data/privacyContent.js";
 
+
+//Added By
+import { Input } from '../components/ui/input';
+import { Label } from '../components/ui/label';
+import { Textarea } from '../components/ui/textarea';
+//
+
 export default function PrivacyPolicy() {
   return (
     <div style={{ padding: "20px", maxWidth: "800px", margin: "0 auto" }}>
