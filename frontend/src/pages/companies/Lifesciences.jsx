@@ -56,16 +56,13 @@ const Lifesciences = () => {
 
   return (
     <div className="pt-20">
-
       {/* Hero Section */}
       <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-emerald-50/30 to-teal-50/30">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-slate-900 leading-tight mb-6">
             {pageText.hero.title}
           </h1>
-          <p className="text-xl text-slate-600 mb-10 leading-relaxed">
-            {pageText.hero.subtitle}
-          </p>
+          <p className="text-xl text-slate-600 mb-10 leading-relaxed">{pageText.hero.subtitle}</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to={pageText.hero.cta1.link}>
               <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
@@ -97,7 +94,7 @@ const Lifesciences = () => {
               const IconComponent = benefit.icon;
               return (
                 <Card key={idx} className="border-2 border-slate-100 hover:border-emerald-200 hover:shadow-lg transition-all duration-300">
-                  <CardContent className="p-6">
+                  <CardContent className="p-6 text-center">
                     <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-lg flex items-center justify-center mb-4">
                       <IconComponent className="text-white" size={24} />
                     </div>
@@ -116,16 +113,14 @@ const Lifesciences = () => {
 
       {/* Cost Calculator Section */}
       <section id="calculator" className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-slate-900 mb-4">{pageText.calculator.header}</h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">{pageText.calculator.subheader}</p>
-          </div>
+        <div className="max-w-7xl mx-auto text-center">
+          <h2 className="text-4xl font-bold text-slate-900 mb-4">{pageText.calculator.header}</h2>
+          <p className="text-xl text-slate-600 mb-12">{pageText.calculator.subheader}</p>
           <CostCalculator />
         </div>
       </section>
 
-      {/* Hiring Process */}
+      {/* Hiring Process Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
@@ -152,27 +147,25 @@ const Lifesciences = () => {
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold text-slate-900 mb-4">{pageText.comparison.header}</h2>
           </div>
-          <div className="bg-white rounded-xl shadow-lg overflow-hidden">
-            <div className="overflow-x-auto">
-              <table className="w-full">
-                <thead className="bg-slate-100">
-                  <tr>
-                    <th className="px-6 py-4 text-left text-sm font-semibold text-slate-700">Feature</th>
-                    <th className="px-6 py-4 text-center text-sm font-semibold text-slate-700">Traditional Agencies</th>
-                    <th className="px-6 py-4 text-center text-sm font-semibold text-emerald-700 bg-emerald-50">Mapeach</th>
+          <div className="bg-white rounded-xl shadow-lg overflow-x-auto">
+            <table className="w-full text-sm divide-y divide-slate-200">
+              <thead className="bg-slate-100">
+                <tr>
+                  <th className="px-6 py-4 text-left font-semibold text-slate-700">Feature</th>
+                  <th className="px-6 py-4 text-center font-semibold text-slate-700">Traditional Agencies</th>
+                  <th className="px-6 py-4 text-center font-semibold text-emerald-700 bg-emerald-50">Mapeach</th>
+                </tr>
+              </thead>
+              <tbody>
+                {comparisonData.map((item, idx) => (
+                  <tr key={idx}>
+                    <td className="px-6 py-4 text-sm text-slate-900 font-medium">{item.feature}</td>
+                    <td className="px-6 py-4 text-sm text-center text-red-600">{item.traditional}</td>
+                    <td className={`px-6 py-4 text-sm text-center ${item.mapeachClass}`}>{item.mapeach}</td>
                   </tr>
-                </thead>
-                <tbody className="divide-y divide-slate-200">
-                  {comparisonData.map((item, idx) => (
-                    <tr key={idx}>
-                      <td className="px-6 py-4 text-sm text-slate-900 font-medium">{item.feature}</td>
-                      <td className="px-6 py-4 text-sm text-center text-red-600">{item.traditional}</td>
-                      <td className={`px-6 py-4 text-sm text-center ${item.mapeachClass}`}>{item.mapeach}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </section>
@@ -190,7 +183,6 @@ const Lifesciences = () => {
           </Link>
         </div>
       </section>
-
     </div>
   );
 };
