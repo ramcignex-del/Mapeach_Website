@@ -206,7 +206,7 @@ const location = useLocation();
                   <tr>
                     <td className="px-6 py-4 text-sm text-slate-900 font-medium">Time to Hire</td>
                     <td className="px-6 py-4 text-sm text-center text-red-600">4 weeks</td>
-                    <td className="px-6 py-4 text-sm text-center text-emerald-600 bg-emerald-50 font-semibold">less then a week</td>
+                    <td className="px-6 py-4 text-sm text-center text-emerald-600 bg-emerald-50 font-semibold">less than a week</td>
                   </tr>
                   <tr>
                     <td className="px-6 py-4 text-sm text-slate-900 font-medium">Cost Structure</td>
