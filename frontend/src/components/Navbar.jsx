@@ -9,8 +9,6 @@ import logo from '../assets/logo.jpg';
   const location = useLocation();
   const isActive = (path) => location.pathname === path;
 
-  const isActive = (path) => location.pathname === path;
-
   const handleLinkClick = (path) => {
     // Check if the current path matches the link's destination path
     if (location.pathname === path) {
