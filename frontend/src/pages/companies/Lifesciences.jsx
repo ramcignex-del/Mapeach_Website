@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Button } from '../../components/ui/button';
-import { Card, CardContent } from '../../components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
 import { CostCalculator } from '@/components/CostCalculator';
 import { ArrowRight, Microscope } from 'lucide-react';
 import { pageText, benefits, hiringProcess, comparisonData, lifesciencesRoles } from '@/data/Lifesciences.js';
