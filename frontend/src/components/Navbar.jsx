@@ -40,7 +40,7 @@ export const Navbar = () => {
     { path: '/', label: 'Home', type: 'link' },
     // Type 'menu' means it's a dropdown header, not a direct link, path is '#' for non-navigation
 //    { path: '#', label: 'For Companies', type: 'menu', subLinks: companyDropdownLinks }, 
-    { path: '/hire', label: 'For Companies', type: 'link', subLinks: companyDropdownLinks }, 
+    { path: '/hire', label: 'For Companies', type: 'link' }, 
     { path: '/join', label: 'For Talents', type: 'link' },
     { path: '/about', label: 'About', type: 'link' },
     { path: '/contact', label: 'Contact', type: 'link' },
