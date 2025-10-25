@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
 import { CostCalculator } from '../components/CostCalculator';
+import { useLocation } from 'react-router-dom';
 import { 
   Zap, ShieldCheck, CheckCircle, DollarSign, Clock, 
   ArrowRight, Users, FileCheck, TrendingDown
@@ -55,16 +56,27 @@ const topRef = useRef(null);
             });
         }
     };
-
-  useEffect(() => {
+  
+// ...
+const location = useLocation();
+  
+  useEffect(() => {
     // Scroll to top and focus the top container for accessibility on mount
-    if (typeof window !== 'undefined') {
-      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
-    }
-    if (topRef.current && topRef.current.focus) {
-      topRef.current.focus();
-    }
-  }, []);
+    // Using setTimeout to guarantee it runs AFTER the render cycle completes
+    const timer = setTimeout(() => {
+        if (typeof window !== 'undefined') {
+          window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+        }
+        if (topRef.current && topRef.current.focus) {
+          topRef.current.focus();
+        }
+    }, 0); // 0ms delay runs it in the next micro-task cycle
+
+    // Cleanup function (optional, but good practice)
+    return () => clearTimeout(timer); 
+
+  }, [location.pathname]); // The dependency array remains correct
+// ...
 
   return (
     <div ref={topRef} tabIndex={-1} className="min-h-screen">
