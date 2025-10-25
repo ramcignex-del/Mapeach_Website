@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { Button } from './ui/button';
+import logo from '../assets/mapeach-logo.jpg';
 
 export const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -40,10 +41,8 @@ export const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
          <Link to="/" className="flex items-center" onClick={() => handleLinkClick('/')}>
-           
-            <img 
-              src="https://customer-assets.emergentagent.com/job_mapeach-relaunch/artifacts/k6vpvl25_Mapeach%20%28jpeg%29.jpg" 
-             // src={logo}
+           <img 
+              src={logo}
               alt="Mapeach  Logo" 
               className="h-4 w-auto"
             />
