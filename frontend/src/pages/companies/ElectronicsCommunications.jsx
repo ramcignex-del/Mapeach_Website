@@ -2,11 +2,12 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '../../components/ui/button';
 import { Card, CardContent } from '../../components/ui/card';
-import { CostCalculator } from '../../components/CostCalculator';
+import { CostCalculator } from '@/components/CostCalculator';
+
 import { ArrowRight, Cpu } from 'lucide-react';
 
 // Corrected import path
-import { pageText, benefits, hiringProcess, comparisonData, ecRoles } from '../../data/ElectronicsCommunications.js';
+import { pageText, benefits, hiringProcess, comparisonData, ecRoles } from '@/data/ElectronicsCommunications.js';
 
 // Reusable Roles Section
 const RolesSection = ({ rolesData }) => (
