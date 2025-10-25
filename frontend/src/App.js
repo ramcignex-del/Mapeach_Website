@@ -28,7 +28,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
 
-          {/* 👇 2. UPDATED ROUTE for Information Technology (formerly /hire) */}
           <Route 
             path="/hire" 
             element={<Hire />} 
