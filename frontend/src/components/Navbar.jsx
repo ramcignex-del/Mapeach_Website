@@ -54,6 +54,7 @@ export const Navbar = () => {
               <Link
                 key={link.path}
                 to={link.path}
+                onClick={() => handleLinkClick(link.path)}
                 className={`text-sm font-medium transition-colors duration-200 ${
                   isActive(link.path)
                     ? 'text-emerald-600'
@@ -86,12 +87,15 @@ export const Navbar = () => {
               <Link
                 key={link.path}
                 to={link.path}
+                onClick={() => {
+                  handleLinkClick(link.path); // 1. Run the scroll logic
+                  setMobileMenuOpen(false);   // 2. Close the mobile menu
+                }}
                 className={`block px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 ${
                   isActive(link.path)
                     ? 'bg-emerald-50 text-emerald-600'
                     : 'text-slate-600 hover:bg-slate-50'
                 }`}
-                onClick={() => setMobileMenuOpen(false)}
               >
                 {link.label}
               </Link>
