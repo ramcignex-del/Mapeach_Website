@@ -11,6 +11,7 @@ import {
 import { talentProcess, talentTestimonials } from '../mock';
 
 const Join = () => {
+  
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -23,6 +24,16 @@ const Join = () => {
     negotiable: false,
     resume: null
   });
+
+  const scrollToApply = () => {
+        const applySection = document.getElementById('apply');
+        if (applySection) {
+            applySection.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start', // Scrolls so the element starts at the top of the viewport
+            });
+        }
+    };
 
   const handleSubmit = (e) => {
     e.preventDefault();
