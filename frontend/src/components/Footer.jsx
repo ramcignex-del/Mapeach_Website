@@ -40,37 +40,37 @@ export const Footer = () => {
             <h3 className="text-white font-semibold mb-4">Company</h3>
             <ul className="space-y-2">
               <li>
-                <Link to="/about" className="text-sm hover:text-emerald-400 transition-colors duration-200">
+                <Link to="/about" className="text-sm hover:text-emerald-400 transition-colors duration-200"  onClick={() => handleLinkClick('/about')}>
                   About Us
                 </Link>
               </li>
               <li>
-                <Link to="/hire" className="text-sm hover:text-emerald-400 transition-colors duration-200">
+                <Link to="/hire" className="text-sm hover:text-emerald-400 transition-colors duration-200"  onClick={() => handleLinkClick('/hire')}>
                   For Companies
                 </Link>
               </li>
               <li>
-                <Link to="/join" className="text-sm hover:text-emerald-400 transition-colors duration-200">
+                <Link to="/join" className="text-sm hover:text-emerald-400 transition-colors duration-200" onClick={() => handleLinkClick('/join')}>
                   For Talent
                 </Link>
               </li>
               <li>
-                <Link to="/jobs" className="text-sm hover:text-emerald-400 transition-colors duration-200">
+                <Link to="/jobs" className="text-sm hover:text-emerald-400 transition-colors duration-200"  onClick={() => handleLinkClick('/jobs')}>
                   Jobs
                 </Link>
               </li>
               <li>
-                <Link to="/MapeachFAQ" className="text-sm hover:text-emerald-400 transition-colors duration-200">
+                <Link to="/MapeachFAQ" className="text-sm hover:text-emerald-400 transition-colors duration-200"  onClick={() => handleLinkClick('/MapeachFAQ')}>
                   FAQ
                 </Link>
               </li>
               <li>
-                <Link to="/contact" className="text-sm hover:text-emerald-400 transition-colors duration-200">
+                <Link to="/contact" className="text-sm hover:text-emerald-400 transition-colors duration-200" onClick={() => handleLinkClick('/contact')}>
                   Contact
                 </Link>
               </li>
               <li>
-                <Link to="/PrivacyPolicy" className="text-sm hover:text-emerald-400 transition-colors duration-200">
+                <Link to="/PrivacyPolicy" className="text-sm hover:text-emerald-400 transition-colors duration-200"  onClick={() => handleLinkClick('/PrivacyPolicy')}>
                   Privacy Policy
                 </Link>
               </li>
