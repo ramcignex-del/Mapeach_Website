@@ -1,71 +1,71 @@
-import { FlaskConical, Microscope, Beaker, Zap, ShieldCheck, DollarSign, Users, TrendingDown, Lightbulb, Activity, Scale } from 'lucide-react';
+import { Dna, Microscope, FlaskConical, ClipboardCheck, FileText, Users, DollarSign, Scale, Settings } from 'lucide-react';
 
 // --- Page Text Content ---
 export const pageText = {
   hero: {
-    title: "Access specialized Lifesciences talent for clinical trials and R&D",
-    subtitle: "Source elite contract professionals with deep expertise in pharmaceuticals, biotech, and regulatory science to accelerate your pipeline.",
+    title: "Vetted Specialists for Clinical, Biotech, and Pharmaceutical R&D",
+    subtitle: "Source elite contract professionals in clinical operations, regulatory affairs, quality assurance, and cutting-edge drug discovery.",
     cta1: {
-      label: "Start Your R&D Team",
+      label: "Find Biopharma Experts Now",
       link: "/contact"
     },
     cta2: {
-      label: "Calculate Your ROI",
+      label: "View Research Case Studies",
     }
   },
   benefits: {
-    header: "Why Lifesciences Firms Partner with Mapeach",
-    subheader: "Compliance-driven, focused staffing solutions that accelerate discovery and time-to-market."
+    header: "Why Biotech & Pharma Firms Choose Mapeach",
+    subheader: "Access compliant, high-caliber talent critical for meeting regulatory milestones and accelerating research."
   },
   calculator: {
-    header: "See Your Potential Staffing Savings",
-    subheader: "Calculate how much you'll save by bypassing traditional agencies and accessing specialized talent directly through Mapeach."
+    header: "Optimize Your Talent Acquisition Budget",
+    subheader: "Calculate how much you'll save by bypassing expensive niche agencies and directly engaging specialized Lifesciences talent through Mapeach."
   },
   process: {
     header: "Our Lifesciences Staffing Process",
-    subheader: "Matching you with Clinical Research, Regulatory, and R&D experts in 4 structured steps."
+    subheader: "Connecting you with R&D, Clinical, and Regulatory experts in 4 structured steps."
   },
   comparison: {
     header: "Mapeach vs General Staffing Agencies",
   },
   ctaSection: {
-    title: "Ready to Accelerate Discovery?",
-    subtitle: "Connect with us to find the niche experts you need to navigate regulatory hurdles and push scientific boundaries.",
-    button: "Find Your Expert"
+    title: "Ready to Accelerate Your Clinical Pipeline?",
+    subtitle: "Connect with us to find the expert scientists and regulatory specialists required for your next breakthrough.",
+    button: "Contact an Expert"
   }
 };
 
 // --- Benefits Data ---
 export const benefits = [
   {
-    icon: FlaskConical,
-    title: "Niche Domain Focus",
-    description: "Talent specialized in specific areas like CRISPR, Gene Therapy, Biostatistics, and FDA submissions."
+    icon: ClipboardCheck,
+    title: "Guaranteed GxP Compliance",
+    description: "Talent is vetted for deep knowledge of GMP, GLP, and GCP standards to ensure audit readiness and quality."
   },
   {
-    icon: ShieldCheck,
-    title: "Regulatory Compliance (GxP)",
-    description: "Professionals vetted for adherence to GLP, GCP, and GMP standards critical for drug development."
+    icon: Microscope,
+    title: "Specialized R&D Skills",
+    description: "Experts in molecular biology, bioinformatics, assay development, and complex laboratory protocols."
   },
   {
     icon: DollarSign,
-    title: "Cost-Effective Staffing",
+    title: "Budget-Friendly Solutions",
     description: "Save on typical agency markups with our low-fee model: Onetime $10 + Recurring $1/hour."
   },
   {
-    icon: Lightbulb,
-    title: "Innovation in R&D",
-    description: "Quickly onboard bioinformaticians and data scientists to enhance predictive modeling and research efficiency."
+    icon: FileText,
+    title: "Regulatory Expertise",
+    description: "Access specialists proficient in FDA, EMA, and international submission processes (e.g., IND, NDA, BLA)."
   },
   {
-    icon: Activity,
-    title: "Trial Management Expertise",
-    description: "Access CRAs, CTAs, and Project Managers with experience managing multi-site global trials."
+    icon: Settings,
+    title: "Phase-Specific Scaling",
+    description: "Quickly scale teams for distinct project phases: Preclinical, Phase I/II/III trials, and post-market surveillance."
   },
   {
     icon: Scale,
-    title: "Rapid Scalability",
-    description: "Flexibly staff for the duration of a clinical phase, ensuring optimal resource utilization."
+    title: "Flexible Contract Terms",
+    description: "On-demand talent for short-term clinical trials, peak compliance periods, or long-term specialized needs."
   }
 ];
 
@@ -73,37 +73,37 @@ export const benefits = [
 export const hiringProcess = [
   {
     step: 1,
-    title: "Define Scientific & Trial Needs",
-    description: "We capture precise requirements for scientific roles (Ph.D., M.S.) and clinical trial phases."
+    title: "Define Scientific & Compliance Needs",
+    description: "We capture precise requirements for therapeutic area, clinical phase, required GxP experience, and target regulatory bodies."
   },
   {
     step: 2,
     title: "Vetted Specialist Profiles",
-    description: "Review profiles of pre-assessed candidates with verified research backgrounds and regulatory experience."
+    description: "Review profiles of pre-assessed candidates with verified experience in relevant lab techniques, software (e.g., SAS, LIMS), and documentation."
   },
   {
     step: 3,
-    title: "Direct Scientific Interview",
-    description: "Interview candidates directly to confirm specialized expertise and cultural alignment with your lab/team."
+    title: "Direct Technical Interview",
+    description: "Interview candidates directly to confirm domain knowledge in complex areas like clinical trial design or manufacturing QA."
   },
   {
     step: 4,
-    title: "Onboard & Initiate Research",
-    description: "Seamless contracting allows the expert to integrate and begin contributing to your research pipeline quickly."
+    title: "Onboard & Initiate Project",
+    description: "Seamless contracting allows the expert to integrate and begin contributing to critical research or compliance tasks quickly."
   }
 ];
 
 // --- Comparison Data ---
 export const comparisonData = [
   {
-    feature: "Niche Scientific Vetting",
+    feature: "Niche Compliance Vetting",
     traditional: "Low",
-    mapeach: "High (Domain-Specific)",
+    mapeach: "High (GxP, SOPs)",
     mapeachClass: "text-emerald-600 bg-emerald-50 font-semibold"
   },
   {
-    feature: "Access to Regulatory Experts",
-    traditional: "Limited/Time-Consuming",
+    feature: "Access to Clinical Experts",
+    traditional: "Slow/Generic",
     mapeach: "Immediate Access",
     mapeachClass: "text-emerald-600 bg-emerald-50 font-semibold"
   },
@@ -115,14 +115,14 @@ export const comparisonData = [
   },
   {
     feature: "Focus Area",
-    traditional: "General Temp Staff",
-    mapeach: "R&D and Clinical Science",
+    traditional: "General Admin/HR",
+    mapeach: "Clinical Operations, Regulatory, and R&D",
     mapeachClass: "text-emerald-600 bg-emerald-50 font-semibold"
   },
   {
     feature: "Time to Fill Specialized Roles",
-    traditional: "8+ weeks",
-    mapeach: "less than 2 weeks",
+    traditional: "10+ weeks",
+    mapeach: "less than 3 weeks",
     mapeachClass: "text-emerald-600 bg-emerald-50 font-semibold"
   },
   {
@@ -133,36 +133,51 @@ export const comparisonData = [
   }
 ];
 
-// --- Specific Lifesciences Roles Data (UPDATED) ---
+// --- Specific Lifesciences Roles Data (Consolidated) ---
 export const lifesciencesRoles = [
   {
-    category: "R&D / Laboratory",
+    category: "Research & Development (R&D)",
     items: [
-      { role: "Research Scientist", skills: ["Molecular Biology", "Cell Biology", "Biochemistry", "Drug Discovery"] },
-      { role: "Lab Technician", skills: ["Sample Preparation", "PCR", "Chromatography", "Lab Safety"] },
-      { role: "Biostatistician", skills: ["Clinical Data Analysis", "R / Python", "Statistical Modeling"] }
+      { role: "Research Scientist", skills: ["Molecular Biology", "Assay Development", "Cell Culture", "In Vivo/In Vitro Models"] },
+      { role: "Lab Technician", skills: ["PCR/qPCR", "Chromatography (HPLC/GC)", "Sample Preparation", "GLP Compliance"] },
+      { role: "Process Development Scientist", skills: ["Analytical Methods", "Bioreactor Optimization", "Cell Line Development", "Scale-up"] }
     ]
   },
   {
-    category: "Clinical Trials / Regulatory",
+    category: "Clinical Trials & Operations",
     items: [
-      { role: "Clinical Research Associate", skills: ["GCP", "Study Protocol", "Data Collection", "Monitoring Visits"] },
-      { role: "Regulatory Affairs Specialist", skills: ["FDA/EMA Guidelines", "Submission Documentation", "Compliance"] },
-      { role: "Medical Writer", skills: ["Clinical Protocols", "Regulatory Reports", "Scientific Communication"] }
+      { role: "Clinical Research Associate (CRA)", skills: ["GCP Monitoring", "Site Initiation", "Data Collection", "Study Protocol adherence"] },
+      { role: "Clinical Trial Manager (CTM)", skills: ["Phase I-III Management", "Budgeting", "Vendor Oversight", "Timeline Management"] },
+      { role: "Medical Writer", skills: ["Clinical Protocols", "CSRs (Clinical Study Reports)", "Regulatory Submissions"] }
     ]
   },
   {
-    category: "Quality & Manufacturing",
+    category: "Bioinformatics & Data Science",
     items: [
-      { role: "QA Analyst", skills: ["GMP Compliance", "Auditing", "Documentation", "Process Improvement"] },
-      { role: "Process Development Scientist", skills: ["Analytical Methods", "Formulation", "Process Optimization"] }
+      { role: "Bioinformatician", skills: ["Genomic Data Analysis", "Python / R", "NGS (Next-Gen Sequencing)", "Data Visualization"] },
+      { role: "Biostatistician", skills: ["Clinical Data Analysis (SAS)", "Statistical Modeling", "Trial Design", "CDISC Standards"] }
     ]
   },
   {
-    category: "Bioinformatics / Data Science",
+    category: "Regulatory & Quality Assurance (QA)",
     items: [
-      { role: "Bioinformatician", skills: ["Genomics", "Proteomics", "Python / R", "Machine Learning"] },
-      { role: "Computational Biologist", skills: ["Data Analysis", "Modeling", "AI for Drug Discovery"] }
+      { role: "Regulatory Affairs Specialist", skills: ["FDA Submissions (IND, NDA, BLA)", "EMA Compliance", "Technical File Preparation"] },
+      { role: "Quality Assurance Analyst", skills: ["GMP/GLP Audits", "SOPs (Standard Operating Procedures)", "CAPA Management"] },
+      { role: "Validation Specialist", skills: ["IQ/OQ/PQ", "CSV (Computer System Validation)", "Equipment Validation"] }
+    ]
+  },
+  {
+    category: "Manufacturing & Project Management",
+    items: [
+      { role: "Project Manager", skills: ["Clinical Project Management", "Resource Planning", "Risk Management", "Gantt Charts"] },
+      { role: "Manufacturing Technician", skills: ["Aseptic Processing", "Batch Records", "Equipment Operation", "cGMP"] }
+    ]
+  },
+  {
+    category: "Sales & Commercial",
+    items: [
+      { role: "Medical Science Liaison (MSL)", skills: ["Key Opinion Leader (KOL) Engagement", "Scientific Communication", "Therapeutic Area Expertise"] },
+      { role: "Pharma Sales Executive", skills: ["Product Knowledge", "Client Engagement", "Territory Management", "Forecasting"] }
     ]
   }
 ];
