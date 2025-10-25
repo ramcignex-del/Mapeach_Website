@@ -86,15 +86,13 @@ const topRef = useRef(null);
                   <ArrowRight className="ml-2" size={20} />
                 </Button>
               </Link>
-              <a href="#calculator">
-                <Button size="lg" variant="outline" className="border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-50 px-8 py-6 text-lg font-semibold transition-all duration-300" onClick={scrollToCalculator}>
+              <Button size="lg" variant="outline" className="border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-50 px-8 py-6 text-lg font-semibold transition-all duration-300" onClick={scrollToCalculator}>
                   Calculate Your Savings
                 </Button>
-              </a>
-            </div>
+              </div>
           </div>
         </div>
-      </section> $1
+      </section>
 
       {/* Benefits Grid */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
