@@ -52,7 +52,7 @@ export const Footer = () => {
               </li>
               <li>
                 <Link to="/join" className="text-sm hover:text-emerald-400 transition-colors duration-200" onClick={() => handleLinkClick('/join')}>
-                  For Talent
+                  For Talents
                 </Link>
               </li>
               <li>
