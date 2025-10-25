@@ -43,8 +43,18 @@ const Hire = () => {
     }
   ];
 
-  const topRef = useRef(null);
+const topRef = useRef(null);
 
+  const scrollToCalculator = () => {
+        const calculatorSection = document.getElementById('calculator');
+        if (calculatorSection) {
+            calculatorSection.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start', // Scrolls so the element starts at the top of the viewport
+            });
+        }
+    };
+  
   useEffect(() => {
     // Scroll to top and focus the top container for accessibility on mount
     if (typeof window !== 'undefined') {
@@ -76,7 +86,7 @@ const Hire = () => {
                 </Button>
               </Link>
               <a href="#calculator">
-                <Button size="lg" variant="outline" className="border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-50 px-8 py-6 text-lg font-semibold transition-all duration-300">
+                <Button size="lg" variant="outline" className="border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-50 px-8 py-6 text-lg font-semibold transition-all duration-300" onClick={scrollToCalculator}>
                   Calculate Your Savings
                 </Button>
               </a>
