@@ -5,7 +5,7 @@ import { Card, CardContent } from '../../components/ui/card';
 import { CostCalculator } from '../../components/CostCalculator';
 import { ArrowRight } from 'lucide-react';
 // IMPORT ALL DATA from the new centralized data file
-import { pageText, benefits, hiringProcess, comparisonData } from './data/InformationTechnology.js';
+import { pageText, benefits, hiringProcess, comparisonData } from '../../data/InformationTechnology.js';
 
 const InformationTechnology = () => {
   const topRef = useRef(null);
