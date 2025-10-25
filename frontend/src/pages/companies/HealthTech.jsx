@@ -6,7 +6,7 @@ import { Card, CardContent } from '../../components/ui/card';
 import { CostCalculator } from '../../components/CostCalculator'; 
 import { ArrowRight } from 'lucide-react'; 
 // IMPORT ALL DATA from the content file located in the data folder
-import { pageText, benefits, hiringProcess, comparisonData } from './data/HealthTech.js';
+import { pageText, benefits, hiringProcess, comparisonData } from '../../data/HealthTech.js';
 
 
 const HealthTech = () => {
