@@ -29,7 +29,7 @@ export const Navbar = () => {
   // Define the new sector-specific sub-menu links
   const companyDropdownLinks = [
     // Path uses /companies/hire to match the route in App.js
-    { path: '/companies/hire', label: 'Information Technology' }, 
+    { path: '/companies/informationtechnology', label: 'Information Technology' }, 
     { path: '/companies/healthtech', label: 'HealthTech' },
     { path: '/companies/healthcare', label: 'Healthcare' },
     { path: '/companies/lifesciences', label: 'Lifesciences' },
