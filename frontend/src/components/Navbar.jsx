@@ -6,8 +6,23 @@ import { Button } from './ui/button';
 export const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const isActive = (path) => location.pathname === path;
+
+  export const Navbar = () => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   const isActive = (path) => location.pathname === path;
+
+ const handleLinkClick = (path) => {
+    // Check if the current path matches the link's destination path
+    if (location.pathname === path) {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+  };
 
   const navLinks = [
     { path: '/', label: 'Home' },
@@ -24,11 +39,12 @@ export const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center">
+         <Link to="/" className="flex items-center" onClick={() => handleLinkClick('/')}>
+           
             <img 
               src="https://customer-assets.emergentagent.com/job_mapeach-relaunch/artifacts/k6vpvl25_Mapeach%20%28jpeg%29.jpg" 
              // src={logo}
-              alt="Mapeach Logo" 
+              alt="Mapeach  Logo" 
               className="h-4 w-auto"
             />
           </Link>
