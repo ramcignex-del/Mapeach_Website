@@ -88,12 +88,12 @@ const Join = () => {
             <p className="text-xl text-slate-600 mb-10 leading-relaxed">
               Join Mapeach's elite team of IT professionals and earn <strong>higher rates</strong> while working on <strong>premium projects</strong> with top companies—no middleman taking a massive cut.
             </p>
-            <a href="#apply">
-              <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
+           
+              <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300" onClick={scrollToApply}>
                 Start Earn More
                 <ArrowRight className="ml-2" size={20} />
               </Button>
-            </a>
+           
           </div>
         </div>
       </section>
