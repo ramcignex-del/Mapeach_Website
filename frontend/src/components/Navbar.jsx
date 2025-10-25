@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown, ChevronUp } from 'lucide-react';
 import { Button } from './ui/button';
@@ -7,6 +7,7 @@ import logo from '../assets/logo.jpg';
 export const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const closeTimeoutRef = useRef(null);
   const location = useLocation();
 
   const isActive = (path) => location.pathname === path;
@@ -17,7 +18,23 @@ export const Navbar = () => {
     }
   };
 
-  // ✅ Dropdown links for company sectors
+  // Keep dropdown open when hovering over it or its trigger
+  const openDropdown = () => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+    setIsDropdownOpen(true);
+  };
+
+  const closeDropdownWithDelay = (delay = 200) => {
+    if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
+    closeTimeoutRef.current = setTimeout(() => {
+      setIsDropdownOpen(false);
+      closeTimeoutRef.current = null;
+    }, delay);
+  };
+
   const companyDropdownLinks = [
     { path: '/companies/informationtechnology', label: 'Information Technology' },
     { path: '/companies/healthtech', label: 'HealthTech' },
@@ -26,7 +43,6 @@ export const Navbar = () => {
     { path: '/companies/electronics', label: 'Electronics & Communications' },
   ];
 
-  // ✅ Main links (For Companies now has submenu and main link)
   const navLinks = [
     { path: '/', label: 'Home', type: 'link' },
     { path: '/hire', label: 'For Companies', type: 'menu', subLinks: companyDropdownLinks },
@@ -46,7 +62,7 @@ export const Navbar = () => {
             <img src={logo} alt="Mapeach Logo" className="h-4 w-auto" />
           </Link>
 
-          {/* Desktop Menu */}
+          {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => {
               if (link.type === 'link') {
@@ -64,47 +80,55 @@ export const Navbar = () => {
                     {link.label}
                   </Link>
                 );
-              } else if (link.type === 'menu') {
+              }
+
+              // MENU (For Companies)
+              if (link.type === 'menu') {
                 return (
                   <div
                     key={link.path}
-                    className="relative flex items-center space-x-1"
-                    onMouseEnter={() => setIsDropdownOpen(true)}
-                    onMouseLeave={() => setIsDropdownOpen(false)}
+                    className="relative"
+                    onMouseEnter={openDropdown}
+                    onMouseLeave={() => closeDropdownWithDelay(150)}
                   >
-                    {/* Main "For Companies" Link */}
-                    <Link
-                      to={link.path}
-                      onClick={() => handleLinkClick(link.path)}
-                      className={`text-sm font-medium transition-colors duration-200 ${
-                        isActive(link.path)
-                          ? 'text-emerald-600'
-                          : 'text-slate-600 hover:text-emerald-600'
-                      }`}
-                    >
-                      {link.label}
-                    </Link>
-
-                    {/* Dropdown toggle arrow */}
-                    <button
-                      className="text-slate-600 hover:text-emerald-600 transition-colors"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        setIsDropdownOpen(!isDropdownOpen);
-                      }}
-                    >
-                      <ChevronDown
-                        size={16}
-                        className={`transition-transform duration-200 ${
-                          isDropdownOpen ? 'rotate-180' : ''
+                    <div className="flex items-center space-x-1">
+                      {/* Clicking this navigates to /hire */}
+                      <Link
+                        to={link.path}
+                        onClick={() => handleLinkClick(link.path)}
+                        className={`text-sm font-medium transition-colors duration-200 ${
+                          isActive(link.path)
+                            ? 'text-emerald-600'
+                            : 'text-slate-600 hover:text-emerald-600'
                         }`}
-                      />
-                    </button>
+                      >
+                        {link.label}
+                      </Link>
+
+                      {/* Clicking arrow toggles dropdown */}
+                      <button
+                        className="text-slate-600 hover:text-emerald-600 transition-colors"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          e.stopPropagation();
+                          setIsDropdownOpen((prev) => !prev);
+                        }}
+                      >
+                        {isDropdownOpen ? (
+                          <ChevronUp size={16} className="transition-transform duration-200" />
+                        ) : (
+                          <ChevronDown size={16} className="transition-transform duration-200" />
+                        )}
+                      </button>
+                    </div>
 
                     {/* Dropdown menu */}
                     {isDropdownOpen && (
-                      <div className="absolute left-1/2 transform -translate-x-1/2 mt-3 w-60 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                      <div
+                        className="absolute left-1/2 -translate-x-1/2 mt-3 w-60 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 pointer-events-auto"
+                        onMouseEnter={openDropdown}
+                        onMouseLeave={() => closeDropdownWithDelay(150)}
+                      >
                         <div className="py-1">
                           {link.subLinks.map((subLink) => (
                             <Link
@@ -129,11 +153,12 @@ export const Navbar = () => {
                   </div>
                 );
               }
+
               return null;
             })}
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Toggle */}
           <button
             className="md:hidden p-2 text-slate-600 hover:text-slate-900"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -143,7 +168,7 @@ export const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu Drawer */}
+      {/* Mobile Drawer */}
       {mobileMenuOpen && (
         <div className="md:hidden bg-white border-t border-slate-200">
           <div className="px-4 py-4 space-y-3">
@@ -166,10 +191,12 @@ export const Navbar = () => {
                     {link.label}
                   </Link>
                 );
-              } else if (link.type === 'menu') {
+              }
+
+              // Mobile dropdown
+              if (link.type === 'menu') {
                 return (
                   <div key={link.path}>
-                    {/* “For Companies” main link */}
                     <div className="flex justify-between items-center">
                       <Link
                         to={link.path}
@@ -196,7 +223,6 @@ export const Navbar = () => {
                       </button>
                     </div>
 
-                    {/* Mobile dropdown links */}
                     {isDropdownOpen && (
                       <div className="ml-4 mt-1 space-y-1 border-l border-slate-200 pl-4">
                         {link.subLinks.map((subLink) => (
@@ -222,9 +248,9 @@ export const Navbar = () => {
                   </div>
                 );
               }
+
               return null;
             })}
-
             <Button className="w-full bg-emerald-600 hover:bg-emerald-700 text-white">
               Get Started
             </Button>
