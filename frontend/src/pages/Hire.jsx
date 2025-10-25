@@ -67,15 +67,16 @@ const location = useLocation();
         if (typeof window !== 'undefined') {
           window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
         }
-        if (topRef.current && topRef.current.focus) {
-          topRef.current.focus();
-        }
-    }, 0); // 0ms delay runs it in the next micro-task cycle
+    }, 10); // 0ms delay runs it in the next micro-task cycle
 
-    // Cleanup function (optional, but good practice)
+       if (topRef.current) {
+            topRef.current.scrollIntoView({ behavior: 'auto', block: 'start' });
+            topRef.current.focus();
+        }
+        // Cleanup function (optional, but good practice)
     return () => clearTimeout(timer); 
 
-  }, [location.pathname]); // The dependency array remains correct
+  }, []); // The dependency array remains correct
 // ...
 
   return (
