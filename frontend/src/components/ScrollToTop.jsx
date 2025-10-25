@@ -1,17 +1,29 @@
 import { useEffect } from 'react';
-// useLocation comes from 'react-router-dom'
-import { useLocation } from 'react-router-dom'; 
+import { useLocation } from 'react-router-dom';
 
 const ScrollToTop = () => {
-  // Get the current location object
-  const { pathname } = useLocation();
+  // We track the entire location object, not just pathname
+  const location = useLocation();
 
   useEffect(() => {
-    // Scroll to the top of the window (x=0, y=0) when the pathname changes
+    // 1. Immediately scroll to top when the effect runs (route change)
     window.scrollTo(0, 0); 
-  }, [pathname]); // The effect runs whenever the pathname (route) changes
 
-  return null; // It doesn't render any UI
+    // 2. Add a small timeout (e.g., 10ms) as a failsafe. 
+    //    This is crucial for ensuring the scroll happens 
+    //    when clicking the current page link (e.g., Jobs on Jobs page).
+    const timer = setTimeout(() => {
+        window.scrollTo(0, 0);
+    }, 10); 
+    
+    // Cleanup function to clear the timer if the component unmounts early
+    return () => clearTimeout(timer); 
+    
+  // The effect re-runs on *any* change to the location object (including hash or state)
+  // but most importantly, it re-runs reliably on all Link component clicks.
+  }, [location]); 
+
+  return null; // This component doesn't render any UI
 };
 
 export default ScrollToTop;
