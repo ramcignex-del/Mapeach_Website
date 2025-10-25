@@ -27,10 +27,16 @@ function App() {
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
+
+          {/* 👇 2. UPDATED ROUTE for Information Technology (formerly /hire) */}
+          <Route 
+            path="/hire" 
+            element={<Hire />} 
+          /> 
           
           {/* 👇 2. UPDATED ROUTE for Information Technology (formerly /hire) */}
           <Route 
-            path="/companies/hire" 
+            path="/companies/informationtechnology" 
             element={<InformationTechnology />} 
           /> 
           
