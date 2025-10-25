@@ -3,7 +3,7 @@ import { HashRouter, Routes, Route } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
 import Home from "./pages/Home";
-import Hire from "./pages/Hire";
+// ❌ REMOVED: import Hire from "./pages/Hire";
 import Join from "./pages/Join";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
@@ -12,7 +12,8 @@ import MapeachFAQ from "./pages/MapeachFAQ";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import ScrollToTop from './components/ScrollToTop';
 
-// 👇 1. IMPORT NEW SECTOR COMPONENTS (excluding Information Technology, which uses 'Hire') 👇
+// 👇 1. IMPORT THE RENAMED COMPONENT AND ALL OTHER SECTOR COMPONENTS 👇
+import InformationTechnology from './pages/companies/InformationTechnology';
 import HealthTech from './pages/companies/HealthTech';
 import Healthcare from './pages/companies/Healthcare';
 import Lifesciences from './pages/companies/Lifesciences';
@@ -26,16 +27,14 @@ function App() {
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
-          {/* This route is preserved and now serves as the 'Information Technology' page. */}
-          <Route path="/hire" element={<Hire />} /> 
-          <Route path="/join" element={<Join />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/jobs" element={<Jobs />} />
-          <Route path="/MapeachFAQ" element={<MapeachFAQ />} />
-          <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
           
-          {/* 👇 2. ADD ROUTES FOR THE REMAINING 4 SECTORS 👇 */}
+          {/* 👇 2. UPDATED ROUTE for Information Technology (formerly /hire) */}
+          <Route 
+            path="/companies/hire" 
+            element={<InformationTechnology />} 
+          /> 
+          
+          {/* 👇 3. ROUTES FOR REMAINING 4 SECTORS */}
           <Route 
             path="/companies/healthtech" 
             element={<HealthTech />} 
@@ -52,6 +51,15 @@ function App() {
             path="/companies/electronics" 
             element={<ElectronicsCommunications />} 
           />
+          {/* ⬆️ ALL SECTOR ROUTES ARE NOW UNDER /COMPANIES/ ⬆️ */}
+
+          {/* Existing main routes remain untouched */}
+          <Route path="/join" element={<Join />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/jobs" element={<Jobs />} />
+          <Route path="/MapeachFAQ" element={<MapeachFAQ />} />
+          <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
         </Routes>
         <Footer />
       </HashRouter>
