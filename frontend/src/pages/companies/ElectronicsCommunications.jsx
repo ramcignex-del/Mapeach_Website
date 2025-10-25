@@ -1,15 +1,13 @@
-import React, { useEffect } from 'react';
+  import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { CostCalculator } from '@/components/CostCalculator';
-
 import { ArrowRight, Cpu } from 'lucide-react';
 
-// Corrected import path
 import { pageText, benefits, hiringProcess, comparisonData, ecRoles } from '@/data/ElectronicsCommunications.js';
 
-// Reusable Roles Section
+// Roles Section Component
 const RolesSection = ({ rolesData }) => (
   <section className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-50">
     <div className="max-w-7xl mx-auto">
@@ -141,44 +139,4 @@ const ElectronicsCommunications = () => {
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl font-bold text-center text-slate-800 mb-12">{pageText.comparison.header}</h2>
           <div className="overflow-x-auto shadow-xl rounded-xl border border-slate-200">
-            <table className="min-w-full divide-y divide-slate-200">
-              <thead>
-                <tr className="bg-slate-50">
-                  <th className="px-6 py-4 text-left text-xs font-medium text-slate-500 uppercase tracking-wider">Feature</th>
-                  <th className="px-6 py-4 text-center text-xs font-medium text-slate-500 uppercase tracking-wider">Traditional Agency</th>
-                  <th className="px-6 py-4 text-center text-xs font-medium text-slate-500 uppercase tracking-wider bg-emerald-100/50">Mapeach Difference</th>
-                </tr>
-              </thead>
-              <tbody className="bg-white divide-y divide-slate-200">
-                {comparisonData.map((row, idx) => (
-                  <tr key={idx} className="hover:bg-slate-50 transition-colors duration-150">
-                    <td className="px-6 py-4 text-sm text-slate-900 font-medium">{row.feature}</td>
-                    <td className="px-6 py-4 text-sm text-center text-slate-600">{row.traditional}</td>
-                    <td className={`px-6 py-4 text-sm text-center ${row.mapeachClass}`}>{row.mapeach}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-emerald-600 to-teal-600 text-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">{pageText.ctaSection.title}</h2>
-          <p className="text-xl text-emerald-50 mb-10">{pageText.ctaSection.subtitle}</p>
-          <Link to="/contact">
-            <Button size="lg" className="bg-white text-emerald-600 hover:bg-slate-100 px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
-              {pageText.ctaSection.button}
-              <ArrowRight className="ml-2" size={20} />
-            </Button>
-          </Link>
-        </div>
-      </section>
-
-    </div>
-  );
-};
-
-export default ElectronicsCommunications;
+            <ta
