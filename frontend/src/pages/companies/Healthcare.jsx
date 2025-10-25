@@ -80,7 +80,7 @@ const Healthcare = () => {
         </div>
       </section>
 
-      {/* Cost Calculator Section */}
+      {/* Cost Calculator */}
       <section id="calculator" className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-4xl font-bold text-slate-900 mb-4">{pageText.calculator.header}</h2>
@@ -89,7 +89,7 @@ const Healthcare = () => {
         </div>
       </section>
 
-      {/* Hiring Process Section */}
+      {/* Hiring Process */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
@@ -110,7 +110,7 @@ const Healthcare = () => {
         </div>
       </section>
 
-      {/* Comparison Table Section */}
+      {/* Comparison Table */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
@@ -118,12 +118,12 @@ const Healthcare = () => {
           </div>
           <div className="bg-white rounded-xl shadow-lg overflow-hidden">
             <div className="overflow-x-auto">
-              <table className="w-full text-sm">
+              <table className="w-full">
                 <thead className="bg-slate-100">
                   <tr>
-                    <th className="px-6 py-4 text-left font-semibold text-slate-700">Feature</th>
-                    <th className="px-6 py-4 text-center font-semibold text-slate-700">Traditional Agencies</th>
-                    <th className="px-6 py-4 text-center font-semibold text-emerald-700 bg-emerald-50">Mapeach</th>
+                    <th className="px-6 py-4 text-left text-sm font-semibold text-slate-700">Feature</th>
+                    <th className="px-6 py-4 text-center text-sm font-semibold text-slate-700">Traditional Agencies</th>
+                    <th className="px-6 py-4 text-center text-sm font-semibold text-emerald-700 bg-emerald-50">Mapeach</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-200">
@@ -147,13 +147,17 @@ const Healthcare = () => {
           <h2 className="text-4xl md:text-5xl font-bold mb-6">{pageText.ctaSection.title}</h2>
           <p className="text-xl text-emerald-50 mb-10">{pageText.ctaSection.subtitle}</p>
           <Link to="/contact">
-            <Button size="lg" className="bg-white text-emerald-600 hover:bg-slate-100 px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
+            <Button
+              size="lg"
+              className="bg-white text-emerald-600 hover:bg-slate-100 px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+            >
               {pageText.ctaSection.button}
               <ArrowRight className="ml-2" size={20} />
             </Button>
           </Link>
         </div>
       </section>
+
     </div>
   );
 };
