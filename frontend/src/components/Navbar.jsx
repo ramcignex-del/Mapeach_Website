@@ -6,46 +6,35 @@ import logo from '../assets/logo.jpg';
 
 export const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  // State to manage the open/close state of the "For Companies" dropdown
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false); 
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const location = useLocation();
-  
-  // Checks if the current path matches the given path
+
   const isActive = (path) => location.pathname === path;
-  
-  // Checks if the current path is *any* of the sub-menu paths
-  const isParentActive = (subLinks) => subLinks.some(sub => isActive(sub.path));
 
   const handleLinkClick = (path) => {
-    // Check if the current path matches the link's destination path
     if (location.pathname === path) {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
   };
 
-  // Define the new sector-specific sub-menu links
+  // ✅ Dropdown links for company sectors
   const companyDropdownLinks = [
-    // Path uses /companies/hire to match the route in App.js
-    { path: '/companies/informationtechnology', label: 'Information Technology' }, 
+    { path: '/companies/informationtechnology', label: 'Information Technology' },
     { path: '/companies/healthtech', label: 'HealthTech' },
     { path: '/companies/healthcare', label: 'Healthcare' },
     { path: '/companies/lifesciences', label: 'Lifesciences' },
     { path: '/companies/electronics', label: 'Electronics & Communications' },
   ];
 
+  // ✅ Main links (For Companies now has submenu and main link)
   const navLinks = [
     { path: '/', label: 'Home', type: 'link' },
-    // Type 'menu' means it's a dropdown header, not a direct link, path is '#' for non-navigation
-//    { path: '#', label: 'For Companies', type: 'menu', subLinks: companyDropdownLinks }, 
-    { path: '/hire', label: 'For Companies', type: 'link' }, 
+    { path: '/hire', label: 'For Companies', type: 'menu', subLinks: companyDropdownLinks },
     { path: '/join', label: 'For Talents', type: 'link' },
     { path: '/about', label: 'About', type: 'link' },
     { path: '/contact', label: 'Contact', type: 'link' },
     { path: '/jobs', label: 'Jobs', type: 'link' },
-    { path: '/MapeachFAQ', label: 'FAQ', type: 'link' }
+    { path: '/MapeachFAQ', label: 'FAQ', type: 'link' },
   ];
 
   return (
@@ -54,17 +43,12 @@ export const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center" onClick={() => handleLinkClick('/')}>
-            <img 
-              src={logo}
-              alt="Mapeach Logo" 
-              className="h-4 w-auto"
-            />
+            <img src={logo} alt="Mapeach Logo" className="h-4 w-auto" />
           </Link>
 
-          {/* Desktop Navigation */}
+          {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => {
-              // Regular Link Logic
               if (link.type === 'link') {
                 return (
                   <Link
@@ -80,32 +64,45 @@ export const Navbar = () => {
                     {link.label}
                   </Link>
                 );
-              // Dropdown Menu Logic
               } else if (link.type === 'menu') {
                 return (
-                  <div 
-                    key={link.path} 
-                    className="relative"
-                    // Open dropdown on hover for desktop
+                  <div
+                    key={link.path}
+                    className="relative flex items-center space-x-1"
                     onMouseEnter={() => setIsDropdownOpen(true)}
-                    // Close dropdown on mouse leave for desktop
                     onMouseLeave={() => setIsDropdownOpen(false)}
                   >
-                    {/* The "For Companies" button that toggles the dropdown */}
-                    <button
-                      className={`flex items-center text-sm font-medium transition-colors duration-200 cursor-pointer ${
-                        isParentActive(link.subLinks)
+                    {/* Main "For Companies" Link */}
+                    <Link
+                      to={link.path}
+                      onClick={() => handleLinkClick(link.path)}
+                      className={`text-sm font-medium transition-colors duration-200 ${
+                        isActive(link.path)
                           ? 'text-emerald-600'
                           : 'text-slate-600 hover:text-emerald-600'
                       }`}
-                      // Use onClick to maintain state on mobile or touch devices (desktop fallback)
-                      onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                     >
                       {link.label}
-                      <ChevronDown size={16} className="ml-1 transition-transform duration-200" />
+                    </Link>
+
+                    {/* Dropdown toggle arrow */}
+                    <button
+                      className="text-slate-600 hover:text-emerald-600 transition-colors"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        setIsDropdownOpen(!isDropdownOpen);
+                      }}
+                    >
+                      <ChevronDown
+                        size={16}
+                        className={`transition-transform duration-200 ${
+                          isDropdownOpen ? 'rotate-180' : ''
+                        }`}
+                      />
                     </button>
 
-                    {/* Dropdown Menu (Desktop View) */}
+                    {/* Dropdown menu */}
                     {isDropdownOpen && (
                       <div className="absolute left-1/2 transform -translate-x-1/2 mt-3 w-60 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
                         <div className="py-1">
@@ -115,7 +112,7 @@ export const Navbar = () => {
                               to={subLink.path}
                               onClick={() => {
                                 handleLinkClick(subLink.path);
-                                setIsDropdownOpen(false); // Close dropdown on link click
+                                setIsDropdownOpen(false);
                               }}
                               className={`block px-4 py-2 text-sm transition-colors duration-200 ${
                                 isActive(subLink.path)
@@ -146,7 +143,7 @@ export const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Drawer */}
       {mobileMenuOpen && (
         <div className="md:hidden bg-white border-t border-slate-200">
           <div className="px-4 py-4 space-y-3">
@@ -172,20 +169,34 @@ export const Navbar = () => {
               } else if (link.type === 'menu') {
                 return (
                   <div key={link.path}>
-                    {/* Dropdown Toggle for Mobile */}
-                    <button
-                      className={`flex justify-between items-center w-full px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 ${
-                        isParentActive(link.subLinks) || isDropdownOpen
-                          ? 'bg-emerald-50 text-emerald-600'
-                          : 'text-slate-600 hover:bg-slate-50'
-                      }`}
-                      onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                    >
-                      {link.label}
-                      {isDropdownOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
-                    </button>
-                    
-                    {/* Mobile Dropdown Links */}
+                    {/* “For Companies” main link */}
+                    <div className="flex justify-between items-center">
+                      <Link
+                        to={link.path}
+                        onClick={() => {
+                          handleLinkClick(link.path);
+                          setMobileMenuOpen(false);
+                        }}
+                        className={`flex-1 px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 ${
+                          isActive(link.path)
+                            ? 'bg-emerald-50 text-emerald-600'
+                            : 'text-slate-600 hover:bg-slate-50'
+                        }`}
+                      >
+                        {link.label}
+                      </Link>
+                      <button
+                        className="px-2 text-slate-600 hover:text-emerald-600"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setIsDropdownOpen(!isDropdownOpen);
+                        }}
+                      >
+                        {isDropdownOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+                      </button>
+                    </div>
+
+                    {/* Mobile dropdown links */}
                     {isDropdownOpen && (
                       <div className="ml-4 mt-1 space-y-1 border-l border-slate-200 pl-4">
                         {link.subLinks.map((subLink) => (
@@ -194,8 +205,8 @@ export const Navbar = () => {
                             to={subLink.path}
                             onClick={() => {
                               handleLinkClick(subLink.path);
-                              setMobileMenuOpen(false); // Close mobile menu
-                              setIsDropdownOpen(false); // Close dropdown
+                              setIsDropdownOpen(false);
+                              setMobileMenuOpen(false);
                             }}
                             className={`block px-4 py-2 rounded-lg text-sm transition-colors duration-200 ${
                               isActive(subLink.path)
