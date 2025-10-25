@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useLocation} from 'react-router-dom';
 import { Mail, Linkedin, Twitter } from 'lucide-react';
+import logo from '../assets/logo.jpg';
 
 export const Footer = () => {
   const location = useLocation();
@@ -22,7 +23,7 @@ export const Footer = () => {
          {/* <div className="space-y-4">
            <div className="flex items-center">
               <img 
-                src="https://customer-assets.emergentagent.com/job_mapeach-relaunch/artifacts/k6vpvl25_Mapeach%20%28jpeg%29.jpg" 
+                src={logo}
                 alt="Mapeach Logo" 
                 className="h-10 w-auto brightness-0 invert"
               />
