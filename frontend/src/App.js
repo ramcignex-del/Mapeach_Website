@@ -3,7 +3,7 @@ import { HashRouter, Routes, Route } from "react-router-dom";
 import { Navbar } from "./components/Navbar";
 import { Footer } from "./components/Footer";
 import Home from "./pages/Home";
-// ❌ REMOVED: import Hire from "./pages/Hire";
+import Hire from "./pages/Hire";
 import Join from "./pages/Join";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
@@ -54,6 +54,7 @@ function App() {
           {/* ⬆️ ALL SECTOR ROUTES ARE NOW UNDER /COMPANIES/ ⬆️ */}
 
           {/* Existing main routes remain untouched */}
+          <Route path="/hire" element={<Hire />} />
           <Route path="/join" element={<Join />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
