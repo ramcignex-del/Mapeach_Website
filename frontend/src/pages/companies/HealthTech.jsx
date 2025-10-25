@@ -8,7 +8,6 @@ import { ArrowRight } from 'lucide-react';
 import { pageText, benefits, hiringProcess, comparisonData } from '@/data/HealthTech.js';
 
 const HealthTech = () => {
-  // Scroll to top on mount
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -27,15 +26,23 @@ const HealthTech = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to={pageText.hero.cta1.link}>
-              <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
+              <Button
+                size="lg"
+                className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+              >
                 {pageText.hero.cta1.label}
                 <ArrowRight className="ml-2" size={20} />
               </Button>
             </Link>
-            <Button size="lg" variant="outline" className="border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-50 px-8 py-6 text-lg font-semibold transition-all duration-300" onClick={() => {
-              const el = document.getElementById('calculator');
-              if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }}>
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-50 px-8 py-6 text-lg font-semibold transition-all duration-300"
+              onClick={() => {
+                const el = document.getElementById('calculator');
+                if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }}
+            >
               {pageText.hero.cta2.label}
             </Button>
           </div>
@@ -53,7 +60,10 @@ const HealthTech = () => {
             {benefits.map((benefit, idx) => {
               const Icon = benefit.icon;
               return (
-                <Card key={idx} className="border-2 border-slate-100 hover:border-emerald-200 hover:shadow-lg transition-all duration-300">
+                <Card
+                  key={idx}
+                  className="border-2 border-slate-100 hover:border-emerald-200 hover:shadow-lg transition-all duration-300"
+                >
                   <CardContent className="p-6 text-center">
                     <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-lg flex items-center justify-center mb-4">
                       <Icon className="text-white" size={24} />
@@ -85,7 +95,10 @@ const HealthTech = () => {
         </div>
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {hiringProcess.map((step) => (
-            <div key={step.step} className="flex flex-col items-center p-6 bg-white rounded-xl shadow-lg border border-emerald-200">
+            <div
+              key={step.step}
+              className="flex flex-col items-center p-6 bg-white rounded-xl shadow-lg border border-emerald-200"
+            >
               <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-full flex items-center justify-center mb-4 text-white text-2xl font-bold">
                 {step.step}
               </div>
@@ -131,7 +144,10 @@ const HealthTech = () => {
           <h2 className="text-4xl md:text-5xl font-bold mb-6">{pageText.ctaSection.title}</h2>
           <p className="text-xl text-emerald-50 mb-10">{pageText.ctaSection.subtitle}</p>
           <Link to="/contact">
-            <Button size="lg" className="bg-white text-emerald-600 hover:bg-slate-100 px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
+            <Button
+              size="lg"
+              className="bg-white text-emerald-600 hover:bg-slate-100 px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+            >
               {pageText.ctaSection.button}
               <ArrowRight className="ml-2" size={20} />
             </Button>
