@@ -10,12 +10,14 @@ import Contact from "./pages/Contact";
 import Jobs from "./pages/Jobs";
 import MapeachFAQ from "./pages/MapeachFAQ";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   return (
     <div className="App">
       <HashRouter>
         <Navbar />
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/hire" element={<Hire />} />
