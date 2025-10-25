@@ -86,7 +86,7 @@ const topRef = useRef(null);
                 </Button>
               </Link>
               <a href="#calculator">
-                <Button size="lg" variant="outline" className="border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-50 px-8 py-6 text-lg font-semibold transition-all duration-300" onClick={scrollToCalculator}>
+                <Button size="lg" variant="outline" className="border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-50 px-8 py-6 text-lg font-semibold transition-all duration-300">
                   Calculate Your Savings
                 </Button>
               </a>
