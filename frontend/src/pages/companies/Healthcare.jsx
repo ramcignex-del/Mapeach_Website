@@ -6,7 +6,7 @@ import { Card, CardContent } from '../../components/ui/card';
 import { CostCalculator } from '../../components/CostCalculator'; 
 import { ArrowRight } from 'lucide-react';
 // IMPORT ALL DATA, INCLUDING THE NEW pageText OBJECT
-import { pageText, benefits, hiringProcess, comparisonData } from './Healthcare.js';
+import { pageText, benefits, hiringProcess, comparisonData } from './data/Healthcare.js';
 
 const Healthcare = () => {
 
