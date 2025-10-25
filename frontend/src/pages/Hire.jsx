@@ -9,7 +9,8 @@ import {
 } from 'lucide-react';
 import { hiringProcess, testimonials } from '../mock';
 
-const Hire = () => {
+const Hire = () => 
+
   const benefits = [
     {
       icon: Zap,
@@ -54,7 +55,7 @@ const topRef = useRef(null);
             });
         }
     };
-  
+
   useEffect(() => {
     // Scroll to top and focus the top container for accessibility on mount
     if (typeof window !== 'undefined') {
@@ -86,7 +87,7 @@ const topRef = useRef(null);
                 </Button>
               </Link>
               <a href="#calculator">
-                <Button size="lg" variant="outline" className="border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-50 px-8 py-6 text-lg font-semibold transition-all duration-300">
+                <Button size="lg" variant="outline" className="border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-50 px-8 py-6 text-lg font-semibold transition-all duration-300" onClick={scrollToCalculator}>
                   Calculate Your Savings
                 </Button>
               </a>
@@ -136,7 +137,9 @@ const topRef = useRef(null);
               Calculate how much you'll save by switching from traditional staffing companies to Mapeach
             </p>
           </div>
+          <div style={{minHeight: '800px'}}>
           <CostCalculator />
+          </div>  
         </div>
       </section>
 
