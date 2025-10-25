@@ -9,7 +9,7 @@ import {
 } from 'lucide-react';
 import { hiringProcess, testimonials } from '../mock';
 
-const Hire = () => 
+const Hire = () => {
 
   const benefits = [
     {
