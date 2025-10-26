@@ -18,12 +18,8 @@ export const Navbar = () => {
     }
   };
 
-  // Keep dropdown open when hovering over it or its trigger
   const openDropdown = () => {
-    if (closeTimeoutRef.current) {
-      clearTimeout(closeTimeoutRef.current);
-      closeTimeoutRef.current = null;
-    }
+    if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
     setIsDropdownOpen(true);
   };
 
@@ -31,7 +27,6 @@ export const Navbar = () => {
     if (closeTimeoutRef.current) clearTimeout(closeTimeoutRef.current);
     closeTimeoutRef.current = setTimeout(() => {
       setIsDropdownOpen(false);
-      closeTimeoutRef.current = null;
     }, delay);
   };
 
@@ -39,9 +34,7 @@ export const Navbar = () => {
     { path: '/companies/informationtechnology', label: 'Information Technology' },
     { path: '/companies/electronics', label: 'Electronics & Communications' },
     { path: '/companies/healthtech', label: 'HealthTech' },
-    // { path: '/companies/healthcare', label: 'Healthcare' }, 
     { path: '/companies/lifesciences', label: 'Lifesciences' },
-    
   ];
 
   const navLinks = [
@@ -51,7 +44,6 @@ export const Navbar = () => {
     { path: '/join', label: 'For Talents', type: 'link' },
     { path: '/jobs', label: 'Jobs', type: 'link' },
     { path: '/about', label: 'About', type: 'link' },
-    { path: '/contact', label: 'Contact', type: 'link' },
     { path: '/MapeachFAQ', label: 'FAQ', type: 'link' },
   ];
 
@@ -59,105 +51,105 @@ export const Navbar = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <Link to="/" className="flex items-center" onClick={() => handleLinkClick('/')}>
-            <img src={logo} alt="Mapeach Logo" className="h-4 w-auto" />
-          </Link>
+          
+          {/* Logo + Menu */}
+          <div className="flex items-center space-x-8">
+            <Link to="/" onClick={() => handleLinkClick('/')}>
+              <img src={logo} alt="Mapeach Logo" className="h-8 w-auto" />
+            </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link) => {
-              if (link.type === 'link') {
-                return (
-                  <Link
-                    key={link.path}
-                    to={link.path}
-                    onClick={() => handleLinkClick(link.path)}
-                    className={`text-sm font-medium transition-colors duration-200 ${
-                      isActive(link.path)
-                        ? 'text-emerald-600'
-                        : 'text-slate-600 hover:text-emerald-600'
-                    }`}
-                  >
-                    {link.label}
-                  </Link>
-                );
-              }
+            {/* Desktop Menu */}
+            <div className="hidden md:flex items-center space-x-6">
+              {navLinks.map((link) => {
+                if (link.type === 'link') {
+                  return (
+                    <Link
+                      key={link.path}
+                      to={link.path}
+                      onClick={() => handleLinkClick(link.path)}
+                      className={`text-sm font-medium transition-colors duration-200 ${
+                        isActive(link.path)
+                          ? 'text-emerald-600'
+                          : 'text-slate-600 hover:text-emerald-600'
+                      }`}
+                    >
+                      {link.label}
+                    </Link>
+                  );
+                }
 
-              // MENU (For Companies)
-              if (link.type === 'menu') {
-                return (
-                  <div
-                    key={link.path}
-                    className="relative"
-                    onMouseEnter={openDropdown}
-                    onMouseLeave={() => closeDropdownWithDelay(150)}
-                  >
-                    <div className="flex items-center space-x-1">
-                      {/* Clicking this navigates to /hire */}
-                      <Link
-                        to={link.path}
-                        onClick={() => handleLinkClick(link.path)}
-                        className={`text-sm font-medium transition-colors duration-200 ${
-                          isActive(link.path)
-                            ? 'text-emerald-600'
-                            : 'text-slate-600 hover:text-emerald-600'
-                        }`}
-                      >
-                        {link.label}
-                      </Link>
-
-                      {/* Clicking arrow toggles dropdown */}
-                      <button
-                        className="text-slate-600 hover:text-emerald-600 transition-colors"
-                        onClick={(e) => {
-                          e.preventDefault();
-                          e.stopPropagation();
-                          setIsDropdownOpen((prev) => !prev);
-                        }}
-                      >
-                        {isDropdownOpen ? (
-                          <ChevronUp size={16} className="transition-transform duration-200" />
-                        ) : (
-                          <ChevronDown size={16} className="transition-transform duration-200" />
-                        )}
-                      </button>
-                    </div>
-
-                    {/* Dropdown menu */}
-                    {isDropdownOpen && (
-                      <div
-                        className="absolute left-1/2 -translate-x-1/2 mt-3 w-60 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 pointer-events-auto"
-                        onMouseEnter={openDropdown}
-                        onMouseLeave={() => closeDropdownWithDelay(150)}
-                      >
-                        <div className="py-1">
-                          {link.subLinks.map((subLink) => (
-                            <Link
-                              key={subLink.path}
-                              to={subLink.path}
-                              onClick={() => {
-                                handleLinkClick(subLink.path);
-                                setIsDropdownOpen(false);
-                              }}
-                              className={`block px-4 py-2 text-sm transition-colors duration-200 ${
-                                isActive(subLink.path)
-                                  ? 'bg-emerald-50 text-emerald-600'
-                                  : 'text-slate-600 hover:bg-slate-50 hover:text-emerald-600'
-                              }`}
-                            >
-                              {subLink.label}
-                            </Link>
-                          ))}
-                        </div>
+                if (link.type === 'menu') {
+                  return (
+                    <div
+                      key={link.path}
+                      className="relative"
+                      onMouseEnter={openDropdown}
+                      onMouseLeave={() => closeDropdownWithDelay(150)}
+                    >
+                      <div className="flex items-center space-x-1 cursor-pointer">
+                        <Link
+                          to={link.path}
+                          onClick={() => handleLinkClick(link.path)}
+                          className={`text-sm font-medium transition-colors duration-200 ${
+                            isActive(link.path)
+                              ? 'text-emerald-600'
+                              : 'text-slate-600 hover:text-emerald-600'
+                          }`}
+                        >
+                          {link.label}
+                        </Link>
+                        <button
+                          className="text-slate-600 hover:text-emerald-600 transition-colors"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            setIsDropdownOpen((prev) => !prev);
+                          }}
+                        >
+                          {isDropdownOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+                        </button>
                       </div>
-                    )}
-                  </div>
-                );
-              }
 
-              return null;
-            })}
+                      {isDropdownOpen && (
+                        <div
+                          className="absolute left-1/2 -translate-x-1/2 mt-3 w-60 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 pointer-events-auto"
+                          onMouseEnter={openDropdown}
+                          onMouseLeave={() => closeDropdownWithDelay(150)}
+                        >
+                          <div className="py-1">
+                            {link.subLinks.map((subLink) => (
+                              <Link
+                                key={subLink.path}
+                                to={subLink.path}
+                                onClick={() => setIsDropdownOpen(false)}
+                                className={`block px-4 py-2 text-sm transition-colors duration-200 ${
+                                  isActive(subLink.path)
+                                    ? 'bg-emerald-50 text-emerald-600'
+                                    : 'text-slate-600 hover:bg-slate-50 hover:text-emerald-600'
+                                }`}
+                              >
+                                {subLink.label}
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  );
+                }
+
+                return null;
+              })}
+            </div>
+          </div>
+
+          {/* Contact Us Button on far right */}
+          <div className="hidden md:block">
+            <a href="mailto:contact@yourcompany.com">
+              <Button className="bg-emerald-600 hover:bg-emerald-700 text-white px-6 py-2 font-semibold">
+                Contact Us
+              </Button>
+            </a>
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -180,46 +172,28 @@ export const Navbar = () => {
                   <Link
                     key={link.path}
                     to={link.path}
-                    onClick={() => {
-                      handleLinkClick(link.path);
-                      setMobileMenuOpen(false);
-                    }}
-                    className={`block px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 ${
-                      isActive(link.path)
-                        ? 'bg-emerald-50 text-emerald-600'
-                        : 'text-slate-600 hover:bg-slate-50'
-                    }`}
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="block px-4 py-2 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-50"
                   >
                     {link.label}
                   </Link>
                 );
               }
 
-              // Mobile dropdown
               if (link.type === 'menu') {
                 return (
                   <div key={link.path}>
                     <div className="flex justify-between items-center">
                       <Link
                         to={link.path}
-                        onClick={() => {
-                          handleLinkClick(link.path);
-                          setMobileMenuOpen(false);
-                        }}
-                        className={`flex-1 px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-200 ${
-                          isActive(link.path)
-                            ? 'bg-emerald-50 text-emerald-600'
-                            : 'text-slate-600 hover:bg-slate-50'
-                        }`}
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="flex-1 px-4 py-2 rounded-lg text-sm font-medium text-slate-600 hover:bg-slate-50"
                       >
                         {link.label}
                       </Link>
                       <button
                         className="px-2 text-slate-600 hover:text-emerald-600"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setIsDropdownOpen(!isDropdownOpen);
-                        }}
+                        onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                       >
                         {isDropdownOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
                       </button>
@@ -232,15 +206,10 @@ export const Navbar = () => {
                             key={subLink.path}
                             to={subLink.path}
                             onClick={() => {
-                              handleLinkClick(subLink.path);
                               setIsDropdownOpen(false);
                               setMobileMenuOpen(false);
                             }}
-                            className={`block px-4 py-2 rounded-lg text-sm transition-colors duration-200 ${
-                              isActive(subLink.path)
-                                ? 'bg-emerald-100 text-emerald-600'
-                                : 'text-slate-600 hover:bg-slate-50'
-                            }`}
+                            className="block px-4 py-2 rounded-lg text-sm text-slate-600 hover:bg-slate-50"
                           >
                             {subLink.label}
                           </Link>
@@ -253,11 +222,13 @@ export const Navbar = () => {
 
               return null;
             })}
-           <Button className="w-full bg-emerald-600 hover:bg-emerald-700 text-white">
-              Contact Us
-           </Button>
-         
-            
+
+            {/* Contact Us Button in Mobile Menu */}
+            <a href="mailto:contact@yourcompany.com" className="block mt-2">
+              <Button className="w-full bg-emerald-600 hover:bg-emerald-700 text-white">
+                Contact Us
+              </Button>
+            </a>
           </div>
         </div>
       )}
