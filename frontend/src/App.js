@@ -10,7 +10,7 @@ import Contact from "./pages/Contact";
 import Jobs from "./pages/Jobs";
 import MapeachFAQ from "./pages/MapeachFAQ";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
-import PrivacyPolicy from "./pages/Pricing";
+import Pricing from "./pages/Pricing";
 import ScrollToTop from './components/ScrollToTop';
 
 // 👇 1. IMPORT THE RENAMED COMPONENT AND ALL OTHER SECTOR COMPONENTS 👇
