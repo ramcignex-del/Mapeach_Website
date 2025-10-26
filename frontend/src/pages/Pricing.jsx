@@ -24,7 +24,7 @@ const Pricing = () => {
 
   return (
     <div className="pt-20">
-      {/* 1. Hero Section */}
+      {/* Hero Section */}
       <section className="py-24 bg-white">
         <div className="max-w-5xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 leading-tight">
@@ -49,7 +49,7 @@ const Pricing = () => {
         </div>
       </section>
 
-      {/* 2. Pricing Options Section */}
+      {/* Pricing Options Section */}
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-slate-800 mb-4">Our Pricing Plans</h2>
@@ -59,27 +59,30 @@ const Pricing = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
             {pricingOptions.map((plan, idx) => (
-              <Card key={idx} className="shadow-lg hover:shadow-xl transition-shadow duration-300 w-full max-w-sm mx-auto">
-                <CardContent className="p-8 flex flex-col items-center text-center">
-                  <h3 className="text-2xl font-bold text-emerald-600 mb-2">{plan.name}</h3>
-                  <p className="text-xl text-slate-900 font-semibold mb-4">{plan.price}</p>
-                  <p className="text-slate-600 mb-6">{plan.description}</p>
+              <Card key={idx} className="shadow-lg hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
+                <CardContent className="p-8 flex flex-col justify-between h-full">
+                  <div className="flex flex-col items-center text-center">
+                    <h3 className="text-2xl font-bold text-emerald-600 mb-2">{plan.name}</h3>
+                    <p className="text-xl text-slate-900 font-semibold mb-4">{plan.price}</p>
+                    <p className="text-slate-600 mb-6">{plan.description}</p>
 
-                  {/* Highlight $0 for Contractors */}
-                  <div className="mb-4 px-3 py-1 bg-emerald-50 text-emerald-700 font-semibold rounded-full text-sm">
-                    $0 for Contractors
+                    {/* Benefits Section */}
+                    <div className="mb-4 px-3 py-1 bg-emerald-50 text-emerald-700 font-semibold rounded-full text-sm w-full">
+                      Benefits
+                    </div>
+
+                    <ul className="text-slate-700 mb-6 space-y-2 text-left">
+                      {plan.features.map((feature, fidx) => (
+                        <li key={fidx} className="flex items-center">
+                          <span className="mr-2 text-emerald-600">•</span>{feature}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
 
-                  <ul className="text-slate-700 mb-6 space-y-2 text-left">
-                    {plan.features.map((feature, fidx) => (
-                      <li key={fidx} className="flex items-center">
-                        <span className="mr-2 text-emerald-600">•</span>{feature}
-                      </li>
-                    ))}
-                  </ul>
                   <Button
                     size="lg"
-                    className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 font-semibold"
+                    className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 font-semibold mt-auto"
                     onClick={() => scrollToComparison(plan.name)}
                   >
                     Select Plan
@@ -91,7 +94,7 @@ const Pricing = () => {
         </div>
       </section>
 
-      {/* 3. Benefits Section */}
+      {/* Benefits Section */}
       <section className="py-20 bg-slate-50">
         <div className="max-w-6xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-slate-800 mb-4">{pageText.benefits.header}</h2>
@@ -100,11 +103,13 @@ const Pricing = () => {
             {benefits.map((benefit, idx) => {
               const Icon = benefit.icon;
               return (
-                <Card key={idx} className="shadow-lg hover:shadow-xl transition-shadow duration-300 w-full max-w-sm mx-auto">
-                  <CardContent className="p-8 flex flex-col items-center text-center">
-                    <Icon className="w-10 h-10 text-emerald-600 mb-4" />
-                    <h3 className="text-xl font-semibold text-slate-800 mb-3">{benefit.title}</h3>
-                    <p className="text-slate-600">{benefit.description}</p>
+                <Card key={idx} className="shadow-lg hover:shadow-xl transition-shadow duration-300 w-full max-w-sm mx-auto h-full flex flex-col">
+                  <CardContent className="p-8 flex flex-col items-center text-center justify-between h-full">
+                    <div className="flex flex-col items-center">
+                      <Icon className="w-10 h-10 text-emerald-600 mb-4" />
+                      <h3 className="text-xl font-semibold text-slate-800 mb-3">{benefit.title}</h3>
+                      <p className="text-slate-600">{benefit.description}</p>
+                    </div>
                   </CardContent>
                 </Card>
               );
@@ -113,7 +118,7 @@ const Pricing = () => {
         </div>
       </section>
 
-      {/* 4. Cost Calculator Section */}
+      {/* Cost Calculator Section */}
       <section id="calculator" className="py-20 bg-white">
         <div className="max-w-5xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-slate-800 mb-4">{pageText.calculator.header}</h2>
@@ -122,7 +127,7 @@ const Pricing = () => {
         </div>
       </section>
 
-      {/* 5. Market Comparison Section */}
+      {/* Market Comparison Section */}
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-center text-slate-800 mb-12">{pageText.comparison.header}</h2>
