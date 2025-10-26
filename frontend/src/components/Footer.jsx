@@ -74,6 +74,11 @@ export const Footer = () => {
                 <Link to="/PrivacyPolicy" className="text-sm hover:text-emerald-400 transition-colors duration-200"  onClick={() => handleLinkClick('/PrivacyPolicy')}>
                   Privacy Policy
                 </Link>
+                <li>
+                <Link to="/Pricing" className="text-sm hover:text-emerald-400 transition-colors duration-200"  onClick={() => handleLinkClick('/Pricing')}>
+                  Privacy Policy
+                </Link>
+              </li>
               </li>
             </ul>
           </div>
