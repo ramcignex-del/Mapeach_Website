@@ -253,10 +253,10 @@ export const Navbar = () => {
 
               return null;
             })}
-           {/* <Button className="w-full bg-emerald-600 hover:bg-emerald-700 text-white">
-              Get Started
-            </Button>
-          */}
+           <Button className="w-full bg-emerald-600 hover:bg-emerald-700 text-white">
+              Contact Us
+           </Button>
+         
             
           </div>
         </div>
