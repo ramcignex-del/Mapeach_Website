@@ -47,6 +47,7 @@ export const Navbar = () => {
     { path: '/', label: 'Home', type: 'link' },
     { path: '/hire', label: 'For Companies', type: 'menu', subLinks: companyDropdownLinks },
     { path: '/join', label: 'For Talents', type: 'link' },
+    { path: '/pricing', label: 'Pricing', type: 'link' },
     { path: '/about', label: 'About', type: 'link' },
     { path: '/contact', label: 'Contact', type: 'link' },
     { path: '/jobs', label: 'Jobs', type: 'link' },
