@@ -37,7 +37,10 @@ const ExpertiseSection = ({ rolesData }) => (
           </Card>
         ))}
       </div>
-    </div>
+      
+      {/* The missing closing tag for the ExpertiseSection component's content was here */}
+      
+    </div> 
   </section>
 );
 
@@ -58,7 +61,7 @@ const HealthTech = () => {
   return (
     <div className="pt-20">
 
-      {/* Hero Section: Adjusted to make the visual element visible on md screens */}
+      {/* Hero Section */}
       <section className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Visual Element (Left Side) - Now visible on md and up. */}
@@ -100,7 +103,6 @@ const HealthTech = () => {
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl font-bold text-center text-slate-800 mb-4">{pageText.benefits.header}</h2>
           <p className="text-xl text-center text-slate-600 mb-12">{pageText.benefits.subheader}</p>
-          {/* Ensure content starts immediately within the centered container */}
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
             {benefits.map((benefit, idx) => {
               const Icon = benefit.icon;
@@ -135,7 +137,6 @@ const HealthTech = () => {
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl font-bold text-center text-slate-800 mb-4">{pageText.process.header}</h2>
           <p className="text-xl text-center text-slate-600 mb-12">{pageText.process.subheader}</p>
-          {/* Ensure content starts immediately within the centered container */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {hiringProcess.map((step, idx) => (
               <div key={idx} className="flex flex-col items-center text-center p-6 bg-white rounded-xl shadow-lg border border-emerald-200">
