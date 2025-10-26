@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { CostCalculator } from '@/components/CostCalculator';
+import { CostCalculator } from '@/components/CostCalculator'; // IMPORTANT: Assuming this is correctly imported
 import { ArrowRight, Heart, Stethoscope } from 'lucide-react'; 
 
 // Import all data
