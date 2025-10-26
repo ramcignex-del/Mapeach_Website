@@ -104,4 +104,89 @@ const Pricing = () => {
                   <Button
                     size="lg"
                     className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 font-semibold"
-                    onClick={(
+                    onClick={() => scrollToComparison(plan.name)}
+                  >
+                    Select Plan
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Market Comparison Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl font-bold text-center text-slate-800 mb-12">{pageText.comparison.header}</h2>
+          <div className="overflow-x-auto shadow-xl rounded-xl border border-slate-200">
+            <table className="w-full text-sm divide-y divide-slate-200">
+              <thead className="bg-slate-100">
+                <tr>
+                  <th className="px-6 py-4 text-left font-semibold text-slate-700">Feature</th>
+                  <th className="px-6 py-4 text-center font-semibold text-slate-700">Traditional Agencies</th>
+                  <th className="px-6 py-4 text-center font-semibold text-emerald-700 bg-emerald-50">Our Staffing Service</th>
+                </tr>
+              </thead>
+              <tbody>
+                {comparisonData.map((item, idx) => (
+                  <tr
+                    key={idx}
+                    ref={el => comparisonRefs.current[idx] = el}
+                    className={`${highlightedRow === idx && flashTrigger ? 'flash-highlight' : ''}`}
+                  >
+                    <td className="px-6 py-4 text-sm text-slate-900 font-medium">{item.feature}</td>
+                    <td className="px-6 py-4 text-sm text-center text-red-600">{item.traditional}</td>
+                    <td className={`px-6 py-4 text-sm text-center ${item.ourServiceClass}`}>
+                      <div className="flex flex-col items-center space-y-1">
+                        <span>{item.ourService}</span>
+                        <div className="flex space-x-2 mt-1">
+                          {item.plans.map((plan, pidx) => (
+                            <span
+                              key={pidx}
+                              className={`px-2 py-1 text-xs font-semibold rounded-full ${
+                                plan === "Startup"
+                                  ? "bg-emerald-200 text-emerald-800"
+                                  : "bg-teal-200 text-teal-800"
+                              }`}
+                            >
+                              {plan}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      {/* Cost Calculator Section */}
+      <section id="calculator" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-7xl mx-auto text-center">
+          <h2 className="text-3xl font-bold text-slate-800 mb-4">{pageText.calculator.header}</h2>
+          <p className="text-xl text-slate-600 mb-12">{pageText.calculator.subheader}</p>
+          <CostCalculator />
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-emerald-600 to-teal-600 text-white">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">{pageText.ctaSection.title}</h2>
+          <p className="text-xl text-emerald-50 mb-10">{pageText.ctaSection.subtitle}</p>
+          <Link to="/contact">
+            <Button size="lg" className="bg-white text-emerald-600 hover:bg-slate-100 px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
+              {pageText.ctaSection.button}
+            </Button>
+          </Link>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default Pricing;
