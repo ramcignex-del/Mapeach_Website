@@ -53,16 +53,19 @@ const Pricing = () => {
       <section className="py-16 bg-white">
         <div className="max-w-6xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-slate-800 mb-12">Our Pricing Plans</h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8 justify-items-center">
             {pricingOptions.map((plan, idx) => (
-              <Card key={idx} className="shadow-lg hover:shadow-xl transition-shadow duration-300 h-full flex flex-col mx-auto">
+              <Card key={idx} className="shadow-lg hover:shadow-xl transition-shadow duration-300 h-full w-full max-w-md flex flex-col">
                 <CardContent className="p-8 flex flex-col flex-grow">
                   <h3 className="text-2xl font-bold text-emerald-600 mb-2">{plan.name}</h3>
 
-                  {/* Benefits instead of $0 for Contractors */}
-                  <p className="text-xl text-slate-900 font-semibold mb-4">Benefits</p>
+                  {/* Pricing Details */}
+                  <p className="text-xl font-semibold text-slate-900 mb-2">{plan.price}</p>
 
-                  <p className="text-slate-600 mb-6">{plan.description}</p>
+                  {/* Benefits */}
+                  <p className="text-lg font-medium text-slate-800 mb-4">Benefits</p>
+
+                  <p className="text-slate-600 mb-4">{plan.description}</p>
                   <ul className="text-slate-700 mb-6 space-y-2 text-left flex-grow">
                     {plan.features.map((feature, fidx) => (
                       <li key={fidx} className="flex items-center">
@@ -145,11 +148,11 @@ const Pricing = () => {
         <div className="max-w-6xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-slate-800 mb-4">{pageText.benefits.header}</h2>
           <p className="text-xl text-slate-600 mb-12">{pageText.benefits.subheader}</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
             {benefits.map((benefit, idx) => {
               const Icon = benefit.icon;
               return (
-                <Card key={idx} className="shadow-lg hover:shadow-xl transition-shadow duration-300 w-full max-w-sm mx-auto">
+                <Card key={idx} className="shadow-lg hover:shadow-xl transition-shadow duration-300 w-full max-w-sm">
                   <CardContent className="p-8 flex flex-col items-center text-center">
                     <Icon className="w-10 h-10 text-emerald-600 mb-4" />
                     <h3 className="text-xl font-semibold text-slate-800 mb-3">{benefit.title}</h3>
