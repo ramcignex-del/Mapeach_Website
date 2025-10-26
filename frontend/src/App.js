@@ -15,7 +15,7 @@ import ScrollToTop from './components/ScrollToTop';
 // 👇 1. IMPORT THE RENAMED COMPONENT AND ALL OTHER SECTOR COMPONENTS 👇
 import InformationTechnology from './pages/companies/InformationTechnology';
 import HealthTech from './pages/companies/HealthTech';
-import Healthcare from './pages/companies/Healthcare';
+// import Healthcare from './pages/companies/Healthcare';
 import Lifesciences from './pages/companies/Lifesciences';
 import ElectronicsCommunications from './pages/companies/ElectronicsCommunications';
 
@@ -40,10 +40,13 @@ function App() {
             path="/companies/healthtech" 
             element={<HealthTech />} 
           />
+         /*     
           <Route 
             path="/companies/healthcare" 
             element={<Healthcare />} 
           />
+         */
+          
           <Route 
             path="/companies/lifesciences" 
             element={<Lifesciences />} 
