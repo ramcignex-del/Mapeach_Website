@@ -190,7 +190,7 @@ export const CostCalculator = () => {
         <div className="mt-6 p-4 bg-slate-50 rounded-lg">
           <p className="text-sm text-slate-600">
             <strong>Note:</strong> Traditional Staffing Companies typically charge 15-25% markups. Marketplaces charge 5-15% platform fees. 
-            Mapeach's transparent pricing: <strong>$10 one-time per contractor + $1/hour recurring</strong>.
+            Mapeach's transparent pricing: <strong>$10 one-time + $1/hour recurring per contractor</strong>.
           </p>
         </div>
       </CardContent>
