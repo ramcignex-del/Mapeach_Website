@@ -49,7 +49,7 @@ export const pricingOptions = [
   },
   {
     name: "Enterprise",
-    price: ""$20 one-time + $1/hour recurring per contractor"",
+    price: "$20 one-time + $1/hour recurring per contractor",
     description: "For larger teams and complex projects",
     features: [
       "Full access to talent pool",
