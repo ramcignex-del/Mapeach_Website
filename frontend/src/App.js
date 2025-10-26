@@ -40,12 +40,12 @@ function App() {
             path="/companies/healthtech" 
             element={<HealthTech />} 
           />
-         /*     
+       {/*     
           <Route 
             path="/companies/healthcare" 
             element={<Healthcare />} 
           />
-         */
+        */}
           
           <Route 
             path="/companies/lifesciences" 
