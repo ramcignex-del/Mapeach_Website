@@ -37,9 +37,6 @@ const ExpertiseSection = ({ rolesData }) => (
           </Card>
         ))}
       </div>
-      
-      {/* The missing closing tag for the ExpertiseSection component's content was here */}
-      
     </div> 
   </section>
 );
