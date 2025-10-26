@@ -55,7 +55,7 @@ const InformationTechnology = () => {
           {/* Visual Element */}
           <div className="hidden md:flex justify-center lg:justify-start">
             <div className="w-full max-w-lg h-96 bg-emerald-50 rounded-xl shadow-2xl flex flex-col items-center justify-center p-8 text-center">
-              <img src="/assets/it-digital-transformation.png" alt="Digital Transformation & IT Excellence" className="w-32 h-32 mb-6" />
+              <img src="/assets/IT_Theme_Image.png" alt="Digital Transformation & IT Excellence" className="w-32 h-32 mb-6" />
               <span className="text-2xl font-bold text-emerald-700">Digital Transformation & IT Excellence</span>
             </div>
           </div>
