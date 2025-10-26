@@ -3,9 +3,15 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { CostCalculator } from '@/components/CostCalculator';
-import { ArrowRight } from 'lucide-react';
-
-// ✅ Unified Data Imports
+import {
+  ArrowRight,
+  Cpu,
+  Cloud,
+  Code,
+  Shield,
+  Server,
+  Network,
+} from 'lucide-react';
 import {
   pageText,
   benefits,
@@ -31,82 +37,79 @@ const InformationTechnology = () => {
     });
   };
 
-  // Hero Title Split (for same dynamic style as HealthTech)
-  const titleParts = pageText.hero.title.split('talent with lightning speed');
-  const titleLine1 = titleParts[0].trim();
-  const coloredPhrase = 'talent with lightning speed';
-
   return (
     <div ref={topRef} tabIndex={-1} className="min-h-screen outline-none">
-      {/* -------------------------------------------------------------- */}
-      {/* HERO SECTION — Same layout as Clinical & Digital Excellence */}
-      {/* -------------------------------------------------------------- */}
-      <section className="relative pt-32 pb-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-emerald-50/40 to-teal-50/40 overflow-hidden">
-        <div className="absolute inset-0 bg-grid-slate-200/10 pointer-events-none" />
-        <div className="max-w-6xl mx-auto text-center relative z-10">
-          <h1 className="text-5xl md:text-6xl font-bold text-slate-900 leading-tight mb-6">
-            {titleLine1}
-            <span className="block text-emerald-600 mt-2">{coloredPhrase}</span>
-          </h1>
-          <p className="text-xl text-slate-600 mb-10 leading-relaxed max-w-3xl mx-auto">
-            {pageText.hero.subtitle}
-          </p>
+      {/* ========================================================== */}
+      {/* HERO SECTION — Mirrors “Clinical & Digital Excellence” */}
+      {/* ========================================================== */}
+      <section className="relative py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-emerald-50/40 to-teal-50/40 overflow-hidden">
+        {/* Background pattern grid */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(16,185,129,0.15),_transparent_60%)]" />
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
+          {/* LEFT: IT Visual Banner */}
+          <div className="hidden md:flex justify-center lg:justify-start">
+            <div className="w-full max-w-lg h-96 bg-emerald-50 rounded-xl shadow-2xl flex items-center justify-center p-8">
+              <Cpu className="w-24 h-24 text-emerald-600" />
+              <span className="text-2xl font-bold text-emerald-700 ml-4">
+                Digital Innovation & IT Excellence
+              </span>
+            </div>
+          </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to={pageText.hero.cta1.link}>
+          {/* RIGHT: Content */}
+          <div className="lg:col-start-2 text-center lg:text-left">
+            <h1 className="text-5xl md:text-6xl font-extrabold text-slate-900 mb-6 leading-tight">
+              {pageText.hero.title}
+            </h1>
+            <p className="text-xl text-slate-600 mb-8">{pageText.hero.subtitle}</p>
+            <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center lg:justify-start">
+              <Link to={pageText.hero.cta1.link}>
+                <Button
+                  size="lg"
+                  className="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                >
+                  {pageText.hero.cta1.label}
+                  <ArrowRight className="ml-2" size={20} />
+                </Button>
+              </Link>
               <Button
                 size="lg"
-                className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                variant="outline"
+                className="w-full sm:w-auto border-emerald-600 text-emerald-600 hover:bg-emerald-50 px-8 py-6 text-lg font-semibold"
+                onClick={scrollToCalculator}
               >
-                {pageText.hero.cta1.label}
-                <ArrowRight className="ml-2" size={20} />
+                {pageText.hero.cta2.label}
               </Button>
-            </Link>
-
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-50 px-8 py-6 text-lg font-semibold transition-all duration-300"
-              onClick={scrollToCalculator}
-            >
-              {pageText.hero.cta2.label}
-            </Button>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* -------------------------------------------------------------- */}
-      {/* BENEFITS GRID — Clinical & Digital Excellence style */}
-      {/* -------------------------------------------------------------- */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
+      {/* ========================================================== */}
+      {/* BENEFITS SECTION */}
+      {/* ========================================================== */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-slate-900 mb-4">
-              {pageText.benefits.header}
-            </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              {pageText.benefits.subheader}
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+          <h2 className="text-3xl font-bold text-center text-slate-800 mb-4">
+            {pageText.benefits.header}
+          </h2>
+          <p className="text-xl text-center text-slate-600 mb-12">
+            {pageText.benefits.subheader}
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
             {benefits.map((benefit, idx) => {
-              const IconComponent = benefit.icon;
+              const Icon = benefit.icon;
               return (
                 <Card
                   key={idx}
-                  className="border border-slate-100 hover:border-emerald-200 hover:shadow-lg transition-all duration-300 rounded-2xl"
+                  className="shadow-lg hover:shadow-xl transition-shadow duration-300 border border-slate-100"
                 >
-                  <CardContent className="p-8 text-center">
-                    <div className="w-14 h-14 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-xl flex items-center justify-center mx-auto mb-5 shadow-md">
-                      <IconComponent className="text-white" size={26} />
-                    </div>
-                    <h3 className="text-lg font-semibold text-slate-900 mb-3">
+                  <CardContent className="p-8 flex flex-col items-center text-center">
+                    <Icon className="w-10 h-10 text-emerald-600 mb-4" />
+                    <h3 className="text-xl font-semibold text-slate-800 mb-3">
                       {benefit.title}
                     </h3>
-                    <p className="text-slate-600 text-sm leading-relaxed">
-                      {benefit.description}
-                    </p>
+                    <p className="text-slate-600">{benefit.description}</p>
                   </CardContent>
                 </Card>
               );
@@ -115,31 +118,25 @@ const InformationTechnology = () => {
         </div>
       </section>
 
-      {/* -------------------------------------------------------------- */}
-      {/* IT EXPERTISE SECTION — Aligned with "Clinical Excellence" style */}
-      {/* -------------------------------------------------------------- */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-slate-50">
+      {/* ========================================================== */}
+      {/* EXPERTISE SECTION — “Digital & IT Excellence” */}
+      {/* ========================================================== */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50">
         <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-slate-900 mb-12">
+          <h2 className="text-3xl font-bold text-slate-800 mb-12">
             Digital & IT Excellence
           </h2>
-          <p className="text-lg text-slate-600 max-w-3xl mx-auto mb-16">
-            Our talent network covers every discipline across the IT spectrum,
-            empowering organizations with digital innovation, cybersecurity,
-            cloud-native solutions, and scalable enterprise systems.
-          </p>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
             {itRoles.map((category, idx) => (
               <Card
                 key={idx}
-                className="rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300"
+                className="shadow-lg hover:shadow-xl transition-shadow duration-300"
               >
-                <CardContent className="p-8 text-left">
-                  <h3 className="text-xl font-semibold text-emerald-600 mb-4 border-b border-slate-200 pb-2">
+                <CardContent className="p-6">
+                  <h3 className="text-xl font-semibold text-emerald-600 mb-4 border-b pb-2">
                     {category.category}
                   </h3>
-                  <ul className="space-y-3">
+                  <ul className="space-y-4 text-left">
                     {category.items.map((item, subIdx) => (
                       <li key={subIdx}>
                         <p className="font-medium text-slate-800">
@@ -158,66 +155,60 @@ const InformationTechnology = () => {
         </div>
       </section>
 
-      {/* -------------------------------------------------------------- */}
-      {/* COST CALCULATOR — Consistent block from HealthTech */}
-      {/* -------------------------------------------------------------- */}
-      <section
-        id="calculator"
-        className="py-24 px-4 sm:px-6 lg:px-8 bg-white border-t border-slate-100"
-      >
+      {/* ========================================================== */}
+      {/* COST CALCULATOR SECTION */}
+      {/* ========================================================== */}
+      <section id="calculator" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-slate-900 mb-4">
+          <h2 className="text-3xl font-bold text-slate-800 mb-4">
             {pageText.calculator.header}
           </h2>
           <p className="text-xl text-slate-600 mb-12">
             {pageText.calculator.subheader}
           </p>
-          <div style={{ minHeight: '800px' }}>
-            <CostCalculator />
-          </div>
+          <CostCalculator />
         </div>
       </section>
 
-      {/* -------------------------------------------------------------- */}
-      {/* HIRING PROCESS — Shared process visuals */}
-      {/* -------------------------------------------------------------- */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-slate-50">
+      {/* ========================================================== */}
+      {/* HIRING PROCESS */}
+      {/* ========================================================== */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-emerald-50">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-slate-900 mb-4">
-              {pageText.process.header}
-            </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              {pageText.process.subheader}
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {hiringProcess.map((step) => (
-              <div key={step.step} className="text-center">
-                <div className="w-16 h-16 mx-auto bg-gradient-to-br from-emerald-500 to-teal-600 rounded-full flex items-center justify-center text-white text-2xl font-bold shadow-lg mb-4">
+          <h2 className="text-3xl font-bold text-center text-slate-800 mb-4">
+            {pageText.process.header}
+          </h2>
+          <p className="text-xl text-center text-slate-600 mb-12">
+            {pageText.process.subheader}
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {hiringProcess.map((step, idx) => (
+              <div
+                key={idx}
+                className="flex flex-col items-center text-center p-6 bg-white rounded-xl shadow-lg border border-emerald-200"
+              >
+                <div className="w-12 h-12 flex items-center justify-center bg-emerald-600 text-white rounded-full text-xl font-bold mb-4">
                   {step.step}
                 </div>
-                <h3 className="text-lg font-semibold text-slate-900 mb-2">
+                <h3 className="text-xl font-semibold text-slate-800 mb-3">
                   {step.title}
                 </h3>
-                <p className="text-slate-600 text-sm">{step.description}</p>
+                <p className="text-slate-600">{step.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* -------------------------------------------------------------- */}
+      {/* ========================================================== */}
       {/* COMPARISON TABLE */}
-      {/* -------------------------------------------------------------- */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-white border-t border-slate-100">
-        <div className="max-w-5xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-slate-900 mb-12">
+      {/* ========================================================== */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl font-bold text-center text-slate-800 mb-12">
             {pageText.comparison.header}
           </h2>
-
-          <div className="bg-white rounded-2xl shadow-lg overflow-x-auto">
+          <div className="overflow-x-auto shadow-xl rounded-xl border border-slate-200 max-w-5xl mx-auto">
             <table className="w-full text-sm divide-y divide-slate-200">
               <thead className="bg-slate-100">
                 <tr>
@@ -233,18 +224,18 @@ const InformationTechnology = () => {
                 </tr>
               </thead>
               <tbody>
-                {comparisonData.map((item, idx) => (
+                {comparisonData.map((row, idx) => (
                   <tr key={idx}>
-                    <td className="px-6 py-4 font-medium text-slate-900">
-                      {item.feature}
+                    <td className="px-6 py-4 text-sm text-slate-900 font-medium">
+                      {row.feature}
                     </td>
-                    <td className="px-6 py-4 text-center text-red-600">
-                      {item.traditional}
+                    <td className="px-6 py-4 text-sm text-center text-red-600">
+                      {row.traditional}
                     </td>
                     <td
-                      className={`px-6 py-4 text-center ${item.mapeachClass}`}
+                      className={`px-6 py-4 text-sm text-center ${row.mapeachClass}`}
                     >
-                      {item.mapeach}
+                      {row.mapeach}
                     </td>
                   </tr>
                 ))}
@@ -254,10 +245,10 @@ const InformationTechnology = () => {
         </div>
       </section>
 
-      {/* -------------------------------------------------------------- */}
-      {/* FINAL CTA — Same as “Clinical & Digital Excellence” footer CTA */}
-      {/* -------------------------------------------------------------- */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-emerald-600 to-teal-600 text-white">
+      {/* ========================================================== */}
+      {/* CTA SECTION */}
+      {/* ========================================================== */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-emerald-600 to-teal-600 text-white">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">
             {pageText.ctaSection.title}
