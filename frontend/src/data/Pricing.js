@@ -1,4 +1,4 @@
-import { Users, DollarSign, Settings, Scale, TrendingUp } from 'lucide-react';
+import { Users, DollarSign, Settings, Scale, TrendingUp, Headphones } from 'lucide-react';
 
 // --- Page Text Content ---
 export const pageText = {
@@ -26,13 +26,14 @@ export const pageText = {
   }
 };
 
-// --- Benefits Data ---
+// --- Benefits Data (Now 6 Tiles) ---
 export const benefits = [
   { icon: Users, title: "Vetted Talent", description: "Access pre-screened and verified professionals." },
   { icon: DollarSign, title: "Cost-Efficient", description: "Flexible pricing to fit any budget." },
   { icon: Settings, title: "Flexible Contracts", description: "Hourly, monthly, or project-based hiring." },
   { icon: Scale, title: "Scalable Teams", description: "Easily adjust team size as your project evolves." },
-  { icon: TrendingUp, title: "Fast Onboarding", description: "Quickly integrate new hires with minimal delay." }
+  { icon: TrendingUp, title: "Fast Onboarding", description: "Quickly integrate new hires with minimal delay." },
+  { icon: Headphones, title: "Dedicated Support", description: "Personalized assistance for hiring, onboarding, and ongoing project success." }
 ];
 
 // --- Pricing Options ---
