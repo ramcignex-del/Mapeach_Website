@@ -37,20 +37,21 @@ export const Navbar = () => {
 
   const companyDropdownLinks = [
     { path: '/companies/informationtechnology', label: 'Information Technology' },
+    { path: '/companies/electronics', label: 'Electronics & Communications' },
     { path: '/companies/healthtech', label: 'HealthTech' },
     // { path: '/companies/healthcare', label: 'Healthcare' }, 
     { path: '/companies/lifesciences', label: 'Lifesciences' },
-    { path: '/companies/electronics', label: 'Electronics & Communications' },
+    
   ];
 
   const navLinks = [
     { path: '/', label: 'Home', type: 'link' },
     { path: '/hire', label: 'For Companies', type: 'menu', subLinks: companyDropdownLinks },
-    { path: '/join', label: 'For Talents', type: 'link' },
     { path: '/pricing', label: 'Pricing', type: 'link' },
+    { path: '/join', label: 'For Talents', type: 'link' },
+    { path: '/jobs', label: 'Jobs', type: 'link' },
     { path: '/about', label: 'About', type: 'link' },
     { path: '/contact', label: 'Contact', type: 'link' },
-    { path: '/jobs', label: 'Jobs', type: 'link' },
     { path: '/MapeachFAQ', label: 'FAQ', type: 'link' },
   ];
 
