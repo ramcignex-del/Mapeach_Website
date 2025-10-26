@@ -39,7 +39,7 @@ export const benefits = [
 export const pricingOptions = [
   {
     name: "Startup",
-    price: "$499/month",
+    price: "$10 one-time + $1/hour recurring per contractor",
     description: "For small teams and early-stage projects",
     features: [
       "Access to pre-vetted professionals",
@@ -49,7 +49,7 @@ export const pricingOptions = [
   },
   {
     name: "Enterprise",
-    price: "$1499/month",
+    price: ""$20 one-time + $1/hour recurring per contractor"",
     description: "For larger teams and complex projects",
     features: [
       "Full access to talent pool",
