@@ -51,15 +51,25 @@ const Pricing = () => {
 
       {/* 2. Pricing Options Section */}
       <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-slate-800 mb-12">Our Pricing Plans</h2>
-          <div className="flex flex-wrap justify-center gap-8">
+        <div className="max-w-6xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-slate-800 mb-4">Our Pricing Plans</h2>
+          <p className="text-lg text-slate-600 mb-8">
+            We charge <strong>companies only</strong>. Contractors enjoy our service at <span className="font-bold text-emerald-600">$0</span>.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
             {pricingOptions.map((plan, idx) => (
               <Card key={idx} className="shadow-lg hover:shadow-xl transition-shadow duration-300 w-full max-w-sm">
                 <CardContent className="p-8 flex flex-col items-center text-center">
                   <h3 className="text-2xl font-bold text-emerald-600 mb-2">{plan.name}</h3>
                   <p className="text-xl text-slate-900 font-semibold mb-4">{plan.price}</p>
                   <p className="text-slate-600 mb-6">{plan.description}</p>
+
+                  {/* Highlight $0 for Contractors */}
+                  <div className="mb-4 px-3 py-1 bg-emerald-50 text-emerald-700 font-semibold rounded-full text-sm">
+                    $0 for Contractors
+                  </div>
+
                   <ul className="text-slate-700 mb-6 space-y-2 text-left">
                     {plan.features.map((feature, fidx) => (
                       <li key={fidx} className="flex items-center">
@@ -81,8 +91,30 @@ const Pricing = () => {
         </div>
       </section>
 
-      {/* 3. Cost Calculator Section */}
-      <section id="calculator" className="py-20 bg-slate-50">
+      {/* 3. Benefits Section */}
+      <section className="py-20 bg-slate-50">
+        <div className="max-w-6xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-slate-800 mb-4">{pageText.benefits.header}</h2>
+          <p className="text-xl text-slate-600 mb-12">{pageText.benefits.subheader}</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+            {benefits.map((benefit, idx) => {
+              const Icon = benefit.icon;
+              return (
+                <Card key={idx} className="shadow-lg hover:shadow-xl transition-shadow duration-300 w-full max-w-sm">
+                  <CardContent className="p-8 flex flex-col items-center text-center">
+                    <Icon className="w-10 h-10 text-emerald-600 mb-4" />
+                    <h3 className="text-xl font-semibold text-slate-800 mb-3">{benefit.title}</h3>
+                    <p className="text-slate-600">{benefit.description}</p>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* 4. Cost Calculator Section */}
+      <section id="calculator" className="py-20 bg-white">
         <div className="max-w-5xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-slate-800 mb-4">{pageText.calculator.header}</h2>
           <p className="text-xl text-slate-600 mb-12">{pageText.calculator.subheader}</p>
@@ -90,7 +122,7 @@ const Pricing = () => {
         </div>
       </section>
 
-      {/* 4. Market Comparison Section */}
+      {/* 5. Market Comparison Section */}
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-center text-slate-800 mb-12">{pageText.comparison.header}</h2>
@@ -133,28 +165,6 @@ const Pricing = () => {
                 ))}
               </tbody>
             </table>
-          </div>
-        </div>
-      </section>
-
-      {/* 5. Benefits Section */}
-      <section className="py-20 bg-slate-50">
-        <div className="max-w-6xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-slate-800 mb-4">{pageText.benefits.header}</h2>
-          <p className="text-xl text-slate-600 mb-12">{pageText.benefits.subheader}</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
-            {benefits.map((benefit, idx) => {
-              const Icon = benefit.icon;
-              return (
-                <Card key={idx} className="shadow-lg hover:shadow-xl transition-shadow duration-300 w-full max-w-sm">
-                  <CardContent className="p-8 flex flex-col items-center text-center">
-                    <Icon className="w-10 h-10 text-emerald-600 mb-4" />
-                    <h3 className="text-xl font-semibold text-slate-800 mb-3">{benefit.title}</h3>
-                    <p className="text-slate-600">{benefit.description}</p>
-                  </CardContent>
-                </Card>
-              );
-            })}
           </div>
         </div>
       </section>
