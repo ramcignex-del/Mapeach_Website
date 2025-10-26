@@ -10,7 +10,7 @@ export const pageText = {
       link: "/contact"
     },
     cta2: {
-      label: "View Case Studies",
+      label: "Calculate Your Savings",
     }
   },
   benefits: {
