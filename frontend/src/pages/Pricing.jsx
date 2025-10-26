@@ -28,13 +28,13 @@ const Pricing = () => {
       setTimeout(() => {
         setFlashTrigger(false);
         setHighlightedRow(null);
-      }, 1000); // animation duration
+      }, 1000); // matches CSS animation duration
     }
   };
 
   return (
     <div className="pt-20">
-      {/* Hero Section */}
+      {/* 1. Hero Section */}
       <section className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
@@ -61,29 +61,7 @@ const Pricing = () => {
         </div>
       </section>
 
-      {/* Benefits Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl font-bold text-center text-slate-800 mb-4">{pageText.benefits.header}</h2>
-          <p className="text-xl text-center text-slate-600 mb-12">{pageText.benefits.subheader}</p>
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
-            {benefits.map((benefit, idx) => {
-              const Icon = benefit.icon;
-              return (
-                <Card key={idx} className="shadow-lg hover:shadow-xl transition-shadow duration-300">
-                  <CardContent className="p-8 flex flex-col items-center text-center">
-                    <Icon className="w-10 h-10 text-emerald-600 mb-4" />
-                    <h3 className="text-xl font-semibold text-slate-800 mb-3">{benefit.title}</h3>
-                    <p className="text-slate-600">{benefit.description}</p>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Pricing Options Section */}
+      {/* 2. Pricing Options Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-3xl font-bold text-slate-800 mb-12">Our Pricing Plans</h2>
@@ -115,8 +93,17 @@ const Pricing = () => {
         </div>
       </section>
 
-      {/* Market Comparison Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50">
+      {/* 3. Cost Calculator Section */}
+      <section id="calculator" className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50">
+        <div className="max-w-7xl mx-auto text-center">
+          <h2 className="text-3xl font-bold text-slate-800 mb-4">{pageText.calculator.header}</h2>
+          <p className="text-xl text-slate-600 mb-12">{pageText.calculator.subheader}</p>
+          <CostCalculator />
+        </div>
+      </section>
+
+      {/* 4. Market Comparison Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl font-bold text-center text-slate-800 mb-12">{pageText.comparison.header}</h2>
           <div className="overflow-x-auto shadow-xl rounded-xl border border-slate-200">
@@ -164,12 +151,25 @@ const Pricing = () => {
         </div>
       </section>
 
-      {/* Cost Calculator Section */}
-      <section id="calculator" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-3xl font-bold text-slate-800 mb-4">{pageText.calculator.header}</h2>
-          <p className="text-xl text-slate-600 mb-12">{pageText.calculator.subheader}</p>
-          <CostCalculator />
+      {/* 5. Benefits Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl font-bold text-center text-slate-800 mb-4">{pageText.benefits.header}</h2>
+          <p className="text-xl text-center text-slate-600 mb-12">{pageText.benefits.subheader}</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
+            {benefits.map((benefit, idx) => {
+              const Icon = benefit.icon;
+              return (
+                <Card key={idx} className="shadow-lg hover:shadow-xl transition-shadow duration-300">
+                  <CardContent className="p-8 flex flex-col items-center text-center">
+                    <Icon className="w-10 h-10 text-emerald-600 mb-4" />
+                    <h3 className="text-xl font-semibold text-slate-800 mb-3">{benefit.title}</h3>
+                    <p className="text-slate-600">{benefit.description}</p>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
         </div>
       </section>
 
