@@ -5,12 +5,12 @@ import { Footer } from "./components/Footer";
 import Home from "./pages/Home";
 import Hire from "./pages/Hire";
 import Join from "./pages/Join";
+import Pricing from "./pages/Pricing";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Jobs from "./pages/Jobs";
 import MapeachFAQ from "./pages/MapeachFAQ";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
-import Pricing from "./pages/Pricing";
 import ScrollToTop from './components/ScrollToTop';
 
 // 👇 1. IMPORT THE RENAMED COMPONENT AND ALL OTHER SECTOR COMPONENTS 👇
@@ -61,12 +61,13 @@ function App() {
           {/* Existing main routes remain untouched */}
           <Route path="/hire" element={<Hire />} />
           <Route path="/join" element={<Join />} />
+          <Route path="/pricing" element={<Pricing />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/jobs" element={<Jobs />} />
           <Route path="/MapeachFAQ" element={<MapeachFAQ />} />
           <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
-          <Route path="/Pricing" element={<Pricing />} />
+          
         </Routes>
         <Footer />
       </HashRouter>
