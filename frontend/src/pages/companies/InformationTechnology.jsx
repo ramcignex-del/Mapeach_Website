@@ -13,6 +13,8 @@ import {
   comparisonData,
   itRoles
 } from '@/data/InformationTechnology.js';
+import { pageText, benefits, hiringProcess, comparisonData, itRoles } from '@/data/InformationTechnology.js';
+
 
 // --- Expertise Section Component ---
 const ExpertiseSection = ({ rolesData }) => (
