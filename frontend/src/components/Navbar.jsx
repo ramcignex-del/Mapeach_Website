@@ -50,7 +50,7 @@ export const Navbar = () => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -59,7 +59,7 @@ export const Navbar = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
             {navLinks.map((link) => {
               if (link.type === 'link') {
                 return (
@@ -67,10 +67,10 @@ export const Navbar = () => {
                     key={link.path}
                     to={link.path}
                     onClick={() => handleLinkClick(link.path)}
-                    className={`text-base font-semibold uppercase transition-colors duration-200 ${
+                    className={`text-sm md:text-base font-semibold uppercase transition-colors duration-200 ${
                       isActive(link.path)
                         ? 'text-emerald-600'
-                        : 'text-slate-600 hover:text-emerald-600'
+                        : 'text-slate-700 hover:text-emerald-600'
                     }`}
                   >
                     {link.label}
@@ -87,14 +87,14 @@ export const Navbar = () => {
                     onMouseEnter={openDropdown}
                     onMouseLeave={() => closeDropdownWithDelay(150)}
                   >
-                    <div className="flex items-center space-x-1">
+                    <div className="flex items-center space-x-1 cursor-pointer">
                       <Link
                         to={link.path}
                         onClick={() => handleLinkClick(link.path)}
-                        className={`text-base font-semibold uppercase transition-colors duration-200 ${
+                        className={`text-sm md:text-base font-semibold uppercase transition-colors duration-200 ${
                           isActive(link.path)
                             ? 'text-emerald-600'
-                            : 'text-slate-600 hover:text-emerald-600'
+                            : 'text-slate-700 hover:text-emerald-600'
                         }`}
                       >
                         {link.label}
@@ -133,7 +133,7 @@ export const Navbar = () => {
                               className={`block px-4 py-2 text-sm uppercase transition-colors duration-200 ${
                                 isActive(subLink.path)
                                   ? 'bg-emerald-50 text-emerald-600'
-                                  : 'text-slate-600 hover:bg-slate-50 hover:text-emerald-600'
+                                  : 'text-slate-700 hover:bg-slate-50 hover:text-emerald-600'
                               }`}
                             >
                               {subLink.label}
@@ -152,7 +152,7 @@ export const Navbar = () => {
             {/* Contact Us Button */}
             <a
               href="mailto:contact@example.com"
-              className="ml-6 px-5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold uppercase rounded-md shadow-lg transition-all duration-300"
+              className="ml-6 px-5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold uppercase rounded-md shadow-md transition-all duration-300"
             >
               Contact Us
             </a>
@@ -185,7 +185,7 @@ export const Navbar = () => {
                     className={`block px-4 py-2 rounded-lg text-base font-semibold uppercase transition-colors duration-200 ${
                       isActive(link.path)
                         ? 'bg-emerald-50 text-emerald-600'
-                        : 'text-slate-600 hover:bg-slate-50'
+                        : 'text-slate-700 hover:bg-slate-50'
                     }`}
                   >
                     {link.label}
@@ -206,7 +206,7 @@ export const Navbar = () => {
                         className={`flex-1 px-4 py-2 rounded-lg text-base font-semibold uppercase transition-colors duration-200 ${
                           isActive(link.path)
                             ? 'bg-emerald-50 text-emerald-600'
-                            : 'text-slate-600 hover:bg-slate-50'
+                            : 'text-slate-700 hover:bg-slate-50'
                         }`}
                       >
                         {link.label}
@@ -235,7 +235,7 @@ export const Navbar = () => {
                             className={`block px-4 py-2 rounded-lg text-sm uppercase transition-colors duration-200 ${
                               isActive(subLink.path)
                                 ? 'bg-emerald-100 text-emerald-600'
-                                : 'text-slate-600 hover:bg-slate-50'
+                                : 'text-slate-700 hover:bg-slate-50'
                             }`}
                           >
                             {subLink.label}
@@ -252,8 +252,8 @@ export const Navbar = () => {
 
             {/* Mobile Contact Button */}
             <a
-              href="mailto:info@mapeach.com"
-              className="block w-full text-center px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold uppercase rounded-md shadow-lg transition-all duration-300"
+              href="mailto:contact@example.com"
+              className="block w-full text-center px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold uppercase rounded-md shadow-md transition-all duration-300"
             >
               Contact Us
             </a>
