@@ -5,7 +5,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { CostCalculator } from '@/components/CostCalculator';
 import { ArrowRight, Heart, Stethoscope } from 'lucide-react'; 
 
-// Import all data, including the extensive roles list
+// Import all data
 import { pageText, benefits, hiringProcess, comparisonData, healthcareRoles } from '@/data/HealthTech.js';
 
 // --- Expertise Section Component ---
@@ -58,16 +58,24 @@ const HealthTech = () => {
   return (
     <div className="pt-20">
 
-      {/* Hero Section */}
+      {/* Hero Section: Adjusted to make the visual element visible on md screens */}
       <section className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div>
+          {/* Visual Element (Left Side) - Now visible on md and up. */}
+          <div className="hidden md:flex justify-center lg:justify-start">
+            <div className="w-full max-w-lg h-96 bg-red-50 rounded-xl shadow-2xl flex items-center justify-center p-8">
+              <Heart className="w-24 h-24 text-red-600" /> 
+              <span className="text-2xl font-bold text-red-700 ml-4">Clinical & Digital Excellence</span>
+            </div>
+          </div>
+
+          {/* Content (Right Side) - Occupies full width on small screens, right column on large screens. */}
+          <div className="lg:col-start-2">
             <h1 className="text-5xl md:text-6xl font-extrabold text-slate-900 mb-6 leading-tight">
               {pageText.hero.title}
             </h1>
             <p className="text-xl text-slate-600 mb-8">{pageText.hero.subtitle}</p>
             <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-              {/* FIX ADDRESSING THE TYPE ERROR: pageText.hero.cta1.link is now correctly defined */}
               <Link to={pageText.hero.cta1.link}>
                 <Button size="lg" className="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
                   {pageText.hero.cta1.label}
@@ -84,21 +92,15 @@ const HealthTech = () => {
               </Button>
             </div>
           </div>
-          <div className="hidden lg:flex justify-center">
-            {/* Thematically appropriate placeholder */}
-            <div className="w-full max-w-lg h-96 bg-red-50 rounded-xl shadow-2xl flex items-center justify-center p-8">
-              <Heart className="w-24 h-24 text-red-600" /> 
-              <span className="text-2xl font-bold text-red-700 ml-4">Clinical & Digital Excellence</span>
-            </div>
-          </div>
         </div>
       </section>
 
-      {/* Benefits Section */}
+      {/* Benefits Section: Centered and Aligned */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl font-bold text-center text-slate-800 mb-4">{pageText.benefits.header}</h2>
           <p className="text-xl text-center text-slate-600 mb-12">{pageText.benefits.subheader}</p>
+          {/* Ensure content starts immediately within the centered container */}
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
             {benefits.map((benefit, idx) => {
               const Icon = benefit.icon;
@@ -116,10 +118,10 @@ const HealthTech = () => {
         </div>
       </section>
 
-      {/* Roles / Expertise Section (with extensive list) */}
+      {/* Roles / Expertise Section: Centered and Aligned */}
       <ExpertiseSection rolesData={healthcareRoles} />
 
-      {/* Cost Calculator Section */}
+      {/* Cost Calculator Section: Already Aligned */}
       <section id="calculator" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-3xl font-bold text-slate-800 mb-4">{pageText.calculator.header}</h2>
@@ -128,11 +130,12 @@ const HealthTech = () => {
         </div>
       </section>
 
-      {/* Hiring Process Section */}
+      {/* Hiring Process Section: Centered and Aligned */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-emerald-50">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl font-bold text-center text-slate-800 mb-4">{pageText.process.header}</h2>
           <p className="text-xl text-center text-slate-600 mb-12">{pageText.process.subheader}</p>
+          {/* Ensure content starts immediately within the centered container */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {hiringProcess.map((step, idx) => (
               <div key={idx} className="flex flex-col items-center text-center p-6 bg-white rounded-xl shadow-lg border border-emerald-200">
@@ -145,7 +148,7 @@ const HealthTech = () => {
         </div>
       </section>
 
-      {/* Comparison Table Section */}
+      {/* Comparison Table Section: Already Aligned */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl font-bold text-center text-slate-800 mb-12">{pageText.comparison.header}</h2>
@@ -168,11 +171,10 @@ const HealthTech = () => {
                 ))}
               </tbody>
             </table>
-          </div>
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* CTA Section: Already Aligned */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-emerald-600 to-teal-600 text-white">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">{pageText.ctaSection.title}</h2>
