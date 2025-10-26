@@ -38,6 +38,7 @@ export const Navbar = () => {
     { path: '/companies/lifesciences', label: 'Lifesciences' },
   ];
 
+  // Removed "Contact" menu item here
   const navLinks = [
     { path: '/', label: 'Home', type: 'link' },
     { path: '/hire', label: 'For Companies', type: 'menu', subLinks: companyDropdownLinks },
@@ -45,7 +46,6 @@ export const Navbar = () => {
     { path: '/join', label: 'For Talents', type: 'link' },
     { path: '/jobs', label: 'Jobs', type: 'link' },
     { path: '/about', label: 'About', type: 'link' },
-    { path: '/contact', label: 'Contact', type: 'link' },
     { path: '/MapeachFAQ', label: 'FAQ', type: 'link' },
   ];
 
@@ -59,7 +59,7 @@ export const Navbar = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
+          <div className="hidden md:flex items-center space-x-4 lg:space-x-6">
             {navLinks.map((link) => {
               if (link.type === 'link') {
                 return (
@@ -67,7 +67,7 @@ export const Navbar = () => {
                     key={link.path}
                     to={link.path}
                     onClick={() => handleLinkClick(link.path)}
-                    className={`text-sm md:text-base font-semibold uppercase transition-colors duration-200 ${
+                    className={`text-xs md:text-sm font-semibold uppercase transition-colors duration-200 ${
                       isActive(link.path)
                         ? 'text-emerald-600'
                         : 'text-slate-700 hover:text-emerald-600'
@@ -91,7 +91,7 @@ export const Navbar = () => {
                       <Link
                         to={link.path}
                         onClick={() => handleLinkClick(link.path)}
-                        className={`text-sm md:text-base font-semibold uppercase transition-colors duration-200 ${
+                        className={`text-xs md:text-sm font-semibold uppercase transition-colors duration-200 ${
                           isActive(link.path)
                             ? 'text-emerald-600'
                             : 'text-slate-700 hover:text-emerald-600'
@@ -108,9 +108,9 @@ export const Navbar = () => {
                         }}
                       >
                         {isDropdownOpen ? (
-                          <ChevronUp size={16} className="transition-transform duration-200" />
+                          <ChevronUp size={14} className="transition-transform duration-200" />
                         ) : (
-                          <ChevronDown size={16} className="transition-transform duration-200" />
+                          <ChevronDown size={14} className="transition-transform duration-200" />
                         )}
                       </button>
                     </div>
@@ -130,7 +130,7 @@ export const Navbar = () => {
                                 handleLinkClick(subLink.path);
                                 setIsDropdownOpen(false);
                               }}
-                              className={`block px-4 py-2 text-sm uppercase transition-colors duration-200 ${
+                              className={`block px-4 py-2 text-xs uppercase transition-colors duration-200 ${
                                 isActive(subLink.path)
                                   ? 'bg-emerald-50 text-emerald-600'
                                   : 'text-slate-700 hover:bg-slate-50 hover:text-emerald-600'
@@ -152,7 +152,7 @@ export const Navbar = () => {
             {/* Contact Us Button */}
             <a
               href="mailto:contact@example.com"
-              className="ml-6 px-5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold uppercase rounded-md shadow-md transition-all duration-300"
+              className="ml-4 px-5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs md:text-sm font-semibold uppercase rounded-md shadow-md transition-all duration-300"
             >
               Contact Us
             </a>
@@ -182,7 +182,7 @@ export const Navbar = () => {
                       handleLinkClick(link.path);
                       setMobileMenuOpen(false);
                     }}
-                    className={`block px-4 py-2 rounded-lg text-base font-semibold uppercase transition-colors duration-200 ${
+                    className={`block px-4 py-2 rounded-lg text-sm font-semibold uppercase transition-colors duration-200 ${
                       isActive(link.path)
                         ? 'bg-emerald-50 text-emerald-600'
                         : 'text-slate-700 hover:bg-slate-50'
@@ -203,7 +203,7 @@ export const Navbar = () => {
                           handleLinkClick(link.path);
                           setMobileMenuOpen(false);
                         }}
-                        className={`flex-1 px-4 py-2 rounded-lg text-base font-semibold uppercase transition-colors duration-200 ${
+                        className={`flex-1 px-4 py-2 rounded-lg text-sm font-semibold uppercase transition-colors duration-200 ${
                           isActive(link.path)
                             ? 'bg-emerald-50 text-emerald-600'
                             : 'text-slate-700 hover:bg-slate-50'
@@ -232,7 +232,7 @@ export const Navbar = () => {
                               setIsDropdownOpen(false);
                               setMobileMenuOpen(false);
                             }}
-                            className={`block px-4 py-2 rounded-lg text-sm uppercase transition-colors duration-200 ${
+                            className={`block px-4 py-2 rounded-lg text-xs uppercase transition-colors duration-200 ${
                               isActive(subLink.path)
                                 ? 'bg-emerald-100 text-emerald-600'
                                 : 'text-slate-700 hover:bg-slate-50'
