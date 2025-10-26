@@ -51,9 +51,9 @@ const Pricing = () => {
 
       {/* 2. Pricing Options Section */}
       <section className="py-20 bg-white">
-        <div className="max-w-6xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-slate-800 mb-12">Our Pricing Plans</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 justify-items-center">
+          <div className="flex flex-wrap justify-center gap-8">
             {pricingOptions.map((plan, idx) => (
               <Card key={idx} className="shadow-lg hover:shadow-xl transition-shadow duration-300 w-full max-w-sm">
                 <CardContent className="p-8 flex flex-col items-center text-center">
