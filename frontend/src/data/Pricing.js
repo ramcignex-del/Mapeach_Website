@@ -71,7 +71,7 @@ export const comparisonData = [
   {
     feature: "Agency Markup",
     traditional: "20-35%",
-    ourService: "Flat $499/month or $1499/month",
+    ourService: "$10 one-time + $1/hour recurring",
     ourServiceClass: "text-emerald-600 bg-emerald-50 font-semibold",
     plans: ["Startup", "Enterprise"]
   },
