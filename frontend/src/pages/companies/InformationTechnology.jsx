@@ -5,9 +5,10 @@ import { Card, CardContent } from '@/components/ui/card';
 import { CostCalculator } from '@/components/CostCalculator';
 import {
   ArrowRight,
-  Cpu,
+  Globe,
+  Workflow,
+  Binary,
   Cloud,
-  Code,
   Shield,
   Server,
   Network,
@@ -40,23 +41,28 @@ const InformationTechnology = () => {
   return (
     <div ref={topRef} tabIndex={-1} className="min-h-screen outline-none">
       {/* ========================================================== */}
-      {/* HERO SECTION — Mirrors “Clinical & Digital Excellence” */}
+      {/* HERO SECTION — “Digital Transformation & IT Excellence” */}
       {/* ========================================================== */}
-      <section className="relative py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-emerald-50/40 to-teal-50/40 overflow-hidden">
-        {/* Background pattern grid */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(16,185,129,0.15),_transparent_60%)]" />
+      <section className="relative py-24 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-sky-50 via-emerald-50/40 to-blue-50/40 overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(37,99,235,0.15),_transparent_60%)]" />
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center relative z-10">
-          {/* LEFT: IT Visual Banner */}
+          {/* LEFT VISUAL — Digital Transformation Graphic */}
           <div className="hidden md:flex justify-center lg:justify-start">
-            <div className="w-full max-w-lg h-96 bg-emerald-50 rounded-xl shadow-2xl flex items-center justify-center p-8">
-              <Cpu className="w-24 h-24 text-emerald-600" />
-              <span className="text-2xl font-bold text-emerald-700 ml-4">
-                Digital Innovation & IT Excellence
-              </span>
+            <div className="w-full max-w-lg h-96 bg-gradient-to-br from-emerald-100 via-sky-100 to-teal-100 rounded-2xl shadow-2xl flex flex-col items-center justify-center p-10 relative overflow-hidden">
+              <div className="absolute -top-6 -left-6 w-40 h-40 bg-emerald-200 rounded-full opacity-40 blur-2xl" />
+              <div className="absolute -bottom-8 -right-8 w-48 h-48 bg-sky-300 rounded-full opacity-30 blur-3xl" />
+              <div className="flex flex-col items-center space-y-6 relative z-10">
+                <Globe className="w-16 h-16 text-emerald-600" />
+                <Workflow className="w-12 h-12 text-sky-600" />
+                <Binary className="w-12 h-12 text-emerald-500" />
+                <span className="text-2xl font-bold text-emerald-700 text-center leading-snug">
+                  Digital Transformation & IT Excellence
+                </span>
+              </div>
             </div>
           </div>
 
-          {/* RIGHT: Content */}
+          {/* RIGHT CONTENT */}
           <div className="lg:col-start-2 text-center lg:text-left">
             <h1 className="text-5xl md:text-6xl font-extrabold text-slate-900 mb-6 leading-tight">
               {pageText.hero.title}
@@ -124,7 +130,7 @@ const InformationTechnology = () => {
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-3xl font-bold text-slate-800 mb-12">
-            Digital & IT Excellence
+            Digital & IT Expertise
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
             {itRoles.map((category, idx) => (
@@ -139,9 +145,7 @@ const InformationTechnology = () => {
                   <ul className="space-y-4 text-left">
                     {category.items.map((item, subIdx) => (
                       <li key={subIdx}>
-                        <p className="font-medium text-slate-800">
-                          {item.role}
-                        </p>
+                        <p className="font-medium text-slate-800">{item.role}</p>
                         <p className="text-sm text-slate-500">
                           Skills: {item.skills.join(', ')}
                         </p>
@@ -156,7 +160,7 @@ const InformationTechnology = () => {
       </section>
 
       {/* ========================================================== */}
-      {/* COST CALCULATOR SECTION */}
+      {/* COST CALCULATOR */}
       {/* ========================================================== */}
       <section id="calculator" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto text-center">
