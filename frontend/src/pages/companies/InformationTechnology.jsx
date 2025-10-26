@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { CostCalculator } from '@/components/CostCalculator';
-import { ArrowRight, Cpu, Cloud, Database, ShieldCheck } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { pageText, benefits, hiringProcess, comparisonData, itRoles } from '@/data/InformationTechnology.js';
 import ITImage from '@/assets/IT_Theme_Image.png';
 
@@ -53,15 +53,16 @@ const InformationTechnology = () => {
       {/* Hero Section */}
       <section className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Visual Element */}
-          <div className="hidden md:flex justify-center lg:justify-start">
-            <div className="w-full max-w-lg h-96 bg-emerald-50 rounded-xl shadow-2xl flex flex-col items-center justify-center p-8 text-center">
-              <img src={ITImage} alt="Digital Transformation & IT Excellence" className="w-32 h-32 mb-6" />
-              <span className="text-2xl font-bold text-emerald-700">Digital Transformation & IT Excellence</span>
-            </div>
+          {/* Left Image */}
+          <div className="flex justify-center lg:justify-start">
+            <img
+              src={ITImage}
+              alt="Digital Transformation & IT Excellence"
+              className="w-full h-[500px] object-cover rounded-2xl shadow-2xl"
+            />
           </div>
 
-          {/* Content */}
+          {/* Right Content */}
           <div className="lg:col-start-2">
             <h1 className="text-5xl md:text-6xl font-extrabold text-slate-900 mb-6 leading-tight">
               {pageText.hero.title}
@@ -69,7 +70,10 @@ const InformationTechnology = () => {
             <p className="text-xl text-slate-600 mb-8">{pageText.hero.subtitle}</p>
             <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
               <Link to={pageText.hero.cta1.link}>
-                <Button size="lg" className="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
+                <Button
+                  size="lg"
+                  className="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
+                >
                   {pageText.hero.cta1.label}
                   <ArrowRight className="ml-2" size={20} />
                 </Button>
@@ -128,7 +132,10 @@ const InformationTechnology = () => {
           <p className="text-xl text-center text-slate-600 mb-12">{pageText.process.subheader}</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {hiringProcess.map((step, idx) => (
-              <div key={idx} className="flex flex-col items-center text-center p-6 bg-white rounded-xl shadow-lg border border-emerald-200">
+              <div
+                key={idx}
+                className="flex flex-col items-center text-center p-6 bg-white rounded-xl shadow-lg border border-emerald-200"
+              >
                 <div className="w-12 h-12 flex items-center justify-center bg-emerald-600 text-white rounded-full text-xl font-bold mb-4">
                   {step.step}
                 </div>
