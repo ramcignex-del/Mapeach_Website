@@ -1,18 +1,26 @@
+// frontend/src/pages/companies/InformationTechnology.jsx
+
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { CostCalculator } from '@/components/CostCalculator';
 import { ArrowRight } from 'lucide-react';
-import { pageText, benefits, hiringProcess, comparisonData } from '@/data/InformationTechnology.js';
+// Corrected import path for data (assuming data is at src/data/...)
+// If '@/data/InformationTechnology.js' is the correct alias path, keep it.
+// If it's a relative path to src/data, use:
+import { pageText, benefits, hiringProcess, comparisonData } from '../../data/InformationTechnology.js';
+
 
 const InformationTechnology = () => {
   const topRef = useRef(null);
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    // Standard scroll-to-top logic
+    if (typeof window !== 'undefined') {
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' });
+    }
     if (topRef.current) {
-      topRef.current.scrollIntoView({ behavior: 'auto', block: 'start' });
       topRef.current.focus();
     }
   }, []);
@@ -24,7 +32,12 @@ const InformationTechnology = () => {
     });
   };
 
-  const [titleLine1, titleLine2] = pageText.hero.title.split('talent with lightning speed');
+  // Splitting the title on the exact phrase to render the second line correctly
+  // Assuming the title in pageText is: "Hire pre-vetted IT talent with lightning speed"
+  const titleParts = pageText.hero.title.split('talent with lightning speed');
+  const titleLine1 = titleParts[0].trim(); // "Hire pre-vetted IT"
+  const coloredPhrase = "talent with lightning speed";
+
 
   return (
     <div ref={topRef} tabIndex={-1} className="min-h-screen outline-none">
@@ -33,7 +46,7 @@ const InformationTechnology = () => {
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-5xl md:text-6xl font-bold text-slate-900 leading-tight mb-6">
             {titleLine1}
-            <span className="block text-emerald-600 mt-2">talent with lightning speed</span>
+            <span className="block text-emerald-600 mt-2">{coloredPhrase}</span>
           </h1>
           <p className="text-xl text-slate-600 mb-10 leading-relaxed">{pageText.hero.subtitle}</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -64,11 +77,12 @@ const InformationTechnology = () => {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {benefits.map((benefit, idx) => {
-              const IconComponent = benefit.icon;
+              // Ensure icon component is dynamically used
+              const IconComponent = benefit.icon; 
               return (
                 <Card key={idx} className="border-2 border-slate-100 hover:border-emerald-200 hover:shadow-lg transition-all duration-300">
                   <CardContent className="p-6 text-center">
-                    <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-lg flex items-center justify-center mb-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-lg flex items-center justify-center mx-auto mb-4">
                       <IconComponent className="text-white" size={24} />
                     </div>
                     <h3 className="text-lg font-bold text-slate-900 mb-2">{benefit.title}</h3>
@@ -86,7 +100,9 @@ const InformationTechnology = () => {
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-4xl font-bold text-slate-900 mb-4">{pageText.calculator.header}</h2>
           <p className="text-xl text-slate-600 mb-12">{pageText.calculator.subheader}</p>
-          <CostCalculator />
+          <div style={{ minHeight: '800px' }}>
+             <CostCalculator />
+          </div>
         </div>
       </section>
 
