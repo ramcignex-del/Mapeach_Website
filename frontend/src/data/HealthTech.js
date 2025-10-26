@@ -10,7 +10,7 @@ export const pageText = {
       link: "/contact" 
     },
     cta2: { 
-      label: "Estimate Your Cost" 
+      label: "Calculate Your Savings" 
     }
   },
   benefits: {
