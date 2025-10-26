@@ -7,7 +7,7 @@ export const pageText = {
     subtitle: "Source the specialized expertise needed for EHR integration, regulatory compliance (HIPAA, FDA), and advanced AI/ML in digital health.",
     cta1: { 
       label: "Start Hiring Now",
-      link: "/contact" // CRITICAL FIX: The missing 'link' property
+      link: "/contact" 
     },
     cta2: { 
       label: "Estimate Your Cost" 
