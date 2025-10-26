@@ -38,7 +38,7 @@ export const Navbar = () => {
   const companyDropdownLinks = [
     { path: '/companies/informationtechnology', label: 'Information Technology' },
     { path: '/companies/healthtech', label: 'HealthTech' },
-    { path: '/companies/healthcare', label: 'Healthcare' },
+    {/*  { path: '/companies/healthcare', label: 'Healthcare' },  */}
     { path: '/companies/lifesciences', label: 'Lifesciences' },
     { path: '/companies/electronics', label: 'Electronics & Communications' },
   ];
