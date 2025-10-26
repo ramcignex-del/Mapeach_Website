@@ -58,7 +58,7 @@ const InformationTechnology = () => {
             <img
               src={ITImage}
               alt="Digital Transformation & IT Excellence"
-              className="w-full h-[500px] object-cover rounded-2xl shadow-2xl"
+              className="w-[85%] h-[420px] object-contain rounded-2xl shadow-xl"
             />
           </div>
 
@@ -132,10 +132,7 @@ const InformationTechnology = () => {
           <p className="text-xl text-center text-slate-600 mb-12">{pageText.process.subheader}</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {hiringProcess.map((step, idx) => (
-              <div
-                key={idx}
-                className="flex flex-col items-center text-center p-6 bg-white rounded-xl shadow-lg border border-emerald-200"
-              >
+              <div key={idx} className="flex flex-col items-center text-center p-6 bg-white rounded-xl shadow-lg border border-emerald-200">
                 <div className="w-12 h-12 flex items-center justify-center bg-emerald-600 text-white rounded-full text-xl font-bold mb-4">
                   {step.step}
                 </div>
