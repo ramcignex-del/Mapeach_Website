@@ -21,7 +21,11 @@ export const Footer = () => {
           {/* 1️⃣ Brand & Contact Info */}
           <div>
             <div className="flex items-center mb-4">
-              <img src={logo} alt="Mapeach Logo" className="h-8 w-auto brightness-0 invert" />
+              <img
+                src={logo}
+                alt="Mapeach Logo"
+                className="h-10 w-auto"
+              />
             </div>
             <p className="text-sm text-slate-400 leading-relaxed mb-4">
               Smarter staffing. Faster talent. Zero agency fees.
@@ -35,20 +39,20 @@ export const Footer = () => {
               >
                 <Mail size={18} />
               </a>
-              <a
-                href="#"
-                className="p-2 bg-slate-800 rounded-lg hover:bg-emerald-600 transition-colors"
-                aria-label="LinkedIn"
+
+              {/* Disabled LinkedIn and Twitter */}
+              <div
+                className="p-2 bg-slate-800 rounded-lg opacity-50 cursor-not-allowed"
+                title="Coming soon"
               >
                 <Linkedin size={18} />
-              </a>
-              <a
-                href="#"
-                className="p-2 bg-slate-800 rounded-lg hover:bg-emerald-600 transition-colors"
-                aria-label="Twitter"
+              </div>
+              <div
+                className="p-2 bg-slate-800 rounded-lg opacity-50 cursor-not-allowed"
+                title="Coming soon"
               >
                 <Twitter size={18} />
-              </a>
+              </div>
             </div>
           </div>
 
