@@ -5,6 +5,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { CostCalculator } from '@/components/CostCalculator';
 import { ArrowRight, Cpu, Cloud, Database, ShieldCheck } from 'lucide-react';
 import { pageText, benefits, hiringProcess, comparisonData, itRoles } from '@/data/InformationTechnology.js';
+import ITImage from '@/assets/IT_Theme_Image.png';
 
 const ExpertiseSection = ({ rolesData }) => (
   <section className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-50">
