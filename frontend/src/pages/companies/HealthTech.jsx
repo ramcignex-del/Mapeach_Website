@@ -8,8 +8,7 @@ import { ArrowRight, Heart, Stethoscope } from 'lucide-react';
 // Import all data, including the extensive roles list
 import { pageText, benefits, hiringProcess, comparisonData, healthcareRoles } from '@/data/HealthTech.js';
 
-// --- Expertise Section Component (RolesSection equivalent) ---
-// Note: This component displays the extensive list of HealthTech roles.
+// --- Expertise Section Component ---
 const ExpertiseSection = ({ rolesData }) => (
   <section className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-50">
     <div className="max-w-7xl mx-auto">
@@ -59,7 +58,7 @@ const HealthTech = () => {
   return (
     <div className="pt-20">
 
-      {/* Hero Section: Layout matches ElectronicsCommunications */}
+      {/* Hero Section */}
       <section className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
@@ -68,6 +67,7 @@ const HealthTech = () => {
             </h1>
             <p className="text-xl text-slate-600 mb-8">{pageText.hero.subtitle}</p>
             <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+              {/* FIX ADDRESSING THE TYPE ERROR: pageText.hero.cta1.link is now correctly defined */}
               <Link to={pageText.hero.cta1.link}>
                 <Button size="lg" className="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
                   {pageText.hero.cta1.label}
@@ -94,7 +94,7 @@ const HealthTech = () => {
         </div>
       </section>
 
-      {/* Benefits Section: Layout matches ElectronicsCommunications */}
+      {/* Benefits Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl font-bold text-center text-slate-800 mb-4">{pageText.benefits.header}</h2>
@@ -116,10 +116,10 @@ const HealthTech = () => {
         </div>
       </section>
 
-      {/* Roles / Expertise Section: Layout matches ElectronicsCommunications */}
+      {/* Roles / Expertise Section (with extensive list) */}
       <ExpertiseSection rolesData={healthcareRoles} />
 
-      {/* Cost Calculator Section: Layout matches ElectronicsCommunications */}
+      {/* Cost Calculator Section */}
       <section id="calculator" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-3xl font-bold text-slate-800 mb-4">{pageText.calculator.header}</h2>
@@ -128,7 +128,7 @@ const HealthTech = () => {
         </div>
       </section>
 
-      {/* Hiring Process Section: Layout matches ElectronicsCommunications */}
+      {/* Hiring Process Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-emerald-50">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl font-bold text-center text-slate-800 mb-4">{pageText.process.header}</h2>
@@ -145,7 +145,7 @@ const HealthTech = () => {
         </div>
       </section>
 
-      {/* Comparison Table Section: Layout matches ElectronicsCommunications */}
+      {/* Comparison Table Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl font-bold text-center text-slate-800 mb-12">{pageText.comparison.header}</h2>
@@ -172,7 +172,7 @@ const HealthTech = () => {
         </div>
       </section>
 
-      {/* CTA Section: Layout matches ElectronicsCommunications */}
+      {/* CTA Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-emerald-600 to-teal-600 text-white">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">{pageText.ctaSection.title}</h2>
