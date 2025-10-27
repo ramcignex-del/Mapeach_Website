@@ -13,6 +13,7 @@ import Contact from "./pages/Contact";
 import Jobs from "./pages/Jobs";
 import MapeachFAQ from "./pages/MapeachFAQ";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import PrivacyPolicy from "./pages/Enquiry";
 
 // Sector Pages
 import InformationTechnology from './pages/companies/InformationTechnology';
@@ -40,6 +41,7 @@ function App() {
             <Route path="/jobs" element={<Jobs />} />
             <Route path="/MapeachFAQ" element={<MapeachFAQ />} />
             <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
+            <Route path="/enquiry" element={<Enquiry />} />
 
             {/* Sector Routes */}
             <Route path="/companies/informationtechnology" element={<InformationTechnology />} />
