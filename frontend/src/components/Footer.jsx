@@ -100,7 +100,7 @@ export const Footer = () => {
               </li>
               <li>
                 <Link
-                  to="/Enquiry"
+                  to="/enquiry"
                   onClick={() => handleLinkClick('/Enquiry')}
                   className="hover:text-emerald-400 transition-colors"
                 >
