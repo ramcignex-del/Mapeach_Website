@@ -13,7 +13,7 @@ import Contact from "./pages/Contact";
 import Jobs from "./pages/Jobs";
 import MapeachFAQ from "./pages/MapeachFAQ";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
-import PrivacyPolicy from "./pages/Enquiry";
+import Enquiry from "./pages/Enquiry";
 
 // Sector Pages
 import InformationTechnology from './pages/companies/InformationTechnology';
