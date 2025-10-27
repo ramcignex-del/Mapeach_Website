@@ -98,6 +98,15 @@ export const Footer = () => {
                   FAQ
                 </Link>
               </li>
+              <li>
+                <Link
+                  to="/Enquiry"
+                  onClick={() => handleLinkClick('/Enquiry')}
+                  className="hover:text-emerald-400 transition-colors"
+                >
+                  Enquiry Form
+                </Link>
+              </li>
             </ul>
           </div>
 
