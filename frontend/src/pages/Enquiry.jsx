@@ -94,27 +94,14 @@ const Enquiry = () => {
     const container = document.getElementById("zoho-form-container");
     if (container) container.innerHTML = formHTML;
 
-    const form = document.getElementById("zohoForm");
     const iframe = document.getElementById("hidden_iframe");
-
-    // When the form submits, watch for iframe load (Zoho response)
     if (iframe) {
       iframe.onload = () => {
-        // Hide the form container after submission
         const formDiv = document.getElementById("zoho-form-container");
         if (formDiv) formDiv.style.display = "none";
+        window.scrollTo({ top: 0, behavior: "smooth" });
         setSubmitted(true);
       };
-    }
-
-    // Also add event listener to prevent double submit
-    if (form) {
-      form.addEventListener("submit", () => {
-        setTimeout(() => {
-          const formDiv = document.getElementById("zoho-form-container");
-          if (formDiv) formDiv.style.opacity = "0.3";
-        }, 100);
-      });
     }
   }, []);
 
@@ -122,9 +109,28 @@ const Enquiry = () => {
     <div className="min-h-screen bg-gray-50 py-10 px-4">
       <div id="zoho-form-container" />
       {submitted && (
-        <div className="flex flex-col items-center justify-center text-center py-20">
-          <div className="text-5xl text-green-600 mb-4">✔️</div>
-          <h2 className="text-2xl font-semibold text-gray-800 mb-2">
+        <div className="flex flex-col items-center justify-center text-center py-20 animate-fadeIn">
+          <div
+            className="mb-6 rounded-full p-4 text-white"
+            style={{
+              background: "linear-gradient(0deg,#0279FF 0%,#00A3F3 100%)",
+            }}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-10 w-10"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+          </div>
+          <h2
+            className="text-2xl font-semibold text-gray-800 mb-2"
+            style={{ color: "#0279FF" }}
+          >
             Thank You!
           </h2>
           <p className="text-gray-600 mb-6 max-w-lg">
@@ -132,7 +138,10 @@ const Enquiry = () => {
           </p>
           <button
             onClick={() => navigate("/")}
-            className="px-6 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition"
+            className="px-6 py-2 rounded-lg text-white transition"
+            style={{
+              background: "linear-gradient(0deg,#0279FF 0%,#00A3F3 100%)",
+            }}
           >
             Back to Home
           </button>
