@@ -6,7 +6,6 @@ const Enquiry = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // create Zoho Webform HTML
     const formHTML = `
       <div id='crmWebToEntityForm'
         style='background-color:white;color:#000;max-width:800px;margin:40px auto;
@@ -95,21 +94,34 @@ const Enquiry = () => {
     const container = document.getElementById("zoho-form-container");
     if (container) container.innerHTML = formHTML;
 
-    // Listen for iframe load event = submission done
+    const form = document.getElementById("zohoForm");
     const iframe = document.getElementById("hidden_iframe");
+
+    // When the form submits, watch for iframe load (Zoho response)
     if (iframe) {
       iframe.onload = () => {
-        // When form submission finishes, show thank-you inside app
+        // Hide the form container after submission
+        const formDiv = document.getElementById("zoho-form-container");
+        if (formDiv) formDiv.style.display = "none";
         setSubmitted(true);
       };
+    }
+
+    // Also add event listener to prevent double submit
+    if (form) {
+      form.addEventListener("submit", () => {
+        setTimeout(() => {
+          const formDiv = document.getElementById("zoho-form-container");
+          if (formDiv) formDiv.style.opacity = "0.3";
+        }, 100);
+      });
     }
   }, []);
 
   return (
     <div className="min-h-screen bg-gray-50 py-10 px-4">
-      {!submitted ? (
-        <div id="zoho-form-container" />
-      ) : (
+      <div id="zoho-form-container" />
+      {submitted && (
         <div className="flex flex-col items-center justify-center text-center py-20">
           <div className="text-5xl text-green-600 mb-4">✔️</div>
           <h2 className="text-2xl font-semibold text-gray-800 mb-2">
