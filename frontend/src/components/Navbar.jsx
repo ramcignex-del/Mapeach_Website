@@ -150,12 +150,14 @@ export const Navbar = () => {
             })}
 
             {/* Contact Us Button */}
-            <a
-              href="mailto:contact@example.com"
+           <Link
+              to="/enquiry"
+              onClick={() => handleLinkClick('/enquiry')}
               className="ml-4 px-5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs md:text-sm font-semibold uppercase rounded-md shadow-md transition-all duration-300"
             >
               Contact Us
-            </a>
+            </Link>
+            
           </div>
 
           {/* Mobile Menu Toggle */}
