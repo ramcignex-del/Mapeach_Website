@@ -1,19 +1,21 @@
 import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Enquiry = () => {
+  const navigate = useNavigate();
+
   useEffect(() => {
-    // Inject Zoho form dynamically
     const formHTML = `
       <div id='crmWebToEntityForm' class='zcwf_lblLeft crmWebToEntityForm'
-        style='background-color: white; color: black; max-width: 600px; margin: 40px auto; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);'>
+        style='background-color: white; color: black; max-width: 800px; margin: 50px auto; border-radius: 12px; box-shadow: 0 6px 20px rgba(0,0,0,0.08);'>
         <meta name='viewport' content='width=device-width, initial-scale=1.0'>
         <meta http-equiv='content-type' content='text/html;charset=UTF-8'>
         <style>
           html, body { margin: 0; font-family: "Inter", Arial, sans-serif; }
-          #crmWebToEntityForm { text-align: left; box-sizing: border-box; padding: 30px; }
-          .zcwf_title { text-align: center; font-size: 24px; font-weight: 700; margin-bottom: 20px; color: #1e40af; }
-          .zcwf_row { display: flex; flex-wrap: wrap; margin-bottom: 16px; align-items: center; }
-          .zcwf_col_lab { width: 30%; font-size: 14px; color: #333; font-weight: 500; }
+          #crmWebToEntityForm { text-align: left; box-sizing: border-box; padding: 40px; }
+          .zcwf_title { text-align: center; font-size: 26px; font-weight: 700; margin-bottom: 25px; color: #1e40af; }
+          .zcwf_row { display: flex; flex-wrap: wrap; margin-bottom: 18px; align-items: center; }
+          .zcwf_col_lab { width: 25%; font-size: 14px; color: #333; font-weight: 500; }
           .zcwf_col_fld { width: 70%; }
           .zcwf_col_fld input[type="text"],
           .zcwf_col_fld input[type="email"],
@@ -34,28 +36,28 @@ const Enquiry = () => {
             box-shadow: 0 0 0 2px rgba(37,99,235,0.2);
           }
 
-          /* Buttons centered */
+          /* Buttons */
           .zcwf_row_buttons {
             display: flex;
             justify-content: center;
-            margin-top: 20px;
-            gap: 10px;
+            margin-top: 25px;
+            gap: 15px;
           }
 
           .zcwf_button, .formsubmit {
-            background: linear-gradient(0deg, #0279FF 0%, #00A3F3 100%);
+            background: linear-gradient(90deg, #0284c7 0%, #0ea5e9 100%);
             color: #fff;
             border: none;
             border-radius: 6px;
             padding: 10px 24px;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 15px;
             font-weight: 600;
-            transition: opacity 0.3s ease;
+            transition: transform 0.2s ease, opacity 0.3s ease;
           }
-          .zcwf_button:hover, .formsubmit:hover { opacity: 0.9; }
+          .zcwf_button:hover, .formsubmit:hover { opacity: 0.9; transform: scale(1.03); }
 
-          /* Success message splash */
+          /* Success Splash */
           .wf_customMessageBox {
             font-family: Inter, Arial, sans-serif;
             color: #132C14;
@@ -63,27 +65,38 @@ const Enquiry = () => {
             box-shadow: 0 2px 8px 0 rgba(0,0,0,0.25);
             border-radius: 8px;
             border: 1px solid #A9D3AB;
-            padding: 12px 18px;
+            padding: 20px 25px;
             display: none;
             position: fixed;
-            top: 20px; left: 50%;
-            transform: translateX(-50%);
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             z-index: 9999;
             font-weight: 500;
+            text-align: center;
+            width: 300px;
+          }
+          .wf_customClose {
+            position: absolute;
+            top: 6px; right: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #444;
+            cursor: pointer;
           }
           .wf_customCircle {
             position: relative;
             background-color: #12AA67;
             border-radius: 100%;
-            width: 22px; height: 22px;
+            width: 24px; height: 24px;
             display: inline-block;
-            margin-right: 8px;
+            margin-bottom: 10px;
           }
           .wf_customCheckMark {
             position: absolute;
             transform: rotate(45deg) translate(-50%, -50%);
-            left: 6px; top: 10px;
-            height: 8px; width: 3px;
+            left: 7px; top: 11px;
+            height: 9px; width: 4px;
             border-bottom: 2px solid #fff;
             border-right: 2px solid #fff;
           }
@@ -91,11 +104,11 @@ const Enquiry = () => {
 
         <div class='zcwf_title'>Staffing Enquiry Form</div>
 
-        <form id='webform2271888000001020071' name='WebToLeads2271888000001020071' accept-charset='UTF-8'>
+        <form id='webform2271888000001020071' name='WebToLeads2271888000001020071' method='POST' accept-charset='UTF-8'>
           <input type='hidden' name='xnQsjsdp' value='d0fec9be3236f56777953b739de80c2607c7a6de91f3bcafeac8e25df1c7aa61'>
           <input type='hidden' name='xmIwtLD' value='1b2ae8b8b645ade0c17f21ee78b35e0e1588eef513721ea030a5e1212d51f888c5f2c5cfb20d63649d0f5597a78df4d8'>
           <input type='hidden' name='actionType' value='TGVhZHM='>
-          <input type='hidden' name='returnURL' value=''>
+          <input type='hidden' name='returnURL' value='https://www.mapeach.com'>
           <input type='hidden' id='ldeskuid' name='ldeskuid'>
           <input type='hidden' id='LDTuvid' name='LDTuvid'>
 
@@ -126,8 +139,9 @@ const Enquiry = () => {
           </div>
 
           <div class='wf_customMessageBox' id='wf_splash'>
+            <div class='wf_customClose' id='wf_close'>×</div>
             <div class='wf_customCircle'><div class='wf_customCheckMark'></div></div>
-            <span id='wf_splash_info'>Form submitted successfully!</span>
+            <div id='wf_splash_info'>Form submitted successfully!</div>
           </div>
         </form>
       </div>
@@ -136,7 +150,7 @@ const Enquiry = () => {
     const container = document.getElementById("zoho-form-container");
     if (container) container.innerHTML = formHTML;
 
-    // Load Zoho’s AJAX handler with jQuery
+    // Load Zoho AJAX form handling
     const script = document.createElement("script");
     script.src = "https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js";
     script.onload = () => {
@@ -144,6 +158,7 @@ const Enquiry = () => {
       $("#webform2271888000001020071").on("submit", function (e) {
         e.preventDefault();
         const formData = new FormData(this);
+
         $.ajax({
           url: "https://crm.zoho.com/crm/WebToLeadForm",
           type: "POST",
@@ -153,7 +168,10 @@ const Enquiry = () => {
           processData: false,
           success: function () {
             $("#wf_splash").fadeIn();
-            setTimeout(() => $("#wf_splash").fadeOut(), 4000);
+            setTimeout(() => {
+              $("#wf_splash").fadeOut();
+              window.location.href = "/";
+            }, 2500);
             $("#webform2271888000001020071")[0].reset();
           },
           error: function () {
@@ -161,9 +179,15 @@ const Enquiry = () => {
           },
         });
       });
+
+      // Close splash manually
+      $(document).on("click", "#wf_close", function () {
+        $("#wf_splash").fadeOut();
+        window.location.href = "/";
+      });
     };
     document.body.appendChild(script);
-  }, []);
+  }, [navigate]);
 
   return (
     <div className="min-h-screen bg-gray-50 py-10 flex justify-center items-start">
