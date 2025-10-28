@@ -253,12 +253,13 @@ export const Navbar = () => {
             })}
 
             {/* Mobile Contact Button */}
-            <a
-              href="mailto:contact@example.com"
-              className="block w-full text-center px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold uppercase rounded-md shadow-md transition-all duration-300"
-            >
-              Contact Us
-            </a>
+          <Link
+            to="/enquiry"
+            onClick={() => handleLinkClick('/enquiry')}
+            className="ml-4 px-5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs md:text-sm font-semibold uppercase rounded-md shadow-md transition-all duration-300"
+          >
+            Contact Us
+        </Link>
           </div>
         </div>
       )}
