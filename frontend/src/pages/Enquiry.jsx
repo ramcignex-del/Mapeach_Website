@@ -2,76 +2,94 @@ import React, { useEffect } from "react";
 
 const Enquiry = () => {
   useEffect(() => {
-    // Inject Zoho form script dynamically
+    // Inject Zoho form dynamically
     const formHTML = `
       <div id='crmWebToEntityForm' class='zcwf_lblLeft crmWebToEntityForm'
-        style='background-color: white; color: black; max-width: 600px; margin: 40px auto;'>
+        style='background-color: white; color: black; max-width: 600px; margin: 40px auto; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);'>
         <meta name='viewport' content='width=device-width, initial-scale=1.0'>
         <meta http-equiv='content-type' content='text/html;charset=UTF-8'>
         <style>
-          html, body { margin: 0; font-family: Arial, sans-serif; }
-          #crmWebToEntityForm { text-align: left; box-sizing: border-box; padding: 20px; }
-          .zcwf_title { text-align: center; font-size: 20px; font-weight: bold; margin-bottom: 15px; color: #132C14; }
-          .zcwf_row { display: flex; flex-wrap: wrap; margin-bottom: 15px; align-items: center; }
-          .zcwf_col_lab { width: 30%; font-size: 13px; color: #333; }
-          .zcwf_col_fld { width: 65%; }
+          html, body { margin: 0; font-family: "Inter", Arial, sans-serif; }
+          #crmWebToEntityForm { text-align: left; box-sizing: border-box; padding: 30px; }
+          .zcwf_title { text-align: center; font-size: 24px; font-weight: 700; margin-bottom: 20px; color: #1e40af; }
+          .zcwf_row { display: flex; flex-wrap: wrap; margin-bottom: 16px; align-items: center; }
+          .zcwf_col_lab { width: 30%; font-size: 14px; color: #333; font-weight: 500; }
+          .zcwf_col_fld { width: 70%; }
           .zcwf_col_fld input[type="text"],
+          .zcwf_col_fld input[type="email"],
           .zcwf_col_fld textarea {
             width: 100%;
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 13px;
+            padding: 10px 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            background-color: #fff;
+            font-size: 14px;
             color: #000;
+            transition: border 0.2s ease, box-shadow 0.2s ease;
           }
-          .zcwf_col_fld input[type="text"]:focus,
+          .zcwf_col_fld input:focus,
           .zcwf_col_fld textarea:focus {
             outline: none;
-            border-color: #007bff;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 2px rgba(37,99,235,0.2);
           }
+
+          /* Buttons centered */
+          .zcwf_row_buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 10px;
+          }
+
           .zcwf_button, .formsubmit {
             background: linear-gradient(0deg, #0279FF 0%, #00A3F3 100%);
             color: #fff;
             border: none;
-            border-radius: 5px;
-            padding: 8px 16px;
+            border-radius: 6px;
+            padding: 10px 24px;
             cursor: pointer;
-            font-size: 13px;
+            font-size: 14px;
+            font-weight: 600;
+            transition: opacity 0.3s ease;
           }
           .zcwf_button:hover, .formsubmit:hover { opacity: 0.9; }
+
+          /* Success message splash */
           .wf_customMessageBox {
-            font-family: Arial, sans-serif;
+            font-family: Inter, Arial, sans-serif;
             color: #132C14;
             background: #F5FAF5;
-            box-shadow: 0 2px 6px 0 rgba(0,0,0,0.25);
-            border-radius: 6px;
+            box-shadow: 0 2px 8px 0 rgba(0,0,0,0.25);
+            border-radius: 8px;
             border: 1px solid #A9D3AB;
-            padding: 10px 15px;
+            padding: 12px 18px;
             display: none;
             position: fixed;
             top: 20px; left: 50%;
             transform: translateX(-50%);
             z-index: 9999;
+            font-weight: 500;
           }
           .wf_customCircle {
             position: relative;
             background-color: #12AA67;
             border-radius: 100%;
-            width: 20px; height: 20px;
+            width: 22px; height: 22px;
             display: inline-block;
             margin-right: 8px;
           }
           .wf_customCheckMark {
             position: absolute;
             transform: rotate(45deg) translate(-50%, -50%);
-            left: 6px; top: 9px;
+            left: 6px; top: 10px;
             height: 8px; width: 3px;
             border-bottom: 2px solid #fff;
             border-right: 2px solid #fff;
           }
         </style>
 
-        <div class='zcwf_title'>Staffing Enquiry</div>
+        <div class='zcwf_title'>Staffing Enquiry Form</div>
 
         <form id='webform2271888000001020071' name='WebToLeads2271888000001020071' accept-charset='UTF-8'>
           <input type='hidden' name='xnQsjsdp' value='d0fec9be3236f56777953b739de80c2607c7a6de91f3bcafeac8e25df1c7aa61'>
@@ -81,44 +99,30 @@ const Enquiry = () => {
           <input type='hidden' id='ldeskuid' name='ldeskuid'>
           <input type='hidden' id='LDTuvid' name='LDTuvid'>
 
-          <div class='zcwf_row'>
-            <div class='zcwf_col_lab'><label>Company<span style='color:red;'>*</span></label></div>
-            <div class='zcwf_col_fld'><input type='text' name='Company' maxlength='200' required /></div>
-          </div>
+          <div class='zcwf_row'><div class='zcwf_col_lab'><label>Company<span style='color:red;'>*</span></label></div>
+          <div class='zcwf_col_fld'><input type='text' name='Company' maxlength='200' required /></div></div>
 
-          <div class='zcwf_row'>
-            <div class='zcwf_col_lab'><label>First Name<span style='color:red;'>*</span></label></div>
-            <div class='zcwf_col_fld'><input type='text' name='First Name' maxlength='40' required /></div>
-          </div>
+          <div class='zcwf_row'><div class='zcwf_col_lab'><label>First Name<span style='color:red;'>*</span></label></div>
+          <div class='zcwf_col_fld'><input type='text' name='First Name' maxlength='40' required /></div></div>
 
-          <div class='zcwf_row'>
-            <div class='zcwf_col_lab'><label>Last Name<span style='color:red;'>*</span></label></div>
-            <div class='zcwf_col_fld'><input type='text' name='Last Name' maxlength='80' required /></div>
-          </div>
+          <div class='zcwf_row'><div class='zcwf_col_lab'><label>Last Name<span style='color:red;'>*</span></label></div>
+          <div class='zcwf_col_fld'><input type='text' name='Last Name' maxlength='80' required /></div></div>
 
-          <div class='zcwf_row'>
-            <div class='zcwf_col_lab'><label>Title<span style='color:red;'>*</span></label></div>
-            <div class='zcwf_col_fld'><input type='text' name='Designation' maxlength='100' required /></div>
-          </div>
+          <div class='zcwf_row'><div class='zcwf_col_lab'><label>Title<span style='color:red;'>*</span></label></div>
+          <div class='zcwf_col_fld'><input type='text' name='Designation' maxlength='100' required /></div></div>
 
-          <div class='zcwf_row'>
-            <div class='zcwf_col_lab'><label>Email<span style='color:red;'>*</span></label></div>
-            <div class='zcwf_col_fld'><input type='email' name='Email' maxlength='100' required /></div>
-          </div>
+          <div class='zcwf_row'><div class='zcwf_col_lab'><label>Email<span style='color:red;'>*</span></label></div>
+          <div class='zcwf_col_fld'><input type='email' name='Email' maxlength='100' required /></div></div>
 
-          <div class='zcwf_row'>
-            <div class='zcwf_col_lab'><label>Country<span style='color:red;'>*</span></label></div>
-            <div class='zcwf_col_fld'><input type='text' name='Country' maxlength='100' required /></div>
-          </div>
+          <div class='zcwf_row'><div class='zcwf_col_lab'><label>Country<span style='color:red;'>*</span></label></div>
+          <div class='zcwf_col_fld'><input type='text' name='Country' maxlength='100' required /></div></div>
 
-          <div class='zcwf_row'>
-            <div class='zcwf_col_lab'><label>Description</label></div>
-            <div class='zcwf_col_fld'><textarea name='Description' rows='3'></textarea></div>
-          </div>
+          <div class='zcwf_row'><div class='zcwf_col_lab'><label>Description</label></div>
+          <div class='zcwf_col_fld'><textarea name='Description' rows='3'></textarea></div></div>
 
-          <div class='zcwf_row' style='text-align:center;'>
+          <div class='zcwf_row_buttons'>
             <input type='submit' class='formsubmit' value='Submit' />
-            <input type='reset' class='zcwf_button' value='Reset' style='margin-left:8px;' />
+            <input type='reset' class='zcwf_button' value='Reset' />
           </div>
 
           <div class='wf_customMessageBox' id='wf_splash'>
@@ -132,11 +136,10 @@ const Enquiry = () => {
     const container = document.getElementById("zoho-form-container");
     if (container) container.innerHTML = formHTML;
 
-    // Load Zoho’s AJAX form behavior
+    // Load Zoho’s AJAX handler with jQuery
     const script = document.createElement("script");
     script.src = "https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js";
     script.onload = () => {
-      // Activate Zoho CRM form submit handler
       const $ = window.jQuery;
       $("#webform2271888000001020071").on("submit", function (e) {
         e.preventDefault();
@@ -163,7 +166,7 @@ const Enquiry = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-50 py-10">
+    <div className="min-h-screen bg-gray-50 py-10 flex justify-center items-start">
       <div id="zoho-form-container" />
     </div>
   );
