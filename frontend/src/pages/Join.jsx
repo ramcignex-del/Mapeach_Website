@@ -237,9 +237,8 @@ const Join = () => {
               We'll review your application and get back to you within 48 hours
             </p>
             <div style={{minHeight:'1900px', width:'100%'}}>
-            
-
-              
+    {/*
+      
 		<iframe src="https://mapeach.zohorecruit.com/forms/107fc4375102dc34784ed2753b3977f45b126c6685fcb0be49aeff4c698156b9"
 			title="Application Form"
 		        width="100%"
@@ -249,7 +248,48 @@ const Join = () => {
 		
 		>
 		</iframe>
-                            
+       */}
+{/* Embedded Application Form */}
+<section id="apply" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+  <div className="max-w-7xl mx-auto text-center">
+    <h2 className="text-4xl font-bold text-slate-900 mb-4">Register Here</h2>
+    <p className="text-xl text-slate-600 mb-10">
+      We'll review your application and get back to you within 48 hours.
+    </p>
+
+    <div
+      className="relative w-full border-2 border-slate-100 rounded-xl shadow-md overflow-hidden"
+      style={{
+        height: 'calc(100vh - 200px)', // Adjusts automatically with viewport
+        minHeight: '850px',
+      }}
+    >
+      <iframe
+        src="https://mapeach.zohorecruit.com/forms/107fc4375102dc34784ed2753b3977f45b126c6685fcb0be49aeff4c698156b9"
+        title="Application Form"
+        className="absolute inset-0 w-full h-full border-0"
+        frameBorder="0"
+        scrolling="yes"
+        allowFullScreen
+      ></iframe>
+    </div>
+
+    <p className="text-sm text-slate-500 mt-6">
+      Having trouble with the form?{' '}
+      <a
+        href="https://mapeach.zohorecruit.com/forms/107fc4375102dc34784ed2753b3977f45b126c6685fcb0be49aeff4c698156b9"
+        target="_self"
+        rel="noopener noreferrer"
+        className="text-emerald-600 underline hover:text-emerald-700"
+      >
+        Click here to open directly
+      </a>
+      .
+    </p>
+  </div>
+</section>
+
+				
             </div>
           </div>
 
