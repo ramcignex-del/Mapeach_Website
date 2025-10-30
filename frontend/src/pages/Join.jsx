@@ -240,24 +240,16 @@ const Join = () => {
             
 
               
-<iframe src="https://mapeach.zohorecruit.com/forms/107fc4375102dc34784ed2753b3977f45b126c6685fcb0be49aeff4c698156b9"
-	title="Application Form"
-        width="100%"
-        height="1900px"
-        allowFullScreen
-        className="w-full border-0"
-
->
-</iframe>
-                  title="Application Form"
-                  width="100%"
-                  height="1900px"
-                  allowFullScreen
-                  className="w-full border-0" 
-              >
-              </iframe>
-
-              
+		<iframe src="https://mapeach.zohorecruit.com/forms/107fc4375102dc34784ed2753b3977f45b126c6685fcb0be49aeff4c698156b9"
+			title="Application Form"
+		        width="100%"
+		        height="1900px"
+		        allowFullScreen
+		        className="w-full border-0"
+		
+		>
+		</iframe>
+                            
             </div>
           </div>
 
