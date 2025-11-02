@@ -17,6 +17,17 @@ code {
         source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
+/* --- Zoho Recruit pagination fix --- */
+.embed_jobs_pagination {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: relative !important;
+}
+
 @layer base {
     :root {
         --background: 0 0% 100%;
