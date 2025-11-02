@@ -21,14 +21,14 @@ const ZohoRecruitCareers = () => {
           widget_id: 'rec_job_listing_div',
           page_name: 'Careers',
           source: 'CareerSite',
-          site: 'https://mapeach.zohorecruit.com', // ✅ must match your Recruit site domain
+          site: 'https://mapeach.zohorecruit.com/careers', // ✅ Use your exact site URL
           brand_color: '#6875E2',
           empty_job_msg: 'No current Openings',
-          page_limit: 10, // ✅ shows 10 jobs per page
-          enable_pagination: true, // ✅ force pagination bar to render
+          page_limit: 10, // ✅ Shows 10 jobs per page
+          enable_pagination: true, // ✅ Ensures pagination appears
         });
       } else {
-        // Retry in case Zoho script isn't ready yet
+        // Retry if Zoho script hasn't fully loaded yet
         setTimeout(initializeZohoWidget, 500);
       }
     };
@@ -52,8 +52,8 @@ const ZohoRecruitCareers = () => {
       className="embed_jobs_head embed_jobs_with_style_3"
       style={{
         width: '100%',
-        minHeight: '100vh', // 👈 lets the container grow with content
-        overflow: 'visible', // 👈 ensures pagination isn't hidden
+        minHeight: '100vh',
+        overflow: 'visible',
         margin: 0,
         padding: 0,
         boxSizing: 'border-box',
