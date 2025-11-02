@@ -20,6 +20,7 @@ const ZohoRecruitCareers = () => {
 
     const initializeZohoWidget = () => {
       if (window.rec_embed_js) {
+        // 👇 Here's where you add the page_limit parameter
         window.rec_embed_js.load({
           widget_id: 'rec_job_listing_div',
           page_name: 'Careers',
@@ -27,6 +28,7 @@ const ZohoRecruitCareers = () => {
           site: 'https://mapeach.zohorecruit.com',
           brand_color: '#6875E2',
           empty_job_msg: 'No current Openings',
+          page_limit: 10, // ✅ Enables pagination (10 jobs per page)
         });
       }
     };
@@ -48,8 +50,8 @@ const ZohoRecruitCareers = () => {
       className="embed_jobs_head embed_jobs_with_style_3"
       style={{
         width: '100%',
-        minHeight: '100vh', // allows growth
-        overflow: 'visible',
+        minHeight: '100vh', // 👈 allow it to expand
+        overflow: 'visible', // 👈 so pagination isn't clipped
         margin: 0,
         padding: 0,
         boxSizing: 'border-box',
@@ -65,5 +67,3 @@ const ZohoRecruitCareers = () => {
 };
 
 export default ZohoRecruitCareers;
-
-
