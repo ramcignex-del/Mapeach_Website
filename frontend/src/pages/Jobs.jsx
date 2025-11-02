@@ -14,26 +14,28 @@ const ZohoRecruitCareers = () => {
       document.head.appendChild(link);
     }
 
-    // --- Load Zoho Recruit JS ---
-    const scriptId = 'zoho-embed-jobs-js';
-    const existingScript = document.getElementById(scriptId);
-
+    // --- Function to initialize Zoho widget ---
     const initializeZohoWidget = () => {
-      if (window.rec_embed_js) {
-        // 👇 Here's where you add the page_limit parameter
+      if (window.rec_embed_js && typeof window.rec_embed_js.load === 'function') {
         window.rec_embed_js.load({
           widget_id: 'rec_job_listing_div',
           page_name: 'Careers',
           source: 'CareerSite',
-          site: 'https://mapeach.zohorecruit.com',
+          site: 'https://mapeach.zohorecruit.com', // ✅ must match your Recruit site domain
           brand_color: '#6875E2',
           empty_job_msg: 'No current Openings',
-          page_limit: 10, // ✅ Enables pagination (10 jobs per page)
+          page_limit: 10, // ✅ shows 10 jobs per page
+          enable_pagination: true, // ✅ force pagination bar to render
         });
+      } else {
+        // Retry in case Zoho script isn't ready yet
+        setTimeout(initializeZohoWidget, 500);
       }
     };
 
-    if (!existingScript) {
+    // --- Load Zoho Recruit JS (only once) ---
+    const scriptId = 'zoho-embed-jobs-js';
+    if (!document.getElementById(scriptId)) {
       const script = document.createElement('script');
       script.id = scriptId;
       script.src =
@@ -50,8 +52,8 @@ const ZohoRecruitCareers = () => {
       className="embed_jobs_head embed_jobs_with_style_3"
       style={{
         width: '100%',
-        minHeight: '100vh', // 👈 allow it to expand
-        overflow: 'visible', // 👈 so pagination isn't clipped
+        minHeight: '100vh', // 👈 lets the container grow with content
+        overflow: 'visible', // 👈 ensures pagination isn't hidden
         margin: 0,
         padding: 0,
         boxSizing: 'border-box',
