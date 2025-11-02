@@ -48,8 +48,8 @@ const ZohoRecruitCareers = () => {
       className="embed_jobs_head embed_jobs_with_style_3"
       style={{
         width: '100%',
-        height: '100vh', // Full screen height
-        overflow: 'visible', // No scrollbars
+        minHeight: '100vh', // allows growth
+        overflow: 'visible',
         margin: 0,
         padding: 0,
         boxSizing: 'border-box',
@@ -65,4 +65,5 @@ const ZohoRecruitCareers = () => {
 };
 
 export default ZohoRecruitCareers;
+
 
