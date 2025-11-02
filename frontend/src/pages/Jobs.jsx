@@ -49,7 +49,7 @@ const ZohoRecruitCareers = () => {
       style={{
         width: '100%',
         height: '100vh', // Full screen height
-        overflow: 'hidden', // No scrollbars
+        overflow: 'visible', // No scrollbars
         margin: 0,
         padding: 0,
         boxSizing: 'border-box',
@@ -65,3 +65,4 @@ const ZohoRecruitCareers = () => {
 };
 
 export default ZohoRecruitCareers;
+
