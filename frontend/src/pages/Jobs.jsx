@@ -15,21 +15,23 @@ const ZohoRecruitCareers = () => {
     }
 
     // --- Function to initialize Zoho widget ---
-    const initializeZohoWidget = () => {
+    const initializeZohoWidget = (retryCount = 0) => {
       if (window.rec_embed_js && typeof window.rec_embed_js.load === 'function') {
         window.rec_embed_js.load({
           widget_id: 'rec_job_listing_div',
           page_name: 'Careers',
           source: 'CareerSite',
-          site: 'https://mapeach.zohorecruit.com/careers', // ✅ Use your exact site URL
+          site: 'https://mapeach.zohorecruit.com', // ✅ root domain only (no /careers)
           brand_color: '#6875E2',
           empty_job_msg: 'No current Openings',
-          page_limit: 10, // ✅ Shows 10 jobs per page
-          enable_pagination: true, // ✅ Ensures pagination appears
+          page_limit: 10,
+          enable_pagination: true,
         });
+      } else if (retryCount < 10) {
+        // Retry max 10 times (every 500ms)
+        setTimeout(() => initializeZohoWidget(retryCount + 1), 500);
       } else {
-        // Retry if Zoho script hasn't fully loaded yet
-        setTimeout(initializeZohoWidget, 500);
+        console.error('Zoho Recruit widget failed to load after multiple attempts.');
       }
     };
 
@@ -40,7 +42,7 @@ const ZohoRecruitCareers = () => {
       script.id = scriptId;
       script.src =
         'https://static.zohocdn.com/recruit/embed_careers_site/javascript/v1.1/embed_jobs.js';
-      script.onload = initializeZohoWidget;
+      script.onload = () => initializeZohoWidget();
       document.body.appendChild(script);
     } else {
       initializeZohoWidget();
