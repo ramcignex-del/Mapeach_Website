@@ -47,7 +47,7 @@ export const Navbar = () => {
         { path: "/MapeachFAQ", label: "FAQ" },
       ],
     },
-    { path: "/enquiry", label: "Contact Us" }, // ✅ Fixed route
+    { path: "/enquiry", label: "Contact Us" },
   ];
 
   return (
@@ -59,12 +59,12 @@ export const Navbar = () => {
             <img
               src={logo}
               alt="Mapeach Logo"
-              className="h-11 w-auto object-contain"
+              className="h-14 w-auto object-contain"
             />
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-2 lg:space-x-3">
+          <div className="hidden md:flex items-center space-x-0">
             {navLinks.map((link) => {
               const active =
                 isActive(link.path) ||
@@ -82,7 +82,7 @@ export const Navbar = () => {
                     key={link.path}
                     to={link.path}
                     onClick={() => handleLinkClick(link.path)}
-                    className={`px-4 h-16 flex items-center text-[13px] font-semibold tracking-wide uppercase transition-all duration-200 ${
+                    className={`min-w-[120px] text-center flex justify-center items-center h-16 text-[13px] font-semibold tracking-wide uppercase transition-all duration-200 ${
                       active
                         ? "bg-[#00CFFF] text-white"
                         : "text-slate-800 hover:bg-[#00CFFF] hover:text-white"
@@ -101,7 +101,7 @@ export const Navbar = () => {
                   onMouseLeave={() => setOpenDropdown(null)}
                 >
                   <button
-                    className={`px-4 h-16 flex items-center space-x-1 text-[13px] font-semibold tracking-wide uppercase transition-all duration-200 ${
+                    className={`min-w-[120px] text-center flex justify-center items-center space-x-1 h-16 text-[13px] font-semibold tracking-wide uppercase transition-all duration-200 ${
                       active
                         ? "bg-[#00CFFF] text-white"
                         : "text-slate-800 hover:bg-[#00CFFF] hover:text-white"
@@ -179,7 +179,7 @@ export const Navbar = () => {
                   <Link
                     to={link.path}
                     onClick={() => handleLinkClick(link.path)}
-                    className={`block px-4 py-2 rounded-md text-sm font-semibold uppercase transition-colors duration-200 ${
+                    className={`block text-center px-4 py-2 rounded-md text-sm font-semibold uppercase transition-colors duration-200 ${
                       isActive(link.path)
                         ? "bg-[#00CFFF] text-white"
                         : "text-slate-800 hover:bg-[#00CFFF] hover:text-white"
