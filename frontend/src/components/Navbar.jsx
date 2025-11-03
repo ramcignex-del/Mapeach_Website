@@ -16,7 +16,6 @@ const Navbar = () => {
     { name: "Home", path: "/" },
     {
       name: "Services",
-      path: "/services",
       dropdown: [
         {
           name: "For Companies",
@@ -33,8 +32,7 @@ const Navbar = () => {
     },
     { name: "Pricing", path: "/pricing" },
     {
-      name: "About",
-      path: "/about",
+      name: "About", // 👈 not clickable
       dropdown: [
         { name: "Our Story", path: "/about" },
         { name: "FAQ", path: "/MapeachFAQ" },
@@ -62,24 +60,31 @@ const Navbar = () => {
           <div className="hidden md:flex items-center h-full">
             {navItems.map((item) => (
               <div key={item.name} className="relative group h-full">
-                <Link
-                  to={item.path}
-                  onClick={closeMenu}
-                  className={`flex items-center justify-center h-full px-5 text-sm font-bold uppercase tracking-wide border-b-2 transition-all duration-200 ${
-                    isActive(item.path)
-                      ? "text-[var(--color-primary-dark)] border-[var(--color-primary-dark)] bg-[var(--color-primary-light)]"
-                      : "text-slate-700 border-transparent hover:bg-[var(--color-primary-light)] hover:text-[var(--color-primary-dark)]"
-                  }`}
-                >
-                  {item.name}
-                  {item.dropdown && (
+                {/* Menu Item — if dropdown only, render span instead of Link */}
+                {item.dropdown ? (
+                  <span
+                    className="flex items-center justify-center h-full px-5 text-sm font-bold uppercase tracking-wide border-b-2 cursor-default text-slate-700 hover:bg-[var(--color-primary-light)] hover:text-[var(--color-primary-dark)]"
+                  >
+                    {item.name}
                     <ChevronDown className="ml-1 w-4 h-4 opacity-70 group-hover:opacity-100 transition-opacity duration-200" />
-                  )}
-                </Link>
+                  </span>
+                ) : (
+                  <Link
+                    to={item.path}
+                    onClick={closeMenu}
+                    className={`flex items-center justify-center h-full px-5 text-sm font-bold uppercase tracking-wide border-b-2 transition-all duration-200 ${
+                      isActive(item.path)
+                        ? "text-[var(--color-primary-dark)] border-[var(--color-primary-dark)] bg-[var(--color-primary-light)]"
+                        : "text-slate-700 border-transparent hover:bg-[var(--color-primary-light)] hover:text-[var(--color-primary-dark)]"
+                    }`}
+                  >
+                    {item.name}
+                  </Link>
+                )}
 
                 {/* First-Level Dropdown */}
                 {item.dropdown && (
-                  <div className="absolute left-0 top-full mt-0 hidden group-hover:block w-56 bg-white rounded-lg shadow-lg border border-slate-100 py-2 z-50">
+                  <div className="absolute left-0 top-full mt-0 hidden group-hover:block w-56 bg-white rounded-lg shadow-lg border border-slate-100 py-1 z-50">
                     {item.dropdown.map((subItem) => (
                       <div key={subItem.name} className="relative group/sub">
                         <Link
@@ -97,7 +102,7 @@ const Navbar = () => {
 
                         {/* Nested Dropdown */}
                         {subItem.submenu && (
-                          <div className="absolute left-full top-0 hidden group-hover/sub:block ml-1 w-60 bg-white rounded-lg shadow-lg border border-slate-100 py-2 z-50">
+                          <div className="absolute left-full top-0 hidden group-hover/sub:block ml-1 w-60 bg-white rounded-lg shadow-lg border border-slate-100 py-1 z-50">
                             {subItem.submenu.map((deepItem) => (
                               <Link
                                 key={deepItem.name}
@@ -139,17 +144,24 @@ const Navbar = () => {
         <div className="md:hidden bg-white border-t border-slate-200 shadow-md">
           {navItems.map((item) => (
             <div key={item.name} className="border-b border-slate-100">
-              <Link
-                to={item.path}
-                onClick={closeMenu}
-                className={`block px-6 py-3 text-sm font-semibold uppercase ${
-                  isActive(item.path)
-                    ? "bg-[var(--color-primary)] text-white"
-                    : "text-slate-700 hover:bg-[var(--color-primary-light)] hover:text-[var(--color-primary-dark)]"
-                }`}
-              >
-                {item.name}
-              </Link>
+              {/* If About is dropdown only, render as span */}
+              {item.dropdown ? (
+                <div className="px-6 py-3 text-sm font-bold uppercase text-slate-700 bg-slate-50">
+                  {item.name}
+                </div>
+              ) : (
+                <Link
+                  to={item.path}
+                  onClick={closeMenu}
+                  className={`block px-6 py-3 text-sm font-semibold uppercase ${
+                    isActive(item.path)
+                      ? "bg-[var(--color-primary)] text-white"
+                      : "text-slate-700 hover:bg-[var(--color-primary-light)] hover:text-[var(--color-primary-dark)]"
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              )}
               {item.dropdown && (
                 <div className="pl-8 pb-2 bg-slate-50">
                   {item.dropdown.map((subItem) => (
