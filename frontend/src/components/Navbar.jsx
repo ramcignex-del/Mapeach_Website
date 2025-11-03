@@ -6,8 +6,6 @@ import "../Theme.css";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [hoveredMenu, setHoveredMenu] = useState(null);
-  const [hoveredSubmenu, setHoveredSubmenu] = useState(null);
   const location = useLocation();
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
@@ -47,7 +45,7 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="fixed w-full bg-white/90 backdrop-blur-lg shadow-sm z-50 overflow-visible">
+    <nav className="fixed w-full bg-white/95 backdrop-blur-lg shadow-sm z-50 overflow-visible">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
@@ -61,48 +59,29 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-2">
+          <div className="hidden md:flex items-center h-full">
             {navItems.map((item) => (
-              <div
-                key={item.name}
-                className="relative group"
-                onMouseEnter={() => setHoveredMenu(item.name)}
-                onMouseLeave={() => {
-                  setHoveredMenu(null);
-                  setHoveredSubmenu(null);
-                }}
-              >
+              <div key={item.name} className="relative group h-full">
                 <Link
                   to={item.path}
                   onClick={closeMenu}
-                  className={`block w-32 text-center py-2.5 text-sm font-semibold rounded-md transition-all duration-200 ${
+                  className={`flex items-center justify-center h-full px-5 text-sm font-bold uppercase tracking-wide border-b-2 transition-all duration-200 ${
                     isActive(item.path)
-                      ? "bg-[var(--color-primary)] text-white"
-                      : "text-slate-700 hover:bg-[var(--color-primary-light)] hover:text-[var(--color-primary-dark)]"
+                      ? "text-[var(--color-primary-dark)] border-[var(--color-primary-dark)] bg-[var(--color-primary-light)]"
+                      : "text-slate-700 border-transparent hover:bg-[var(--color-primary-light)] hover:text-[var(--color-primary-dark)]"
                   }`}
                 >
                   {item.name}
                   {item.dropdown && (
-                    <ChevronDown className="inline-block ml-1 w-4 h-4 opacity-70 group-hover:opacity-100 transition-opacity duration-200" />
+                    <ChevronDown className="ml-1 w-4 h-4 opacity-70 group-hover:opacity-100 transition-opacity duration-200" />
                   )}
                 </Link>
 
                 {/* First-Level Dropdown */}
                 {item.dropdown && (
-                  <div
-                    className={`absolute left-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-slate-100 py-2 z-50 transition-all duration-150 ${
-                      hoveredMenu === item.name ? "block" : "hidden"
-                    }`}
-                    onMouseEnter={() => setHoveredMenu(item.name)}
-                    onMouseLeave={() => setHoveredMenu(null)}
-                  >
+                  <div className="absolute left-0 top-full mt-0 hidden group-hover:block w-56 bg-white rounded-lg shadow-lg border border-slate-100 py-2 z-50">
                     {item.dropdown.map((subItem) => (
-                      <div
-                        key={subItem.name}
-                        className="relative"
-                        onMouseEnter={() => setHoveredSubmenu(subItem.name)}
-                        onMouseLeave={() => setHoveredSubmenu(null)}
-                      >
+                      <div key={subItem.name} className="relative group/sub">
                         <Link
                           to={subItem.path}
                           onClick={closeMenu}
@@ -118,13 +97,7 @@ const Navbar = () => {
 
                         {/* Nested Dropdown */}
                         {subItem.submenu && (
-                          <div
-                            className={`absolute left-full top-0 ml-1 w-60 bg-white rounded-lg shadow-lg border border-slate-100 py-2 z-50 transition-all duration-150 ${
-                              hoveredSubmenu === subItem.name ? "block" : "hidden"
-                            }`}
-                            onMouseEnter={() => setHoveredSubmenu(subItem.name)}
-                            onMouseLeave={() => setHoveredSubmenu(null)}
-                          >
+                          <div className="absolute left-full top-0 hidden group-hover/sub:block ml-1 w-60 bg-white rounded-lg shadow-lg border border-slate-100 py-2 z-50">
                             {subItem.submenu.map((deepItem) => (
                               <Link
                                 key={deepItem.name}
@@ -169,7 +142,7 @@ const Navbar = () => {
               <Link
                 to={item.path}
                 onClick={closeMenu}
-                className={`block px-6 py-3 text-sm font-semibold ${
+                className={`block px-6 py-3 text-sm font-semibold uppercase ${
                   isActive(item.path)
                     ? "bg-[var(--color-primary)] text-white"
                     : "text-slate-700 hover:bg-[var(--color-primary-light)] hover:text-[var(--color-primary-dark)]"
@@ -177,7 +150,6 @@ const Navbar = () => {
               >
                 {item.name}
               </Link>
-              {/* Mobile Dropdown */}
               {item.dropdown && (
                 <div className="pl-8 pb-2 bg-slate-50">
                   {item.dropdown.map((subItem) => (
