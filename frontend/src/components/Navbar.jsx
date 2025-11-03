@@ -1,7 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown, ChevronUp } from 'lucide-react';
-import { Button } from './ui/button';
 import logo from '../assets/logo.jpg';
 
 export const Navbar = () => {
@@ -38,7 +37,6 @@ export const Navbar = () => {
     { path: '/companies/lifesciences', label: 'Lifesciences' },
   ];
 
-  // Removed "Contact" menu item here
   const navLinks = [
     { path: '/', label: 'Home', type: 'link' },
     { path: '/hire', label: 'For Companies', type: 'menu', subLinks: companyDropdownLinks },
@@ -78,7 +76,6 @@ export const Navbar = () => {
                 );
               }
 
-              // MENU (For Companies)
               if (link.type === 'menu') {
                 return (
                   <div
@@ -150,19 +147,18 @@ export const Navbar = () => {
             })}
 
             {/* Contact Us Button */}
-           <Link
+            <Link
               to="/enquiry"
               onClick={() => handleLinkClick('/enquiry')}
-             {/*  className="ml-4 px-5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs md:text-sm font-semibold uppercase rounded-md shadow-md transition-all duration-300" */}
-                  className="ml-4 px-5 py-2 text-white text-xs md:text-sm font-semibold uppercase rounded-md shadow-lg 
-                  bg-gradient-to-r from-[#00CFFF] via-[#00E5FF] to-[#33EFFF] 
-                  hover:from-[#00E5FF] hover:via-[#33EFFF] hover:to-[#00F0FF] 
-                  transition-all duration-300 transform hover:scale-105"
-            
+              className={`
+                ml-4 px-5 py-2 text-white text-xs md:text-sm font-semibold uppercase rounded-md shadow-lg
+                bg-gradient-to-r from-[#00CFFF] via-[#00E5FF] to-[#33EFFF]
+                hover:from-[#00E5FF] hover:via-[#33EFFF] hover:to-[#00F0FF]
+                transition-all duration-300 transform hover:scale-105
+              `}
             >
               Contact Us
             </Link>
-            
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -258,13 +254,13 @@ export const Navbar = () => {
             })}
 
             {/* Mobile Contact Button */}
-          <Link
-            to="/enquiry"
-            onClick={() => handleLinkClick('/enquiry')}
-            className="ml-4 px-5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs md:text-sm font-semibold uppercase rounded-md shadow-md transition-all duration-300"
-          >
-            Contact Us
-        </Link>
+            <Link
+              to="/enquiry"
+              onClick={() => handleLinkClick('/enquiry')}
+              className="block w-full text-center px-5 py-2 bg-gradient-to-r from-[#00CFFF] via-[#00E5FF] to-[#33EFFF] text-white text-xs md:text-sm font-semibold uppercase rounded-md shadow-md transition-all duration-300 transform hover:scale-105"
+            >
+              Contact Us
+            </Link>
           </div>
         </div>
       )}
