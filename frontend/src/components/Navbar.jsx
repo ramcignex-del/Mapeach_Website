@@ -1,7 +1,7 @@
-import React, { useState, useRef } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown, ChevronUp } from 'lucide-react';
-import logo from '../assets/logo.jpg';
+import React, { useState, useRef } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { Menu, X, ChevronDown, ChevronUp } from "lucide-react";
+import logo from "../assets/logo.jpg";
 
 export const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -13,7 +13,7 @@ export const Navbar = () => {
 
   const handleLinkClick = (path) => {
     if (location.pathname === path) {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 
@@ -31,44 +31,47 @@ export const Navbar = () => {
   };
 
   const companyDropdownLinks = [
-    { path: '/companies/informationtechnology', label: 'Information Technology' },
-    { path: '/companies/electronics', label: 'Electronics & Communications' },
-    { path: '/companies/healthtech', label: 'HealthTech' },
-    { path: '/companies/lifesciences', label: 'Lifesciences' },
+    { path: "/companies/informationtechnology", label: "Information Technology" },
+    { path: "/companies/electronics", label: "Electronics & Communications" },
+    { path: "/companies/healthtech", label: "HealthTech" },
+    { path: "/companies/lifesciences", label: "Lifesciences" },
   ];
 
   const navLinks = [
-    { path: '/', label: 'Home', type: 'link' },
-    { path: '/hire', label: 'For Companies', type: 'menu', subLinks: companyDropdownLinks },
-    { path: '/pricing', label: 'Pricing', type: 'link' },
-    { path: '/join', label: 'For Talents', type: 'link' },
-    { path: '/jobs', label: 'Jobs', type: 'link' },
-    { path: '/about', label: 'About', type: 'link' },
-    { path: '/MapeachFAQ', label: 'FAQ', type: 'link' },
+    { path: "/", label: "Home", type: "link" },
+    { path: "/hire", label: "For Companies", type: "menu", subLinks: companyDropdownLinks },
+    { path: "/pricing", label: "Pricing", type: "link" },
+    { path: "/join", label: "For Talents", type: "link" },
+    { path: "/jobs", label: "Jobs", type: "link" },
+    { path: "/about", label: "About", type: "link" },
+    { path: "/MapeachFAQ", label: "FAQ", type: "link" },
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200">
+    <nav
+      className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200"
+      style={{ fontFamily: "'Poppins', 'Manrope', sans-serif" }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center" onClick={() => handleLinkClick('/')}>
+          <Link to="/" className="flex items-center" onClick={() => handleLinkClick("/")}>
             <img src={logo} alt="Mapeach Logo" className="h-4 w-auto" />
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-4 lg:space-x-6">
             {navLinks.map((link) => {
-              if (link.type === 'link') {
+              if (link.type === "link") {
                 return (
                   <Link
                     key={link.path}
                     to={link.path}
                     onClick={() => handleLinkClick(link.path)}
-                    className={`text-xs md:text-sm font-semibold uppercase transition-colors duration-200 ${
+                    className={`text-xs md:text-sm font-semibold uppercase rounded-md px-3 py-1 transition-all duration-300 ${
                       isActive(link.path)
-                        ? 'text-emerald-600'
-                        : 'text-slate-700 hover:text-emerald-600'
+                        ? "text-white bg-gradient-to-r from-[#00CFFF] via-[#33EFFF] to-[#0096B4] shadow-md"
+                        : "text-[#3A3A3A] hover:text-[#00CFFF] hover:bg-gradient-to-r hover:from-[#EAFBFF] hover:to-[#F6FFFF]"
                     }`}
                   >
                     {link.label}
@@ -76,7 +79,7 @@ export const Navbar = () => {
                 );
               }
 
-              if (link.type === 'menu') {
+              if (link.type === "menu") {
                 return (
                   <div
                     key={link.path}
@@ -88,16 +91,16 @@ export const Navbar = () => {
                       <Link
                         to={link.path}
                         onClick={() => handleLinkClick(link.path)}
-                        className={`text-xs md:text-sm font-semibold uppercase transition-colors duration-200 ${
+                        className={`text-xs md:text-sm font-semibold uppercase rounded-md px-3 py-1 transition-all duration-300 ${
                           isActive(link.path)
-                            ? 'text-emerald-600'
-                            : 'text-slate-700 hover:text-emerald-600'
+                            ? "text-white bg-gradient-to-r from-[#00CFFF] via-[#33EFFF] to-[#0096B4] shadow-md"
+                            : "text-[#3A3A3A] hover:text-[#00CFFF] hover:bg-gradient-to-r hover:from-[#EAFBFF] hover:to-[#F6FFFF]"
                         }`}
                       >
                         {link.label}
                       </Link>
                       <button
-                        className="text-slate-600 hover:text-emerald-600 transition-colors"
+                        className="text-slate-600 hover:text-[#00CFFF] transition-colors"
                         onClick={(e) => {
                           e.preventDefault();
                           e.stopPropagation();
@@ -129,8 +132,8 @@ export const Navbar = () => {
                               }}
                               className={`block px-4 py-2 text-xs uppercase transition-colors duration-200 ${
                                 isActive(subLink.path)
-                                  ? 'bg-emerald-50 text-emerald-600'
-                                  : 'text-slate-700 hover:bg-slate-50 hover:text-emerald-600'
+                                  ? "bg-gradient-to-r from-[#00CFFF] to-[#0096B4] text-white"
+                                  : "text-slate-700 hover:bg-slate-50 hover:text-[#00CFFF]"
                               }`}
                             >
                               {subLink.label}
@@ -149,13 +152,12 @@ export const Navbar = () => {
             {/* Contact Us Button */}
             <Link
               to="/enquiry"
-              onClick={() => handleLinkClick('/enquiry')}
-              className={`
-                ml-4 px-5 py-2 text-white text-xs md:text-sm font-semibold uppercase rounded-md shadow-lg
-                bg-gradient-to-r from-[#00CFFF] via-[#00E5FF] to-[#33EFFF]
-                hover:from-[#00E5FF] hover:via-[#33EFFF] hover:to-[#00F0FF]
-                transition-all duration-300 transform hover:scale-105
-              `}
+              onClick={() => handleLinkClick("/enquiry")}
+              className="ml-4 px-5 py-2 text-white text-xs md:text-sm font-semibold uppercase rounded-md shadow-md 
+                bg-gradient-to-r from-[#00CFFF] via-[#33EFFF] to-[#0096B4]
+                hover:from-[#00E5FF] hover:via-[#33EFFF] hover:to-[#00CFFF]
+                hover:shadow-[0_0_12px_rgba(0,207,255,0.4)]
+                transition-all duration-300 transform hover:scale-105"
             >
               Contact Us
             </Link>
@@ -176,7 +178,7 @@ export const Navbar = () => {
         <div className="md:hidden bg-white border-t border-slate-200">
           <div className="px-4 py-4 space-y-3">
             {navLinks.map((link) => {
-              if (link.type === 'link') {
+              if (link.type === "link") {
                 return (
                   <Link
                     key={link.path}
@@ -187,8 +189,8 @@ export const Navbar = () => {
                     }}
                     className={`block px-4 py-2 rounded-lg text-sm font-semibold uppercase transition-colors duration-200 ${
                       isActive(link.path)
-                        ? 'bg-emerald-50 text-emerald-600'
-                        : 'text-slate-700 hover:bg-slate-50'
+                        ? "bg-gradient-to-r from-[#00CFFF] to-[#0096B4] text-white"
+                        : "text-slate-700 hover:bg-slate-50"
                     }`}
                   >
                     {link.label}
@@ -196,7 +198,7 @@ export const Navbar = () => {
                 );
               }
 
-              if (link.type === 'menu') {
+              if (link.type === "menu") {
                 return (
                   <div key={link.path}>
                     <div className="flex justify-between items-center">
@@ -208,14 +210,14 @@ export const Navbar = () => {
                         }}
                         className={`flex-1 px-4 py-2 rounded-lg text-sm font-semibold uppercase transition-colors duration-200 ${
                           isActive(link.path)
-                            ? 'bg-emerald-50 text-emerald-600'
-                            : 'text-slate-700 hover:bg-slate-50'
+                            ? "bg-gradient-to-r from-[#00CFFF] to-[#0096B4] text-white"
+                            : "text-slate-700 hover:bg-slate-50"
                         }`}
                       >
                         {link.label}
                       </Link>
                       <button
-                        className="px-2 text-slate-600 hover:text-emerald-600"
+                        className="px-2 text-slate-600 hover:text-[#00CFFF]"
                         onClick={(e) => {
                           e.stopPropagation();
                           setIsDropdownOpen(!isDropdownOpen);
@@ -237,8 +239,8 @@ export const Navbar = () => {
                             }}
                             className={`block px-4 py-2 rounded-lg text-xs uppercase transition-colors duration-200 ${
                               isActive(subLink.path)
-                                ? 'bg-emerald-100 text-emerald-600'
-                                : 'text-slate-700 hover:bg-slate-50'
+                                ? "bg-gradient-to-r from-[#00CFFF] to-[#0096B4] text-white"
+                                : "text-slate-700 hover:bg-slate-50"
                             }`}
                           >
                             {subLink.label}
@@ -256,8 +258,11 @@ export const Navbar = () => {
             {/* Mobile Contact Button */}
             <Link
               to="/enquiry"
-              onClick={() => handleLinkClick('/enquiry')}
-              className="block w-full text-center px-5 py-2 bg-gradient-to-r from-[#00CFFF] via-[#00E5FF] to-[#33EFFF] text-white text-xs md:text-sm font-semibold uppercase rounded-md shadow-md transition-all duration-300 transform hover:scale-105"
+              onClick={() => handleLinkClick("/enquiry")}
+              className="block w-full text-center px-5 py-2 text-white text-xs md:text-sm font-semibold uppercase rounded-md shadow-md 
+                bg-gradient-to-r from-[#00CFFF] via-[#33EFFF] to-[#0096B4]
+                hover:from-[#00E5FF] hover:via-[#33EFFF] hover:to-[#00CFFF]
+                transition-all duration-300 transform hover:scale-105"
             >
               Contact Us
             </Link>
