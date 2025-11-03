@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useCallback } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ChevronRight, ChevronDown } from "lucide-react";
 import logo from "../assets/logo.jpg";
@@ -10,23 +10,40 @@ const Navbar = () => {
   const [hoveredSubmenu, setHoveredSubmenu] = useState(null);
   const [expandedMobileMenu, setExpandedMobileMenu] = useState(null);
   const [scrolled, setScrolled] = useState(false);
-  const location = useLocation();
+  const [scrollProgress, setScrollProgress] = useState(0);
 
+  const location = useLocation();
   const menuTimers = useRef({});
   const submenuTimers = useRef({});
 
-  // 🔹 Scroll detection for sticky visual change
+  // ✅ Detect scroll position for navbar style + progress bar
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 20) setScrolled(true);
-      else setScrolled(false);
+      const scrollTop = window.scrollY;
+      const docHeight = document.body.scrollHeight - window.innerHeight;
+      const progress = (scrollTop / docHeight) * 100;
+      setScrolled(scrollTop > 20);
+      setScrollProgress(progress);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-  const closeMenu = () => setIsMenuOpen(false);
+  // ✅ Prevent background scroll when mobile menu open
+  useEffect(() => {
+    document.body.style.overflow = isMenuOpen ? "hidden" : "auto";
+  }, [isMenuOpen]);
+
+  // ✅ Cleanup timers
+  useEffect(() => {
+    return () => {
+      Object.values(menuTimers.current).forEach(clearTimeout);
+      Object.values(submenuTimers.current).forEach(clearTimeout);
+    };
+  }, []);
+
+  const toggleMenu = useCallback(() => setIsMenuOpen((p) => !p), []);
+  const closeMenu = useCallback(() => setIsMenuOpen(false), []);
   const isActive = (path) => location.pathname === path;
 
   const handleMenuEnter = (name) => {
@@ -34,18 +51,18 @@ const Navbar = () => {
     setHoveredMenu(name);
   };
   const handleMenuLeave = (name) => {
-    menuTimers.current[name] = setTimeout(() => {
-      setHoveredMenu(null);
-    }, 200);
+    menuTimers.current[name] = setTimeout(() => setHoveredMenu(null), 150);
   };
   const handleSubmenuEnter = (name) => {
     clearTimeout(submenuTimers.current[name]);
     setHoveredSubmenu(name);
   };
   const handleSubmenuLeave = (name) => {
-    submenuTimers.current[name] = setTimeout(() => {
-      setHoveredSubmenu(null);
-    }, 200);
+    submenuTimers.current[name] = setTimeout(() => setHoveredSubmenu(null), 150);
+  };
+
+  const toggleMobileSubmenu = (name) => {
+    setExpandedMobileMenu(expandedMobileMenu === name ? null : name);
   };
 
   const navItems = [
@@ -78,10 +95,6 @@ const Navbar = () => {
     { name: "Contact", path: "/enquiry" },
   ];
 
-  const toggleMobileSubmenu = (name) => {
-    setExpandedMobileMenu(expandedMobileMenu === name ? null : name);
-  };
-
   return (
     <nav
       className={`fixed w-full transition-all duration-300 z-50 overflow-visible ${
@@ -90,6 +103,12 @@ const Navbar = () => {
           : "bg-white/70 backdrop-blur-sm shadow-none"
       }`}
     >
+      {/* Scroll Progress Bar */}
+      <div
+        className="absolute top-0 left-0 h-1 bg-[var(--color-primary)] transition-all duration-200"
+        style={{ width: `${scrollProgress}%` }}
+      ></div>
+
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
@@ -111,7 +130,10 @@ const Navbar = () => {
                 onMouseLeave={() => handleMenuLeave(item.name)}
               >
                 {item.dropdown ? (
-                  <span className="flex items-center justify-center h-full px-5 text-sm font-bold uppercase tracking-wide border-b-2 cursor-default text-slate-700 hover:bg-[var(--color-primary-light)] hover:text-[var(--color-primary-dark)]">
+                  <span
+                    className="flex items-center justify-center h-full px-5 text-sm font-bold uppercase tracking-wide cursor-default 
+                               text-slate-700 hover:bg-[var(--color-primary-light)] hover:text-[var(--color-primary-dark)]"
+                  >
                     {item.name}
                     <ChevronDown className="ml-1 w-4 h-4 opacity-70 group-hover:opacity-100 transition-opacity duration-200" />
                   </span>
@@ -119,10 +141,10 @@ const Navbar = () => {
                   <Link
                     to={item.path}
                     onClick={closeMenu}
-                    className={`flex items-center justify-center h-full px-5 text-sm font-bold uppercase tracking-wide border-b-2 transition-all duration-200 ${
+                    className={`flex items-center justify-center h-full px-5 text-sm font-bold uppercase tracking-wide transition-all duration-200 ${
                       isActive(item.path)
-                        ? "text-[var(--color-primary-dark)] border-[var(--color-primary-dark)] bg-[var(--color-primary-light)]"
-                        : "text-slate-700 border-transparent hover:bg-[var(--color-primary-light)] hover:text-[var(--color-primary-dark)]"
+                        ? "text-[var(--color-primary-dark)] bg-[var(--color-primary-light)]"
+                        : "text-slate-700 hover:bg-[var(--color-primary-light)] hover:text-[var(--color-primary-dark)]"
                     }`}
                   >
                     {item.name}
@@ -131,14 +153,11 @@ const Navbar = () => {
 
                 {/* First-Level Dropdown */}
                 {item.dropdown && hoveredMenu === item.name && (
-                  <div
-                    className="absolute left-0 top-full mt-0 w-56 bg-white rounded-lg shadow-lg border border-slate-100 py-1 z-50
-                               opacity-0 translate-y-2 animate-[fadeIn_0.2s_ease-out_forwards]"
-                  >
+                  <div className="absolute left-0 top-full mt-0 w-56 bg-white rounded-lg shadow-lg border border-slate-100 py-1 z-50 animate-fadeIn">
                     {item.dropdown.map((subItem) => (
                       <div
                         key={subItem.name}
-                        className="relative group/sub"
+                        className="relative"
                         onMouseEnter={() => handleSubmenuEnter(subItem.name)}
                         onMouseLeave={() => handleSubmenuLeave(subItem.name)}
                       >
@@ -157,10 +176,7 @@ const Navbar = () => {
 
                         {/* Nested Dropdown */}
                         {subItem.submenu && hoveredSubmenu === subItem.name && (
-                          <div
-                            className="absolute left-full top-0 ml-1 w-60 bg-white rounded-lg shadow-lg border border-slate-100 py-1 z-50
-                                       opacity-0 translate-x-2 animate-[fadeInRight_0.2s_ease-out_forwards]"
-                          >
+                          <div className="absolute left-full top-0 ml-1 w-60 bg-white rounded-lg shadow-lg border border-slate-100 py-1 z-50 animate-fadeInRight">
                             {subItem.submenu.map((deepItem) => (
                               <Link
                                 key={deepItem.name}
