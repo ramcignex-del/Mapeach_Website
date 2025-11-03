@@ -153,7 +153,12 @@ export const Navbar = () => {
            <Link
               to="/enquiry"
               onClick={() => handleLinkClick('/enquiry')}
-              className="ml-4 px-5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs md:text-sm font-semibold uppercase rounded-md shadow-md transition-all duration-300"
+             {/*  className="ml-4 px-5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs md:text-sm font-semibold uppercase rounded-md shadow-md transition-all duration-300" */}
+                  className="ml-4 px-5 py-2 text-white text-xs md:text-sm font-semibold uppercase rounded-md shadow-lg 
+                  bg-gradient-to-r from-[#00CFFF] via-[#00E5FF] to-[#33EFFF] 
+                  hover:from-[#00E5FF] hover:via-[#33EFFF] hover:to-[#00F0FF] 
+                  transition-all duration-300 transform hover:scale-105"
+            
             >
               Contact Us
             </Link>
