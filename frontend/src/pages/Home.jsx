@@ -10,221 +10,149 @@ import { companyStats, clientLogos, testimonials, problems, solutions, techDomai
 
 const Home = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen font-sans text-[15px] text-[var(--color-text)]">
+      
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-emerald-50/30 to-teal-50/30">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-5xl md:text-6xl font-bold text-slate-900 leading-tight mb-6">
-              Transparent staffing model with zero markups
-              <span className="block text-emerald-600 mt-2">Clients pay less and Contractors earn more — no compromises.</span>
-            </h1>
-            <p className="text-xl text-slate-600 mb-10 leading-relaxed">
-              Mapeach delivers highly vetted professionals in <strong>short time</strong>, not weeks—with transparent pricing that saves you up to <strong>20%</strong> compared to traditional Staffing Companies.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/hire">
-                <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
-                  Start Hiring Smarter
-                  <ArrowRight className="ml-2" size={20} />
-                </Button>
-              </Link>
-              <Link to="/join">
-                <Button size="lg" variant="outline" className="border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-50 px-8 py-6 text-lg font-semibold transition-all duration-300">
-                  Start Earning More
-                </Button>
-              </Link>
-            </div>
-          </div>
+      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[var(--color-primary-light)] via-white to-[var(--color-bg-light)]">
+        <div className="max-w-7xl mx-auto text-center">
+          <h1 className="text-5xl md:text-6xl font-bold text-[var(--color-primary-dark)] leading-tight mb-6">
+            Transparent staffing model with zero markups
+            <span className="block text-[var(--color-primary)] mt-3 font-semibold">
+              Clients pay less and Contractors earn more — no compromises.
+            </span>
+          </h1>
 
-          {/* Stats
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
-            {companyStats.map((stat, idx) => (
-              <Card key={idx} className="border-none shadow-md hover:shadow-lg transition-shadow duration-300">
-                <CardContent className="p-6 text-center">
-                  <div className="text-3xl font-bold text-emerald-600 mb-2">{stat.value}</div>
-                  <div className="text-sm text-slate-600">{stat.label}</div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>market
-           */}
-        </div>
-      </section>
-
-      {/* Problem Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-slate-900 mb-4">
-              The Sticking Points of Traditional Staffing
-            </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              clients overpay, contractors under-earn, and processes waste time. Here’s why:
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {problems.map((problem) => {
-              const IconComponent = problem.icon === 'timer-off' ? TimerOff : 
-                                   problem.icon === 'trending-up' ? TrendingUp :
-                                   problem.icon === 'file-text' ? FileText : AlertCircle;
-              return (
-                <Card key={problem.id} className="border-2 border-red-200 bg-red-50/50 hover:shadow-lg transition-shadow duration-300">
-                  <CardContent className="p-6">
-                    <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
-                      <IconComponent className="text-red-600" size={24} />
-                    </div>
-                    <h3 className="text-lg font-bold text-slate-900 mb-2">{problem.title}</h3>
-                    <p className="text-slate-600 text-sm">{problem.description}</p>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Solution Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-slate-900 mb-4">
-              The Mapeach Difference
-            </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Speed. Cost transparency. Automation. Full control.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {solutions.map((solution) => {
-              const IconComponent = solution.icon === 'zap' ? Zap : 
-                                   solution.icon === 'dollar-sign' ? DollarSign :
-                                   solution.icon === 'check-circle' ? CheckCircle : ShieldCheck;
-              return (
-                <Card key={solution.id} className="border-2 border-emerald-200 bg-white hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
-                  <CardContent className="p-6">
-                    <div className="w-12 h-12 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-lg flex items-center justify-center mb-4">
-                      <IconComponent className="text-white" size={24} />
-                    </div>
-                    <div className="inline-block px-3 py-1 bg-emerald-100 text-emerald-700 rounded-full text-xs font-semibold mb-3">
-                      {solution.benefit}
-                    </div>
-                    <h3 className="text-lg font-bold text-slate-900 mb-2">{solution.title}</h3>
-                    <p className="text-slate-600 text-sm">{solution.description}</p>
-                  </CardContent>
-                </Card>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Business Model Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-emerald-600 to-teal-600 text-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-6">Transparent Pricing You Can Trust</h2>
-          <p className="text-xl text-emerald-50 mb-12">
-            No hidden fees. No surprise markups. Just simple, honest pricing.
+          <p className="text-xl text-[var(--color-text)] mb-10 leading-relaxed">
+            Mapeach delivers highly vetted professionals in <strong>short time</strong>, not weeks — with transparent pricing that saves you up to <strong>20%</strong> compared to traditional Staffing Companies.
           </p>
-          <div className="grid md:grid-cols-2 gap-8">
-            <Card className="bg-white/10 backdrop-blur-sm border-white/20">
-              <CardContent className="p-8 text-center">
-                <div className="text-5xl font-bold mb-2">$10</div>
-                <div className="text-lg text-emerald-100 mb-4">One-time per contractor</div>
-                <p className="text-sm text-emerald-50">Simple onboarding fee—that's it</p>
-              </CardContent>
-            </Card>
-            <Card className="bg-white/10 backdrop-blur-sm border-white/20">
-              <CardContent className="p-8 text-center">
-                <div className="text-5xl font-bold mb-2">$1/hr</div>
-                <div className="text-lg text-emerald-100 mb-4">Recurring, billed bi-weekly</div>
-                <p className="text-sm text-emerald-50">Transparent hourly service fee</p>
-              </CardContent>
-            </Card>
-          </div>
-          <p className="mt-8 text-emerald-50">
-            Compare this to 15-25% Staffing Companies markups or 5-15% marketplace fees.
-          </p>
-        </div>
-      </section>
 
-      {/* Tech Domains */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-slate-900 mb-4">
-              Featured Expertise
-            </h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              Access specialized talent across the most in-demand tech roles
-            </p>
-          </div>
-          
-          {/* Technical Roles */}
-          <div className="mb-12">
-            <h3 className="text-2xl font-bold text-slate-900 mb-6">Technical Roles</h3>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-              {techDomains.technical.map((domain) => (
-                <Card key={domain.id} className="hover:shadow-lg transition-shadow duration-300 border-slate-200">
-                  <CardContent className="p-5">
-                    <h4 className="text-base font-bold text-slate-900 mb-2">{domain.title}</h4>
-                    <p className="text-slate-600 text-xs leading-relaxed">{domain.description}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-
-          {/* Management Roles */}
-          <div className="mb-12">
-            <h3 className="text-2xl font-bold text-slate-900 mb-6">Management Roles</h3>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-              {techDomains.management.map((domain) => (
-                <Card key={domain.id} className="hover:shadow-lg transition-shadow duration-300 border-slate-200">
-                  <CardContent className="p-5">
-                    <h4 className="text-base font-bold text-slate-900 mb-2">{domain.title}</h4>
-                    <p className="text-slate-600 text-xs leading-relaxed">{domain.description}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-
-          {/* Leadership Roles */}
-          <div>
-            <h3 className="text-2xl font-bold text-slate-900 mb-6">Leadership Roles</h3>
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-              {techDomains.leadership.map((domain) => (
-                <Card key={domain.id} className="hover:shadow-lg transition-shadow duration-300 border-slate-200">
-                  <CardContent className="p-5">
-                    <h4 className="text-base font-bold text-slate-900 mb-2">{domain.title}</h4>
-                    <p className="text-slate-600 text-xs leading-relaxed">{domain.description}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-slate-900 to-slate-800 text-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Ready to Transform?
-          </h2>
-          <p className="text-xl text-slate-300 mb-10">
-            Join hundreds of companies and contractors thriving with Mapeach — where clients save more and contractors earns more.
-          </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/contact">
-              <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
+            <Link to="/hire">
+              <Button
+                size="lg"
+                className="bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-dark)] hover:opacity-90 text-white px-8 py-6 text-lg font-semibold shadow-md hover:shadow-lg transition-all duration-300"
+              >
                 Start Hiring Smarter
                 <ArrowRight className="ml-2" size={20} />
               </Button>
             </Link>
             <Link to="/join">
-              <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-slate-900 px-8 py-6 text-lg font-semibold transition-all duration-300">
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-2 border-[var(--color-primary)] text-[var(--color-primary-dark)] hover:bg-[var(--color-primary-light)] px-8 py-6 text-lg font-semibold transition-all duration-300"
+              >
+                Start Earning More
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Problem Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-7xl mx-auto text-center mb-16">
+          <h2 className="text-4xl font-bold text-[var(--color-primary-dark)] mb-4">The Sticking Points of Traditional Staffing</h2>
+          <p className="text-xl text-[var(--color-text)] max-w-3xl mx-auto">
+            Clients overpay, contractors under-earn, and processes waste time. Here’s why:
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {problems.map((problem) => {
+            const IconComponent = problem.icon === 'timer-off' ? TimerOff :
+              problem.icon === 'trending-up' ? TrendingUp :
+              problem.icon === 'file-text' ? FileText : AlertCircle;
+            return (
+              <Card key={problem.id} className="border border-red-100 bg-red-50 hover:shadow-md transition-shadow duration-300">
+                <CardContent className="p-6">
+                  <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mb-4">
+                    <IconComponent className="text-red-600" size={24} />
+                  </div>
+                  <h3 className="text-lg font-bold text-[var(--color-primary-dark)] mb-2">{problem.title}</h3>
+                  <p className="text-[var(--color-text)] text-sm">{problem.description}</p>
+                </CardContent>
+              </Card>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* Solution Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[var(--color-bg-light)]">
+        <div className="max-w-7xl mx-auto text-center mb-16">
+          <h2 className="text-4xl font-bold text-[var(--color-primary-dark)] mb-4">The Mapeach Difference</h2>
+          <p className="text-xl text-[var(--color-text)] max-w-3xl mx-auto">
+            Speed. Cost transparency. Automation. Full control.
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {solutions.map((solution) => {
+            const IconComponent = solution.icon === 'zap' ? Zap :
+              solution.icon === 'dollar-sign' ? DollarSign :
+              solution.icon === 'check-circle' ? CheckCircle : ShieldCheck;
+            return (
+              <Card key={solution.id} className="border border-[var(--color-primary-light)] bg-white hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                <CardContent className="p-6">
+                  <div className="w-12 h-12 bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-primary-dark)] rounded-lg flex items-center justify-center mb-4">
+                    <IconComponent className="text-white" size={24} />
+                  </div>
+                  <div className="inline-block px-3 py-1 bg-[var(--color-primary-light)] text-[var(--color-primary-dark)] rounded-full text-xs font-semibold mb-3">
+                    {solution.benefit}
+                  </div>
+                  <h3 className="text-lg font-bold text-[var(--color-primary-dark)] mb-2">{solution.title}</h3>
+                  <p className="text-[var(--color-text)] text-sm">{solution.description}</p>
+                </CardContent>
+              </Card>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* Pricing Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-dark)] text-white text-center">
+        <div className="max-w-4xl mx-auto">
+          <h2 className="text-4xl font-bold mb-6">Transparent Pricing You Can Trust</h2>
+          <p className="text-lg opacity-90 mb-12">No hidden fees. No surprise markups. Just simple, honest pricing.</p>
+          <div className="grid md:grid-cols-2 gap-8">
+            <Card className="bg-white/10 backdrop-blur-sm border-white/20">
+              <CardContent className="p-8 text-center">
+                <div className="text-5xl font-bold mb-2">$10</div>
+                <div className="text-lg opacity-90 mb-4">One-time per contractor</div>
+                <p className="text-sm opacity-80">Simple onboarding fee—that's it</p>
+              </CardContent>
+            </Card>
+            <Card className="bg-white/10 backdrop-blur-sm border-white/20">
+              <CardContent className="p-8 text-center">
+                <div className="text-5xl font-bold mb-2">$1/hr</div>
+                <div className="text-lg opacity-90 mb-4">Recurring, billed bi-weekly</div>
+                <p className="text-sm opacity-80">Transparent hourly service fee</p>
+              </CardContent>
+            </Card>
+          </div>
+          <p className="mt-8 opacity-80">
+            Compare this to 15-25% Staffing Companies markups or 5-15% marketplace fees.
+          </p>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[var(--color-primary-dark)] to-slate-900 text-white">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to Transform?</h2>
+          <p className="text-xl text-slate-300 mb-10">
+            Join hundreds of companies and contractors thriving with Mapeach — where clients save more and contractors earn more.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link to="/enquiry">
+              <Button size="lg" className="bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-dark)] hover:opacity-90 text-white px-8 py-6 text-lg font-semibold shadow-md hover:shadow-lg transition-all duration-300">
+                Start Hiring Smarter
+                <ArrowRight className="ml-2" size={20} />
+              </Button>
+            </Link>
+            <Link to="/join">
+              <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-[var(--color-primary-dark)] px-8 py-6 text-lg font-semibold transition-all duration-300">
                 Start Earning More
               </Button>
             </Link>
