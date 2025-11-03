@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import "../Theme.css"; // ensure this path is correct
+import "../Theme.css"; // ensure path correct
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -35,6 +35,7 @@ const Navbar = () => {
   ];
 
   const isActive = (path) => location.pathname === path;
+  const isSubActive = (basePath) => location.pathname.startsWith(basePath);
 
   return (
     <nav className="fixed w-full bg-white/90 backdrop-blur-lg shadow-sm z-50">
@@ -46,59 +47,65 @@ const Navbar = () => {
             <img
               src="/logo192.png"
               alt="Mapeach Logo"
-              className="h-10 w-auto object-contain"
+              className="h-12 w-auto object-contain"
             />
-            <span className="text-2xl font-bold text-emerald-700">Mapeach</span>
+            <span className="text-2xl font-bold text-cyan-700 tracking-tight">Mapeach</span>
           </Link>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex space-x-2">
-            {navItems.map((item) => (
-              <div
-                key={item.name}
-                className="relative group"
-                onMouseEnter={() => setHoveredMenu(item.name)}
-                onMouseLeave={() => setHoveredMenu(null)}
-              >
-                <Link
-                  to={item.path}
-                  className={`px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 ${
-                    isActive(item.path)
-                      ? "bg-emerald-600 text-white"
-                      : "text-slate-700 hover:bg-emerald-50 hover:text-emerald-700"
-                  }`}
-                >
-                  {item.name}
-                </Link>
+            {navItems.map((item) => {
+              const active =
+                isActive(item.path) ||
+                (item.dropdown && isSubActive(item.path));
 
-                {/* Dropdown Menu */}
-                {item.dropdown && hoveredMenu === item.name && (
-                  <div className="absolute left-0 mt-2 w-48 bg-white rounded-xl shadow-lg border border-emerald-100 overflow-hidden">
-                    {item.dropdown.map((subItem) => (
-                      <Link
-                        key={subItem.name}
-                        to={subItem.path}
-                        onClick={closeMenu}
-                        className={`block px-4 py-2.5 text-sm font-medium transition-colors duration-150 ${
-                          isActive(subItem.path)
-                            ? "bg-emerald-600 text-white"
-                            : "text-slate-700 hover:bg-emerald-50 hover:text-emerald-700"
-                        }`}
-                      >
-                        {subItem.name}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-            ))}
+              return (
+                <div
+                  key={item.name}
+                  className="relative group"
+                  onMouseEnter={() => setHoveredMenu(item.name)}
+                  onMouseLeave={() => setHoveredMenu(null)}
+                >
+                  <Link
+                    to={item.path}
+                    className={`px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 ${
+                      active
+                        ? "bg-cyan-600 text-white"
+                        : "text-slate-700 hover:bg-cyan-50 hover:text-cyan-700"
+                    }`}
+                  >
+                    {item.name}
+                  </Link>
+
+                  {/* Dropdown Menu */}
+                  {item.dropdown && hoveredMenu === item.name && (
+                    <div className="absolute left-0 mt-2 w-48 bg-white rounded-xl shadow-lg border border-cyan-100 overflow-hidden">
+                      {item.dropdown.map((subItem) => (
+                        <Link
+                          key={subItem.name}
+                          to={subItem.path}
+                          onClick={closeMenu}
+                          className={`block px-4 py-2.5 text-sm font-medium transition-colors duration-150 ${
+                            isActive(subItem.path)
+                              ? "bg-cyan-600 text-white"
+                              : "text-slate-700 hover:bg-cyan-50 hover:text-cyan-700"
+                          }`}
+                        >
+                          {subItem.name}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </div>
 
           {/* Mobile Menu Toggle */}
           <div className="md:hidden">
             <button
               onClick={toggleMenu}
-              className="text-slate-700 hover:text-emerald-700 transition-colors duration-200"
+              className="text-slate-700 hover:text-cyan-700 transition-colors duration-200"
             >
               {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
             </button>
@@ -108,16 +115,17 @@ const Navbar = () => {
 
       {/* Mobile Dropdown Menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-white shadow-lg border-t border-emerald-100">
+        <div className="md:hidden bg-white shadow-lg border-t border-cyan-100">
           {navItems.map((item) => (
             <div key={item.name} className="border-b border-slate-100">
               <Link
                 to={item.path}
                 onClick={closeMenu}
                 className={`block px-6 py-3 text-base font-medium ${
-                  isActive(item.path)
-                    ? "bg-emerald-600 text-white"
-                    : "text-slate-700 hover:bg-emerald-50 hover:text-emerald-700"
+                  isActive(item.path) ||
+                  (item.dropdown && isSubActive(item.path))
+                    ? "bg-cyan-600 text-white"
+                    : "text-slate-700 hover:bg-cyan-50 hover:text-cyan-700"
                 }`}
               >
                 {item.name}
@@ -132,8 +140,8 @@ const Navbar = () => {
                       onClick={closeMenu}
                       className={`block px-8 py-2.5 text-sm font-medium ${
                         isActive(subItem.path)
-                          ? "bg-emerald-600 text-white"
-                          : "text-slate-700 hover:bg-emerald-100 hover:text-emerald-700"
+                          ? "bg-cyan-600 text-white"
+                          : "text-slate-700 hover:bg-cyan-100 hover:text-cyan-700"
                       }`}
                     >
                       {subItem.name}
