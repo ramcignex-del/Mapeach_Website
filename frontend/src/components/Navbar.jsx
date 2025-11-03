@@ -1,6 +1,6 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ChevronDown, ChevronUp, ChevronRight } from "lucide-react";
+import { Menu, X, ChevronDown, ChevronUp } from "lucide-react";
 import logo from "../assets/logo.jpg";
 
 export const Navbar = () => {
@@ -24,7 +24,16 @@ export const Navbar = () => {
       path: "/services",
       label: "Services",
       subLinks: [
-        { path: "/hire", label: "For Companies" },
+        {
+          path: "/hire",
+          label: "For Companies",
+          subLinks: [
+            { path: "/companies/informationtechnology", label: "Information Technology" },
+            { path: "/companies/electronics", label: "Electronics & Communications" },
+            { path: "/companies/healthtech", label: "HealthTech" },
+            { path: "/companies/lifesciences", label: "Lifesciences" },
+          ],
+        },
         { path: "/join", label: "For Talents" },
       ],
     },
@@ -38,7 +47,7 @@ export const Navbar = () => {
         { path: "/MapeachFAQ", label: "FAQ" },
       ],
     },
-    { path: "/contact", label: "Contact Us" },
+    { path: "/enquiry", label: "Contact Us" }, // ✅ Fixed route
   ];
 
   return (
@@ -46,11 +55,7 @@ export const Navbar = () => {
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link
-            to="/"
-            onClick={() => handleLinkClick("/")}
-            className="flex items-center"
-          >
+          <Link to="/" onClick={() => handleLinkClick("/")} className="flex items-center">
             <img
               src={logo}
               alt="Mapeach Logo"
@@ -64,7 +69,12 @@ export const Navbar = () => {
               const active =
                 isActive(link.path) ||
                 (link.subLinks &&
-                  link.subLinks.some((sublink) => isActive(sublink.path)));
+                  link.subLinks.some(
+                    (sublink) =>
+                      isActive(sublink.path) ||
+                      (sublink.subLinks &&
+                        sublink.subLinks.some((deep) => isActive(deep.path)))
+                  ));
 
               if (!link.subLinks) {
                 return (
@@ -106,21 +116,41 @@ export const Navbar = () => {
                   </button>
 
                   {openDropdown === link.path && (
-                    <div className="absolute left-0 mt-0 w-48 bg-white shadow-lg rounded-b-md ring-1 ring-slate-200">
+                    <div className="absolute left-0 mt-0 w-60 bg-white shadow-lg rounded-b-md ring-1 ring-slate-200 z-50">
                       {link.subLinks.map((subLink) => (
-                        <Link
-                          key={subLink.path}
-                          to={subLink.path}
-                          onClick={() => handleLinkClick(subLink.path)}
-                          className={`flex items-center justify-between px-4 py-2 text-[13px] uppercase transition-colors duration-150 ${
-                            isActive(subLink.path)
-                              ? "bg-[#00CFFF] text-white"
-                              : "text-slate-800 hover:bg-[#00CFFF] hover:text-white"
-                          }`}
-                        >
-                          {subLink.label}
-                          <ChevronRight size={13} />
-                        </Link>
+                        <div key={subLink.path} className="relative group">
+                          <Link
+                            to={subLink.path}
+                            onClick={() => handleLinkClick(subLink.path)}
+                            className={`block px-4 py-2 text-[13px] uppercase transition-colors duration-150 ${
+                              isActive(subLink.path)
+                                ? "bg-[#00CFFF] text-white"
+                                : "text-slate-800 hover:bg-[#00CFFF] hover:text-white"
+                            }`}
+                          >
+                            {subLink.label}
+                          </Link>
+
+                          {/* Nested subLinks (For Companies) */}
+                          {subLink.subLinks && (
+                            <div className="absolute top-0 left-full hidden group-hover:block w-64 bg-white shadow-lg rounded-md ring-1 ring-slate-200">
+                              {subLink.subLinks.map((deepLink) => (
+                                <Link
+                                  key={deepLink.path}
+                                  to={deepLink.path}
+                                  onClick={() => handleLinkClick(deepLink.path)}
+                                  className={`block px-4 py-2 text-[13px] uppercase transition-colors duration-150 ${
+                                    isActive(deepLink.path)
+                                      ? "bg-[#00CFFF] text-white"
+                                      : "text-slate-800 hover:bg-[#00CFFF] hover:text-white"
+                                  }`}
+                                >
+                                  {deepLink.label}
+                                </Link>
+                              ))}
+                            </div>
+                          )}
+                        </div>
                       ))}
                     </div>
                   )}
@@ -129,7 +159,7 @@ export const Navbar = () => {
             })}
           </div>
 
-          {/* Mobile menu toggle */}
+          {/* Mobile Menu Toggle */}
           <button
             className="md:hidden p-2 text-slate-700 hover:text-slate-900"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
