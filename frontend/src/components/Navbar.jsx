@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ChevronDown, ChevronUp } from "lucide-react";
+import { Menu, X, ChevronDown, ChevronUp, ChevronRight } from "lucide-react"; // ✅ FIXED: added ChevronRight
 import logo from "../assets/logo.jpg";
 
 export const Navbar = () => {
@@ -58,7 +58,11 @@ export const Navbar = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center" onClick={() => handleLinkClick("/")}>
-            <img src={logo} alt="Mapeach Logo" className="h-6 w-auto" />
+            <img
+              src={logo}
+              alt="Mapeach Logo"
+              className="h-8 md:h-10 w-auto object-contain" // ✅ FIXED: larger, responsive
+            />
           </Link>
 
           {/* Desktop Navigation */}
@@ -114,7 +118,7 @@ export const Navbar = () => {
                           >
                             <div className="flex justify-between items-center px-4 py-2 text-sm font-semibold uppercase text-slate-700 hover:text-[#00B7E8] hover:bg-slate-50 cursor-pointer">
                               {subLink.label}
-                              <ChevronRight size={14} />
+                              <ChevronRight size={14} /> {/* ✅ FIXED: now imported */}
                             </div>
                             {openSubDropdown === subLink.label && (
                               <div className="absolute left-full top-0 w-64 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5">
@@ -204,7 +208,11 @@ export const Navbar = () => {
                     }
                   >
                     <span className="text-slate-700">{link.label}</span>
-                    {openDropdown === link.label ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
+                    {openDropdown === link.label ? (
+                      <ChevronUp size={18} />
+                    ) : (
+                      <ChevronDown size={18} />
+                    )}
                   </div>
                   {openDropdown === link.label && (
                     <div className="ml-4 border-l border-slate-200 pl-3">
