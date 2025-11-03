@@ -51,7 +51,7 @@ export const Navbar = () => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200 shadow-sm">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
@@ -64,7 +64,7 @@ export const Navbar = () => {
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-0">
+          <div className="hidden md:flex items-center">
             {navLinks.map((link) => {
               const active =
                 isActive(link.path) ||
@@ -117,7 +117,7 @@ export const Navbar = () => {
 
                   {/* Dropdown Menu */}
                   {openDropdown === link.path && (
-                    <div className="absolute left-0 mt-0 w-60 bg-white shadow-lg rounded-b-md ring-1 ring-slate-200 z-50">
+                    <div className="absolute left-0 mt-0 w-60 bg-white/80 backdrop-blur-md shadow-lg rounded-b-md ring-1 ring-cyan-100 z-50 border border-cyan-50">
                       {link.subLinks.map((subLink) => (
                         <div key={subLink.path} className="relative group">
                           <Link
@@ -125,7 +125,7 @@ export const Navbar = () => {
                             onClick={() => handleLinkClick(subLink.path)}
                             className={`flex justify-between items-center px-4 py-2 text-[13px] uppercase transition-colors duration-150 ${
                               isActive(subLink.path)
-                                ? "bg-[#00B8E0] text-white"
+                                ? "bg-[#00B8E0]/90 text-white"
                                 : "text-[#1A2E46] hover:bg-[#00B8E0] hover:text-white"
                             }`}
                           >
@@ -135,7 +135,7 @@ export const Navbar = () => {
 
                           {/* Nested subLinks */}
                           {subLink.subLinks && (
-                            <div className="absolute top-0 left-full hidden group-hover:block w-64 bg-white shadow-lg rounded-md ring-1 ring-slate-200">
+                            <div className="absolute top-0 left-full hidden group-hover:block w-64 bg-white/80 backdrop-blur-md shadow-xl rounded-md ring-1 ring-cyan-100 border border-cyan-50">
                               {subLink.subLinks.map((deepLink) => (
                                 <Link
                                   key={deepLink.path}
@@ -143,7 +143,7 @@ export const Navbar = () => {
                                   onClick={() => handleLinkClick(deepLink.path)}
                                   className={`block px-4 py-2 text-[13px] uppercase transition-colors duration-150 ${
                                     isActive(deepLink.path)
-                                      ? "bg-[#00B8E0] text-white"
+                                      ? "bg-[#00B8E0]/90 text-white"
                                       : "text-[#1A2E46] hover:bg-[#00B8E0] hover:text-white"
                                   }`}
                                 >
@@ -173,7 +173,7 @@ export const Navbar = () => {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-white border-t border-slate-200">
+        <div className="md:hidden bg-white/95 backdrop-blur-md border-t border-slate-200">
           <div className="px-4 py-4 space-y-1">
             {navLinks.map((link) => (
               <div key={link.path}>
