@@ -1,171 +1,127 @@
-/* -------------------------------
-   GLOBAL BASE CONFIGURATION
---------------------------------- */
+/* === GLOBAL STYLE SYSTEM FOR MAPEACH === */
 
-/* Smooth scrolling */
+/* Font Import */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+/* Root Theme Variables */
+:root {
+  --color-primary: #00B8E0;
+  --color-primary-hover: #00A0C5;
+  --color-navy: #1A2E46;
+  --color-text: #2E3C50;
+  --color-muted: #6B7C93;
+  --color-bg: #F9FBFD;
+  --color-card: #FFFFFF;
+  --color-border: #E0E6ED;
+}
+
+/* Global Smooth Scrolling */
 html {
   scroll-behavior: smooth;
 }
 
-/* Reset defaults */
+/* Reset */
 body, #root, .App {
   margin: 0;
   padding: 0;
+  background-color: var(--color-bg);
+  font-family: "Poppins", "Inter", "Segoe UI", sans-serif;
+  color: var(--color-text);
+  line-height: 1.6;
 }
 
-/* Transition defaults */
-a, button {
+/* Headings */
+h1, h2 {
+  color: var(--color-navy);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+h3, h4 {
+  color: var(--color-navy);
+  font-weight: 600;
+  letter-spacing: -0.25px;
+}
+
+h5, h6 {
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+/* Paragraphs */
+p {
+  color: var(--color-text);
+  font-weight: 400;
+  margin-bottom: 1rem;
+}
+
+/* Small text / captions */
+small, .text-muted {
+  color: var(--color-muted);
+}
+
+/* Buttons */
+button, .btn {
+  background-color: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  cursor: pointer;
   transition: all 0.3s ease;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.08);
 }
 
-/* Button hover animations */
+button:hover, .btn:hover {
+  background-color: var(--color-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 10px rgba(0,0,0,0.12);
+}
+
+/* Secondary Button */
+.btn-outline {
+  background-color: #fff;
+  color: var(--color-primary);
+  border: 1.5px solid var(--color-primary);
+}
+
+.btn-outline:hover {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+/* Cards / Sections */
+.card {
+  background: var(--color-card);
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+
+/* Links */
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--color-primary-hover);
+}
+
+/* Existing hover effects retained */
 button:hover {
   transform: translateY(-1px);
 }
 
-button:active {
-  transform: translateY(0);
-}
-
-/* Card hover lift effect */
-.hover-lift {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
 .hover-lift:hover {
   transform: translateY(-4px);
-}
-
-/* -------------------------------
-   FONT IMPORTS
---------------------------------- */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500&display=swap');
-
-/* -------------------------------
-   COLOR SYSTEM
---------------------------------- */
-:root {
-  --color-primary: #00B8E0;       /* Medium Cyan (Main Brand Color) */
-  --color-primary-dark: #009ECC;  /* Darker cyan for hover */
-  --color-secondary: #1A2E46;     /* Deep navy for headings */
-  --color-text: #334155;          /* Neutral text */
-  --color-muted: #64748B;         /* Muted gray text */
-  --color-bg: #FFFFFF;            /* Background white */
-  --color-bg-alt: #F8FAFC;        /* Light section background */
-  --color-accent: #00E5FF;        /* Lighter cyan accent */
-}
-
-/* -------------------------------
-   TYPOGRAPHY
---------------------------------- */
-body {
-  font-family: 'Inter', 'Poppins', sans-serif;
-  color: var(--color-text);
-  background-color: var(--color-bg);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Poppins', sans-serif;
-  color: var(--color-secondary);
-  font-weight: 600;
-  line-height: 1.25;
-  margin-bottom: 0.5rem;
-}
-
-h1 { font-size: 2.25rem; }
-h2 { font-size: 1.75rem; }
-h3 { font-size: 1.5rem; }
-
-p {
-  font-family: 'Inter', sans-serif;
-  color: var(--color-text);
-  font-size: 1rem;
-  line-height: 1.75;
-  margin-bottom: 1rem;
-}
-
-/* -------------------------------
-   LINKS
---------------------------------- */
-a {
-  color: var(--color-primary);
-  text-decoration: none;
-}
-
-a:hover {
-  color: var(--color-primary-dark);
-}
-
-/* -------------------------------
-   BUTTONS
---------------------------------- */
-button,
-.btn-primary {
-  background: var(--color-primary);
-  color: #fff;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
-  border: none;
-  border-radius: 0.5rem;
-  padding: 0.625rem 1.25rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 3px 6px rgba(0, 184, 224, 0.3);
-}
-
-button:hover,
-.btn-primary:hover {
-  background: var(--color-primary-dark);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0, 184, 224, 0.35);
-}
-
-/* Outline / Secondary Button */
-.btn-secondary {
-  background: transparent;
-  color: var(--color-primary);
-  border: 2px solid var(--color-primary);
-}
-
-.btn-secondary:hover {
-  background: var(--color-bg-alt);
-}
-
-/* -------------------------------
-   NAVIGATION
---------------------------------- */
-.nav-link {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
-  text-transform: uppercase;
-  color: var(--color-secondary);
-  border-radius: 0.4rem;
-  padding: 0.5rem 1rem;
-  transition: all 0.3s ease;
-}
-
-.nav-link.active,
-.nav-link:hover {
-  background-color: var(--color-primary);
-  color: #fff;
-  box-shadow: 0 3px 6px rgba(0, 184, 224, 0.25);
-}
-
-/* -------------------------------
-   FOOTER
---------------------------------- */
-footer {
-  font-family: 'Inter', sans-serif;
-  color: var(--color-muted);
-  font-size: 0.875rem;
-}
-
-/* -------------------------------
-   RESPONSIVE HEADINGS
---------------------------------- */
-@media (max-width: 768px) {
-  h1 { font-size: 1.875rem; }
-  h2 { font-size: 1.5rem; }
-  h3 { font-size: 1.25rem; }
 }
