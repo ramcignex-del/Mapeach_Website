@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ChevronDown, ChevronUp } from "lucide-react";
+import { Menu, X, ChevronDown, ChevronUp, ChevronRight } from "lucide-react";
 import logo from "../assets/logo.jpg";
 
 export const Navbar = () => {
@@ -51,15 +51,15 @@ export const Navbar = () => {
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200">
-      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200 shadow-sm">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <Link to="/" onClick={() => handleLinkClick("/")} className="flex items-center">
             <img
               src={logo}
               alt="Mapeach Logo"
-              className="h-14 w-auto object-contain"
+              className="h-16 w-auto object-contain"
             />
           </Link>
 
@@ -82,10 +82,10 @@ export const Navbar = () => {
                     key={link.path}
                     to={link.path}
                     onClick={() => handleLinkClick(link.path)}
-                    className={`min-w-[120px] text-center flex justify-center items-center h-16 text-[13px] font-semibold tracking-wide uppercase transition-all duration-200 ${
+                    className={`w-32 text-center flex justify-center items-center h-20 text-[13px] font-semibold tracking-wide uppercase transition-all duration-200 ${
                       active
-                        ? "bg-[#00CFFF] text-white"
-                        : "text-slate-800 hover:bg-[#00CFFF] hover:text-white"
+                        ? "bg-[#00B8E0] text-white"
+                        : "text-[#1A2E46] hover:bg-[#00B8E0] hover:text-white"
                     }`}
                   >
                     {link.label}
@@ -101,10 +101,10 @@ export const Navbar = () => {
                   onMouseLeave={() => setOpenDropdown(null)}
                 >
                   <button
-                    className={`min-w-[120px] text-center flex justify-center items-center space-x-1 h-16 text-[13px] font-semibold tracking-wide uppercase transition-all duration-200 ${
+                    className={`w-32 text-center flex justify-center items-center space-x-1 h-20 text-[13px] font-semibold tracking-wide uppercase transition-all duration-200 ${
                       active
-                        ? "bg-[#00CFFF] text-white"
-                        : "text-slate-800 hover:bg-[#00CFFF] hover:text-white"
+                        ? "bg-[#00B8E0] text-white"
+                        : "text-[#1A2E46] hover:bg-[#00B8E0] hover:text-white"
                     }`}
                   >
                     <span>{link.label}</span>
@@ -115,6 +115,7 @@ export const Navbar = () => {
                     )}
                   </button>
 
+                  {/* Dropdown Menu */}
                   {openDropdown === link.path && (
                     <div className="absolute left-0 mt-0 w-60 bg-white shadow-lg rounded-b-md ring-1 ring-slate-200 z-50">
                       {link.subLinks.map((subLink) => (
@@ -122,16 +123,17 @@ export const Navbar = () => {
                           <Link
                             to={subLink.path}
                             onClick={() => handleLinkClick(subLink.path)}
-                            className={`block px-4 py-2 text-[13px] uppercase transition-colors duration-150 ${
+                            className={`flex justify-between items-center px-4 py-2 text-[13px] uppercase transition-colors duration-150 ${
                               isActive(subLink.path)
-                                ? "bg-[#00CFFF] text-white"
-                                : "text-slate-800 hover:bg-[#00CFFF] hover:text-white"
+                                ? "bg-[#00B8E0] text-white"
+                                : "text-[#1A2E46] hover:bg-[#00B8E0] hover:text-white"
                             }`}
                           >
-                            {subLink.label}
+                            <span>{subLink.label}</span>
+                            {subLink.subLinks && <ChevronRight size={14} />}
                           </Link>
 
-                          {/* Nested subLinks (For Companies) */}
+                          {/* Nested subLinks */}
                           {subLink.subLinks && (
                             <div className="absolute top-0 left-full hidden group-hover:block w-64 bg-white shadow-lg rounded-md ring-1 ring-slate-200">
                               {subLink.subLinks.map((deepLink) => (
@@ -141,8 +143,8 @@ export const Navbar = () => {
                                   onClick={() => handleLinkClick(deepLink.path)}
                                   className={`block px-4 py-2 text-[13px] uppercase transition-colors duration-150 ${
                                     isActive(deepLink.path)
-                                      ? "bg-[#00CFFF] text-white"
-                                      : "text-slate-800 hover:bg-[#00CFFF] hover:text-white"
+                                      ? "bg-[#00B8E0] text-white"
+                                      : "text-[#1A2E46] hover:bg-[#00B8E0] hover:text-white"
                                   }`}
                                 >
                                   {deepLink.label}
@@ -161,7 +163,7 @@ export const Navbar = () => {
 
           {/* Mobile Menu Toggle */}
           <button
-            className="md:hidden p-2 text-slate-700 hover:text-slate-900"
+            className="md:hidden p-2 text-[#1A2E46] hover:text-[#00B8E0]"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -181,8 +183,8 @@ export const Navbar = () => {
                     onClick={() => handleLinkClick(link.path)}
                     className={`block text-center px-4 py-2 rounded-md text-sm font-semibold uppercase transition-colors duration-200 ${
                       isActive(link.path)
-                        ? "bg-[#00CFFF] text-white"
-                        : "text-slate-800 hover:bg-[#00CFFF] hover:text-white"
+                        ? "bg-[#00B8E0] text-white"
+                        : "text-[#1A2E46] hover:bg-[#00B8E0] hover:text-white"
                     }`}
                   >
                     {link.label}
@@ -197,8 +199,8 @@ export const Navbar = () => {
                       }
                       className={`w-full text-left px-4 py-2 rounded-md text-sm font-semibold uppercase flex justify-between items-center transition-colors duration-200 ${
                         link.subLinks.some((s) => isActive(s.path))
-                          ? "bg-[#00CFFF] text-white"
-                          : "text-slate-800 hover:bg-[#00CFFF] hover:text-white"
+                          ? "bg-[#00B8E0] text-white"
+                          : "text-[#1A2E46] hover:bg-[#00B8E0] hover:text-white"
                       }`}
                     >
                       {link.label}
@@ -218,8 +220,8 @@ export const Navbar = () => {
                             onClick={() => handleLinkClick(subLink.path)}
                             className={`block px-3 py-2 text-sm font-medium uppercase transition-colors duration-200 ${
                               isActive(subLink.path)
-                                ? "bg-[#00CFFF] text-white"
-                                : "text-slate-800 hover:bg-[#00CFFF] hover:text-white"
+                                ? "bg-[#00B8E0] text-white"
+                                : "text-[#1A2E46] hover:bg-[#00B8E0] hover:text-white"
                             }`}
                           >
                             {subLink.label}
