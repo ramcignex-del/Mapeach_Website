@@ -11,6 +11,15 @@ export const Navbar = () => {
 
   const isActive = (path) => location.pathname === path;
 
+  // Helper: check if any sublink under a menu is active
+  const isParentActive = (subLinks) => {
+    return subLinks?.some((sublink) => {
+      if (sublink.path && isActive(sublink.path)) return true;
+      if (sublink.subLinks) return isParentActive(sublink.subLinks);
+      return false;
+    });
+  };
+
   const handleLinkClick = (path) => {
     if (location.pathname === path) {
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -56,111 +65,121 @@ export const Navbar = () => {
             <img
               src={logo}
               alt="Mapeach Logo"
-              className="h-12 md:h-14 w-auto object-contain"
+              className="h-14 md:h-16 w-auto object-contain"
             />
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-2 lg:space-x-4">
-            {navLinks.map((link) =>
-              link.type === "link" ? (
-                <Link
-                  key={link.path}
-                  to={link.path}
-                  onClick={() => handleLinkClick(link.path)}
-                  className={`relative px-5 py-[28px] text-sm font-bold uppercase tracking-wide transition-all duration-200 rounded-none ${
-                    isActive(link.path)
-                      ? "bg-[#00B7E8]/10 text-[#00B7E8]"
-                      : "text-slate-800 hover:bg-[#00B7E8]/10 hover:text-[#00B7E8]"
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              ) : (
-                <div
-                  key={link.label}
-                  className="relative group"
-                  onMouseEnter={() => setOpenDropdown(link.label)}
-                  onMouseLeave={() => {
-                    setOpenDropdown(null);
-                    setOpenSubDropdown(null);
-                  }}
-                >
-                  <div
-                    className={`flex items-center px-5 py-[28px] text-sm font-bold uppercase tracking-wide cursor-pointer transition-colors duration-200 ${
-                      openDropdown === link.label
-                        ? "bg-[#00B7E8]/10 text-[#00B7E8]"
-                        : "text-slate-800 hover:bg-[#00B7E8]/10 hover:text-[#00B7E8]"
+            {navLinks.map((link) => {
+              if (link.type === "link") {
+                return (
+                  <Link
+                    key={link.path}
+                    to={link.path}
+                    onClick={() => handleLinkClick(link.path)}
+                    className={`relative px-5 py-[28px] text-sm font-bold uppercase tracking-wide transition-all duration-200 rounded-none ${
+                      isActive(link.path)
+                        ? "bg-[#00CFFF]/15 text-[#00CFFF]"
+                        : "text-slate-800 hover:bg-[#00CFFF]/15 hover:text-[#00CFFF]"
                     }`}
                   >
                     {link.label}
-                    {openDropdown === link.label ? (
-                      <ChevronUp size={14} className="ml-1" />
-                    ) : (
-                      <ChevronDown size={14} className="ml-1" />
-                    )}
-                  </div>
+                  </Link>
+                );
+              }
 
-                  {openDropdown === link.label && (
-                    <div className="absolute left-0 mt-0 bg-white w-56 rounded-md shadow-lg ring-1 ring-black ring-opacity-5">
-                      {link.subLinks.map((subLink) =>
-                        subLink.type === "submenu" ? (
-                          <div
-                            key={subLink.label}
-                            className="relative group/submenu"
-                            onMouseEnter={() => setOpenSubDropdown(subLink.label)}
-                            onMouseLeave={() => setOpenSubDropdown(null)}
-                          >
-                            <div className="flex justify-between items-center px-4 py-2 text-sm font-semibold uppercase text-slate-800 hover:text-[#00B7E8] hover:bg-slate-50 cursor-pointer">
-                              {subLink.label}
-                              <ChevronRight size={14} />
-                            </div>
-                            {openSubDropdown === subLink.label && (
-                              <div className="absolute left-full top-0 w-64 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5">
-                                {subLink.subLinks.map((sublink) => (
-                                  <Link
-                                    key={sublink.path}
-                                    to={sublink.path}
-                                    onClick={() => {
-                                      handleLinkClick(sublink.path);
-                                      setOpenDropdown(null);
-                                      setOpenSubDropdown(null);
-                                    }}
-                                    className={`block px-4 py-2 text-xs uppercase transition-colors duration-200 ${
-                                      isActive(sublink.path)
-                                        ? "bg-[#00B7E8]/10 text-[#00B7E8]"
-                                        : "text-slate-700 hover:bg-slate-50 hover:text-[#00B7E8]"
-                                    }`}
-                                  >
-                                    {sublink.label}
-                                  </Link>
-                                ))}
-                              </div>
-                            )}
-                          </div>
-                        ) : (
-                          <Link
-                            key={subLink.path}
-                            to={subLink.path}
-                            onClick={() => {
-                              handleLinkClick(subLink.path);
-                              setOpenDropdown(null);
-                            }}
-                            className={`block px-4 py-2 text-sm uppercase transition-colors duration-200 ${
-                              isActive(subLink.path)
-                                ? "bg-[#00B7E8]/10 text-[#00B7E8]"
-                                : "text-slate-700 hover:bg-slate-50 hover:text-[#00B7E8]"
-                            }`}
-                          >
-                            {subLink.label}
-                          </Link>
-                        )
+              if (link.type === "menu") {
+                const activeParent = isParentActive(link.subLinks);
+                return (
+                  <div
+                    key={link.label}
+                    className="relative group"
+                    onMouseEnter={() => setOpenDropdown(link.label)}
+                    onMouseLeave={() => {
+                      setOpenDropdown(null);
+                      setOpenSubDropdown(null);
+                    }}
+                  >
+                    <div
+                      className={`flex items-center px-5 py-[28px] text-sm font-bold uppercase tracking-wide cursor-pointer transition-colors duration-200 ${
+                        openDropdown === link.label || activeParent
+                          ? "bg-[#00CFFF]/15 text-[#00CFFF]"
+                          : "text-slate-800 hover:bg-[#00CFFF]/15 hover:text-[#00CFFF]"
+                      }`}
+                    >
+                      {link.label}
+                      {openDropdown === link.label ? (
+                        <ChevronUp size={14} className="ml-1" />
+                      ) : (
+                        <ChevronDown size={14} className="ml-1" />
                       )}
                     </div>
-                  )}
-                </div>
-              )
-            )}
+
+                    {/* Dropdown */}
+                    {openDropdown === link.label && (
+                      <div className="absolute left-0 mt-0 bg-white w-56 rounded-md shadow-lg ring-1 ring-black ring-opacity-5">
+                        {link.subLinks.map((subLink) =>
+                          subLink.type === "submenu" ? (
+                            <div
+                              key={subLink.label}
+                              className="relative group/submenu"
+                              onMouseEnter={() => setOpenSubDropdown(subLink.label)}
+                              onMouseLeave={() => setOpenSubDropdown(null)}
+                            >
+                              <div className="flex justify-between items-center px-4 py-2 text-sm font-semibold uppercase text-slate-800 hover:text-[#00CFFF] hover:bg-slate-50 cursor-pointer">
+                                {subLink.label}
+                                <ChevronRight size={14} />
+                              </div>
+                              {openSubDropdown === subLink.label && (
+                                <div className="absolute left-full top-0 w-64 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5">
+                                  {subLink.subLinks.map((sublink) => (
+                                    <Link
+                                      key={sublink.path}
+                                      to={sublink.path}
+                                      onClick={() => {
+                                        handleLinkClick(sublink.path);
+                                        setOpenDropdown(null);
+                                        setOpenSubDropdown(null);
+                                      }}
+                                      className={`block px-4 py-2 text-xs uppercase transition-colors duration-200 ${
+                                        isActive(sublink.path)
+                                          ? "bg-[#00CFFF]/15 text-[#00CFFF]"
+                                          : "text-slate-700 hover:bg-slate-50 hover:text-[#00CFFF]"
+                                      }`}
+                                    >
+                                      {sublink.label}
+                                    </Link>
+                                  ))}
+                                </div>
+                              )}
+                            </div>
+                          ) : (
+                            <Link
+                              key={subLink.path}
+                              to={subLink.path}
+                              onClick={() => {
+                                handleLinkClick(subLink.path);
+                                setOpenDropdown(null);
+                              }}
+                              className={`block px-4 py-2 text-sm uppercase transition-colors duration-200 ${
+                                isActive(subLink.path)
+                                  ? "bg-[#00CFFF]/15 text-[#00CFFF]"
+                                  : "text-slate-700 hover:bg-slate-50 hover:text-[#00CFFF]"
+                              }`}
+                            >
+                              {subLink.label}
+                            </Link>
+                          )
+                        )}
+                      </div>
+                    )}
+                  </div>
+                );
+              }
+
+              return null;
+            })}
           </div>
 
           {/* Mobile Menu Toggle */}
