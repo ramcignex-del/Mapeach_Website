@@ -1,236 +1,152 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ChevronDown, ChevronUp } from "lucide-react";
-import logo from "../assets/logo.jpg";
+import { Menu, X } from "lucide-react";
+import "../theme.css"; // ensure this path is correct
 
-export const Navbar = () => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [openDropdown, setOpenDropdown] = useState(null);
+const Navbar = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [hoveredMenu, setHoveredMenu] = useState(null);
   const location = useLocation();
+
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const closeMenu = () => setIsMenuOpen(false);
+
+  const navItems = [
+    { name: "Home", path: "/" },
+    {
+      name: "Services",
+      path: "/services",
+      dropdown: [
+        { name: "For Companies", path: "/services/companies" },
+        { name: "For Contractors", path: "/services/contractors" },
+      ],
+    },
+    { name: "Pricing", path: "/pricing" },
+    {
+      name: "About",
+      path: "/about",
+      dropdown: [
+        { name: "Our Story", path: "/about/our-story" },
+        { name: "FAQ", path: "/about/faq" },
+      ],
+    },
+    { name: "Jobs", path: "/jobs" },
+    { name: "Contact", path: "/contact" },
+  ];
 
   const isActive = (path) => location.pathname === path;
 
-  const handleLinkClick = (path) => {
-    if (location.pathname === path) {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-    setMobileMenuOpen(false);
-    setOpenDropdown(null);
-  };
-
-  const navLinks = [
-    { path: "/", label: "Home" },
-    {
-      path: "/services",
-      label: "Services",
-      subLinks: [
-        {
-          path: "/hire",
-          label: "For Companies",
-          subLinks: [
-            { path: "/companies/informationtechnology", label: "Information Technology" },
-            { path: "/companies/electronics", label: "Electronics & Communications" },
-            { path: "/companies/healthtech", label: "HealthTech" },
-            { path: "/companies/lifesciences", label: "Lifesciences" },
-          ],
-        },
-        { path: "/join", label: "For Talents" },
-      ],
-    },
-    { path: "/pricing", label: "Pricing" },
-    { path: "/jobs", label: "Jobs" },
-    {
-      path: "/about",
-      label: "About",
-      subLinks: [
-        { path: "/about", label: "About Mapeach" },
-        { path: "/MapeachFAQ", label: "FAQ" },
-      ],
-    },
-    { path: "/enquiry", label: "Contact Us" },
-  ];
-
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200">
-      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+    <nav className="fixed w-full bg-white/90 backdrop-blur-lg shadow-sm z-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-20">
+          
           {/* Logo */}
-          <Link to="/" onClick={() => handleLinkClick("/")} className="flex items-center">
-            <img src={logo} alt="Mapeach Logo" className="h-14 w-auto object-contain" />
+          <Link to="/" className="flex items-center space-x-2" onClick={closeMenu}>
+            <img
+              src="/logo192.png"
+              alt="Mapeach Logo"
+              className="h-10 w-auto object-contain"
+            />
+            <span className="text-2xl font-bold text-emerald-700">Mapeach</span>
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center">
-            {navLinks.map((link) => {
-              const isDropdownActive =
-                link.subLinks &&
-                link.subLinks.some(
-                  (sub) =>
-                    isActive(sub.path) ||
-                    (sub.subLinks && sub.subLinks.some((deep) => isActive(deep.path)))
-                );
-
-              const active = isActive(link.path) || isDropdownActive;
-
-              return (
-                <div
-                  key={link.path}
-                  className="relative group"
-                  onMouseEnter={() => setOpenDropdown(link.path)}
-                  onMouseLeave={() => setOpenDropdown(null)}
+          <div className="hidden md:flex space-x-2">
+            {navItems.map((item) => (
+              <div
+                key={item.name}
+                className="relative group"
+                onMouseEnter={() => setHoveredMenu(item.name)}
+                onMouseLeave={() => setHoveredMenu(null)}
+              >
+                <Link
+                  to={item.path}
+                  className={`px-5 py-2.5 rounded-xl text-sm font-semibold transition-all duration-200 ${
+                    isActive(item.path)
+                      ? "bg-emerald-600 text-white"
+                      : "text-slate-700 hover:bg-emerald-50 hover:text-emerald-700"
+                  }`}
                 >
-                  {!link.subLinks ? (
-                    <Link
-                      to={link.path}
-                      onClick={() => handleLinkClick(link.path)}
-                      className={`min-w-[130px] text-center flex justify-center items-center h-16 text-[13px] font-semibold tracking-wide uppercase transition-all duration-200 ${
-                        active
-                          ? "bg-[#00CFFF] text-white"
-                          : "text-slate-800 hover:bg-[#00CFFF] hover:text-white"
-                      }`}
-                    >
-                      {link.label}
-                    </Link>
-                  ) : (
-                    <>
-                      <button
-                        className={`min-w-[130px] text-center flex justify-center items-center space-x-1 h-16 text-[13px] font-semibold tracking-wide uppercase transition-all duration-200 ${
-                          active
-                            ? "bg-[#00CFFF] text-white"
-                            : "text-slate-800 hover:bg-[#00CFFF] hover:text-white"
+                  {item.name}
+                </Link>
+
+                {/* Dropdown Menu */}
+                {item.dropdown && hoveredMenu === item.name && (
+                  <div className="absolute left-0 mt-2 w-48 bg-white rounded-xl shadow-lg border border-emerald-100 overflow-hidden">
+                    {item.dropdown.map((subItem) => (
+                      <Link
+                        key={subItem.name}
+                        to={subItem.path}
+                        onClick={closeMenu}
+                        className={`block px-4 py-2.5 text-sm font-medium transition-colors duration-150 ${
+                          isActive(subItem.path)
+                            ? "bg-emerald-600 text-white"
+                            : "text-slate-700 hover:bg-emerald-50 hover:text-emerald-700"
                         }`}
                       >
-                        <span>{link.label}</span>
-                        {openDropdown === link.path ? (
-                          <ChevronUp size={14} />
-                        ) : (
-                          <ChevronDown size={14} />
-                        )}
-                      </button>
-
-                      {openDropdown === link.path && (
-                        <div className="absolute left-0 mt-0 w-60 bg-white shadow-lg rounded-b-md ring-1 ring-slate-200 z-50">
-                          {link.subLinks.map((subLink) => (
-                            <div key={subLink.path} className="relative group">
-                              <Link
-                                to={subLink.path}
-                                onClick={() => handleLinkClick(subLink.path)}
-                                className={`block px-4 py-2 text-[13px] uppercase transition-colors duration-150 ${
-                                  isActive(subLink.path) ||
-                                  (subLink.subLinks &&
-                                    subLink.subLinks.some((deep) => isActive(deep.path)))
-                                    ? "bg-[#00CFFF] text-white"
-                                    : "text-slate-800 hover:bg-[#00CFFF] hover:text-white"
-                                }`}
-                              >
-                                {subLink.label}
-                              </Link>
-
-                              {/* Nested SubLinks */}
-                              {subLink.subLinks && (
-                                <div className="absolute top-0 left-full hidden group-hover:block w-64 bg-white shadow-lg rounded-md ring-1 ring-slate-200">
-                                  {subLink.subLinks.map((deepLink) => (
-                                    <Link
-                                      key={deepLink.path}
-                                      to={deepLink.path}
-                                      onClick={() => handleLinkClick(deepLink.path)}
-                                      className={`block px-4 py-2 text-[13px] uppercase transition-colors duration-150 ${
-                                        isActive(deepLink.path)
-                                          ? "bg-[#00CFFF] text-white"
-                                          : "text-slate-800 hover:bg-[#00CFFF] hover:text-white"
-                                      }`}
-                                    >
-                                      {deepLink.label}
-                                    </Link>
-                                  ))}
-                                </div>
-                              )}
-                            </div>
-                          ))}
-                        </div>
-                      )}
-                    </>
-                  )}
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden p-2 text-slate-700 hover:text-slate-900"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          >
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile Drawer */}
-      {mobileMenuOpen && (
-        <div className="md:hidden bg-white border-t border-slate-200">
-          <div className="px-4 py-4 space-y-1">
-            {navLinks.map((link) => (
-              <div key={link.path}>
-                {!link.subLinks ? (
-                  <Link
-                    to={link.path}
-                    onClick={() => handleLinkClick(link.path)}
-                    className={`block text-center px-4 py-2 rounded-md text-sm font-semibold uppercase transition-colors duration-200 ${
-                      isActive(link.path)
-                        ? "bg-[#00CFFF] text-white"
-                        : "text-slate-800 hover:bg-[#00CFFF] hover:text-white"
-                    }`}
-                  >
-                    {link.label}
-                  </Link>
-                ) : (
-                  <>
-                    <button
-                      onClick={() =>
-                        setOpenDropdown(
-                          openDropdown === link.path ? null : link.path
-                        )
-                      }
-                      className={`w-full text-left px-4 py-2 rounded-md text-sm font-semibold uppercase flex justify-between items-center transition-colors duration-200 ${
-                        link.subLinks.some((s) => isActive(s.path))
-                          ? "bg-[#00CFFF] text-white"
-                          : "text-slate-800 hover:bg-[#00CFFF] hover:text-white"
-                      }`}
-                    >
-                      {link.label}
-                      {openDropdown === link.path ? (
-                        <ChevronUp size={16} />
-                      ) : (
-                        <ChevronDown size={16} />
-                      )}
-                    </button>
-
-                    {openDropdown === link.path && (
-                      <div className="pl-6 mt-1 space-y-1 border-l border-slate-200">
-                        {link.subLinks.map((subLink) => (
-                          <Link
-                            key={subLink.path}
-                            to={subLink.path}
-                            onClick={() => handleLinkClick(subLink.path)}
-                            className={`block px-3 py-2 text-sm font-medium uppercase transition-colors duration-200 ${
-                              isActive(subLink.path)
-                                ? "bg-[#00CFFF] text-white"
-                                : "text-slate-800 hover:bg-[#00CFFF] hover:text-white"
-                            }`}
-                          >
-                            {subLink.label}
-                          </Link>
-                        ))}
-                      </div>
-                    )}
-                  </>
+                        {subItem.name}
+                      </Link>
+                    ))}
+                  </div>
                 )}
               </div>
             ))}
           </div>
+
+          {/* Mobile Menu Toggle */}
+          <div className="md:hidden">
+            <button
+              onClick={toggleMenu}
+              className="text-slate-700 hover:text-emerald-700 transition-colors duration-200"
+            >
+              {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Dropdown Menu */}
+      {isMenuOpen && (
+        <div className="md:hidden bg-white shadow-lg border-t border-emerald-100">
+          {navItems.map((item) => (
+            <div key={item.name} className="border-b border-slate-100">
+              <Link
+                to={item.path}
+                onClick={closeMenu}
+                className={`block px-6 py-3 text-base font-medium ${
+                  isActive(item.path)
+                    ? "bg-emerald-600 text-white"
+                    : "text-slate-700 hover:bg-emerald-50 hover:text-emerald-700"
+                }`}
+              >
+                {item.name}
+              </Link>
+
+              {item.dropdown && (
+                <div className="bg-slate-50">
+                  {item.dropdown.map((subItem) => (
+                    <Link
+                      key={subItem.name}
+                      to={subItem.path}
+                      onClick={closeMenu}
+                      className={`block px-8 py-2.5 text-sm font-medium ${
+                        isActive(subItem.path)
+                          ? "bg-emerald-600 text-white"
+                          : "text-slate-700 hover:bg-emerald-100 hover:text-emerald-700"
+                      }`}
+                    >
+                      {subItem.name}
+                    </Link>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
         </div>
       )}
     </nav>
   );
 };
+
+export default Navbar;
