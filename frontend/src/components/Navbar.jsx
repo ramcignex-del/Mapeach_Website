@@ -1,42 +1,55 @@
-import React, { useState, useRef } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown, ChevronUp } from 'lucide-react';
-import logo from '../assets/logo.jpg';
+import React, { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { Menu, X, ChevronDown, ChevronUp } from "lucide-react";
+import logo from "../assets/logo.jpg";
 
 export const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(null);
+  const [openSubDropdown, setOpenSubDropdown] = useState(null);
   const location = useLocation();
 
   const isActive = (path) => location.pathname === path;
 
   const handleLinkClick = (path) => {
     if (location.pathname === path) {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
   };
 
+  // Submenu under "For Companies"
+  const companyDropdownLinks = [
+    { path: "/companies/informationtechnology", label: "Information Technology" },
+    { path: "/companies/electronics", label: "Electronics & Communications" },
+    { path: "/companies/healthtech", label: "HealthTech" },
+    { path: "/companies/lifesciences", label: "Lifesciences" },
+  ];
+
   const navLinks = [
-    { path: '/', label: 'Home', type: 'link' },
+    { path: "/", label: "Home", type: "link" },
     {
-      label: 'Services',
-      type: 'menu',
+      label: "Services",
+      type: "menu",
       subLinks: [
-        { path: '/hire', label: 'For Companies' },
-        { path: '/join', label: 'For Talents' },
+        {
+          label: "For Companies",
+          type: "submenu",
+          subLinks: companyDropdownLinks,
+        },
+        { path: "/join", label: "For Talents" },
       ],
     },
-    { path: '/pricing', label: 'Pricing', type: 'link' },
-    { path: '/jobs', label: 'Jobs', type: 'link' },
+    { path: "/pricing", label: "Pricing", type: "link" },
+    { path: "/jobs", label: "Jobs", type: "link" },
     {
-      label: 'About',
-      type: 'menu',
+      label: "About",
+      type: "menu",
       subLinks: [
-        { path: '/about', label: 'About Mapeach' },
-        { path: '/MapeachFAQ', label: 'FAQ' },
+        { path: "/about", label: "About Mapeach" },
+        { path: "/MapeachFAQ", label: "FAQ" },
       ],
     },
-    { path: '/enquiry', label: 'Contact Us', type: 'link' },
+    { path: "/enquiry", label: "Contact Us", type: "link" },
   ];
 
   return (
@@ -44,23 +57,23 @@ export const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center" onClick={() => handleLinkClick('/')}>
+          <Link to="/" className="flex items-center" onClick={() => handleLinkClick("/")}>
             <img src={logo} alt="Mapeach Logo" className="h-6 w-auto" />
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-2 lg:space-x-4">
             {navLinks.map((link) =>
-              link.type === 'link' ? (
+              link.type === "link" ? (
                 <Link
                   key={link.path}
                   to={link.path}
                   onClick={() => handleLinkClick(link.path)}
-                  className={`relative px-3 py-2 text-sm font-semibold uppercase tracking-wide transition-all duration-200
-                    ${isActive(link.path)
-                      ? 'bg-[#00B7E8] text-white rounded-md shadow-sm'
-                      : 'text-slate-700 hover:text-[#00B7E8]'
-                    }`}
+                  className={`relative px-4 py-[22px] text-sm font-semibold uppercase tracking-wide transition-all duration-200 ${
+                    isActive(link.path)
+                      ? "bg-[#00B7E8] text-white"
+                      : "text-slate-700 hover:text-[#00B7E8]"
+                  }`}
                 >
                   {link.label}
                 </Link>
@@ -69,14 +82,17 @@ export const Navbar = () => {
                   key={link.label}
                   className="relative group"
                   onMouseEnter={() => setOpenDropdown(link.label)}
-                  onMouseLeave={() => setOpenDropdown(null)}
+                  onMouseLeave={() => {
+                    setOpenDropdown(null);
+                    setOpenSubDropdown(null);
+                  }}
                 >
                   <div
-                    className={`flex items-center px-3 py-2 text-sm font-semibold uppercase tracking-wide cursor-pointer transition-colors duration-200
-                      ${openDropdown === link.label
-                        ? 'bg-[#00B7E8] text-white rounded-md shadow-sm'
-                        : 'text-slate-700 hover:text-[#00B7E8]'
-                      }`}
+                    className={`flex items-center px-4 py-[22px] text-sm font-semibold uppercase tracking-wide cursor-pointer transition-colors duration-200 ${
+                      openDropdown === link.label
+                        ? "bg-[#00B7E8] text-white"
+                        : "text-slate-700 hover:text-[#00B7E8]"
+                    }`}
                   >
                     {link.label}
                     {openDropdown === link.label ? (
@@ -87,9 +103,43 @@ export const Navbar = () => {
                   </div>
 
                   {openDropdown === link.label && (
-                    <div className="absolute left-0 mt-2 w-52 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5">
-                      <div className="py-1">
-                        {link.subLinks.map((subLink) => (
+                    <div className="absolute left-0 mt-0 bg-white w-56 rounded-md shadow-lg ring-1 ring-black ring-opacity-5">
+                      {link.subLinks.map((subLink) =>
+                        subLink.type === "submenu" ? (
+                          <div
+                            key={subLink.label}
+                            className="relative group/submenu"
+                            onMouseEnter={() => setOpenSubDropdown(subLink.label)}
+                            onMouseLeave={() => setOpenSubDropdown(null)}
+                          >
+                            <div className="flex justify-between items-center px-4 py-2 text-sm font-semibold uppercase text-slate-700 hover:text-[#00B7E8] hover:bg-slate-50 cursor-pointer">
+                              {subLink.label}
+                              <ChevronRight size={14} />
+                            </div>
+                            {openSubDropdown === subLink.label && (
+                              <div className="absolute left-full top-0 w-64 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5">
+                                {subLink.subLinks.map((sublink) => (
+                                  <Link
+                                    key={sublink.path}
+                                    to={sublink.path}
+                                    onClick={() => {
+                                      handleLinkClick(sublink.path);
+                                      setOpenDropdown(null);
+                                      setOpenSubDropdown(null);
+                                    }}
+                                    className={`block px-4 py-2 text-xs uppercase transition-colors duration-200 ${
+                                      isActive(sublink.path)
+                                        ? "bg-[#00B7E8]/10 text-[#00B7E8]"
+                                        : "text-slate-700 hover:bg-slate-50 hover:text-[#00B7E8]"
+                                    }`}
+                                  >
+                                    {sublink.label}
+                                  </Link>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+                        ) : (
                           <Link
                             key={subLink.path}
                             to={subLink.path}
@@ -99,14 +149,14 @@ export const Navbar = () => {
                             }}
                             className={`block px-4 py-2 text-sm uppercase transition-colors duration-200 ${
                               isActive(subLink.path)
-                                ? 'bg-[#00B7E8]/10 text-[#00B7E8]'
-                                : 'text-slate-700 hover:bg-slate-50 hover:text-[#00B7E8]'
+                                ? "bg-[#00B7E8]/10 text-[#00B7E8]"
+                                : "text-slate-700 hover:bg-slate-50 hover:text-[#00B7E8]"
                             }`}
                           >
                             {subLink.label}
                           </Link>
-                        ))}
-                      </div>
+                        )
+                      )}
                     </div>
                   )}
                 </div>
@@ -129,7 +179,7 @@ export const Navbar = () => {
         <div className="md:hidden bg-white border-t border-slate-200">
           <div className="px-4 py-4 space-y-2">
             {navLinks.map((link) =>
-              link.type === 'link' ? (
+              link.type === "link" ? (
                 <Link
                   key={link.path}
                   to={link.path}
@@ -137,11 +187,11 @@ export const Navbar = () => {
                     handleLinkClick(link.path);
                     setMobileMenuOpen(false);
                   }}
-                  className={`block px-4 py-2 rounded-md text-sm font-semibold uppercase transition-colors duration-200
-                    ${isActive(link.path)
-                      ? 'bg-[#00B7E8]/10 text-[#00B7E8]'
-                      : 'text-slate-700 hover:bg-slate-50'
-                    }`}
+                  className={`block px-4 py-2 rounded-md text-sm font-semibold uppercase transition-colors duration-200 ${
+                    isActive(link.path)
+                      ? "bg-[#00B7E8]/10 text-[#00B7E8]"
+                      : "text-slate-700 hover:bg-slate-50"
+                  }`}
                 >
                   {link.label}
                 </Link>
@@ -158,19 +208,50 @@ export const Navbar = () => {
                   </div>
                   {openDropdown === link.label && (
                     <div className="ml-4 border-l border-slate-200 pl-3">
-                      {link.subLinks.map((subLink) => (
-                        <Link
-                          key={subLink.path}
-                          to={subLink.path}
-                          onClick={() => {
-                            handleLinkClick(subLink.path);
-                            setMobileMenuOpen(false);
-                          }}
-                          className="block py-2 text-xs uppercase text-slate-700 hover:text-[#00B7E8]"
-                        >
-                          {subLink.label}
-                        </Link>
-                      ))}
+                      {link.subLinks.map((subLink) =>
+                        subLink.type === "submenu" ? (
+                          <div key={subLink.label}>
+                            <div
+                              className="flex justify-between items-center py-2 text-xs uppercase text-slate-700 hover:text-[#00B7E8] cursor-pointer"
+                              onClick={() =>
+                                setOpenSubDropdown(
+                                  openSubDropdown === subLink.label ? null : subLink.label
+                                )
+                              }
+                            >
+                              {subLink.label}
+                              {openSubDropdown === subLink.label ? (
+                                <ChevronUp size={14} />
+                              ) : (
+                                <ChevronDown size={14} />
+                              )}
+                            </div>
+                            {openSubDropdown === subLink.label && (
+                              <div className="ml-3 border-l border-slate-100 pl-3">
+                                {subLink.subLinks.map((sublink) => (
+                                  <Link
+                                    key={sublink.path}
+                                    to={sublink.path}
+                                    onClick={() => setMobileMenuOpen(false)}
+                                    className="block py-1 text-xs uppercase text-slate-700 hover:text-[#00B7E8]"
+                                  >
+                                    {sublink.label}
+                                  </Link>
+                                ))}
+                              </div>
+                            )}
+                          </div>
+                        ) : (
+                          <Link
+                            key={subLink.path}
+                            to={subLink.path}
+                            onClick={() => setMobileMenuOpen(false)}
+                            className="block py-2 text-xs uppercase text-slate-700 hover:text-[#00B7E8]"
+                          >
+                            {subLink.label}
+                          </Link>
+                        )
+                      )}
                     </div>
                   )}
                 </div>
