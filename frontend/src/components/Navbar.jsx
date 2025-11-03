@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ChevronDown, ChevronUp, ChevronRight } from "lucide-react"; // ✅ FIXED: added ChevronRight
+import { Menu, X, ChevronDown, ChevronUp, ChevronRight } from "lucide-react";
 import logo from "../assets/logo.jpg";
 
 export const Navbar = () => {
@@ -17,7 +17,6 @@ export const Navbar = () => {
     }
   };
 
-  // Submenu under "For Companies"
   const companyDropdownLinks = [
     { path: "/companies/informationtechnology", label: "Information Technology" },
     { path: "/companies/electronics", label: "Electronics & Communications" },
@@ -31,11 +30,7 @@ export const Navbar = () => {
       label: "Services",
       type: "menu",
       subLinks: [
-        {
-          label: "For Companies",
-          type: "submenu",
-          subLinks: companyDropdownLinks,
-        },
+        { label: "For Companies", type: "submenu", subLinks: companyDropdownLinks },
         { path: "/join", label: "For Talents" },
       ],
     },
@@ -55,13 +50,13 @@ export const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center" onClick={() => handleLinkClick("/")}>
             <img
               src={logo}
               alt="Mapeach Logo"
-              className="h-8 md:h-10 w-auto object-contain" // ✅ FIXED: larger, responsive
+              className="h-12 md:h-14 w-auto object-contain"
             />
           </Link>
 
@@ -73,10 +68,10 @@ export const Navbar = () => {
                   key={link.path}
                   to={link.path}
                   onClick={() => handleLinkClick(link.path)}
-                  className={`relative px-4 py-[22px] text-sm font-semibold uppercase tracking-wide transition-all duration-200 ${
+                  className={`relative px-5 py-[28px] text-sm font-bold uppercase tracking-wide transition-all duration-200 rounded-none ${
                     isActive(link.path)
-                      ? "bg-[#00B7E8] text-white"
-                      : "text-slate-700 hover:text-[#00B7E8]"
+                      ? "bg-[#00B7E8]/10 text-[#00B7E8]"
+                      : "text-slate-800 hover:bg-[#00B7E8]/10 hover:text-[#00B7E8]"
                   }`}
                 >
                   {link.label}
@@ -92,10 +87,10 @@ export const Navbar = () => {
                   }}
                 >
                   <div
-                    className={`flex items-center px-4 py-[22px] text-sm font-semibold uppercase tracking-wide cursor-pointer transition-colors duration-200 ${
+                    className={`flex items-center px-5 py-[28px] text-sm font-bold uppercase tracking-wide cursor-pointer transition-colors duration-200 ${
                       openDropdown === link.label
-                        ? "bg-[#00B7E8] text-white"
-                        : "text-slate-700 hover:text-[#00B7E8]"
+                        ? "bg-[#00B7E8]/10 text-[#00B7E8]"
+                        : "text-slate-800 hover:bg-[#00B7E8]/10 hover:text-[#00B7E8]"
                     }`}
                   >
                     {link.label}
@@ -116,9 +111,9 @@ export const Navbar = () => {
                             onMouseEnter={() => setOpenSubDropdown(subLink.label)}
                             onMouseLeave={() => setOpenSubDropdown(null)}
                           >
-                            <div className="flex justify-between items-center px-4 py-2 text-sm font-semibold uppercase text-slate-700 hover:text-[#00B7E8] hover:bg-slate-50 cursor-pointer">
+                            <div className="flex justify-between items-center px-4 py-2 text-sm font-semibold uppercase text-slate-800 hover:text-[#00B7E8] hover:bg-slate-50 cursor-pointer">
                               {subLink.label}
-                              <ChevronRight size={14} /> {/* ✅ FIXED: now imported */}
+                              <ChevronRight size={14} />
                             </div>
                             {openSubDropdown === subLink.label && (
                               <div className="absolute left-full top-0 w-64 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5">
@@ -168,7 +163,7 @@ export const Navbar = () => {
             )}
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Toggle */}
           <button
             className="md:hidden p-2 text-slate-600 hover:text-slate-900"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -177,97 +172,6 @@ export const Navbar = () => {
           </button>
         </div>
       </div>
-
-      {/* Mobile Drawer */}
-      {mobileMenuOpen && (
-        <div className="md:hidden bg-white border-t border-slate-200">
-          <div className="px-4 py-4 space-y-2">
-            {navLinks.map((link) =>
-              link.type === "link" ? (
-                <Link
-                  key={link.path}
-                  to={link.path}
-                  onClick={() => {
-                    handleLinkClick(link.path);
-                    setMobileMenuOpen(false);
-                  }}
-                  className={`block px-4 py-2 rounded-md text-sm font-semibold uppercase transition-colors duration-200 ${
-                    isActive(link.path)
-                      ? "bg-[#00B7E8]/10 text-[#00B7E8]"
-                      : "text-slate-700 hover:bg-slate-50"
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              ) : (
-                <div key={link.label}>
-                  <div
-                    className="flex justify-between items-center px-4 py-2 cursor-pointer text-sm font-semibold uppercase"
-                    onClick={() =>
-                      setOpenDropdown(openDropdown === link.label ? null : link.label)
-                    }
-                  >
-                    <span className="text-slate-700">{link.label}</span>
-                    {openDropdown === link.label ? (
-                      <ChevronUp size={18} />
-                    ) : (
-                      <ChevronDown size={18} />
-                    )}
-                  </div>
-                  {openDropdown === link.label && (
-                    <div className="ml-4 border-l border-slate-200 pl-3">
-                      {link.subLinks.map((subLink) =>
-                        subLink.type === "submenu" ? (
-                          <div key={subLink.label}>
-                            <div
-                              className="flex justify-between items-center py-2 text-xs uppercase text-slate-700 hover:text-[#00B7E8] cursor-pointer"
-                              onClick={() =>
-                                setOpenSubDropdown(
-                                  openSubDropdown === subLink.label ? null : subLink.label
-                                )
-                              }
-                            >
-                              {subLink.label}
-                              {openSubDropdown === subLink.label ? (
-                                <ChevronUp size={14} />
-                              ) : (
-                                <ChevronDown size={14} />
-                              )}
-                            </div>
-                            {openSubDropdown === subLink.label && (
-                              <div className="ml-3 border-l border-slate-100 pl-3">
-                                {subLink.subLinks.map((sublink) => (
-                                  <Link
-                                    key={sublink.path}
-                                    to={sublink.path}
-                                    onClick={() => setMobileMenuOpen(false)}
-                                    className="block py-1 text-xs uppercase text-slate-700 hover:text-[#00B7E8]"
-                                  >
-                                    {sublink.label}
-                                  </Link>
-                                ))}
-                              </div>
-                            )}
-                          </div>
-                        ) : (
-                          <Link
-                            key={subLink.path}
-                            to={subLink.path}
-                            onClick={() => setMobileMenuOpen(false)}
-                            className="block py-2 text-xs uppercase text-slate-700 hover:text-[#00B7E8]"
-                          >
-                            {subLink.label}
-                          </Link>
-                        )
-                      )}
-                    </div>
-                  )}
-                </div>
-              )
-            )}
-          </div>
-        </div>
-      )}
     </nav>
   );
 };
