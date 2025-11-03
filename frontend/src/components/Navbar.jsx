@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import logo from "../assets/logo.jpg";
 import "../Theme.css";
 
@@ -23,7 +23,14 @@ const Navbar = () => {
       ],
     },
     { name: "Pricing", path: "/pricing" },
-    { name: "About", path: "/about" },
+    {
+      name: "About",
+      path: "/about",
+      dropdown: [
+        { name: "Our Story", path: "/about/our-story" },
+        { name: "FAQ", path: "/about/faq" },
+      ],
+    },
     { name: "Jobs", path: "/jobs" },
     { name: "Contact", path: "/enquiry" },
   ];
@@ -39,12 +46,13 @@ const Navbar = () => {
             <img
               src={logo}
               alt="Mapeach Logo"
-              className="h-12 w-auto rounded-lg object-contain shadow-sm"
+              className="h-14 w-auto object-contain select-none"
+              style={{ border: "none", boxShadow: "none" }}
             />
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex space-x-1">
+          <div className="hidden md:flex items-center space-x-1">
             {navItems.map((item) => (
               <div
                 key={item.name}
@@ -52,26 +60,32 @@ const Navbar = () => {
                 onMouseEnter={() => setHoveredMenu(item.name)}
                 onMouseLeave={() => setHoveredMenu(null)}
               >
-                <Link
-                  to={item.path}
-                  className={`inline-block px-5 py-2.5 rounded-md text-sm font-semibold transition-all duration-200 ${
-                    isActive(item.path)
-                      ? "bg-[var(--color-primary)] text-white"
-                      : "text-slate-700 hover:bg-[var(--color-primary-light)] hover:text-[var(--color-primary-dark)]"
-                  }`}
-                >
-                  {item.name}
-                </Link>
+                <div className="flex items-center">
+                  <Link
+                    to={item.path}
+                    className={`px-5 py-2.5 rounded-md text-sm font-semibold flex items-center transition-all duration-200 ${
+                      isActive(item.path)
+                        ? "bg-[var(--color-primary)] text-white"
+                        : "text-slate-700 hover:bg-[var(--color-primary-light)] hover:text-[var(--color-primary-dark)]"
+                    }`}
+                    onClick={closeMenu}
+                  >
+                    {item.name}
+                    {item.dropdown && (
+                      <ChevronDown className="ml-1 w-4 h-4 opacity-70 group-hover:opacity-100 transition-opacity duration-200" />
+                    )}
+                  </Link>
+                </div>
 
                 {/* Dropdown Menu */}
                 {item.dropdown && hoveredMenu === item.name && (
-                  <div className="absolute left-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-slate-100">
+                  <div className="absolute left-0 mt-2 w-52 bg-white rounded-lg shadow-lg border border-slate-100 py-2">
                     {item.dropdown.map((subItem) => (
                       <Link
                         key={subItem.name}
                         to={subItem.path}
                         onClick={closeMenu}
-                        className={`block px-4 py-2 text-sm font-medium transition-colors duration-150 ${
+                        className={`block px-5 py-2 text-sm font-medium transition-colors duration-150 ${
                           isActive(subItem.path)
                             ? "bg-[var(--color-primary)] text-white"
                             : "text-slate-700 hover:bg-[var(--color-primary-light)] hover:text-[var(--color-primary-dark)]"
