@@ -154,6 +154,27 @@ nav {
 }
 
 /* ---------- CARDS & SECTIONS ---------- */
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(6px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideFade {
+  from { opacity: 0; max-height: 0; }
+  to { opacity: 1; max-height: 1000px; }
+}
+.animate-slideDown { animation: slideDown 0.25s ease-out forwards; }
+.animate-slideFade { animation: slideFade 0.25s ease-out forwards; }
+
+
 .card {
   background-color: var(--color-bg-white);
   border-radius: 1rem;
