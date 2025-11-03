@@ -20,13 +20,12 @@ const ZohoRecruitCareers = () => {
 
     const initializeZohoWidget = () => {
       if (window.rec_embed_js) {
-        // 👇 Here's where you add the page_limit parameter
         window.rec_embed_js.load({
           widget_id: 'rec_job_listing_div',
           page_name: 'Careers',
           source: 'CareerSite',
           site: 'https://mapeach.zohorecruit.com',
-          brand_color: '#6875E2',
+          brand_color: '#00E5FF', // 💠 Updated to glossy cyan blue
           empty_job_msg: 'No current Openings',
           page_limit: 10, // ✅ Enables pagination (10 jobs per page)
         });
@@ -50,14 +49,35 @@ const ZohoRecruitCareers = () => {
       className="embed_jobs_head embed_jobs_with_style_3"
       style={{
         width: '100%',
-        minHeight: '100vh', // 👈 allow it to expand
-        overflow: 'visible', // 👈 so pagination isn't clipped
+        minHeight: '100vh',
+        overflow: 'visible',
         margin: 0,
-        padding: 0,
+        padding: '40px 0',
         boxSizing: 'border-box',
+        background: 'linear-gradient(180deg, #F7F9FC 0%, #EFFFFF 100%)', // ✨ Subtle gradient backdrop
       }}
     >
-      <div className="embed_jobs_head2">
+      <div className="embed_jobs_head2" style={{ textAlign: 'center' }}>
+        <h1
+          style={{
+            fontSize: '1.75rem',
+            fontWeight: '700',
+            color: '#00204A', // deep navy from logo
+            marginBottom: '1rem',
+            textTransform: 'uppercase',
+          }}
+        >
+          Join Our Team
+        </h1>
+        <p
+          style={{
+            fontSize: '1rem',
+            color: '#6C7A89',
+            marginBottom: '2rem',
+          }}
+        >
+          Explore exciting opportunities with Mapeach
+        </p>
         <div className="embed_jobs_head3">
           <div id="rec_job_listing_div"></div>
         </div>
