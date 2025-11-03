@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ChevronRight, ChevronDown } from "lucide-react";
 import logo from "../assets/logo.jpg";
@@ -6,11 +6,47 @@ import "../Theme.css";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [hoveredMenu, setHoveredMenu] = useState(null);
+  const [hoveredSubmenu, setHoveredSubmenu] = useState(null);
+  const [expandedMobileMenu, setExpandedMobileMenu] = useState(null);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+
+  const menuTimers = useRef({});
+  const submenuTimers = useRef({});
+
+  // 🔹 Scroll detection for sticky visual change
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 20) setScrolled(true);
+      else setScrolled(false);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
   const closeMenu = () => setIsMenuOpen(false);
   const isActive = (path) => location.pathname === path;
+
+  const handleMenuEnter = (name) => {
+    clearTimeout(menuTimers.current[name]);
+    setHoveredMenu(name);
+  };
+  const handleMenuLeave = (name) => {
+    menuTimers.current[name] = setTimeout(() => {
+      setHoveredMenu(null);
+    }, 200);
+  };
+  const handleSubmenuEnter = (name) => {
+    clearTimeout(submenuTimers.current[name]);
+    setHoveredSubmenu(name);
+  };
+  const handleSubmenuLeave = (name) => {
+    submenuTimers.current[name] = setTimeout(() => {
+      setHoveredSubmenu(null);
+    }, 200);
+  };
 
   const navItems = [
     { name: "Home", path: "/" },
@@ -32,7 +68,7 @@ const Navbar = () => {
     },
     { name: "Pricing", path: "/pricing" },
     {
-      name: "About", // 👈 not clickable
+      name: "About",
       dropdown: [
         { name: "Our Story", path: "/about" },
         { name: "FAQ", path: "/MapeachFAQ" },
@@ -42,8 +78,18 @@ const Navbar = () => {
     { name: "Contact", path: "/enquiry" },
   ];
 
+  const toggleMobileSubmenu = (name) => {
+    setExpandedMobileMenu(expandedMobileMenu === name ? null : name);
+  };
+
   return (
-    <nav className="fixed w-full bg-white/95 backdrop-blur-lg shadow-sm z-50 overflow-visible">
+    <nav
+      className={`fixed w-full transition-all duration-300 z-50 overflow-visible ${
+        scrolled
+          ? "bg-white/95 backdrop-blur-md shadow-md"
+          : "bg-white/70 backdrop-blur-sm shadow-none"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
@@ -52,19 +98,20 @@ const Navbar = () => {
               src={logo}
               alt="Mapeach Logo"
               className="h-14 w-auto object-contain select-none"
-              style={{ border: "none", boxShadow: "none" }}
             />
           </Link>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center h-full">
             {navItems.map((item) => (
-              <div key={item.name} className="relative group h-full">
-                {/* Menu Item — if dropdown only, render span instead of Link */}
+              <div
+                key={item.name}
+                className="relative group h-full"
+                onMouseEnter={() => handleMenuEnter(item.name)}
+                onMouseLeave={() => handleMenuLeave(item.name)}
+              >
                 {item.dropdown ? (
-                  <span
-                    className="flex items-center justify-center h-full px-5 text-sm font-bold uppercase tracking-wide border-b-2 cursor-default text-slate-700 hover:bg-[var(--color-primary-light)] hover:text-[var(--color-primary-dark)]"
-                  >
+                  <span className="flex items-center justify-center h-full px-5 text-sm font-bold uppercase tracking-wide border-b-2 cursor-default text-slate-700 hover:bg-[var(--color-primary-light)] hover:text-[var(--color-primary-dark)]">
                     {item.name}
                     <ChevronDown className="ml-1 w-4 h-4 opacity-70 group-hover:opacity-100 transition-opacity duration-200" />
                   </span>
@@ -83,10 +130,18 @@ const Navbar = () => {
                 )}
 
                 {/* First-Level Dropdown */}
-                {item.dropdown && (
-                  <div className="absolute left-0 top-full mt-0 hidden group-hover:block w-56 bg-white rounded-lg shadow-lg border border-slate-100 py-1 z-50">
+                {item.dropdown && hoveredMenu === item.name && (
+                  <div
+                    className="absolute left-0 top-full mt-0 w-56 bg-white rounded-lg shadow-lg border border-slate-100 py-1 z-50
+                               opacity-0 translate-y-2 animate-[fadeIn_0.2s_ease-out_forwards]"
+                  >
                     {item.dropdown.map((subItem) => (
-                      <div key={subItem.name} className="relative group/sub">
+                      <div
+                        key={subItem.name}
+                        className="relative group/sub"
+                        onMouseEnter={() => handleSubmenuEnter(subItem.name)}
+                        onMouseLeave={() => handleSubmenuLeave(subItem.name)}
+                      >
                         <Link
                           to={subItem.path}
                           onClick={closeMenu}
@@ -101,8 +156,11 @@ const Navbar = () => {
                         </Link>
 
                         {/* Nested Dropdown */}
-                        {subItem.submenu && (
-                          <div className="absolute left-full top-0 hidden group-hover/sub:block ml-1 w-60 bg-white rounded-lg shadow-lg border border-slate-100 py-1 z-50">
+                        {subItem.submenu && hoveredSubmenu === subItem.name && (
+                          <div
+                            className="absolute left-full top-0 ml-1 w-60 bg-white rounded-lg shadow-lg border border-slate-100 py-1 z-50
+                                       opacity-0 translate-x-2 animate-[fadeInRight_0.2s_ease-out_forwards]"
+                          >
                             {subItem.submenu.map((deepItem) => (
                               <Link
                                 key={deepItem.name}
@@ -141,19 +199,26 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="md:hidden bg-white border-t border-slate-200 shadow-md">
+        <div className="md:hidden bg-white border-t border-slate-200 shadow-md animate-slideDown">
           {navItems.map((item) => (
             <div key={item.name} className="border-b border-slate-100">
-              {/* If About is dropdown only, render as span */}
               {item.dropdown ? (
-                <div className="px-6 py-3 text-sm font-bold uppercase text-slate-700 bg-slate-50">
+                <button
+                  onClick={() => toggleMobileSubmenu(item.name)}
+                  className="w-full flex justify-between items-center px-6 py-3 text-sm font-bold uppercase text-slate-700 bg-slate-50 hover:bg-slate-100 transition-colors"
+                >
                   {item.name}
-                </div>
+                  <ChevronDown
+                    className={`w-4 h-4 transform transition-transform duration-200 ${
+                      expandedMobileMenu === item.name ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
               ) : (
                 <Link
                   to={item.path}
                   onClick={closeMenu}
-                  className={`block px-6 py-3 text-sm font-semibold uppercase ${
+                  className={`block px-6 py-3 text-sm font-semibold uppercase transition-colors ${
                     isActive(item.path)
                       ? "bg-[var(--color-primary)] text-white"
                       : "text-slate-700 hover:bg-[var(--color-primary-light)] hover:text-[var(--color-primary-dark)]"
@@ -162,8 +227,9 @@ const Navbar = () => {
                   {item.name}
                 </Link>
               )}
-              {item.dropdown && (
-                <div className="pl-8 pb-2 bg-slate-50">
+
+              {item.dropdown && expandedMobileMenu === item.name && (
+                <div className="pl-8 pb-2 bg-slate-50 animate-slideFade">
                   {item.dropdown.map((subItem) => (
                     <div key={subItem.name}>
                       <Link
