@@ -2,54 +2,86 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
-import { 
-  Zap, DollarSign, CheckCircle, ShieldCheck, Clock, TrendingDown, 
+import {
+  Zap, DollarSign, CheckCircle, ShieldCheck, Clock, TrendingDown,
   Users, Star, ArrowRight, TimerOff, TrendingUp, FileText, AlertCircle
 } from 'lucide-react';
 import { companyStats, clientLogos, testimonials, problems, solutions, techDomains } from '../mock';
 
+// Import react-slick and styles
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 const Home = () => {
+  // Slider settings
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 600,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    arrows: false,
+    pauseOnHover: true,
+  };
+
+  // Banner images
+  const banners = [
+    "/images/Banner_Companies_Slide_1.png",
+    "/images/Banner_Companies_Slide_2.png",
+    "/images/Banner_Companies_Slide_3.png",
+    "/images/Banner_Companies_Slide_4.png",
+    "/images/Banner_Companies_Slide_5.png",
+    "/images/Banner_Companies_Slide_6.png",
+    "/images/Banner_Companies_Slide_7.png",
+  ];
+
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-50 via-emerald-50/30 to-teal-50/30">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-5xl md:text-6xl font-bold text-slate-900 leading-tight mb-6">
-              Transparent staffing model with zero markups
-              <span className="block text-emerald-600 mt-2">Clients pay less and Contractors earn more — no compromises.</span>
-            </h1>
-            <p className="text-xl text-slate-600 mb-10 leading-relaxed">
-              Mapeach delivers highly vetted professionals in <strong>short time</strong>, not weeks—with transparent pricing that saves you up to <strong>20%</strong> compared to traditional Staffing Companies.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/hire">
-                <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
-                  Start Hiring Smarter
-                  <ArrowRight className="ml-2" size={20} />
-                </Button>
-              </Link>
-              <Link to="/join">
-                <Button size="lg" variant="outline" className="border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-50 px-8 py-6 text-lg font-semibold transition-all duration-300">
-                  Start Earning More
-                </Button>
-              </Link>
-            </div>
-          </div>
 
-          {/* Stats
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16">
-            {companyStats.map((stat, idx) => (
-              <Card key={idx} className="border-none shadow-md hover:shadow-lg transition-shadow duration-300">
-                <CardContent className="p-6 text-center">
-                  <div className="text-3xl font-bold text-emerald-600 mb-2">{stat.value}</div>
-                  <div className="text-sm text-slate-600">{stat.label}</div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>market
-           */}
-        </div>
+      {/* Hero Section with Slider */}
+      <section className="pt-0 pb-0">
+        <Slider {...settings}>
+          {banners.map((src, index) => (
+            <div key={index} className="relative">
+              <img
+                src={src}
+                alt={`banner-${index}`}
+                className="w-full h-[600px] object-cover"
+              />
+              {/* Overlay content */}
+              <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                <div className="text-center max-w-4xl mx-auto px-4">
+                  <h1 className="text-5xl md:text-6xl font-bold text-white leading-tight mb-6">
+                    Transparent staffing model with zero markups
+                    <span className="block text-emerald-400 mt-2">
+                      Clients pay less and Contractors earn more — no compromises.
+                    </span>
+                  </h1>
+                  <p className="text-xl text-gray-200 mb-10 leading-relaxed">
+                    Mapeach delivers highly vetted professionals in <strong>short time</strong>, not weeks — 
+                    with transparent pricing that saves you up to <strong>20%</strong> compared to traditional Staffing Companies.
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <Link to="/hire">
+                      <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
+                        Start Hiring Smarter
+                        <ArrowRight className="ml-2" size={20} />
+                      </Button>
+                    </Link>
+                    <Link to="/join">
+                      <Button size="lg" variant="outline" className="border-2 border-emerald-400 text-emerald-400 hover:bg-emerald-50 px-8 py-6 text-lg font-semibold transition-all duration-300">
+                        Start Earning More
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </Slider>
       </section>
 
       {/* Problem Section */}
@@ -60,14 +92,15 @@ const Home = () => {
               The Sticking Points of Traditional Staffing
             </h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-              clients overpay, contractors under-earn, and processes waste time. Here’s why:
+              Clients overpay, contractors under-earn, and processes waste time. Here’s why:
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {problems.map((problem) => {
-              const IconComponent = problem.icon === 'timer-off' ? TimerOff : 
-                                   problem.icon === 'trending-up' ? TrendingUp :
-                                   problem.icon === 'file-text' ? FileText : AlertCircle;
+              const IconComponent =
+                problem.icon === 'timer-off' ? TimerOff :
+                problem.icon === 'trending-up' ? TrendingUp :
+                problem.icon === 'file-text' ? FileText : AlertCircle;
               return (
                 <Card key={problem.id} className="border-2 border-red-200 bg-red-50/50 hover:shadow-lg transition-shadow duration-300">
                   <CardContent className="p-6">
@@ -97,9 +130,10 @@ const Home = () => {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {solutions.map((solution) => {
-              const IconComponent = solution.icon === 'zap' ? Zap : 
-                                   solution.icon === 'dollar-sign' ? DollarSign :
-                                   solution.icon === 'check-circle' ? CheckCircle : ShieldCheck;
+              const IconComponent =
+                solution.icon === 'zap' ? Zap :
+                solution.icon === 'dollar-sign' ? DollarSign :
+                solution.icon === 'check-circle' ? CheckCircle : ShieldCheck;
               return (
                 <Card key={solution.id} className="border-2 border-emerald-200 bg-white hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                   <CardContent className="p-6">
@@ -152,9 +186,7 @@ const Home = () => {
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-slate-900 mb-4">
-              Featured Expertise
-            </h2>
+            <h2 className="text-4xl font-bold text-slate-900 mb-4">Featured Expertise</h2>
             <p className="text-xl text-slate-600 max-w-3xl mx-auto">
               Access specialized talent across the most in-demand tech roles
             </p>
@@ -210,11 +242,9 @@ const Home = () => {
       {/* CTA Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-slate-900 to-slate-800 text-white">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Ready to Transform?
-          </h2>
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to Transform?</h2>
           <p className="text-xl text-slate-300 mb-10">
-            Join hundreds of companies and contractors thriving with Mapeach — where clients save more and contractors earns more.
+            Join hundreds of companies and contractors thriving with Mapeach — where clients save more and contractors earn more.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/contact">
