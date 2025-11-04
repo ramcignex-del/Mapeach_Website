@@ -44,22 +44,18 @@ const Home = () => {
 
       {/* Hero Section with Slider */}
   
-  <section className="relative pt-[4rem] sm:pt-[5rem]">
+<section className="relative">
   <Slider {...settings}>
     {banners.map((src, index) => (
       <div
         key={index}
-        className="relative w-full h-[90vh] sm:h-[100vh] overflow-hidden"
+        className="relative w-full h-[75vh] sm:h-[90vh] lg:h-[90vh] overflow-hidden"
       >
-        <picture>
-          {/* Optional future-proofing for mobile-optimized versions */}
-          {/* <source media="(max-width: 640px)" srcSet="/Banner_Companies_Slide_1_mobile.png" /> */}
-          <img
-            src={src}
-            alt={`banner-${index}`}
-            className="w-full h-full object-cover object-top sm:object-center"
-          />
-        </picture>
+        <img
+          src={src}
+          alt={`banner-${index}`}
+          className="w-full h-full object-contain sm:object-cover object-top"
+        />
       </div>
     ))}
   </Slider>
