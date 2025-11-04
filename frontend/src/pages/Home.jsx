@@ -45,20 +45,50 @@ const Home = () => {
       {/* Hero Section with Slider */}
   
 <section className="relative w-full overflow-hidden">
-  <Slider {...settings}>
+  <Slider
+    dots={true}
+    infinite={true}
+    autoplay={true}
+    autoplaySpeed={4000}
+    speed={600}
+    slidesToShow={1}
+    slidesToScroll={1}
+    arrows={false}
+    pauseOnHover={false}
+    adaptiveHeight={false}
+  >
     {banners.map((src, index) => (
       <div
         key={index}
-        className="relative w-full h-[80vh] sm:h-[90vh] lg:h-[90vh] flex items-center justify-center bg-black"
+        className="relative w-full min-h-[calc(100vh-4rem)] sm:min-h-[85vh] bg-black flex items-center justify-center"
       >
         <img
           src={src}
           alt={`banner-${index}`}
           className="w-full h-full object-contain sm:object-cover object-center"
+          loading="eager"
         />
       </div>
     ))}
   </Slider>
+
+  {/* Optional: Customize slick dots for better visibility */}
+  <style>
+    {`
+      .slick-dots {
+        bottom: 20px;
+      }
+      .slick-dots li button:before {
+        color: white;
+        opacity: 0.75;
+        font-size: 12px;
+      }
+      .slick-dots li.slick-active button:before {
+        color: #10B981; /* Tailwind emerald-500 */
+        opacity: 1;
+      }
+    `}
+  </style>
 </section>
 
 
