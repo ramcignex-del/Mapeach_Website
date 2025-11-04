@@ -2,47 +2,45 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '../components/ui/button';
 import { Card, CardContent } from '../components/ui/card';
-import {
-  Zap, DollarSign, CheckCircle, ShieldCheck,
-  TimerOff, TrendingUp, FileText, AlertCircle, ArrowRight
+import { 
+  Zap, DollarSign, CheckCircle, ShieldCheck, Clock, TrendingDown, 
+  Users, Star, ArrowRight, TimerOff, TrendingUp, FileText, AlertCircle
 } from 'lucide-react';
-import { problems, solutions, techDomains } from '../mock';
+import { companyStats, clientLogos, testimonials, problems, solutions, techDomains } from '../mock';
 
 const Home = () => {
   return (
     <div className="min-h-screen font-sans text-[15px] text-[var(--color-text)]">
       
       {/* Hero Section */}
-      <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[var(--color-primary-light)] via-white to-[var(--color-bg-light)]">
-        <div className="max-w-6xl mx-auto text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-[var(--color-primary-dark)] leading-snug mb-4">
+      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[var(--color-primary-light)] via-white to-[var(--color-bg-light)]">
+        <div className="max-w-7xl mx-auto text-center">
+          <h1 className="text-5xl md:text-6xl font-bold text-[var(--color-primary-dark)] leading-tight mb-6">
             Transparent staffing model with zero markups
-            <span className="block text-[var(--color-primary)] mt-2 font-semibold">
+            <span className="block text-[var(--color-primary)] mt-3 font-semibold">
               Clients pay less and Contractors earn more — no compromises.
             </span>
           </h1>
 
-          <p className="text-lg md:text-xl text-[var(--color-text)] mb-8 leading-relaxed">
-            Mapeach delivers highly vetted professionals in <strong>short time</strong>, not weeks — 
-            with transparent pricing that saves you up to <strong>20%</strong> compared to traditional Staffing Companies.
+          <p className="text-xl text-[var(--color-text)] mb-10 leading-relaxed">
+            Mapeach delivers highly vetted professionals in <strong>short time</strong>, not weeks — with transparent pricing that saves you up to <strong>20%</strong> compared to traditional Staffing Companies.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/hire">
               <Button
                 size="lg"
-                className="bg-gradient-to-r from-[#001F3F] to-[#003366] hover:from-[#002A5C] hover:to-[#004080] text-white px-8 py-5 text-lg font-semibold shadow-md hover:shadow-lg transition-all duration-300"
+                className="bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-dark)] hover:opacity-90 text-white px-8 py-6 text-lg font-semibold shadow-md hover:shadow-lg transition-all duration-300"
               >
                 Start Hiring Smarter
                 <ArrowRight className="ml-2" size={20} />
               </Button>
             </Link>
-
             <Link to="/join">
               <Button
                 size="lg"
                 variant="outline"
-                className="border-2 border-[#001F3F] text-[#001F3F] hover:bg-[#001F3F] hover:text-white px-8 py-5 text-lg font-semibold transition-all duration-300"
+                className="border-2 border-[var(--color-primary)] text-[var(--color-primary-dark)] hover:bg-[var(--color-primary-light)] px-8 py-6 text-lg font-semibold transition-all duration-300"
               >
                 Start Earning More
               </Button>
@@ -52,12 +50,10 @@ const Home = () => {
       </section>
 
       {/* Problem Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
-        <div className="max-w-7xl mx-auto text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-[var(--color-primary-dark)] mb-4">
-            The Sticking Points of Traditional Staffing
-          </h2>
-          <p className="text-lg text-[var(--color-text)] max-w-3xl mx-auto">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+        <div className="max-w-7xl mx-auto text-center mb-16">
+          <h2 className="text-4xl font-bold text-[var(--color-primary-dark)] mb-4">The Sticking Points of Traditional Staffing</h2>
+          <p className="text-xl text-[var(--color-text)] max-w-3xl mx-auto">
             Clients overpay, contractors under-earn, and processes waste time. Here’s why:
           </p>
         </div>
@@ -83,12 +79,10 @@ const Home = () => {
       </section>
 
       {/* Solution Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-[var(--color-bg-light)]">
-        <div className="max-w-7xl mx-auto text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-[var(--color-primary-dark)] mb-4">
-            The Mapeach Difference
-          </h2>
-          <p className="text-lg text-[var(--color-text)] max-w-3xl mx-auto">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[var(--color-bg-light)]">
+        <div className="max-w-7xl mx-auto text-center mb-16">
+          <h2 className="text-4xl font-bold text-[var(--color-primary-dark)] mb-4">The Mapeach Difference</h2>
+          <p className="text-xl text-[var(--color-text)] max-w-3xl mx-auto">
             Speed. Cost transparency. Automation. Full control.
           </p>
         </div>
@@ -117,55 +111,48 @@ const Home = () => {
       </section>
 
       {/* Pricing Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-[#001F3F] to-[#003366] text-white text-center">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-dark)] text-white text-center">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Transparent Pricing You Can Trust</h2>
-          <p className="text-lg text-white/90 mb-10">No hidden fees. No surprise markups. Just simple, honest pricing.</p>
+          <h2 className="text-4xl font-bold mb-6">Transparent Pricing You Can Trust</h2>
+          <p className="text-lg opacity-90 mb-12">No hidden fees. No surprise markups. Just simple, honest pricing.</p>
           <div className="grid md:grid-cols-2 gap-8">
             <Card className="bg-white/10 backdrop-blur-sm border-white/20">
               <CardContent className="p-8 text-center">
-                <div className="text-4xl font-bold mb-2">$10</div>
-                <div className="text-base mb-3 text-white/90">One-time per contractor</div>
-                <p className="text-sm text-white/80">Simple onboarding fee — that’s it</p>
+                <div className="text-5xl font-bold mb-2">$10</div>
+                <div className="text-lg opacity-90 mb-4">One-time per contractor</div>
+                <p className="text-sm opacity-80">Simple onboarding fee—that's it</p>
               </CardContent>
             </Card>
             <Card className="bg-white/10 backdrop-blur-sm border-white/20">
               <CardContent className="p-8 text-center">
-                <div className="text-4xl font-bold mb-2">$1/hr</div>
-                <div className="text-base mb-3 text-white/90">Recurring, billed bi-weekly</div>
-                <p className="text-sm text-white/80">Transparent hourly service fee</p>
+                <div className="text-5xl font-bold mb-2">$1/hr</div>
+                <div className="text-lg opacity-90 mb-4">Recurring, billed bi-weekly</div>
+                <p className="text-sm opacity-80">Transparent hourly service fee</p>
               </CardContent>
             </Card>
           </div>
-          <p className="mt-6 text-white/90">
-            Compare this to 15–25% Staffing Companies markups or 5–15% marketplace fees.
+          <p className="mt-8 opacity-80">
+            Compare this to 15-25% Staffing Companies markups or 5-15% marketplace fees.
           </p>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[#003366] to-slate-900 text-white">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[var(--color-primary-dark)] to-slate-900 text-white">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to Transform?</h2>
-          <p className="text-lg text-white/90 mb-10">
+          <p className="text-xl text-slate-300 mb-10">
             Join hundreds of companies and contractors thriving with Mapeach — where clients save more and contractors earn more.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/enquiry">
-              <Button
-                size="lg"
-                className="bg-gradient-to-r from-[#001F3F] to-[#003366] hover:from-[#002A5C] hover:to-[#004080] text-white px-8 py-5 text-lg font-semibold shadow-md hover:shadow-lg transition-all duration-300"
-              >
+              <Button size="lg" className="bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary-dark)] hover:opacity-90 text-white px-8 py-6 text-lg font-semibold shadow-md hover:shadow-lg transition-all duration-300">
                 Start Hiring Smarter
                 <ArrowRight className="ml-2" size={20} />
               </Button>
             </Link>
             <Link to="/join">
-              <Button
-                size="lg"
-                variant="outline"
-                className="border-2 border-white text-white hover:bg-white hover:text-[#001F3F] px-8 py-5 text-lg font-semibold transition-all duration-300"
-              >
+              <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-[var(--color-primary-dark)] px-8 py-6 text-lg font-semibold transition-all duration-300">
                 Start Earning More
               </Button>
             </Link>
