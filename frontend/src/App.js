@@ -6,7 +6,6 @@ import ScrollToTop from './components/ScrollToTop';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-
 import Home from "./pages/Home";
 import Hire from "./pages/Hire";
 import Join from "./pages/Join";
@@ -21,7 +20,6 @@ import Enquiry from "./pages/Enquiry";
 // Sector Pages
 import InformationTechnology from './pages/companies/InformationTechnology';
 import HealthTech from './pages/companies/HealthTech';
-// import Healthcare from './pages/companies/Healthcare';
 import Lifesciences from './pages/companies/Lifesciences';
 import ElectronicsCommunications from './pages/companies/ElectronicsCommunications';
 
@@ -31,29 +29,30 @@ function App() {
       <HashRouter>
         <Navbar />
         <ScrollToTop />
-        {/* Wrapper to prevent content being hidden behind fixed navbar */}
-        <div className="pt-16">
-          <Routes>
-            {/* Main Routes */}
-            <Route path="/" element={<Home />} />
-            <Route path="/hire" element={<Hire />} />
-            <Route path="/join" element={<Join />} />
-            <Route path="/pricing" element={<Pricing />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/jobs" element={<Jobs />} />
-            <Route path="/MapeachFAQ" element={<MapeachFAQ />} />
-            <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
-            <Route path="/enquiry" element={<Enquiry />} />
+        
+        {/* Move spacing control inside individual pages */}
+        <Routes>
+          {/* Home: no global padding, since banner already accounts for it */}
+          <Route path="/" element={<Home />} />
 
-            {/* Sector Routes */}
-            <Route path="/companies/informationtechnology" element={<InformationTechnology />} />
-            <Route path="/companies/healthtech" element={<HealthTech />} />
-            {/* <Route path="/companies/healthcare" element={<Healthcare />} /> */}
-            <Route path="/companies/lifesciences" element={<Lifesciences />} />
-            <Route path="/companies/electronics" element={<ElectronicsCommunications />} />
-          </Routes>
-        </div>
+          {/* All other pages: add top padding to offset navbar */}
+          <Route path="/hire" element={<div className="pt-16"><Hire /></div>} />
+          <Route path="/join" element={<div className="pt-16"><Join /></div>} />
+          <Route path="/pricing" element={<div className="pt-16"><Pricing /></div>} />
+          <Route path="/about" element={<div className="pt-16"><About /></div>} />
+          <Route path="/contact" element={<div className="pt-16"><Contact /></div>} />
+          <Route path="/jobs" element={<div className="pt-16"><Jobs /></div>} />
+          <Route path="/MapeachFAQ" element={<div className="pt-16"><MapeachFAQ /></div>} />
+          <Route path="/PrivacyPolicy" element={<div className="pt-16"><PrivacyPolicy /></div>} />
+          <Route path="/enquiry" element={<div className="pt-16"><Enquiry /></div>} />
+
+          {/* Sector Routes */}
+          <Route path="/companies/informationtechnology" element={<div className="pt-16"><InformationTechnology /></div>} />
+          <Route path="/companies/healthtech" element={<div className="pt-16"><HealthTech /></div>} />
+          <Route path="/companies/lifesciences" element={<div className="pt-16"><Lifesciences /></div>} />
+          <Route path="/companies/electronics" element={<div className="pt-16"><ElectronicsCommunications /></div>} />
+        </Routes>
+
         <Footer />
       </HashRouter>
     </div>
