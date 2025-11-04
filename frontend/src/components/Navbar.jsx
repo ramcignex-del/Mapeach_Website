@@ -116,7 +116,7 @@ export const Navbar = () => {
                   </button>
 
                   {openDropdown === link.path && (
-                    <div className="absolute left-0 mt-0 w-60 bg-white shadow-lg rounded-b-md ring-1 ring-slate-200 z-50">
+                    <div className="absolute left-0 mt-0 w-60 bg-white shadow-lg ring-1 ring-slate-200 z-50">
                       {link.subLinks.map((subLink) => (
                         <div key={subLink.path} className="relative group">
                           <Link
