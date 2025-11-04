@@ -130,6 +130,7 @@ code {
         border-bottom-color: inherit;
     }
 }
-.h-4 {
-    height: 4rem;
+.h-4rem {
+  height: 4rem;
 }
+
