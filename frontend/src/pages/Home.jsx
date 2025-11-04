@@ -44,21 +44,24 @@ const Home = () => {
 
       {/* Hero Section with Slider */}
   
-<section className="relative">
-  <Slider {...settings}>
-    {banners.map((src, index) => (
-      <div
-        key={index}
-        className="relative w-full h-[75vh] sm:h-[90vh] lg:h-[90vh] overflow-hidden"
-      >
-        <img
-          src={src}
-          alt={`banner-${index}`}
-          className="w-full h-full object-contain sm:object-cover object-top"
-        />
-      </div>
-    ))}
-  </Slider>
+<section className="relative w-full overflow-hidden">
+  <div className="mt-0">
+    <Slider {...settings}>
+      {banners.map((src, index) => (
+        <div
+          key={index}
+          className="relative w-full h-[80vh] sm:h-[90vh] lg:h-[90vh] flex items-center justify-center bg-black"
+        >
+          <img
+            src={src}
+            alt={`banner-${index}`}
+            className="w-full h-full object-contain sm:object-cover object-center"
+            style={{ maxHeight: '90vh' }}
+          />
+        </div>
+      ))}
+    </Slider>
+  </div>
 </section>
 
 
