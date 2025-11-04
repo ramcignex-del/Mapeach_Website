@@ -30,13 +30,13 @@ const Home = () => {
 
   // Banner images
   const banners = [
-    "frontend/public/images/Banner_Companies_Slide_1.png",
-    "frontend/public/images/Banner_Companies_Slide_2.png",
-    "frontend/public/images/Banner_Companies_Slide_3.png",
-    "frontend/public/images/Banner_Companies_Slide_4.png",
-    "frontend/public/images/Banner_Companies_Slide_5.png",
-    "frontend/public/images/Banner_Companies_Slide_6.png",
-    "frontend/public/images/Banner_Companies_Slide_7.png",
+      "/images/Banner_Companies_Slide_1.png",
+      "/images/Banner_Companies_Slide_2.png",
+      "/images/Banner_Companies_Slide_3.png",
+      "/images/Banner_Companies_Slide_4.png",
+      "/images/Banner_Companies_Slide_5.png",
+      "/images/Banner_Companies_Slide_6.png",
+      "/images/Banner_Companies_Slide_7.png",
   ];
 
   return (
