@@ -10,9 +10,6 @@ import { companyStats, clientLogos, testimonials, problems, solutions, techDomai
 
 // Import react-slick and styles
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-
 
 const Home = () => {
   // Slider settings
