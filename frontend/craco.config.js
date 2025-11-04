@@ -2,6 +2,7 @@
 const path = require("path");
 require("dotenv").config();
 
+
 // Environment variable overrides
 const config = {
   disableHotReload: process.env.DISABLE_HOT_RELOAD === "true",
