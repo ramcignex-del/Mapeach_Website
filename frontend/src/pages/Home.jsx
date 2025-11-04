@@ -44,47 +44,19 @@ const Home = () => {
 
       {/* Hero Section with Slider */}
       <section className="pt-0 pb-0">
-        <Slider {...settings}>
-          {banners.map((src, index) => (
-            <div key={index} className="relative">
-              <img
-                src={src}
-                alt={`banner-${index}`}
-                className="w-full h-[600px] object-cover"
-              />
-              {/* Overlay content */}
-              <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
-                <div className="text-center max-w-4xl mx-auto px-4">
-                  <h1 className="text-5xl md:text-6xl font-bold text-white leading-tight mb-6">
-                    Transparent staffing model with zero markups
-                    <span className="block text-emerald-400 mt-2">
-                      Clients pay less and Contractors earn more — no compromises.
-                    </span>
-                  </h1>
-                  <p className="text-xl text-gray-200 mb-10 leading-relaxed">
-                    Mapeach delivers highly vetted professionals in <strong>short time</strong>, not weeks — 
-                    with transparent pricing that saves you up to <strong>20%</strong> compared to traditional Staffing Companies.
-                  </p>
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <Link to="/hire">
-                      <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-6 text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300">
-                        Start Hiring Smarter
-                        <ArrowRight className="ml-2" size={20} />
-                      </Button>
-                    </Link>
-                    <Link to="/join">
-                      <Button size="lg" variant="outline" className="border-2 border-emerald-400 text-emerald-400 hover:bg-emerald-50 px-8 py-6 text-lg font-semibold transition-all duration-300">
-                        Start Earning More
-                      </Button>
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </Slider>
-      </section>
-
+      <Slider {...settings}>
+      {banners.map((src, index) => (
+          <div key={index} className="relative">
+          <img
+          src={src}
+          alt={`banner-${index}`}
+          className="w-full h-[600px] object-cover"
+        />
+        </div>
+         ))}
+      </Slider>
+    </section>
+      
       {/* Problem Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
