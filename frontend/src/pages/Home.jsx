@@ -12,10 +12,6 @@ import { companyStats, clientLogos, testimonials, problems, solutions, techDomai
 import Slider from "react-slick";
 // Import slick-carousel styles from public folder (safe for CRA)
 
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-
-
 
 const Home = () => {
   // Slider settings
@@ -33,14 +29,15 @@ const Home = () => {
 
   // Banner images
   const banners = [
-      "/images/Banner_Companies_Slide_1.png",
-      "/images/Banner_Companies_Slide_2.png",
-      "/images/Banner_Companies_Slide_3.png",
-      "/images/Banner_Companies_Slide_4.png",
-      "/images/Banner_Companies_Slide_5.png",
-      "/images/Banner_Companies_Slide_6.png",
-      "/images/Banner_Companies_Slide_7.png",
-  ];
+  "/Banner_Companies_Slide_1.png",
+  "/Banner_Companies_Slide_2.png",
+  "/Banner_Companies_Slide_3.png",
+  "/Banner_Companies_Slide_4.png",
+  "/Banner_Companies_Slide_5.png",
+  "/Banner_Companies_Slide_6.png",
+  "/Banner_Companies_Slide_7.png",
+];
+
 
   return (
     <div className="min-h-screen">
