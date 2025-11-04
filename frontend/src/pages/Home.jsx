@@ -55,12 +55,12 @@ const Home = () => {
     slidesToScroll={1}
     arrows={false}
     pauseOnHover={false}
-    adaptiveHeight={false}
+    adaptiveHeight={true}
   >
     {banners.map((src, index) => (
       <div
         key={index}
-        className="relative w-full min-h-[calc(100vh-4rem)] sm:min-h-[85vh] bg-black flex items-center justify-center"
+        className="relative w-full h-auto min-h-[calc(100vh-4rem)] sm:min-h-[85vh] flex items-center justify-center bg-black"
       >
         <img
           src={src}
@@ -72,20 +72,27 @@ const Home = () => {
     ))}
   </Slider>
 
-  {/* Optional: Customize slick dots for better visibility */}
   <style>
     {`
+      /* Move dots slightly up so they're always visible */
       .slick-dots {
-        bottom: 20px;
+        bottom: 25px;
       }
+
+      /* Dot color (emerald active, gray inactive) */
       .slick-dots li button:before {
-        color: white;
-        opacity: 0.75;
+        color: #9CA3AF; /* Tailwind gray-400 */
+        opacity: 0.9;
         font-size: 12px;
       }
       .slick-dots li.slick-active button:before {
         color: #10B981; /* Tailwind emerald-500 */
         opacity: 1;
+      }
+
+      /* Fix black gap below banners on mobile */
+      .slick-slide > div {
+        display: flex !important;
       }
     `}
   </style>
