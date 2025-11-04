@@ -2,6 +2,14 @@
 const path = require("path");
 require("dotenv").config();
 
+webpack: {
+  alias: {
+    '@': path.resolve(__dirname, 'src'),
+    'slick-carousel': path.resolve(__dirname, 'node_modules/slick-carousel')
+  },
+},
+
+
 // Environment variable overrides
 const config = {
   disableHotReload: process.env.DISABLE_HOT_RELOAD === "true",
