@@ -43,19 +43,19 @@ const Home = () => {
     <div className="min-h-screen">
 
       {/* Hero Section with Slider */}
-      <section className="pt-0 pb-0">
-      <Slider {...settings}>
-      {banners.map((src, index) => (
-          <div key={index} className="relative">
-          <img
+     <section className="pt-0 pb-0">
+  <Slider {...settings}>
+    {banners.map((src, index) => (
+      <div key={index} className="relative w-full overflow-hidden">
+        <img
           src={src}
           alt={`banner-${index}`}
-          className="w-full h-[600px] object-cover"
+          className="w-full h-auto max-h-[90vh] object-contain md:object-cover"
         />
-        </div>
-         ))}
-      </Slider>
-    </section>
+      </div>
+    ))}
+  </Slider>
+</section>
       
       {/* Problem Section */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
