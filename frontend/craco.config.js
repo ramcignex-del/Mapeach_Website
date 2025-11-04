@@ -2,7 +2,6 @@
 const path = require("path");
 require("dotenv").config();
 
-
 // Environment variable overrides
 const config = {
   disableHotReload: process.env.DISABLE_HOT_RELOAD === "true",
@@ -36,6 +35,13 @@ const webpackConfig = {
       "slick-carousel": path.resolve(__dirname, "node_modules/slick-carousel"),
     },
     configure: (webpackConfig) => {
+      // ✅ Allow importing slick-carousel CSS from node_modules
+      webpackConfig.module.rules.push({
+        test: /\.css$/,
+        include: path.resolve(__dirname, "node_modules/slick-carousel"),
+        use: ["style-loader", "css-loader"],
+      });
+
       // Disable hot reload if requested
       if (config.disableHotReload) {
         webpackConfig.plugins = webpackConfig.plugins.filter(
