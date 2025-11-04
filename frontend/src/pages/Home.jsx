@@ -44,6 +44,7 @@ const Home = () => {
 
       {/* Hero Section with Slider */}
   
+{/* Hero Section with Slider */}
 <section className="relative w-full overflow-hidden">
   <Slider
     dots={true}
@@ -55,18 +56,26 @@ const Home = () => {
     slidesToScroll={1}
     arrows={false}
     pauseOnHover={false}
-    adaptiveHeight={true}
+    adaptiveHeight={false}
   >
     {banners.map((src, index) => (
       <div
         key={index}
-        className="relative w-full h-auto min-h-[calc(100vh-4rem)] sm:min-h-[85vh] flex items-center justify-center bg-black"
+        className="relative w-full flex items-center justify-center bg-black"
+        style={{
+          minHeight: 'calc(100vh - 4rem)', // fills screen minus navbar height
+          maxHeight: '85vh', // caps height slightly on desktop
+        }}
       >
         <img
           src={src}
           alt={`banner-${index}`}
           className="w-full h-full object-contain sm:object-cover object-center"
           loading="eager"
+          style={{
+            maxHeight: '100%',
+            width: '100%',
+          }}
         />
       </div>
     ))}
@@ -74,25 +83,40 @@ const Home = () => {
 
   <style>
     {`
-      /* Move dots slightly up so they're always visible */
-      .slick-dots {
-        bottom: 25px;
+      /* Fix slick container alignment */
+      .slick-slide > div {
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
       }
 
-      /* Dot color (emerald active, gray inactive) */
+      /* Dot positioning & visibility */
+      .slick-dots {
+        bottom: 15px;
+        z-index: 10;
+      }
+
+      /* Better contrast for dots (white backgrounds) */
       .slick-dots li button:before {
-        color: #9CA3AF; /* Tailwind gray-400 */
+        color: #9CA3AF !important; /* gray-400 */
         opacity: 0.9;
         font-size: 12px;
       }
+
       .slick-dots li.slick-active button:before {
-        color: #10B981; /* Tailwind emerald-500 */
+        color: #10B981 !important; /* emerald-500 */
         opacity: 1;
       }
 
-      /* Fix black gap below banners on mobile */
-      .slick-slide > div {
-        display: flex !important;
+      /* Prevents bottom blank space on small screens */
+      .slick-list {
+        margin-bottom: 0 !important;
+      }
+
+      @media (max-width: 640px) {
+        .slick-dots {
+          bottom: 10px;
+        }
       }
     `}
   </style>
