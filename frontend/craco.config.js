@@ -2,14 +2,6 @@
 const path = require("path");
 require("dotenv").config();
 
-webpack: {
-  alias: {
-    '@': path.resolve(__dirname, 'src'),
-    'slick-carousel': path.resolve(__dirname, 'node_modules/slick-carousel')
-  },
-},
-
-
 // Environment variable overrides
 const config = {
   disableHotReload: process.env.DISABLE_HOT_RELOAD === "true",
@@ -17,19 +9,17 @@ const config = {
   enableHealthCheck: process.env.ENABLE_HEALTH_CHECK === "true",
 };
 
-// Conditionally load visual editing modules only if enabled
-//let babelMetadataPlugin;
-//let setupDevServer;
+// Optional plugins (only loaded if enabled)
+let babelMetadataPlugin;
+let setupDevServer;
+let WebpackHealthPlugin;
+let setupHealthEndpoints;
+let healthPluginInstance;
 
 if (config.enableVisualEdits) {
   babelMetadataPlugin = require("./plugins/visual-edits/babel-metadata-plugin");
   setupDevServer = require("./plugins/visual-edits/dev-server-setup");
 }
-
-// Conditionally load health check modules only if enabled
-//let WebpackHealthPlugin;
-//let setupHealthEndpoints;
-//let healthPluginInstance;
 
 if (config.enableHealthCheck) {
   WebpackHealthPlugin = require("./plugins/health-check/webpack-health-plugin");
@@ -37,41 +27,36 @@ if (config.enableHealthCheck) {
   healthPluginInstance = new WebpackHealthPlugin();
 }
 
+// ✅ Main CRACO configuration
 const webpackConfig = {
   webpack: {
     alias: {
-      '@': path.resolve(__dirname, 'src'),
+      "@": path.resolve(__dirname, "src"),
+      "slick-carousel": path.resolve(__dirname, "node_modules/slick-carousel"),
     },
     configure: (webpackConfig) => {
-
-      // Disable hot reload completely if environment variable is set
+      // Disable hot reload if requested
       if (config.disableHotReload) {
-        // Remove hot reload related plugins
-        webpackConfig.plugins = webpackConfig.plugins.filter(plugin => {
-          return !(plugin.constructor.name === 'HotModuleReplacementPlugin');
-        });
-
-        // Disable watch mode
+        webpackConfig.plugins = webpackConfig.plugins.filter(
+          (plugin) => plugin.constructor.name !== "HotModuleReplacementPlugin"
+        );
         webpackConfig.watch = false;
-        webpackConfig.watchOptions = {
-          ignored: /.*/, // Ignore all files
-        };
+        webpackConfig.watchOptions = { ignored: /.*/ };
       } else {
-        // Add ignored patterns to reduce watched directories
         webpackConfig.watchOptions = {
           ...webpackConfig.watchOptions,
           ignored: [
-            '**/node_modules/**',
-            '**/.git/**',
-            '**/build/**',
-            '**/dist/**',
-            '**/coverage/**',
-            '**/public/**',
+            "**/node_modules/**",
+            "**/.git/**",
+            "**/build/**",
+            "**/dist/**",
+            "**/coverage/**",
+            "**/public/**",
           ],
         };
       }
 
-      // Add health check plugin to webpack if enabled
+      // Add health check plugin if enabled
       if (config.enableHealthCheck && healthPluginInstance) {
         webpackConfig.plugins.push(healthPluginInstance);
       }
@@ -81,34 +66,27 @@ const webpackConfig = {
   },
 };
 
-// Only add babel plugin if visual editing is enabled
+// Add babel plugin if visual edits are enabled
 if (config.enableVisualEdits) {
   webpackConfig.babel = {
     plugins: [babelMetadataPlugin],
   };
 }
 
-// Setup dev server with visual edits and/or health check
+// Dev server setup for visual edits or health checks
 if (config.enableVisualEdits || config.enableHealthCheck) {
   webpackConfig.devServer = (devServerConfig) => {
-    // Apply visual edits dev server setup if enabled
     if (config.enableVisualEdits && setupDevServer) {
       devServerConfig = setupDevServer(devServerConfig);
     }
 
-    // Add health check endpoints if enabled
     if (config.enableHealthCheck && setupHealthEndpoints && healthPluginInstance) {
       const originalSetupMiddlewares = devServerConfig.setupMiddlewares;
-
       devServerConfig.setupMiddlewares = (middlewares, devServer) => {
-        // Call original setup if exists
         if (originalSetupMiddlewares) {
           middlewares = originalSetupMiddlewares(middlewares, devServer);
         }
-
-        // Setup health endpoints
         setupHealthEndpoints(devServer, healthPluginInstance);
-
         return middlewares;
       };
     }
