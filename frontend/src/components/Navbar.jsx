@@ -1,284 +1,239 @@
-import React, { useState, useRef, useEffect, useCallback } from "react";
+import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ChevronRight, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, ChevronUp } from "lucide-react";
 import logo from "../assets/logo.jpg";
-import "../Theme.css";
 
-const Navbar = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [hoveredMenu, setHoveredMenu] = useState(null);
-  const [hoveredSubmenu, setHoveredSubmenu] = useState(null);
-  const [expandedMobileMenu, setExpandedMobileMenu] = useState(null);
-  const [scrolled, setScrolled] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
-
+export const Navbar = () => {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(null);
   const location = useLocation();
-  const menuTimers = useRef({});
-  const submenuTimers = useRef({});
 
-  // ✅ Detect scroll position for navbar style + progress bar
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      const docHeight = document.body.scrollHeight - window.innerHeight;
-      const progress = (scrollTop / docHeight) * 100;
-      setScrolled(scrollTop > 20);
-      setScrollProgress(progress);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  // ✅ Prevent background scroll when mobile menu open
-  useEffect(() => {
-    document.body.style.overflow = isMenuOpen ? "hidden" : "auto";
-  }, [isMenuOpen]);
-
-  // ✅ Cleanup timers
-  useEffect(() => {
-    return () => {
-      Object.values(menuTimers.current).forEach(clearTimeout);
-      Object.values(submenuTimers.current).forEach(clearTimeout);
-    };
-  }, []);
-
-  const toggleMenu = useCallback(() => setIsMenuOpen((p) => !p), []);
-  const closeMenu = useCallback(() => setIsMenuOpen(false), []);
   const isActive = (path) => location.pathname === path;
 
-  const handleMenuEnter = (name) => {
-    clearTimeout(menuTimers.current[name]);
-    setHoveredMenu(name);
-  };
-  const handleMenuLeave = (name) => {
-    menuTimers.current[name] = setTimeout(() => setHoveredMenu(null), 150);
-  };
-  const handleSubmenuEnter = (name) => {
-    clearTimeout(submenuTimers.current[name]);
-    setHoveredSubmenu(name);
-  };
-  const handleSubmenuLeave = (name) => {
-    submenuTimers.current[name] = setTimeout(() => setHoveredSubmenu(null), 150);
+  const handleLinkClick = (path) => {
+    if (location.pathname === path) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+    setMobileMenuOpen(false);
+    setOpenDropdown(null);
   };
 
-  const toggleMobileSubmenu = (name) => {
-    setExpandedMobileMenu(expandedMobileMenu === name ? null : name);
-  };
-
-  const navItems = [
-    { name: "Home", path: "/" },
+  const navLinks = [
+    { path: "/", label: "Home" },
     {
-      name: "Services",
-      dropdown: [
+      path: "/services",
+      label: "Services",
+      subLinks: [
         {
-          name: "For Companies",
-          path: "/services/companies",
-          submenu: [
-            { name: "Information Technology", path: "/companies/informationtechnology" },
-            { name: "HealthTech", path: "/companies/healthtech" },
-            { name: "LifeSciences", path: "/companies/lifesciences" },
-            { name: "Electronics & Communication", path: "/companies/electronics" },
+          path: "/hire",
+          label: "For Companies",
+          subLinks: [
+            { path: "/companies/informationtechnology", label: "Information Technology" },
+            { path: "/companies/electronics", label: "Electronics & Communications" },
+            { path: "/companies/healthtech", label: "HealthTech" },
+            { path: "/companies/lifesciences", label: "Lifesciences" },
           ],
         },
-        { name: "For Talents", path: "/join" },
+        { path: "/join", label: "For Talents" },
       ],
     },
-    { name: "Pricing", path: "/pricing" },
+    { path: "/pricing", label: "Pricing" },
+    { path: "/jobs", label: "Jobs" },
     {
-      name: "About",
-      dropdown: [
-        { name: "Our Story", path: "/about" },
-        { name: "FAQ", path: "/MapeachFAQ" },
+      path: "/about",
+      label: "About",
+      subLinks: [
+        { path: "/about", label: "About Mapeach" },
+        { path: "/MapeachFAQ", label: "FAQ" },
       ],
     },
-    { name: "Jobs", path: "/jobs" },
-    { name: "Contact", path: "/enquiry" },
+    { path: "/enquiry", label: "Contact Us" },
   ];
 
   return (
-    <nav
-      className={`fixed w-full transition-all duration-300 z-50 overflow-visible ${
-        scrolled
-          ? "bg-white/95 backdrop-blur-md shadow-md"
-          : "bg-white/70 backdrop-blur-sm shadow-none"
-      }`}
-    >
-      {/* Scroll Progress Bar */}
-      <div
-        className="absolute top-0 left-0 h-1 bg-[var(--color-primary)] transition-all duration-200"
-        style={{ width: `${scrollProgress}%` }}
-      ></div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur border-b border-slate-200">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+        <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-3" onClick={closeMenu}>
+          <Link to="/" onClick={() => handleLinkClick("/")} className="flex items-center">
             <img
               src={logo}
               alt="Mapeach Logo"
-              className="h-14 w-auto object-contain select-none"
+              className="h-14 w-auto object-contain"
             />
           </Link>
 
           {/* Desktop Menu */}
-          <div className="hidden md:flex items-center h-full">
-            {navItems.map((item) => (
-              <div
-                key={item.name}
-                className="relative group h-full"
-                onMouseEnter={() => handleMenuEnter(item.name)}
-                onMouseLeave={() => handleMenuLeave(item.name)}
-              >
-                {item.dropdown ? (
-                  <span
-                    className="flex items-center justify-center h-full px-5 text-sm font-bold uppercase tracking-wide cursor-default 
-                               text-slate-700 hover:bg-[var(--color-primary-light)] hover:text-[var(--color-primary-dark)]"
-                  >
-                    {item.name}
-                    <ChevronDown className="ml-1 w-4 h-4 opacity-70 group-hover:opacity-100 transition-opacity duration-200" />
-                  </span>
-                ) : (
+          <div className="hidden md:flex items-center space-x-0">
+            {navLinks.map((link) => {
+              const active =
+                isActive(link.path) ||
+                (link.subLinks &&
+                  link.subLinks.some(
+                    (sublink) =>
+                      isActive(sublink.path) ||
+                      (sublink.subLinks &&
+                        sublink.subLinks.some((deep) => isActive(deep.path)))
+                  ));
+
+              if (!link.subLinks) {
+                return (
                   <Link
-                    to={item.path}
-                    onClick={closeMenu}
-                    className={`flex items-center justify-center h-full px-5 text-sm font-bold uppercase tracking-wide transition-all duration-200 ${
-                      isActive(item.path)
-                        ? "text-[var(--color-primary-dark)] bg-[var(--color-primary-light)]"
-                        : "text-slate-700 hover:bg-[var(--color-primary-light)] hover:text-[var(--color-primary-dark)]"
+                    key={link.path}
+                    to={link.path}
+                    onClick={() => handleLinkClick(link.path)}
+                    className={`min-w-[120px] text-center flex justify-center items-center h-16 text-[13px] font-semibold tracking-wide uppercase transition-all duration-200 ${
+                      active
+                        ? "bg-[#00CFFF] text-white"
+                        : "text-slate-800 hover:bg-[#00CFFF] hover:text-white"
                     }`}
                   >
-                    {item.name}
+                    {link.label}
                   </Link>
-                )}
+                );
+              }
 
-                {/* First-Level Dropdown */}
-                {item.dropdown && hoveredMenu === item.name && (
-                  <div className="absolute left-0 top-full mt-0 w-56 bg-white rounded-lg shadow-lg border border-slate-100 py-1 z-50 animate-fadeIn">
-                    {item.dropdown.map((subItem) => (
-                      <div
-                        key={subItem.name}
-                        className="relative"
-                        onMouseEnter={() => handleSubmenuEnter(subItem.name)}
-                        onMouseLeave={() => handleSubmenuLeave(subItem.name)}
-                      >
-                        <Link
-                          to={subItem.path}
-                          onClick={closeMenu}
-                          className={`flex justify-between items-center px-5 py-2 text-sm font-medium transition-colors duration-150 ${
-                            isActive(subItem.path)
-                              ? "bg-[var(--color-primary)] text-white"
-                              : "text-slate-700 hover:bg-[var(--color-primary-light)] hover:text-[var(--color-primary-dark)]"
-                          }`}
-                        >
-                          {subItem.name}
-                          {subItem.submenu && <ChevronRight className="w-4 h-4 opacity-60" />}
-                        </Link>
+              return (
+                <div
+                  key={link.path}
+                  className="relative"
+                  onMouseEnter={() => setOpenDropdown(link.path)}
+                  onMouseLeave={() => setOpenDropdown(null)}
+                >
+                  <button
+                    className={`min-w-[120px] text-center flex justify-center items-center space-x-1 h-16 text-[13px] font-semibold tracking-wide uppercase transition-all duration-200 ${
+                      active
+                        ? "bg-[#00CFFF] text-white"
+                        : "text-slate-800 hover:bg-[#00CFFF] hover:text-white"
+                    }`}
+                  >
+                    <span>{link.label}</span>
+                    {openDropdown === link.path ? (
+                      <ChevronUp size={14} />
+                    ) : (
+                      <ChevronDown size={14} />
+                    )}
+                  </button>
 
-                        {/* Nested Dropdown */}
-                        {subItem.submenu && hoveredSubmenu === subItem.name && (
-                          <div className="absolute left-full top-0 ml-1 w-60 bg-white rounded-lg shadow-lg border border-slate-100 py-1 z-50 animate-fadeInRight">
-                            {subItem.submenu.map((deepItem) => (
-                              <Link
-                                key={deepItem.name}
-                                to={deepItem.path}
-                                onClick={closeMenu}
-                                className={`block px-5 py-2 text-sm font-medium transition-colors duration-150 ${
-                                  isActive(deepItem.path)
-                                    ? "bg-[var(--color-primary)] text-white"
-                                    : "text-slate-700 hover:bg-[var(--color-primary-light)] hover:text-[var(--color-primary-dark)]"
-                                }`}
-                              >
-                                {deepItem.name}
-                              </Link>
-                            ))}
-                          </div>
-                        )}
+                  {openDropdown === link.path && (
+                    <div className="absolute left-0 mt-0 w-60 bg-white shadow-lg rounded-b-md ring-1 ring-slate-200 z-50">
+                      {link.subLinks.map((subLink) => (
+                        <div key={subLink.path} className="relative group">
+                          <Link
+                            to={subLink.path}
+                            onClick={() => handleLinkClick(subLink.path)}
+                            className={`block px-4 py-2 text-[13px] uppercase transition-colors duration-150 ${
+                              isActive(subLink.path)
+                                ? "bg-[#00CFFF] text-white"
+                                : "text-slate-800 hover:bg-[#00CFFF] hover:text-white"
+                            }`}
+                          >
+                            {subLink.label}
+                          </Link>
+
+                          {/* Nested subLinks (For Companies) */}
+                          {subLink.subLinks && (
+                            <div className="absolute top-0 left-full hidden group-hover:block w-64 bg-white shadow-lg rounded-md ring-1 ring-slate-200">
+                              {subLink.subLinks.map((deepLink) => (
+                                <Link
+                                  key={deepLink.path}
+                                  to={deepLink.path}
+                                  onClick={() => handleLinkClick(deepLink.path)}
+                                  className={`block px-4 py-2 text-[13px] uppercase transition-colors duration-150 ${
+                                    isActive(deepLink.path)
+                                      ? "bg-[#00CFFF] text-white"
+                                      : "text-slate-800 hover:bg-[#00CFFF] hover:text-white"
+                                  }`}
+                                >
+                                  {deepLink.label}
+                                </Link>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Mobile Menu Toggle */}
+          <button
+            className="md:hidden p-2 text-slate-700 hover:text-slate-900"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Drawer */}
+      {mobileMenuOpen && (
+        <div className="md:hidden bg-white border-t border-slate-200">
+          <div className="px-4 py-4 space-y-1">
+            {navLinks.map((link) => (
+              <div key={link.path}>
+                {!link.subLinks ? (
+                  <Link
+                    to={link.path}
+                    onClick={() => handleLinkClick(link.path)}
+                    className={`block text-center px-4 py-2 rounded-md text-sm font-semibold uppercase transition-colors duration-200 ${
+                      isActive(link.path)
+                        ? "bg-[#00CFFF] text-white"
+                        : "text-slate-800 hover:bg-[#00CFFF] hover:text-white"
+                    }`}
+                  >
+                    {link.label}
+                  </Link>
+                ) : (
+                  <>
+                    <button
+                      onClick={() =>
+                        setOpenDropdown(
+                          openDropdown === link.path ? null : link.path
+                        )
+                      }
+                      className={`w-full text-left px-4 py-2 rounded-md text-sm font-semibold uppercase flex justify-between items-center transition-colors duration-200 ${
+                        link.subLinks.some((s) => isActive(s.path))
+                          ? "bg-[#00CFFF] text-white"
+                          : "text-slate-800 hover:bg-[#00CFFF] hover:text-white"
+                      }`}
+                    >
+                      {link.label}
+                      {openDropdown === link.path ? (
+                        <ChevronUp size={16} />
+                      ) : (
+                        <ChevronDown size={16} />
+                      )}
+                    </button>
+
+                    {openDropdown === link.path && (
+                      <div className="pl-6 mt-1 space-y-1 border-l border-slate-200">
+                        {link.subLinks.map((subLink) => (
+                          <Link
+                            key={subLink.path}
+                            to={subLink.path}
+                            onClick={() => handleLinkClick(subLink.path)}
+                            className={`block px-3 py-2 text-sm font-medium uppercase transition-colors duration-200 ${
+                              isActive(subLink.path)
+                                ? "bg-[#00CFFF] text-white"
+                                : "text-slate-800 hover:bg-[#00CFFF] hover:text-white"
+                            }`}
+                          >
+                            {subLink.label}
+                          </Link>
+                        ))}
                       </div>
-                    ))}
-                  </div>
+                    )}
+                  </>
                 )}
               </div>
             ))}
           </div>
-
-          {/* Mobile Menu Toggle */}
-          <div className="md:hidden">
-            <button
-              onClick={toggleMenu}
-              className="text-slate-700 hover:text-[var(--color-primary-dark)] transition-colors duration-200"
-            >
-              {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile Menu */}
-      {isMenuOpen && (
-        <div className="md:hidden bg-white border-t border-slate-200 shadow-md animate-slideDown">
-          {navItems.map((item) => (
-            <div key={item.name} className="border-b border-slate-100">
-              {item.dropdown ? (
-                <button
-                  onClick={() => toggleMobileSubmenu(item.name)}
-                  className="w-full flex justify-between items-center px-6 py-3 text-sm font-bold uppercase text-slate-700 bg-slate-50 hover:bg-slate-100 transition-colors"
-                >
-                  {item.name}
-                  <ChevronDown
-                    className={`w-4 h-4 transform transition-transform duration-200 ${
-                      expandedMobileMenu === item.name ? "rotate-180" : ""
-                    }`}
-                  />
-                </button>
-              ) : (
-                <Link
-                  to={item.path}
-                  onClick={closeMenu}
-                  className={`block px-6 py-3 text-sm font-semibold uppercase transition-colors ${
-                    isActive(item.path)
-                      ? "bg-[var(--color-primary)] text-white"
-                      : "text-slate-700 hover:bg-[var(--color-primary-light)] hover:text-[var(--color-primary-dark)]"
-                  }`}
-                >
-                  {item.name}
-                </Link>
-              )}
-
-              {item.dropdown && expandedMobileMenu === item.name && (
-                <div className="pl-8 pb-2 bg-slate-50 animate-slideFade">
-                  {item.dropdown.map((subItem) => (
-                    <div key={subItem.name}>
-                      <Link
-                        to={subItem.path}
-                        onClick={closeMenu}
-                        className="block px-2 py-2 text-sm text-slate-600 hover:text-[var(--color-primary-dark)]"
-                      >
-                        {subItem.name}
-                      </Link>
-                      {subItem.submenu && (
-                        <div className="pl-6">
-                          {subItem.submenu.map((deepItem) => (
-                            <Link
-                              key={deepItem.name}
-                              to={deepItem.path}
-                              onClick={closeMenu}
-                              className="block px-2 py-1 text-sm text-slate-500 hover:text-[var(--color-primary-dark)]"
-                            >
-                              {deepItem.name}
-                            </Link>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
         </div>
       )}
     </nav>
   );
 };
-
-export default Navbar;
