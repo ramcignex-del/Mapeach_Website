@@ -43,23 +43,28 @@ const Home = () => {
     <div className="min-h-screen">
 
       {/* Hero Section with Slider */}
-    <section className="relative pt-16 md:pt-20 pb-0">
+  
+      <section className="relative">
   <Slider {...settings}>
     {banners.map((src, index) => (
-      <div key={index} className="relative w-full overflow-hidden">
+      <div
+        key={index}
+        className="relative w-full h-[100vh] flex items-center justify-center overflow-hidden"
+      >
+        {/* Banner image */}
         <img
           src={src}
           alt={`banner-${index}`}
-          className="w-full h-[550px] sm:h-[600px] md:h-[700px] lg:h-[800px] object-cover"
+          className="w-full h-full object-cover object-center"
         />
 
-        {/* Optional Overlay Content */}
-        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 md:px-10">
-          <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold text-white mb-4 drop-shadow-lg leading-snug">
-            Fair Work. Fair Pay. Transparent Staffing.
+        {/* Optional overlay content */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 md:px-10 bg-black/40">
+          <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-4 drop-shadow-lg leading-snug">
+            Transparent Staffing Model
           </h1>
           <p className="text-base sm:text-lg md:text-xl text-white max-w-2xl mx-auto drop-shadow-md">
-            Transforming how companies hire — no hidden markups, no inflated rates, just transparent staffing.
+            Clients pay less, contractors earn more — with no compromises.
           </p>
         </div>
       </div>
