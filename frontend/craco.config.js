@@ -10,8 +10,8 @@ const config = {
 };
 
 // Conditionally load visual editing modules only if enabled
-let babelMetadataPlugin;
-let setupDevServer;
+//let babelMetadataPlugin;
+//let setupDevServer;
 
 if (config.enableVisualEdits) {
   babelMetadataPlugin = require("./plugins/visual-edits/babel-metadata-plugin");
@@ -19,9 +19,9 @@ if (config.enableVisualEdits) {
 }
 
 // Conditionally load health check modules only if enabled
-let WebpackHealthPlugin;
-let setupHealthEndpoints;
-let healthPluginInstance;
+//let WebpackHealthPlugin;
+//let setupHealthEndpoints;
+//let healthPluginInstance;
 
 if (config.enableHealthCheck) {
   WebpackHealthPlugin = require("./plugins/health-check/webpack-health-plugin");
